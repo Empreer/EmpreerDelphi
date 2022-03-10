@@ -46,6 +46,7 @@ type
     FDQuery2: TFDQuery;
     DataSource2: TDataSource;
     pnlistabr: TPanel;
+    Label3: TLabel;
     procedure BtnFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

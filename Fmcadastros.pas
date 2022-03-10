@@ -33,6 +33,7 @@ type
     procedure SpeedButton4MouseLeave(Sender: TObject);
     procedure SpeedButton3MouseLeave(Sender: TObject);
     procedure SpeedButton3MouseEnter(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +47,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmprincipal;
+uses Fmprincipal, Fmcadcli;
 
 procedure TFrmcadastros.pnclienteMouseActivate(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y, HitTest: Integer;
@@ -58,6 +59,12 @@ end;
 procedure TFrmcadastros.pnclienteMouseEnter(Sender: TObject);
 begin
 pnllinha.Visible:=true;
+end;
+
+procedure TFrmcadastros.SpeedButton1Click(Sender: TObject);
+begin
+ FrmCadcli := TFrmCadcli.Create(Self);                          //Botao de login chama o formulario principal
+ FrmCadcli.Show;
 end;
 
 procedure TFrmcadastros.SpeedButton1MouseEnter(Sender: TObject);

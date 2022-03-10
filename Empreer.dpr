@@ -5,7 +5,8 @@ uses
   Fmlogin in 'Fmlogin.pas' {Frmlogin},
   Fmprincipal in 'Fmprincipal.pas' {Frmprincipal},
   Fmcadastros in 'Fmcadastros.pas' {Frmcadastros},
-  Fmentradas in 'Fmentradas.pas' {Frmentradas};
+  Fmentradas in 'Fmentradas.pas' {Frmentradas},
+  Fmcadcli in 'Fmcadcli.pas' {Frmcadcli};
 
 {$R *.res}
 
@@ -16,5 +17,6 @@ begin
   Application.CreateForm(TFrmprincipal, Frmprincipal);
   Application.CreateForm(TFrmcadastros, Frmcadastros);
   Application.CreateForm(TFrmentradas, Frmentradas);
+  Application.CreateForm(TFrmcadcli, Frmcadcli);
   Application.Run;
 end.

@@ -23,7 +23,6 @@ object Frmcadastros: TFrmcadastros
     Color = 15724269
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -8
     object pncliente: TPanel
       Left = 32
       Top = 24
@@ -215,6 +214,7 @@ object Frmcadastros: TFrmcadastros
           ACE9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
         Layout = blGlyphTop
         ParentFont = False
+        OnClick = SpeedButton1Click
         OnMouseEnter = SpeedButton1MouseEnter
         OnMouseLeave = SpeedButton1MouseLeave
         ExplicitHeight = 100
@@ -229,7 +229,6 @@ object Frmcadastros: TFrmcadastros
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 98
       end
     end
     object Pnlfornec: TPanel
@@ -436,7 +435,6 @@ object Frmcadastros: TFrmcadastros
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 98
       end
     end
     object Pnlprodutos: TPanel
@@ -994,7 +992,6 @@ object Frmcadastros: TFrmcadastros
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 98
       end
     end
   end
@@ -1555,7 +1552,6 @@ object Frmcadastros: TFrmcadastros
       Color = clWindow
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 98
     end
   end
 end

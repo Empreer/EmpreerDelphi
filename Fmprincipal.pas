@@ -10,7 +10,7 @@ uses
 type
   TFrmprincipal = class(TForm)
     Panel1: TPanel;
-    Panel2: TPanel;
+    Pnltopo: TPanel;
     Imlogo: TImage;
     Label1: TLabel;
     Label2: TLabel;
@@ -30,9 +30,17 @@ type
     SpeedButton8: TSpeedButton;
     SpeedButton9: TSpeedButton;
     Pnlista: TPanel;
+    pnlistabr: TPanel;
+    pnlcentral: TPanel;
+    pnllateral: TPanel;
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure FormCreate(Sender: TObject);
 
   private
     { Private declarations }
@@ -48,7 +56,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin;
+uses Fmlogin, Fmcadastros, Fmentradas;
 
 
 
@@ -62,6 +70,23 @@ begin
 Application.Minimize;
 end;
 
+procedure TFrmprincipal.FormCreate(Sender: TObject);
+begin
+Frmlogin.Hide;
+Application.MainFormOnTaskbar := False;
+end;
+
+procedure TFrmprincipal.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+end;
+
 procedure TFrmprincipal.SpeedButton1Click(Sender: TObject);
 begin
 
@@ -69,12 +94,26 @@ begin
 
   if bexpandido then
 
-  pnlmenu.Width := 160
+  pnlmenu.Width := 205
   else
   pnlmenu.Width := 57;
 
   bexpandido := not bexpandido;
 
+end;
+
+procedure TFrmprincipal.SpeedButton2Click(Sender: TObject);
+begin
+Frmcadastros := Tfrmcadastros.Create(self);
+Frmcadastros.Parent := Frmprincipal.pnlcentral;
+Frmcadastros.Show;
+end;
+
+procedure TFrmprincipal.SpeedButton3Click(Sender: TObject);
+begin
+Frmentradas := TFrmentradas .Create(self);
+Frmentradas .Parent := Frmprincipal.pnlcentral;
+Frmentradas .Show;
 end;
 
 end.

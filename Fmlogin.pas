@@ -45,6 +45,7 @@ type
     DBLookCombofilial: TDBLookupComboBox;
     FDQuery2: TFDQuery;
     DataSource2: TDataSource;
+    pnlistabr: TPanel;
     procedure BtnFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

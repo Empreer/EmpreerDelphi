@@ -143,8 +143,8 @@ object Frmlogin: TFrmlogin
       ParentBackground = False
       TabOrder = 1
       object Labeluser: TLabel
-        Left = 2
-        Top = 15
+        Left = 124
+        Top = 37
         Width = 67
         Height = 21
         Caption = 'USU'#193'RIO'
@@ -193,8 +193,8 @@ object Frmlogin: TFrmlogin
       ParentBackground = False
       TabOrder = 2
       object Labelsenha: TLabel
-        Left = 0
-        Top = 16
+        Left = 124
+        Top = 37
         Width = 50
         Height = 21
         Caption = 'SENHA'

@@ -11,7 +11,6 @@ type
   TFrmcadcli = class(TForm)
     Pnltopo: TPanel;
     Imlogo: TImage;
-    Label4: TLabel;
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
@@ -34,6 +33,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -49,12 +50,12 @@ implementation
 
 procedure TFrmcadcli.BtnFecharClick(Sender: TObject);
 begin
-Application.Terminate;
+Close;
 end;
 
 procedure TFrmcadcli.BtnminimizarClick(Sender: TObject);
 begin
-Application.Minimize;
+Frmcadcli.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadcli.FormShow(Sender: TObject);
@@ -66,6 +67,17 @@ begin
    Pagecontrol1.Pages[pages].Tabvisible := False;
  end;
  Pagecontrol1.ActivePageIndex:= 0;
+end;
+
+procedure TFrmcadcli.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
 end;
 
 procedure TFrmcadcli.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;

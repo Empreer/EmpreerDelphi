@@ -46,8 +46,8 @@ object Frmlogin: TFrmlogin
         227
         121)
       object Label1: TLabel
-        Left = 40
-        Top = -2
+        Left = -41
+        Top = 38
         Width = 145
         Height = 42
         Alignment = taCenter
@@ -60,7 +60,6 @@ object Frmlogin: TFrmlogin
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitTop = 0
       end
       object imglogin: TImage
         Left = 81

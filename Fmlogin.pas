@@ -83,6 +83,21 @@ begin
 
   codfilial := DBLookCombofilial.KeyValue;
 
+
+
+
+
+
+
+
+
+
+
+
+
+  //////teste
+
+
   with FdQuery2 do                                                      // Com o Sqlquery inicia o select no banco de dados
     begin
       close;

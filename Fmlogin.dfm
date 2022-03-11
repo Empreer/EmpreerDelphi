@@ -287,7 +287,7 @@ object Frmlogin: TFrmlogin
         Font.Style = [fsBold]
         KeyField = 'codfilial'
         ListField = 'nome'
-        ListSource = DataSource1
+        ListSource = udm_conexao.DataSource1
         ParentFont = False
         TabOrder = 1
       end
@@ -974,60 +974,5 @@ object Frmlogin: TFrmlogin
       ParentBackground = False
       TabOrder = 0
     end
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=db_empreerhmg'
-      'User_Name=empreer'
-      'Password=Empreer12@'
-      'Server=db-empreerhmg.postgres.uhserver.com'
-      'DriverID=PG')
-    Connected = True
-    LoginPrompt = False
-    Left = 104
-    Top = 72
-  end
-  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
-    Left = 24
-    Top = 72
-  end
-  object FDQuery1: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from filial')
-    Left = 376
-    Top = 72
-    object FDQuery1codfilial: TIntegerField
-      FieldName = 'codfilial'
-      Origin = 'codfilial'
-    end
-    object FDQuery1nome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 8190
-    end
-    object FDQuery1cpfcnpj: TWideStringField
-      FieldName = 'cpfcnpj'
-      Origin = 'cpfcnpj'
-      Size = 8190
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = FDQuery1
-    Left = 448
-    Top = 72
-  end
-  object FDQuery2: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from useradm')
-    Left = 376
-    Top = 128
-  end
-  object DataSource2: TDataSource
-    DataSet = FDQuery2
-    Left = 448
-    Top = 128
   end
 end

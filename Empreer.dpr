@@ -12,23 +12,15 @@ uses
   Fmcadmp in 'Fmcadmp.pas' {Frmcadmp},
   Fmusersist in 'Fmusersist.pas' {Frmusersist},
   Fmcaddepto in 'Fmcaddepto.pas' {Frmcaddepto},
-  Fmcadcob in 'Fmcadcob.pas' {Frmcadcob};
+  Fmcadcob in 'Fmcadcob.pas' {Frmcadcob},
+  Uudm_conexao in 'Uudm_conexao.pas' {udm_conexao: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(Tudm_conexao, udm_conexao);
   Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmprincipal, Frmprincipal);
-  Application.CreateForm(TFrmcadastros, Frmcadastros);
-  Application.CreateForm(TFrmentradas, Frmentradas);
-  Application.CreateForm(TFrmcadcli, Frmcadcli);
-  Application.CreateForm(TFrmcadfornec, Frmcadfornec);
-  Application.CreateForm(TFrmcadprodut, Frmcadprodut);
-  Application.CreateForm(TFrmcadmp, Frmcadmp);
-  Application.CreateForm(TFrmusersist, Frmusersist);
-  Application.CreateForm(TFrmcaddepto, Frmcaddepto);
-  Application.CreateForm(TFrmcadcob, Frmcadcob);
   Application.Run;
 end.

@@ -35,16 +35,7 @@ type
     Pnborda4: TPanel;
     Pnbtnentrar: TPanel;
     Btnentrar: TSpeedButton;
-    FDConnection1: TFDConnection;
-    FDPhysPgDriverLink1: TFDPhysPgDriverLink;
-    FDQuery1: TFDQuery;
-    DataSource1: TDataSource;
-    FDQuery1codfilial: TIntegerField;
-    FDQuery1nome: TWideStringField;
-    FDQuery1cpfcnpj: TWideStringField;
     DBLookCombofilial: TDBLookupComboBox;
-    FDQuery2: TFDQuery;
-    DataSource2: TDataSource;
     pnlistabr: TPanel;
     Label3: TLabel;
     procedure BtnFecharClick(Sender: TObject);
@@ -64,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmprincipal;
+uses Fmprincipal, Uudm_conexao;
 
 procedure TFrmlogin.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -72,8 +63,10 @@ Action := caFree;
 end;
 
 procedure TFrmlogin.FormCreate(Sender: TObject);
+var test : integer;
 begin
-Fdquery1.Open();
+udm_conexao.Fdquery1.Open();
+test := udm_conexao.FDQuery1.RecordCount;
 DBLookCombofilial.KeyValue:=1;
 
 end;
@@ -85,7 +78,7 @@ begin
 
   codfilial := DBLookCombofilial.KeyValue;
 
-  with FdQuery2 do                                                      // Com o Sqlquery inicia o select no banco de dados
+  with udm_conexao.FdQuery2 do                                                      // Com o Sqlquery inicia o select no banco de dados
     begin
       close;
       sql.clear;
@@ -94,7 +87,7 @@ begin
                                                                             // Select contando quantos funcionarios existem com o usuario e senha digitados nos edit´s.
   end;
 
-    if Fdquery2.FieldByName('count').AsInteger >= 1 then                  // Se a contagem for maior que 1 valida a entrada no sistema senão aparece a mensagem
+    if udm_conexao.Fdquery2.FieldByName('count').AsInteger >= 1 then                  // Se a contagem for maior que 1 valida a entrada no sistema senão aparece a mensagem
      begin
         FrmPrincipal := TFrmPrincipal.Create(Self);                          //Botao de login chama o formulario principal
         FrmPrincipal.Show;

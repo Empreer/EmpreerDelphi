@@ -61,29 +61,7 @@ Coordinates=265,10,70,51
 [pnborda1]
 Coordinates=221,212,61,51
 
-[FDQuery1cpfcnpj]
-Coordinates=645,1,100,33
-
-[FDConnection1]
-Coordinates=505,56,90,33
-
-[DataSource1]
+[]
 Coordinates=319,324,77,105
 Visible=True
-
-[FDQuery1codfilial]
-Coordinates=647,56,102,33
-
-[FDQuery1nome]
-Coordinates=505,111,91,33
-
-[FDPhysPgDriverLink1]
-Coordinates=648,111,122,33
-
-[FDQuery1]
-Coordinates=10,10,63,105
-Visible=True
-
-[]
-Coordinates=174,80,127,33
 

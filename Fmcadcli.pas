@@ -93,6 +93,7 @@ type
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,7 +107,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin;
+uses Fmlogin, Uudm_conexao, Udm_cadastros;
 
 procedure TFrmcadcli.BtnFecharClick(Sender: TObject);
 begin
@@ -147,6 +148,28 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
+
+procedure TFrmcadcli.SpeedButton1Click(Sender: TObject);
+begin
+    with Dm_cadastros.Qry_cons_cadastro_Cliente do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('SELECT * FROM USERS');
+      Sql.Add('WHERE CODFILIAL = :CODFILIAL');
+
+      if Edit1.Text <> '' then
+        Sql.Add('And nome LIke ''%'+ Edit1.Text + '%'' ');
+
+      if Edit2.Text <> '' then
+        Sql.Add('And cidade LIke ''%'+ Edit2.Text + '%'' ');
+
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+
+      Open;
+
+    end;
+end;
 
 procedure TFrmcadcli.BtnCadastroClick(Sender: TObject);
 begin

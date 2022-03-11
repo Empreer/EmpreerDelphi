@@ -26,6 +26,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Codfilial : Integer;
   end;
 
 var

@@ -245,8 +245,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'id'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 0
         end
@@ -280,8 +281,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'nome'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 3
         end
@@ -305,8 +307,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'fone1'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 5
         end
@@ -330,8 +333,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'fone2'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 7
         end
@@ -355,8 +359,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'fone3'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 9
         end
@@ -380,8 +385,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'email'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 11
         end
@@ -390,6 +396,9 @@ object Frmcadcli: TFrmcadcli
           Top = 140
           Width = 65
           Height = 23
+          KeyField = 'codfilial'
+          ListField = 'nome'
+          ListSource = udm_conexao.DataSource1
           TabOrder = 12
         end
         object Panel6: TPanel
@@ -412,8 +421,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'endereco'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 14
         end
@@ -437,8 +447,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'numero'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 16
         end
@@ -462,8 +473,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'bairro'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 18
         end
@@ -487,8 +499,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'cidade'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 20
         end
@@ -519,8 +532,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'complemento'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 23
         end
@@ -544,8 +558,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'cep'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 25
         end
@@ -683,8 +698,9 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'cpfcnpj'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
           TabOrder = 31
         end
@@ -703,8 +719,6 @@ object Frmcadcli: TFrmcadcli
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = -16
         object Label1: TLabel
           Left = 16
           Top = 88
@@ -746,19 +760,102 @@ object Frmcadcli: TFrmcadcli
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          Text = 'Edit1'
         end
         object DBGrid1: TDBGrid
           Left = 16
-          Top = 152
+          Top = 148
           Width = 1225
           Height = 449
+          DataSource = Dm_cadastros.ds_cons_cadastro_Cliente
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'id'
+              Title.Caption = 'Id'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'nome'
+              Title.Caption = 'Nome'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 200
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'codfilial'
+              Title.Caption = 'Filial'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'fone1'
+              Title.Caption = 'Telefone'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 97
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'endereco'
+              Title.Caption = 'Endere'#231'o'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 400
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'bairro'
+              Title.Caption = 'Bairro'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 149
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cidade'
+              Title.Caption = 'Cidade'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 200
+              Visible = True
+            end>
         end
         object Panel12: TPanel
           Left = 16
@@ -794,6 +891,7 @@ object Frmcadcli: TFrmcadcli
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = SpeedButton1Click
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
@@ -813,7 +911,6 @@ object Frmcadcli: TFrmcadcli
           Font.Style = []
           ParentFont = False
           TabOrder = 4
-          Text = 'Edit2'
         end
         object Panel14: TPanel
           Left = 432

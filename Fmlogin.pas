@@ -93,6 +93,7 @@ begin
         FrmPrincipal.Show;
         Frmprincipal.Label5.Caption := Edituser.Text;
         Frmprincipal.Label2.Caption := DBLookCombofilial.KeyValue;
+        udm_conexao.Codfilial := DBLookCombofilial.KeyValue;
         Frmprincipal.Label3.Caption := DBLookCombofilial.Text;
        // FrmLogin.Visible := False;
      end

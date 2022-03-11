@@ -9,7 +9,8 @@ object udm_conexao: Tudm_conexao
       'User_Name=empreer'
       'Password=Empreer12@'
       'Server=db-empreerhmg.postgres.uhserver.com'
-      'DriverID=PG')
+      'DriverID=PG'
+      'POOL_ExpireTimeout=9000000')
     Connected = True
     LoginPrompt = False
     Left = 80

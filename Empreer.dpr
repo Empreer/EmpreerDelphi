@@ -13,7 +13,8 @@ uses
   Fmusersist in 'Fmusersist.pas' {Frmusersist},
   Fmcaddepto in 'Fmcaddepto.pas' {Frmcaddepto},
   Fmcadcob in 'Fmcadcob.pas' {Frmcadcob},
-  Uudm_conexao in 'Uudm_conexao.pas' {udm_conexao: TDataModule};
+  Uudm_conexao in 'Uudm_conexao.pas' {udm_conexao: TDataModule},
+  Udm_cadastros in 'Udm_cadastros.pas' {Dm_cadastros: TDataModule};
 
 {$R *.res}
 
@@ -21,6 +22,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tudm_conexao, udm_conexao);
-  Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.Run;
 end.

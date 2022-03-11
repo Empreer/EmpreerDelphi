@@ -420,6 +420,7 @@ object Frmcadastros: TFrmcadastros
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
         Layout = blGlyphTop
         ParentFont = False
+        OnClick = SpeedButton2Click
         OnMouseEnter = SpeedButton2MouseEnter
         OnMouseLeave = SpeedButton2MouseLeave
         ExplicitTop = 16

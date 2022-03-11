@@ -2665,8 +2665,6 @@ object Frmprincipal: TFrmprincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      ExplicitLeft = 224
-      ExplicitWidth = 940
     end
     object pnllateral: TPanel
       Left = 1164

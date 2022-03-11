@@ -78,14 +78,13 @@ end;
 
 procedure TFrmprincipal.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
-begin
   const
    sc_DragMove = $f012;
 begin
   ReleaseCapture;
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
-end;
+
 
 procedure TFrmprincipal.SpeedButton1Click(Sender: TObject);
 begin

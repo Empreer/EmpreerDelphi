@@ -7,7 +7,12 @@ uses
   Fmcadastros in 'Fmcadastros.pas' {Frmcadastros},
   Fmentradas in 'Fmentradas.pas' {Frmentradas},
   Fmcadcli in 'Fmcadcli.pas' {Frmcadcli},
-  Fmcadfornec in 'Fmcadfornec.pas' {Frmcadfornec};
+  Fmcadfornec in 'Fmcadfornec.pas' {Frmcadfornec},
+  Fmcadprodut in 'Fmcadprodut.pas' {Frmcadprodut},
+  Fmcadmp in 'Fmcadmp.pas' {Frmcadmp},
+  Fmusersist in 'Fmusersist.pas' {Frmusersist},
+  Fmcaddepto in 'Fmcaddepto.pas' {Frmcaddepto},
+  Fmcadcob in 'Fmcadcob.pas' {Frmcadcob};
 
 {$R *.res}
 
@@ -20,5 +25,10 @@ begin
   Application.CreateForm(TFrmentradas, Frmentradas);
   Application.CreateForm(TFrmcadcli, Frmcadcli);
   Application.CreateForm(TFrmcadfornec, Frmcadfornec);
+  Application.CreateForm(TFrmcadprodut, Frmcadprodut);
+  Application.CreateForm(TFrmcadmp, Frmcadmp);
+  Application.CreateForm(TFrmusersist, Frmusersist);
+  Application.CreateForm(TFrmcaddepto, Frmcaddepto);
+  Application.CreateForm(TFrmcadcob, Frmcadcob);
   Application.Run;
 end.

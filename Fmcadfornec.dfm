@@ -2,7 +2,7 @@ object Frmcadfornec: TFrmcadfornec
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'Frmcadfornec'
+  Caption = 'Empreer- Cadastro de Fornecedores'
   ClientHeight = 650
   ClientWidth = 1280
   Color = clBtnFace
@@ -40,7 +40,6 @@ object Frmcadfornec: TFrmcadfornec
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
         object Labeluser: TLabel
           Left = 196
           Top = 113
@@ -706,7 +705,7 @@ object Frmcadfornec: TFrmcadfornec
         object Label1: TLabel
           Left = 16
           Top = 88
-          Width = 185
+          Width = 157
           Height = 21
           Caption = 'Raz'#227'o Social / Fantasia'
           Font.Charset = DEFAULT_CHARSET
@@ -1129,7 +1128,6 @@ object Frmcadfornec: TFrmcadfornec
     ParentBackground = False
     TabOrder = 3
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 16
     object Imlogo: TImage
       Left = -4
       Top = 3

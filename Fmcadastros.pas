@@ -21,6 +21,15 @@ type
     pnllinha2: TPanel;
     pnllinha3: TPanel;
     pnllinha4: TPanel;
+    Pnlusuario: TPanel;
+    SpeedButton5: TSpeedButton;
+    pnlinha5: TPanel;
+    pnldepart: TPanel;
+    SpeedButton6: TSpeedButton;
+    pnlinha6: TPanel;
+    Pnlcobranca: TPanel;
+    SpeedButton7: TSpeedButton;
+    pnlinha7: TPanel;
     procedure pnclienteMouseEnter(Sender: TObject);
     procedure pnclienteMouseActivate(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y, HitTest: Integer;
@@ -35,6 +44,17 @@ type
     procedure SpeedButton3MouseEnter(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton5MouseEnter(Sender: TObject);
+    procedure SpeedButton5MouseLeave(Sender: TObject);
+    procedure SpeedButton6MouseEnter(Sender: TObject);
+    procedure SpeedButton6MouseLeave(Sender: TObject);
+    procedure SpeedButton7MouseEnter(Sender: TObject);
+    procedure SpeedButton7MouseLeave(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +68,8 @@ implementation
 
 {$R *.dfm}
 
-uses Fmprincipal, Fmcadcli, Fmcadfornec;
+uses Fmprincipal, Fmcadcli, Fmcadfornec, Fmcadprodut, Fmcadmp, Fmusersist,
+  Fmcaddepto, Fmcadcob;
 
 procedure TFrmcadastros.pnclienteMouseActivate(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y, HitTest: Integer;
@@ -63,8 +84,7 @@ pnllinha.Visible:=true;
 end;
 
 procedure TFrmcadastros.SpeedButton1Click(Sender: TObject);
-begin
- FrmCadcli := TFrmCadcli.Create(Self);                          //Botao de login chama o formulario principal
+begin FrmCadcli := TFrmCadcli.Create(Self);                          //Botao de login chama o formulario principal
  FrmCadcli.Show;
 end;
 
@@ -94,6 +114,12 @@ begin
 pnllinha2.color:=clWindow;
 end;
 
+procedure TFrmcadastros.SpeedButton3Click(Sender: TObject);
+begin
+ FrmCadmp := TFrmCadmp.Create(Self);                          //Botao de login chama o formulario principal
+ FrmCadmp.Show;
+end;
+
 procedure TFrmcadastros.SpeedButton3MouseEnter(Sender: TObject);
 begin
 pnllinha3.Color:=clGradientActiveCaption;
@@ -104,6 +130,12 @@ begin
 pnllinha3.color:=clWindow;
 end;
 
+procedure TFrmcadastros.SpeedButton4Click(Sender: TObject);
+begin
+FrmCadprodut := TFrmCadprodut.Create(Self);                          //Botao de login chama o formulario principal
+ FrmCadprodut.Show;
+end;
+
 procedure TFrmcadastros.SpeedButton4MouseEnter(Sender: TObject);
 begin
 pnllinha4.Color:=clGradientActiveCaption;
@@ -112,6 +144,54 @@ end;
 procedure TFrmcadastros.SpeedButton4MouseLeave(Sender: TObject);
 begin
 pnllinha4.color:=clWindow;
+end;
+
+procedure TFrmcadastros.SpeedButton5Click(Sender: TObject);
+begin
+ FrmUsersist := TFrmUsersist.Create(Self);                          //Botao de login chama o formulario principal
+ FrmUsersist.Show;
+end;
+
+procedure TFrmcadastros.SpeedButton5MouseEnter(Sender: TObject);
+begin
+pnlinha5.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmcadastros.SpeedButton5MouseLeave(Sender: TObject);
+begin
+pnlinha5.color:=clWindow;
+end;
+
+procedure TFrmcadastros.SpeedButton6Click(Sender: TObject);
+begin
+ Frmcaddepto := TFrmcaddepto.Create(Self);                          //Botao de login chama o formulario principal
+ Frmcaddepto.Show;
+end;
+
+procedure TFrmcadastros.SpeedButton6MouseEnter(Sender: TObject);
+begin
+pnlinha6.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmcadastros.SpeedButton6MouseLeave(Sender: TObject);
+begin
+pnlinha6.color:=clWindow;
+end;
+
+procedure TFrmcadastros.SpeedButton7Click(Sender: TObject);
+begin
+  Frmcadcob := TFrmcadcob.Create(Self);                          //Botao de login chama o formulario principal
+  Frmcadcob.Show;
+end;
+
+procedure TFrmcadastros.SpeedButton7MouseEnter(Sender: TObject);
+begin
+pnlinha7.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmcadastros.SpeedButton7MouseLeave(Sender: TObject);
+begin
+pnlinha7.color:=clWindow;
 end;
 
 end.

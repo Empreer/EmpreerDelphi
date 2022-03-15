@@ -23,5 +23,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tudm_conexao, udm_conexao);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
+  Application.CreateForm(TFrmlogin, Frmlogin);
   Application.Run;
 end.

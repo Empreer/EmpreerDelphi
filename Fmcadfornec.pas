@@ -93,6 +93,14 @@ type
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure BtnnovoClick(Sender: TObject);
+    procedure BtnsalvarClick(Sender: TObject);
+    procedure BtncancelarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure BtneditarClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -105,7 +113,32 @@ var
 implementation
 
 {$R *.dfm}
-uses Fmlogin;
+uses Fmlogin, Udm_cadastros, Uudm_conexao;
+
+procedure TFrmcadfornec.BtncancelarClick(Sender: TObject);
+begin
+
+  Dm_cadastros.Qry_cadastro_Fornecedor.cancel;
+  Dm_cadastros.Qry_cadastro_Fornecedor.close;
+  Dm_cadastros.Qry_cons_uf.close;
+
+
+  DBLookupComboBox1.ListFieldIndex := 0;
+  DBLookupComboBox2.ListFieldIndex := 0;
+
+
+  Btnnovo.Enabled := True;                                 // Habilita  o botão novo
+  BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
+  BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
+  BtnEditar.Enabled := False;
+
+end;
+
+procedure TFrmcadfornec.BtneditarClick(Sender: TObject);
+begin
+Btneditar.Enabled:=false;
+Btnsalvar.Enabled:=true;
+end;
 
 procedure TFrmcadfornec.BtnFecharClick(Sender: TObject);
 begin
@@ -115,6 +148,40 @@ end;
 procedure TFrmcadfornec.BtnminimizarClick(Sender: TObject);
 begin
 Frmcadfornec.WindowState:=wsminimized;
+end;
+
+procedure TFrmcadfornec.BtnnovoClick(Sender: TObject);
+var Proxnum : integer;
+begin
+  Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
+  BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
+  BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
+  Btncancelar.Enabled :=True;
+
+  Proxnum :=0;
+  Dm_cadastros.Qry_cadastro_Fornecedor.Cancel();
+  Dm_cadastros.Qry_cadastro_Fornecedor.Close();
+
+  with Dm_cadastros.Qry_cadastro_Fornecedor do
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM FORNECEDORS order by id');
+      Open;
+    end;
+
+  Dm_cadastros.Qry_cadastro_Fornecedor.last();
+  Proxnum := Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Fornecedor.append();
+  Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger:= Proxnum;
+
+  Dm_cadastros.Qry_cons_uf.Open();
+
+end;
+
+procedure TFrmcadfornec.FormCreate(Sender: TObject);
+begin
+DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
 end;
 
 procedure TFrmcadfornec.FormShow(Sender: TObject);
@@ -147,6 +214,32 @@ begin
 end;
 
 
+procedure TFrmcadfornec.SpeedButton1Click(Sender: TObject);
+begin
+ with Dm_cadastros.Qry_cons_cadastro_Fornecedor do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.ENDERECO,F.BAIRRO,F.NUMERO,F.CIDADE,U.ID as UFID,U.UFNOME,F.CEP,F.CONTATO,F.CODFILIAL');
+      Sql.Add('FROM FORNECEDORS F, UFS U');
+      Sql.Add('WHERE F.CODFILIAL = :CODFILIAL');
+      Sql.Add('AND F.CODUF = U.ID');
+
+      if Edit1.Text <> '' then
+        Sql.Add('And F.nome Like ''%'+ Edit1.Text + '%'' ');
+
+      if Edit2.Text <> '' then
+        Sql.Add('And F.cidade Like ''%'+ Edit2.Text + '%'' ');
+
+      Sql.Add('ORDER BY F.NOME');
+
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+
+      Open;
+
+    end;
+end;
+
 procedure TFrmcadfornec.BtnCadastroClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 0;
@@ -157,5 +250,80 @@ begin
 Pagecontrol1.ActivePageIndex:= 1;
 end;
 
+
+procedure TFrmcadfornec.BtnsalvarClick(Sender: TObject);
+begin
+if Dbedit3.Text = '' then                                // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Razão Social / Fantasia !')
+
+else if Dbedit4.Text = '' then                        // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Fone-1 !')
+
+else if Dbedit11.Text = '' then                        // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Cidade !')
+
+else if Dbedit11.Text = '' then                        // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Cidade !')
+
+else if DBLookupComboBox1.text = '' then
+ShowMessage('Favor Escolher a Filial !')
+
+else if DBLookupComboBox2.text = '' then
+ShowMessage('Favor Escolher o Estado !')
+
+ else
+  begin
+   Dm_cadastros.Qry_cadastro_Fornecedorcodfilial.asinteger := DBLookupComboBox1.KeyValue;
+   Dm_cadastros.Qry_cadastro_Fornecedorcoduf.asinteger := DBLookupComboBox2.KeyValue;
+
+   Dm_cadastros.Qry_cadastro_Fornecedor.Post();
+   Dm_cadastros.Qry_cadastro_Fornecedor.cancel;
+   Dm_cadastros.Qry_cadastro_Fornecedor.close;
+
+   Showmessage('Dados Salvos com Sucesso !');
+
+    Btnnovo.Enabled := True;                               // Ativa o Botão Novo
+    BtnSalvar.Enabled := False;                            // Desativa o Botão Salvar
+    BtnEditar.Enabled := False;                            // Desativa o Botão Editar
+    BtnCancelar.Enabled := False;
+
+    DBLookupComboBox1.ListFieldIndex := 0;
+    DBLookupComboBox2.ListFieldIndex := 0;
+
+
+  end;
+
+end;
+
+procedure TFrmcadfornec.DBGrid1DblClick(Sender: TObject);
+begin
+
+ with Dm_cadastros.Qry_cadastro_Fornecedor do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM FORNECEDORS');
+      Sql.Add('WHERE ID = :ID');
+      Sql.Add('AND CODFILIAL = :CODFILIAL');
+
+      Params.ParamByName('ID').AsInteger := Dm_cadastros.Qry_cons_cadastro_Fornecedorid.asinteger ;
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+
+      Open;
+
+    end;
+
+       Dm_cadastros.Qry_cons_uf.open();
+       DBLookupComboBox2.KeyValue:= Dm_cadastros.Qry_cons_cadastro_Fornecedorufid.asinteger;
+       Btneditar.Enabled:=true;
+       Btnnovo.Enabled:=false;
+       Btncancelar.Enabled:=true;
+       Pagecontrol1.ActivePageIndex:= 0;
+end;
+
+procedure TFrmcadfornec.DBGrid1TitleClick(Column: TColumn);
+begin
+Dm_cadastros.Qry_cons_cadastro_Fornecedor.IndexFieldNames := Column.Fieldname;
+end;
 
 end.

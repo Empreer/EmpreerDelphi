@@ -19,7 +19,7 @@ object Frmcadcli: TFrmcadcli
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -40,7 +40,6 @@ object Frmcadcli: TFrmcadcli
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
         object Labeluser: TLabel
           Left = 196
           Top = 113
@@ -510,6 +509,8 @@ object Frmcadcli: TFrmcadcli
           Top = 292
           Width = 145
           Height = 23
+          ListField = 'ufnome'
+          ListSource = Dm_cadastros.Ds_cons_uf
           TabOrder = 21
         end
         object Panel10: TPanel

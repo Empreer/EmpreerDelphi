@@ -46,6 +46,45 @@ type
     IntegerField3: TIntegerField;
     WideStringField13: TWideStringField;
     ds_cons_cadastro_Cliente: TDataSource;
+    Qry_cadastro_Fornecedor: TFDQuery;
+    Qry_cadastro_Fornecedorid: TIntegerField;
+    Qry_cadastro_Fornecedornome: TWideStringField;
+    Qry_cadastro_Fornecedorcpfcnpj: TWideStringField;
+    Qry_cadastro_Fornecedorfone1: TWideStringField;
+    Qry_cadastro_Fornecedorfone2: TWideStringField;
+    Qry_cadastro_Fornecedorfone3: TWideStringField;
+    Qry_cadastro_Fornecedoremail: TWideStringField;
+    Qry_cadastro_Fornecedorendereco: TWideStringField;
+    Qry_cadastro_Fornecedorbairro: TWideStringField;
+    Qry_cadastro_Fornecedornumero: TWideStringField;
+    Qry_cadastro_Fornecedorcidade: TWideStringField;
+    Qry_cadastro_Fornecedorcoduf: TIntegerField;
+    Qry_cadastro_Fornecedorcep: TWideStringField;
+    Qry_cadastro_Fornecedorcontato: TWideStringField;
+    Ds_cadastro_Fornecedor: TDataSource;
+    Qry_cons_cadastro_Fornecedor: TFDQuery;
+    Ds_cons_cadastro_Fornecedor: TDataSource;
+    Qry_cons_uf: TFDQuery;
+    Ds_cons_uf: TDataSource;
+    Qry_cons_ufid: TIntegerField;
+    Qry_cons_ufufnome: TWideStringField;
+    Qry_cadastro_Fornecedorcodfilial: TIntegerField;
+    Qry_cons_cadastro_Fornecedorid: TIntegerField;
+    Qry_cons_cadastro_Fornecedornome: TWideStringField;
+    Qry_cons_cadastro_Fornecedorcpfcnpj: TWideStringField;
+    Qry_cons_cadastro_Fornecedorfone1: TWideStringField;
+    Qry_cons_cadastro_Fornecedorfone2: TWideStringField;
+    Qry_cons_cadastro_Fornecedorfone3: TWideStringField;
+    Qry_cons_cadastro_Fornecedoremail: TWideStringField;
+    Qry_cons_cadastro_Fornecedorendereco: TWideStringField;
+    Qry_cons_cadastro_Fornecedorbairro: TWideStringField;
+    Qry_cons_cadastro_Fornecedornumero: TWideStringField;
+    Qry_cons_cadastro_Fornecedorcidade: TWideStringField;
+    Qry_cons_cadastro_Fornecedorufid: TIntegerField;
+    Qry_cons_cadastro_Fornecedorufnome: TWideStringField;
+    Qry_cons_cadastro_Fornecedorcep: TWideStringField;
+    Qry_cons_cadastro_Fornecedorcontato: TWideStringField;
+    Qry_cons_cadastro_Fornecedorcodfilial: TIntegerField;
   private
     { Private declarations }
   public

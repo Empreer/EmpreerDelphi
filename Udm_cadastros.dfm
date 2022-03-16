@@ -576,4 +576,34 @@ object Dm_cadastros: TDm_cadastros
     Left = 592
     Top = 216
   end
+  object Qry_cons_cidade: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cidades')
+    Left = 856
+    Top = 160
+    object Qry_cons_cidadeid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+    end
+    object Qry_cons_cidadecodibge: TIntegerField
+      FieldName = 'codibge'
+      Origin = 'codibge'
+    end
+    object Qry_cons_cidadeuf: TWideStringField
+      FieldName = 'uf'
+      Origin = 'uf'
+      Size = 8190
+    end
+    object Qry_cons_cidadecidade: TWideStringField
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Size = 8190
+    end
+  end
+  object Ds_cons_cidade: TDataSource
+    DataSet = Qry_cons_uf
+    Left = 856
+    Top = 224
+  end
 end

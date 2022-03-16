@@ -115,6 +115,12 @@ type
     Qry_cons_cadastro_Produtodepto: TWideStringField;
     Qry_cons_cadastro_Produtofornecid: TIntegerField;
     Qry_cons_cadastro_Produtofornec: TWideStringField;
+    Qry_cons_cidade: TFDQuery;
+    Ds_cons_cidade: TDataSource;
+    Qry_cons_cidadeid: TIntegerField;
+    Qry_cons_cidadecodibge: TIntegerField;
+    Qry_cons_cidadeuf: TWideStringField;
+    Qry_cons_cidadecidade: TWideStringField;
   private
     { Private declarations }
   public

@@ -21,6 +21,7 @@ type
     DataSource1: TDataSource;
     DataSource2: TDataSource;
     FDQuery2: TFDQuery;
+    Qry_Sequences: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

@@ -94,8 +94,12 @@ type
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure BtnnovoClick(Sender: TObject);
+    procedure BtnsalvarClick(Sender: TObject);
   private
     { Private declarations }
+    function Valida_Campos : Boolean;
+
   public
     { Public declarations }
   end;
@@ -107,7 +111,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin, Uudm_conexao, Udm_cadastros;
+uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal;
 
 procedure TFrmcadcli.BtnFecharClick(Sender: TObject);
 begin
@@ -117,6 +121,13 @@ end;
 procedure TFrmcadcli.BtnminimizarClick(Sender: TObject);
 begin
 Frmcadcli.WindowState:=wsminimized;
+end;
+
+procedure TFrmcadcli.BtnnovoClick(Sender: TObject);
+begin
+    dm_cadastros.Qry_cadastro_Cliente.Open();
+    Dm_cadastros.Qry_cadastro_Cliente.Append;
+    Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
 end;
 
 procedure TFrmcadcli.FormShow(Sender: TObject);
@@ -171,6 +182,16 @@ begin
     end;
 end;
 
+function TFrmcadcli.Valida_Campos: Boolean;
+begin
+  if Dm_cadastros.Qry_cadastro_Clientenome.AsString =  '' then
+  begin
+    MessageDlg('Nome Inválido!', mtWarning, [mbok], 0);
+    Dbedit1.SetFocus;
+    exit(False);
+  end;
+end;
+
 procedure TFrmcadcli.BtnCadastroClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 0;
@@ -179,6 +200,15 @@ end;
 procedure TFrmcadcli.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
+end;
+
+procedure TFrmcadcli.BtnsalvarClick(Sender: TObject);
+begin
+  if Valida_Campos = true then
+  begin
+
+    Dm_cadastros.Qry_cadastro_Cliente.Post;
+  end;
 end;
 
 end.

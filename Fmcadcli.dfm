@@ -19,7 +19,7 @@ object Frmcadcli: TFrmcadcli
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -589,6 +589,7 @@ object Frmcadcli: TFrmcadcli
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnnovoClick
             ExplicitLeft = 9
             ExplicitTop = 22
           end
@@ -647,6 +648,7 @@ object Frmcadcli: TFrmcadcli
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end

@@ -46,6 +46,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Function Prox_num (Sequence : String): integer;
   end;
 
 var
@@ -56,7 +57,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin, Fmcadastros, Fmentradas;
+uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao;
 
 
 
@@ -85,6 +86,20 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
+
+function TFrmprincipal.Prox_num(Sequence: String): integer;
+begin
+  with  udm_conexao.Qry_Sequences do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add('select nextval('''+Sequence+''')as proximo');
+    showmessage(sql.Text);
+    Open;
+
+    Result := FieldByName('proximo').AsInteger;
+  end;
+end;
 
 procedure TFrmprincipal.SpeedButton1Click(Sender: TObject);
 begin

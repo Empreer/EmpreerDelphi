@@ -1,7 +1,7 @@
 object udm_conexao: Tudm_conexao
   OnCreate = DataModuleCreate
-  Height = 613
-  Width = 901
+  Height = 293
+  Width = 507
   PixelsPerInch = 120
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -58,5 +58,12 @@ object udm_conexao: Tudm_conexao
       'select * from useradm')
     Left = 376
     Top = 176
+  end
+  object Qry_Sequences: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from useradm')
+    Left = 224
+    Top = 200
   end
 end

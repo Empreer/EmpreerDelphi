@@ -122,9 +122,7 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.close;
   Dm_cadastros.Qry_cons_uf.close;
 
-
-  DBLookupComboBox1.ListFieldIndex := 0;
-  DBLookupComboBox2.ListFieldIndex := 0;
+  DBLookupComboBox2.KeyValue := -1;
 
 
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
@@ -159,6 +157,8 @@ begin
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
   BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
   Btncancelar.Enabled :=True;
+
+  Dbedit3.SetFocus;
 
   Proxnum :=0;
   Dm_cadastros.Qry_cadastro_Fornecedor.Cancel();

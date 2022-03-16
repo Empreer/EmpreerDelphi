@@ -65,6 +65,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Clientecoduf: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'coduf'
       Origin = 'coduf'
     end
@@ -79,6 +80,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Clientecodfilial: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
@@ -156,6 +158,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object IntegerField2: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'coduf'
       Origin = 'coduf'
     end
@@ -170,6 +173,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object IntegerField3: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
@@ -187,7 +191,7 @@ object Dm_cadastros: TDm_cadastros
   object Qry_cadastro_Fornecedor: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
-      'select * from fornecedors order by id')
+      'select * from fornecedors order by nome')
     Left = 360
     Top = 16
     object Qry_cadastro_Fornecedorid: TIntegerField
@@ -247,6 +251,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Fornecedorcoduf: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'coduf'
       Origin = 'coduf'
     end
@@ -261,6 +266,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Fornecedorcodfilial: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
@@ -414,42 +420,54 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Produtocusto: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'custo'
       Origin = 'custo'
       Precision = 64
       Size = 0
     end
     object Qry_cadastro_Produtopreco: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'preco'
       Origin = 'preco'
       Precision = 64
       Size = 0
     end
     object Qry_cadastro_Produtopreco2: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'preco2'
       Origin = 'preco2'
       Precision = 64
       Size = 0
     end
     object Qry_cadastro_Produtoqtest: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'qtest'
       Origin = 'qtest'
       Precision = 64
       Size = 0
     end
     object Qry_cadastro_Produtomargem: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'margem'
       Origin = 'margem'
       Precision = 64
       Size = 0
     end
     object Qry_cadastro_Produtocodfornec: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfornec'
       Origin = 'codfornec'
     end
     object Qry_cadastro_Produtocodfilial: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
+    end
+    object Qry_cadastro_Produtocoddepto: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'coddepto'
+      Origin = 'coddepto'
     end
   end
   object Ds_cadastro_Produto: TDataSource
@@ -460,9 +478,52 @@ object Dm_cadastros: TDm_cadastros
   object Qry_cons_cadastro_Produto: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
+      
+        'select p.id, p.descricao,p.unidade,d.id as deptoid, d.nome as de' +
+        'pto, f.id as fornecid, f.nome as fornec'
+      'from produtos p, departamentos d, fornecedors f'
+      'where p.codfornec = f.id '
+      'and p.coddepto = d.id '
       '')
     Left = 200
     Top = 152
+    object Qry_cons_cadastro_Produtoid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cons_cadastro_Produtodescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Produtounidade: TWideStringField
+      FieldName = 'unidade'
+      Origin = 'unidade'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Produtodeptoid: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'deptoid'
+      Origin = 'deptoid'
+    end
+    object Qry_cons_cadastro_Produtodepto: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'depto'
+      Origin = 'depto'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Produtofornecid: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'fornecid'
+      Origin = 'fornecid'
+    end
+    object Qry_cons_cadastro_Produtofornec: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'fornec'
+      Origin = 'fornec'
+      Size = 8190
+    end
   end
   object Ds_cons_cadastro_Produto: TDataSource
     DataSet = Qry_cons_cadastro_Produto
@@ -472,7 +533,7 @@ object Dm_cadastros: TDm_cadastros
   object Qry_cadastro_Departamento: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
-      'select * from departamentos')
+      'select * from departamentos order by nome')
     Left = 392
     Top = 152
     object Qry_cadastro_Departamentoid: TIntegerField

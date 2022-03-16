@@ -107,6 +107,14 @@ type
     Qry_cadastro_Departamentonome: TWideStringField;
     Qry_cons_cadastro_Departamentoid: TIntegerField;
     Qry_cons_cadastro_Departamentonome: TWideStringField;
+    Qry_cadastro_Produtocoddepto: TIntegerField;
+    Qry_cons_cadastro_Produtoid: TIntegerField;
+    Qry_cons_cadastro_Produtodescricao: TWideStringField;
+    Qry_cons_cadastro_Produtounidade: TWideStringField;
+    Qry_cons_cadastro_Produtodeptoid: TIntegerField;
+    Qry_cons_cadastro_Produtodepto: TWideStringField;
+    Qry_cons_cadastro_Produtofornecid: TIntegerField;
+    Qry_cons_cadastro_Produtofornec: TWideStringField;
   private
     { Private declarations }
   public

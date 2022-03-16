@@ -195,10 +195,10 @@ end;
 procedure TFrmcaddepto.BtnsalvarClick(Sender: TObject);
 begin
 if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Razão Social / Fantasia !')
+ShowMessage('Favor Preencher o código !')
 
 else if Dbedit3.Text = '' then                        // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Fone-1 !')
+ShowMessage('Favor Preencher o a Descrição do Departamento !')
 
 else
   begin

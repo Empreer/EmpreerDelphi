@@ -1,7 +1,7 @@
 object udm_conexao: Tudm_conexao
   OnCreate = DataModuleCreate
   Height = 482
-  Width = 972
+  Width = 646
   PixelsPerInch = 96
   object FDConnection1: TFDConnection
     Params.Strings = (

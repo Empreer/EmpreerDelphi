@@ -138,6 +138,8 @@ procedure TFrmcadfornec.BtneditarClick(Sender: TObject);
 begin
 Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
+
+Dm_cadastros.Qry_cadastro_Fornecedor.Edit();
 end;
 
 procedure TFrmcadfornec.BtnFecharClick(Sender: TObject);
@@ -175,6 +177,7 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.append();
   Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger:= Proxnum;
 
+  Dm_cadastros.Qry_cons_uf.close();
   Dm_cadastros.Qry_cons_uf.Open();
 
 end;
@@ -287,8 +290,7 @@ ShowMessage('Favor Escolher o Estado !')
     BtnEditar.Enabled := False;                            // Desativa o Botão Editar
     BtnCancelar.Enabled := False;
 
-    DBLookupComboBox1.ListFieldIndex := 0;
-    DBLookupComboBox2.ListFieldIndex := 0;
+    DBLookupComboBox2.KeyValue := -1;
 
 
   end;

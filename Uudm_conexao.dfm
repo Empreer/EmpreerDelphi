@@ -1,8 +1,8 @@
 object udm_conexao: Tudm_conexao
   OnCreate = DataModuleCreate
-  Height = 293
-  Width = 507
-  PixelsPerInch = 120
+  Height = 482
+  Width = 972
+  PixelsPerInch = 96
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=db_empreerhmg'
@@ -63,7 +63,20 @@ object udm_conexao: Tudm_conexao
     Connection = FDConnection1
     SQL.Strings = (
       'select * from useradm')
-    Left = 224
-    Top = 200
+    Left = 88
+    Top = 192
+  end
+  object FDQuery3: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from perdaconec where id=1')
+    Left = 280
+    Top = 320
+  end
+  object Timer1: TTimer
+    Interval = 60000
+    OnTimer = Timer1Timer
+    Left = 184
+    Top = 320
   end
 end

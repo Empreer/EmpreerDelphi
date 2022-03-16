@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, Vcl.ExtCtrls;
 
 type
   Tudm_conexao = class(TDataModule)
@@ -22,7 +22,10 @@ type
     DataSource2: TDataSource;
     FDQuery2: TFDQuery;
     Qry_Sequences: TFDQuery;
+    FDQuery3: TFDQuery;
+    Timer1: TTimer;
     procedure DataModuleCreate(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +48,12 @@ procedure Tudm_conexao.DataModuleCreate(Sender: TObject);
 begin
         Frmlogin := TFrmlogin.Create(Self);                          //Botao de login chama o formulario principal
         Frmlogin.Show;
+end;
+
+procedure Tudm_conexao.Timer1Timer(Sender: TObject);
+begin
+Fdquery3.Open();
+Fdquery3.close();
 end;
 
 end.

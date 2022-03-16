@@ -166,11 +166,12 @@ object Frmlogin: TFrmlogin
       object Edituser: TEdit
         Left = 2
         Top = 42
-        Width = 320
+        Width = 327
         Height = 23
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
+        CharCase = ecUpperCase
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13

@@ -131,8 +131,7 @@ begin
 end;
 
 procedure TFrmcadcli.FormShow(Sender: TObject);
-var
- pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
+var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
 begin
  for pages := 0 to Pagecontrol1.PageCount -1 do
  begin

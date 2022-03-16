@@ -85,6 +85,28 @@ type
     Qry_cons_cadastro_Fornecedorcep: TWideStringField;
     Qry_cons_cadastro_Fornecedorcontato: TWideStringField;
     Qry_cons_cadastro_Fornecedorcodfilial: TIntegerField;
+    Qry_cadastro_Produto: TFDQuery;
+    Ds_cadastro_Produto: TDataSource;
+    Qry_cons_cadastro_Produto: TFDQuery;
+    Ds_cons_cadastro_Produto: TDataSource;
+    Qry_cadastro_Produtoid: TIntegerField;
+    Qry_cadastro_Produtodescricao: TWideStringField;
+    Qry_cadastro_Produtounidade: TWideStringField;
+    Qry_cadastro_Produtocusto: TFMTBCDField;
+    Qry_cadastro_Produtopreco: TFMTBCDField;
+    Qry_cadastro_Produtopreco2: TFMTBCDField;
+    Qry_cadastro_Produtoqtest: TFMTBCDField;
+    Qry_cadastro_Produtomargem: TFMTBCDField;
+    Qry_cadastro_Produtocodfornec: TIntegerField;
+    Qry_cadastro_Produtocodfilial: TIntegerField;
+    Qry_cadastro_Departamento: TFDQuery;
+    Ds_cadastro_Departamento: TDataSource;
+    Qry_cons_cadastro_Departamento: TFDQuery;
+    Ds_cons_cadastro_Departamento: TDataSource;
+    Qry_cadastro_Departamentoid: TIntegerField;
+    Qry_cadastro_Departamentonome: TWideStringField;
+    Qry_cons_cadastro_Departamentoid: TIntegerField;
+    Qry_cons_cadastro_Departamentonome: TWideStringField;
   private
     { Private declarations }
   public

@@ -24,6 +24,8 @@ type
     Qry_Sequences: TFDQuery;
     FDQuery3: TFDQuery;
     Timer1: TTimer;
+    FDQuery3id: TIntegerField;
+    FDQuery3value: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private

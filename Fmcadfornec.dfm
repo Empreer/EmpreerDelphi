@@ -13,6 +13,7 @@ object Frmcadfornec: TFrmcadfornec
   Font.Style = []
   Position = poDesktopCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -20,7 +21,7 @@ object Frmcadfornec: TFrmcadfornec
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -43,7 +44,7 @@ object Frmcadfornec: TFrmcadfornec
         TabOrder = 0
         object Labeluser: TLabel
           Left = 124
-          Top = 113
+          Top = 142
           Width = 157
           Height = 21
           Caption = 'Raz'#227'o Social / Fantasia'
@@ -56,7 +57,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label2: TLabel
           Left = 17
-          Top = 113
+          Top = 142
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -69,7 +70,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label3: TLabel
           Left = 671
-          Top = 113
+          Top = 142
           Width = 49
           Height = 21
           Caption = 'Fone-1'
@@ -82,7 +83,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label4: TLabel
           Left = 871
-          Top = 113
+          Top = 142
           Width = 49
           Height = 21
           Caption = 'Fone-2'
@@ -95,7 +96,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label5: TLabel
           Left = 1064
-          Top = 113
+          Top = 142
           Width = 49
           Height = 21
           Caption = 'Fone-3'
@@ -108,7 +109,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label6: TLabel
           Left = 16
-          Top = 193
+          Top = 222
           Width = 44
           Height = 21
           Caption = 'E-mail'
@@ -121,7 +122,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label7: TLabel
           Left = 16
-          Top = 77
+          Top = 106
           Width = 41
           Height = 21
           Caption = 'Filial:'
@@ -134,7 +135,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label8: TLabel
           Left = 288
-          Top = 193
+          Top = 222
           Width = 64
           Height = 21
           Caption = 'Endere'#231'o'
@@ -147,7 +148,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label9: TLabel
           Left = 816
-          Top = 193
+          Top = 222
           Width = 58
           Height = 21
           Caption = 'N'#250'mero'
@@ -160,7 +161,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label10: TLabel
           Left = 904
-          Top = 193
+          Top = 222
           Width = 42
           Height = 21
           Caption = 'Bairro'
@@ -173,7 +174,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label11: TLabel
           Left = 16
-          Top = 265
+          Top = 294
           Width = 48
           Height = 21
           Caption = 'Cidade'
@@ -186,7 +187,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label12: TLabel
           Left = 336
-          Top = 265
+          Top = 294
           Width = 20
           Height = 21
           Caption = 'UF'
@@ -199,7 +200,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label13: TLabel
           Left = 16
-          Top = 337
+          Top = 366
           Width = 136
           Height = 21
           Caption = 'Contato / Vendedor'
@@ -212,7 +213,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label14: TLabel
           Left = 536
-          Top = 265
+          Top = 294
           Width = 27
           Height = 21
           Caption = 'Cep'
@@ -225,7 +226,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Label16: TLabel
           Left = 400
-          Top = 337
+          Top = 366
           Width = 77
           Height = 21
           Caption = 'CPF / CNPJ'
@@ -238,7 +239,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object DBEdit1: TDBEdit
           Left = 21
-          Top = 139
+          Top = 168
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -260,7 +261,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object pnlborda2: TPanel
           Left = 124
-          Top = 160
+          Top = 189
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -270,7 +271,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Pnlborda1: TPanel
           Left = 17
-          Top = 161
+          Top = 190
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -281,7 +282,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit3: TDBEdit
           AlignWithMargins = True
           Left = 125
-          Top = 139
+          Top = 168
           Width = 499
           Height = 16
           BevelInner = bvNone
@@ -302,7 +303,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object pnlborda3: TPanel
           Left = 671
-          Top = 160
+          Top = 189
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -313,7 +314,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit4: TDBEdit
           AlignWithMargins = True
           Left = 671
-          Top = 139
+          Top = 168
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -334,7 +335,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel1: TPanel
           Left = 871
-          Top = 160
+          Top = 189
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -345,7 +346,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit5: TDBEdit
           AlignWithMargins = True
           Left = 871
-          Top = 139
+          Top = 168
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -366,7 +367,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel2: TPanel
           Left = 1064
-          Top = 160
+          Top = 189
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -377,7 +378,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit6: TDBEdit
           AlignWithMargins = True
           Left = 1064
-          Top = 139
+          Top = 168
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -398,7 +399,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel5: TPanel
           Left = 16
-          Top = 240
+          Top = 269
           Width = 250
           Height = 2
           BevelOuter = bvNone
@@ -409,7 +410,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit7: TDBEdit
           AlignWithMargins = True
           Left = 16
-          Top = 219
+          Top = 248
           Width = 250
           Height = 16
           BevelInner = bvNone
@@ -430,7 +431,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object DBLookupComboBox1: TDBLookupComboBox
           Left = 63
-          Top = 75
+          Top = 104
           Width = 273
           Height = 23
           Enabled = False
@@ -441,7 +442,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel6: TPanel
           Left = 288
-          Top = 240
+          Top = 269
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -452,7 +453,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit8: TDBEdit
           AlignWithMargins = True
           Left = 288
-          Top = 220
+          Top = 249
           Width = 500
           Height = 16
           BevelInner = bvNone
@@ -473,7 +474,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel7: TPanel
           Left = 816
-          Top = 240
+          Top = 269
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -484,7 +485,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit9: TDBEdit
           AlignWithMargins = True
           Left = 816
-          Top = 219
+          Top = 248
           Width = 73
           Height = 16
           BevelInner = bvNone
@@ -505,7 +506,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel8: TPanel
           Left = 904
-          Top = 240
+          Top = 269
           Width = 220
           Height = 2
           BevelOuter = bvNone
@@ -516,7 +517,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit10: TDBEdit
           AlignWithMargins = True
           Left = 904
-          Top = 219
+          Top = 248
           Width = 209
           Height = 16
           BevelInner = bvNone
@@ -537,7 +538,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel9: TPanel
           Left = 16
-          Top = 312
+          Top = 341
           Width = 300
           Height = 2
           BevelOuter = bvNone
@@ -548,7 +549,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit11: TDBEdit
           AlignWithMargins = True
           Left = 16
-          Top = 291
+          Top = 320
           Width = 300
           Height = 16
           BevelInner = bvNone
@@ -569,7 +570,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object DBLookupComboBox2: TDBLookupComboBox
           Left = 336
-          Top = 292
+          Top = 321
           Width = 145
           Height = 23
           KeyField = 'id'
@@ -579,7 +580,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel10: TPanel
           Left = 16
-          Top = 384
+          Top = 413
           Width = 343
           Height = 2
           BevelOuter = bvNone
@@ -590,7 +591,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit12: TDBEdit
           AlignWithMargins = True
           Left = 16
-          Top = 363
+          Top = 392
           Width = 343
           Height = 16
           BevelInner = bvNone
@@ -611,7 +612,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel11: TPanel
           Left = 536
-          Top = 312
+          Top = 341
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -622,7 +623,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit13: TDBEdit
           AlignWithMargins = True
           Left = 536
-          Top = 291
+          Top = 320
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -761,7 +762,7 @@ object Frmcadfornec: TFrmcadfornec
         end
         object Panel15: TPanel
           Left = 400
-          Top = 384
+          Top = 413
           Width = 343
           Height = 2
           BevelOuter = bvNone
@@ -772,7 +773,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit2: TDBEdit
           AlignWithMargins = True
           Left = 400
-          Top = 363
+          Top = 392
           Width = 343
           Height = 16
           BevelInner = bvNone

@@ -72,6 +72,15 @@ object udm_conexao: Tudm_conexao
       'select * from perdaconec where id=1')
     Left = 280
     Top = 320
+    object FDQuery3id: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+    end
+    object FDQuery3value: TWideStringField
+      FieldName = 'value'
+      Origin = '"value"'
+      Size = 8190
+    end
   end
   object Timer1: TTimer
     Interval = 60000

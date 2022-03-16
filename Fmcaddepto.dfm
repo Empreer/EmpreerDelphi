@@ -12,6 +12,7 @@ object Frmcaddepto: TFrmcaddepto
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -40,7 +41,6 @@ object Frmcaddepto: TFrmcaddepto
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
         object Labeluser: TLabel
           Left = 97
           Top = 113
@@ -55,7 +55,7 @@ object Frmcaddepto: TFrmcaddepto
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 9
+          Left = 11
           Top = 113
           Width = 31
           Height = 21
@@ -68,17 +68,25 @@ object Frmcaddepto: TFrmcaddepto
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 9
+          AlignWithMargins = True
+          Left = 12
           Top = 140
           Width = 57
-          Height = 15
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          DataField = 'id'
+          DataSource = Dm_cadastros.Ds_cadastro_Departamento
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
         object pnlborda2: TPanel
@@ -93,7 +101,7 @@ object Frmcaddepto: TFrmcaddepto
         end
         object Pnlborda1: TPanel
           Left = 9
-          Top = 161
+          Top = 160
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -106,14 +114,21 @@ object Frmcaddepto: TFrmcaddepto
           Left = 98
           Top = 140
           Width = 499
-          Height = 14
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'nome'
+          DataSource = Dm_cadastros.Ds_cadastro_Departamento
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 3
         end
         object pnlnovo: TPanel
@@ -140,6 +155,7 @@ object Frmcaddepto: TFrmcaddepto
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnnovoClick
             ExplicitLeft = 9
             ExplicitTop = 22
           end
@@ -169,6 +185,7 @@ object Frmcaddepto: TFrmcaddepto
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtneditarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -198,6 +215,7 @@ object Frmcaddepto: TFrmcaddepto
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -227,6 +245,7 @@ object Frmcaddepto: TFrmcaddepto
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtncancelarClick
             ExplicitLeft = 144
           end
         end
@@ -262,10 +281,11 @@ object Frmcaddepto: TFrmcaddepto
           Left = 16
           Top = 115
           Width = 400
-          Height = 20
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -273,19 +293,47 @@ object Frmcaddepto: TFrmcaddepto
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          Text = 'Edit1'
         end
         object DBGrid1: TDBGrid
           Left = 16
           Top = 152
           Width = 1225
           Height = 449
+          DataSource = Dm_cadastros.Ds_cons_cadastro_Departamento
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ParentFont = False
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'id'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'nome'
+              Title.Caption = 'DEPARTAMENTO'
+              Width = 600
+              Visible = True
+            end>
         end
         object Panel12: TPanel
           Left = 16
@@ -321,6 +369,7 @@ object Frmcaddepto: TFrmcaddepto
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = SpeedButton1Click
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
@@ -631,7 +680,6 @@ object Frmcaddepto: TFrmcaddepto
     ParentBackground = False
     TabOrder = 3
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 16
     object Imlogo: TImage
       Left = -4
       Top = 3

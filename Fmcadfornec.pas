@@ -47,8 +47,6 @@ type
     Panel8: TPanel;
     DBEdit10: TDBEdit;
     Panel9: TPanel;
-    DBEdit11: TDBEdit;
-    DBLookupComboBox2: TDBLookupComboBox;
     Panel10: TPanel;
     DBEdit12: TDBEdit;
     Panel11: TPanel;
@@ -84,6 +82,13 @@ type
     Label16: TLabel;
     Panel15: TPanel;
     DBEdit2: TDBEdit;
+    Panel16: TPanel;
+    DBEdit14: TDBEdit;
+    Label17: TLabel;
+    Panel17: TPanel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    SpeedButton2: TSpeedButton;
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -101,6 +106,8 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BtneditarClick(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure DBEdit14Exit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,7 +120,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Fmlogin, Udm_cadastros, Uudm_conexao;
+uses Fmlogin, Udm_cadastros, Uudm_conexao, Fmcadfornecbuscacidade;
 
 procedure TFrmcadfornec.BtncancelarClick(Sender: TObject);
 begin
@@ -122,13 +129,17 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.close;
   Dm_cadastros.Qry_cons_uf.close;
 
-  DBLookupComboBox2.KeyValue := -1;
 
 
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
   BtnEditar.Enabled := False;
+
+  Edit3.Text:='';
+  Edit4.Text:='';
+
+  SpeedButton2.Enabled:=false;
 
 end;
 
@@ -138,6 +149,8 @@ Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Fornecedor.Edit();
+
+SpeedButton2.Enabled:=true;
 end;
 
 procedure TFrmcadfornec.BtnFecharClick(Sender: TObject);
@@ -177,8 +190,10 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.append();
   Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger:= Proxnum;
 
-  Dm_cadastros.Qry_cons_uf.close();
-  Dm_cadastros.Qry_cons_uf.Open();
+  Dm_cadastros.Qry_cons_cidade.close();
+  Dm_cadastros.Qry_cons_cidade.Open();
+
+  SpeedButton2.Enabled:=true;
 
 end;
 
@@ -222,16 +237,16 @@ begin
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.ENDERECO,F.BAIRRO,F.NUMERO,F.CIDADE,U.ID as UFID,U.UFNOME,F.CEP,F.CONTATO,F.CODFILIAL');
-      Sql.Add('FROM FORNECEDORS F, UFS U');
+      Sql.Add('SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.ENDERECO,F.BAIRRO,F.NUMERO,C.CIDADE,C.ID as UFID,C.UF,F.CEP,F.CONTATO,F.CODFILIAL');
+      Sql.Add('FROM FORNECEDORS F, CIDADES C');
       Sql.Add('WHERE F.CODFILIAL = :CODFILIAL');
-      Sql.Add('AND F.CODUF = U.ID');
+      Sql.Add('AND F.CODCIDADE = C.ID');
 
       if Edit1.Text <> '' then
         Sql.Add('And F.nome Like ''%'+ Edit1.Text + '%'' ');
 
       if Edit2.Text <> '' then
-        Sql.Add('And F.cidade Like ''%'+ Edit2.Text + '%'' ');
+        Sql.Add('And C.cidade Like ''%'+ Edit2.Text + '%'' ');
 
       Sql.Add('ORDER BY F.NOME');
 
@@ -240,6 +255,12 @@ begin
       Open;
 
     end;
+end;
+
+procedure TFrmcadfornec.SpeedButton2Click(Sender: TObject);
+begin
+Frmcadfornecbuscacidade := TFrmcadfornecbuscacidade.Create(Self);                          //Botao de login chama o formulario principal
+Frmcadfornecbuscacidade.Show;
 end;
 
 procedure TFrmcadfornec.BtnCadastroClick(Sender: TObject);
@@ -261,22 +282,16 @@ ShowMessage('Favor Preencher o campo Razão Social / Fantasia !')
 else if Dbedit4.Text = '' then                        // Valida informações do Campo
 ShowMessage('Favor Preencher o campo Fone-1 !')
 
-else if Dbedit11.Text = '' then                        // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Cidade !')
-
-else if Dbedit11.Text = '' then                        // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Cidade !')
+else if Dbedit14.Text = '' then                        // Valida informações do Campo
+ShowMessage('Favor Preencher o código da Cidade !')
 
 else if DBLookupComboBox1.text = '' then
 ShowMessage('Favor Escolher a Filial !')
 
-else if DBLookupComboBox2.text = '' then
-ShowMessage('Favor Escolher o Estado !')
 
  else
   begin
    Dm_cadastros.Qry_cadastro_Fornecedorcodfilial.asinteger := DBLookupComboBox1.KeyValue;
-   Dm_cadastros.Qry_cadastro_Fornecedorcoduf.asinteger := DBLookupComboBox2.KeyValue;
 
    Dm_cadastros.Qry_cadastro_Fornecedor.Post();
    Dm_cadastros.Qry_cadastro_Fornecedor.cancel;
@@ -289,10 +304,32 @@ ShowMessage('Favor Escolher o Estado !')
     BtnEditar.Enabled := False;                            // Desativa o Botão Editar
     BtnCancelar.Enabled := False;
 
-    DBLookupComboBox2.KeyValue := -1;
+    Edit3.Text:='';
+    Edit4.Text:='';
+
 
 
   end;
+
+  SpeedButton2.Enabled:=false;
+end;
+
+procedure TFrmcadfornec.DBEdit14Exit(Sender: TObject);
+begin
+
+     with Dm_cadastros.Qry_cons_cidade do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM CIDADES');
+      Sql.Add('WHERE ID = :ID');
+
+      Params.ParamByName('ID').AsInteger := strtoint(Dbedit14.Text) ;
+      Open;
+
+    end;
+       Edit3.Text :=  Dm_cadastros.Qry_cons_cidadecidade.AsString;
+       Edit4.Text :=  Dm_cadastros.Qry_cons_cidadeuf.AsString;
 
 end;
 
@@ -313,12 +350,14 @@ begin
       Open;
 
     end;
-
-       Dm_cadastros.Qry_cons_uf.open();
-       DBLookupComboBox2.KeyValue:= Dm_cadastros.Qry_cons_cadastro_Fornecedorufid.asinteger;
+       Dm_cadastros.Qry_cons_cidade.close();
+       Dm_cadastros.Qry_cons_cidade.open();
        Btneditar.Enabled:=true;
        Btnnovo.Enabled:=false;
        Btncancelar.Enabled:=true;
+       DBEdit14.OnExit(self);
+
+
        Pagecontrol1.ActivePageIndex:= 0;
 end;
 

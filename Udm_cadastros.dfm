@@ -245,16 +245,6 @@ object Dm_cadastros: TDm_cadastros
       Origin = 'numero'
       Size = 8190
     end
-    object Qry_cadastro_Fornecedorcidade: TWideStringField
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 8190
-    end
-    object Qry_cadastro_Fornecedorcoduf: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'coduf'
-      Origin = 'coduf'
-    end
     object Qry_cadastro_Fornecedorcep: TWideStringField
       FieldName = 'cep'
       Origin = 'cep'
@@ -270,6 +260,10 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
+    object Qry_cadastro_Fornecedorcodcidade: TIntegerField
+      FieldName = 'codcidade'
+      Origin = 'codcidade'
+    end
   end
   object Ds_cadastro_Fornecedor: TDataSource
     DataSet = Qry_cadastro_Fornecedor
@@ -281,11 +275,11 @@ object Dm_cadastros: TDm_cadastros
     SQL.Strings = (
       
         ' SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.' +
-        'ENDERECO,F.BAIRRO,F.NUMERO,F.CIDADE,U.ID as UFID,U.UFNOME,F.CEP,' +
-        'F.CONTATO,F.CODFILIAL '
-      '      FROM FORNECEDORS F, UFS U'
+        'ENDERECO,F.BAIRRO,F.NUMERO,C.CIDADE,C.ID as UFID,C.UF,F.CEP,F.CO' +
+        'NTATO,F.CODFILIAL '
+      '      FROM FORNECEDORS F, CIDADES C'
       '     WHERE F.CODFILIAL >=1'
-      '      AND F.CODUF = U.ID')
+      '      AND F.CODCIDADE = C.ID')
     Left = 544
     Top = 16
     object Qry_cons_cadastro_Fornecedorid: TIntegerField
@@ -340,19 +334,21 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cons_cadastro_Fornecedorcidade: TWideStringField
+      AutoGenerateValue = arDefault
       FieldName = 'cidade'
       Origin = 'cidade'
       Size = 8190
     end
     object Qry_cons_cadastro_Fornecedorufid: TIntegerField
+      Alignment = taLeftJustify
       AutoGenerateValue = arDefault
       FieldName = 'ufid'
       Origin = 'ufid'
     end
-    object Qry_cons_cadastro_Fornecedorufnome: TWideStringField
+    object Qry_cons_cadastro_Fornecedoruf: TWideStringField
       AutoGenerateValue = arDefault
-      FieldName = 'ufnome'
-      Origin = 'ufnome'
+      FieldName = 'uf'
+      Origin = 'uf'
       Size = 8190
     end
     object Qry_cons_cadastro_Fornecedorcep: TWideStringField
@@ -366,6 +362,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cons_cadastro_Fornecedorcodfilial: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
@@ -379,8 +376,8 @@ object Dm_cadastros: TDm_cadastros
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from ufs')
-    Left = 712
-    Top = 16
+    Left = 768
+    Top = 24
     object Qry_cons_ufid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -394,8 +391,8 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_uf: TDataSource
     DataSet = Qry_cons_uf
-    Left = 712
-    Top = 80
+    Left = 768
+    Top = 88
   end
   object Qry_cadastro_Produto: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -580,13 +577,15 @@ object Dm_cadastros: TDm_cadastros
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from cidades')
-    Left = 856
-    Top = 160
+    Left = 768
+    Top = 144
     object Qry_cons_cidadeid: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'id'
       Origin = 'id'
     end
     object Qry_cons_cidadecodibge: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codibge'
       Origin = 'codibge'
     end
@@ -602,8 +601,8 @@ object Dm_cadastros: TDm_cadastros
     end
   end
   object Ds_cons_cidade: TDataSource
-    DataSet = Qry_cons_uf
-    Left = 856
-    Top = 224
+    DataSet = Qry_cons_cidade
+    Left = 768
+    Top = 208
   end
 end

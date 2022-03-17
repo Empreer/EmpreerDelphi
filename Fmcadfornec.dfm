@@ -173,8 +173,8 @@ object Frmcadfornec: TFrmcadfornec
           ParentFont = False
         end
         object Label11: TLabel
-          Left = 16
-          Top = 294
+          Left = 164
+          Top = 292
           Width = 48
           Height = 21
           Caption = 'Cidade'
@@ -186,16 +186,16 @@ object Frmcadfornec: TFrmcadfornec
           ParentFont = False
         end
         object Label12: TLabel
-          Left = 336
-          Top = 294
-          Width = 20
+          Left = 490
+          Top = 292
+          Width = 19
           Height = 21
           Caption = 'UF'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clMenuHighlight
+          Font.Color = clGray
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = [fsBold]
+          Font.Style = []
           ParentFont = False
         end
         object Label13: TLabel
@@ -212,8 +212,8 @@ object Frmcadfornec: TFrmcadfornec
           ParentFont = False
         end
         object Label14: TLabel
-          Left = 536
-          Top = 294
+          Left = 594
+          Top = 292
           Width = 27
           Height = 21
           Caption = 'Cep'
@@ -236,6 +236,109 @@ object Frmcadfornec: TFrmcadfornec
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+        end
+        object Label17: TLabel
+          Left = 21
+          Top = 292
+          Width = 87
+          Height = 21
+          Caption = 'Cod.Cidade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object SpeedButton2: TSpeedButton
+          Left = 113
+          Top = 310
+          Width = 25
+          Height = 28
+          Enabled = False
+          Flat = True
+          Glyph.Data = {
+            FA090000424DFA09000000000000360000002800000019000000190000000100
+            200000000000C4090000120B0000120B00000000000000000000FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00DFDFDF003737370071717100FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00DEDEDE002E2E2E00000000000000000074747400FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00E1E1E100303030000000000000000000000000000000
+            000077777700FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00F7F7F700E5E5E500E1E1E100E7E7E700F8F8F800FFFF
+            FF00FFFFFF00FFFFFF00E1E1E100333333000000000000000000000000000000
+            00000000000030303000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00D1D1D1007B7B7B00424242001D1D1D0013131300202020004343
+            43007B7B7B00DBDBDB00E3E3E300323232000000000000000000000000000000
+            00000000000026262600D8D8D800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00F1F1F100717171000F0F0F00000000000000000000000000000000000000
+            0000000000000000000015151500222222000000000000000000000000000000
+            00000000000024242400D4D4D400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00E1E1E1004040400000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00000000000025252500D6D6D600FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00F1F1F1003F3F3F0000000000000000000000000000000000161616004242
+            4200515151004242420014141400000000000000000000000000000000000000
+            0000000000001E1E1E00CFCFCF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00737373000000000000000000000000000303030075757500D7D7
+            D700FFFFFF00FFFFFF00FFFFFF00D6D6D6007575750002020200000000000000
+            0000000000001A1A1A00D4D4D400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00D5D5D50010101000000000000000000006060600A0A0A000FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00A1A1A1000505
+            0500000000000000000015151500E1E1E100FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF008787870000000000000000000000000071717100FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF007171710000000000000000000000000082828200FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF0042424200000000000000000013131300DCDC
+            DC00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00D8D8D80011111100000000000000000046464600FAFAFA00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF001919190000000000000000003535
+            3500FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FBFBFB003D3D3D00000000000000000026262600EAEA
+            EA00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000E0E0E00000000000000
+            000048484800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF004B4B4B0000000000000000001A1A
+            1A00E4E4E400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF001A1A1A000000
+            00000000000034343400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FBFBFB003C3C3C00000000000000
+            000025252500E9E9E900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF004444
+            4400000000000000000013131300DADADA00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D6D6D600111111000000
+            00000000000047474700FAFAFA00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00898989000000000000000000000000006C6C6C00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006C6C6C000000
+            0000000000000000000084848400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00D6D6D600131313000000000000000000060606009A9A9A00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00999999000404
+            0400000000000000000011111100D9D9D900FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00767676000000000000000000000000000202
+            02006D6D6D00D5D5D500FFFFFF00FFFFFF00FFFFFF00D4D4D4006D6D6D000000
+            00000000000000000000000000007B7B7B00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F1F1F10043434300000000000000
+            0000000000000000000013131300333333004545450033333300131313000000
+            000000000000000000000000000046464600F3F3F300FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E4E4E4004343
+            4300000000000000000000000000000000000000000000000000000000000000
+            000000000000000000000000000042424200E5E5E500FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00F4F4F4007777770014141400000000000000000000000000000000000000
+            000000000000000000001414140079797900F4F4F400FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00D4D4D4008A8A8A00434343001A1A1A000D0D
+            0D001A1A1A00444444008A8A8A00D4D4D400FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+          OnClick = SpeedButton2Click
         end
         object DBEdit1: TDBEdit
           Left = 21
@@ -537,46 +640,14 @@ object Frmcadfornec: TFrmcadfornec
           TabOrder = 18
         end
         object Panel9: TPanel
-          Left = 16
-          Top = 341
+          Left = 164
+          Top = 339
           Width = 300
           Height = 2
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
           TabOrder = 19
-        end
-        object DBEdit11: TDBEdit
-          AlignWithMargins = True
-          Left = 16
-          Top = 320
-          Width = 300
-          Height = 16
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BiDiMode = bdLeftToRight
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          DataField = 'cidade'
-          DataSource = Dm_cadastros.Ds_cadastro_Fornecedor
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentBiDiMode = False
-          ParentFont = False
-          TabOrder = 20
-        end
-        object DBLookupComboBox2: TDBLookupComboBox
-          Left = 336
-          Top = 321
-          Width = 145
-          Height = 23
-          KeyField = 'id'
-          ListField = 'ufnome'
-          ListSource = Dm_cadastros.Ds_cons_uf
-          TabOrder = 21
         end
         object Panel10: TPanel
           Left = 16
@@ -586,7 +657,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 22
+          TabOrder = 20
         end
         object DBEdit12: TDBEdit
           AlignWithMargins = True
@@ -608,22 +679,22 @@ object Frmcadfornec: TFrmcadfornec
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
-          TabOrder = 23
+          TabOrder = 21
         end
         object Panel11: TPanel
-          Left = 536
-          Top = 341
+          Left = 594
+          Top = 339
           Width = 160
           Height = 2
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 24
+          TabOrder = 22
         end
         object DBEdit13: TDBEdit
           AlignWithMargins = True
-          Left = 536
-          Top = 320
+          Left = 594
+          Top = 318
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -640,7 +711,7 @@ object Frmcadfornec: TFrmcadfornec
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
-          TabOrder = 25
+          TabOrder = 23
         end
         object pnlnovo: TPanel
           Left = 161
@@ -650,7 +721,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = 13066056
           ParentBackground = False
-          TabOrder = 26
+          TabOrder = 24
           object Btnnovo: TSpeedButton
             Left = 0
             Top = 0
@@ -679,7 +750,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = 9101567
           ParentBackground = False
-          TabOrder = 27
+          TabOrder = 25
           object Btneditar: TSpeedButton
             Left = 0
             Top = 0
@@ -709,7 +780,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = 11718912
           ParentBackground = False
-          TabOrder = 28
+          TabOrder = 26
           object Btnsalvar: TSpeedButton
             Left = 0
             Top = 0
@@ -739,7 +810,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = 6833905
           ParentBackground = False
-          TabOrder = 29
+          TabOrder = 27
           object Btncancelar: TSpeedButton
             Left = 0
             Top = 0
@@ -768,7 +839,7 @@ object Frmcadfornec: TFrmcadfornec
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 30
+          TabOrder = 28
         end
         object DBEdit2: TDBEdit
           AlignWithMargins = True
@@ -790,7 +861,86 @@ object Frmcadfornec: TFrmcadfornec
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
+          TabOrder = 29
+        end
+        object Panel16: TPanel
+          Left = 490
+          Top = 339
+          Width = 70
+          Height = 2
+          BevelOuter = bvNone
+          Color = clMenuHighlight
+          ParentBackground = False
+          TabOrder = 30
+        end
+        object DBEdit14: TDBEdit
+          AlignWithMargins = True
+          Left = 21
+          Top = 318
+          Width = 86
+          Height = 16
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          DataField = 'codcidade'
+          DataSource = Dm_cadastros.Ds_cadastro_Fornecedor
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 31
+          OnExit = DBEdit14Exit
+        end
+        object Panel17: TPanel
+          Left = 21
+          Top = 339
+          Width = 90
+          Height = 2
+          BevelOuter = bvNone
+          Color = clMenuHighlight
+          ParentBackground = False
+          TabOrder = 32
+        end
+        object Edit3: TEdit
+          Left = 164
+          Top = 318
+          Width = 289
+          Height = 20
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 33
+        end
+        object Edit4: TEdit
+          Left = 490
+          Top = 318
+          Width = 70
+          Height = 20
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 34
         end
       end
     end
@@ -927,7 +1077,7 @@ object Frmcadfornec: TFrmcadfornec
             end
             item
               Expanded = False
-              FieldName = 'ufnome'
+              FieldName = 'uf'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13

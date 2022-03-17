@@ -14,7 +14,10 @@ uses
   Fmcaddepto in 'Fmcaddepto.pas' {Frmcaddepto},
   Fmcadcob in 'Fmcadcob.pas' {Frmcadcob},
   Uudm_conexao in 'Uudm_conexao.pas' {udm_conexao: TDataModule},
-  Udm_cadastros in 'Udm_cadastros.pas' {Dm_cadastros: TDataModule};
+  Udm_cadastros in 'Udm_cadastros.pas' {Dm_cadastros: TDataModule},
+  Fmcadfornecbuscacidade in 'Fmcadfornecbuscacidade.pas' {Frmcadfornecbuscacidade},
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
@@ -24,5 +27,6 @@ begin
   Application.CreateForm(Tudm_conexao, udm_conexao);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TFrmcadfornecbuscacidade, Frmcadfornecbuscacidade);
   Application.Run;
 end.

@@ -41,6 +41,7 @@ type
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -57,7 +58,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao;
+uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao, Fmgerencial;
 
 
 
@@ -128,6 +129,13 @@ begin
 Frmentradas := TFrmentradas .Create(self);
 Frmentradas .Parent := Frmprincipal.pnlcentral;
 Frmentradas .Show;
+end;
+
+procedure TFrmprincipal.SpeedButton7Click(Sender: TObject);
+begin
+Frmgerencial := TFrmgerencial .Create(self);
+Frmgerencial.Parent := Frmprincipal.pnlcentral;
+Frmgerencial.Show;
 end;
 
 end.

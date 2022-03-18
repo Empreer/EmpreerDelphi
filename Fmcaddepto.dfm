@@ -12,6 +12,7 @@ object Frmcaddepto: TFrmcaddepto
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15

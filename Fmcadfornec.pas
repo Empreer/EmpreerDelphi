@@ -200,6 +200,7 @@ end;
 procedure TFrmcadfornec.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
+Dm_cadastros.Qry_cadastro_Fornecedor.close();
 end;
 
 procedure TFrmcadfornec.FormShow(Sender: TObject);

@@ -165,6 +165,7 @@ end;
 procedure TFrmcadprodut.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
+Dm_cadastros.Qry_cadastro_Produto.close();
 end;
 
 procedure TFrmcadprodut.FormShow(Sender: TObject);
@@ -228,6 +229,7 @@ end;
 procedure TFrmcadprodut.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
+eDIT1.SetFocus;
 end;
 procedure TFrmcadprodut.BtnsalvarClick(Sender: TObject);
 begin

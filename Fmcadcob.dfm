@@ -12,6 +12,8 @@ object Frmcadcob: TFrmcadcob
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -41,7 +43,7 @@ object Frmcadcob: TFrmcadcob
         ParentBackground = False
         TabOrder = 0
         object Labeluser: TLabel
-          Left = 97
+          Left = 118
           Top = 113
           Width = 158
           Height = 21
@@ -54,7 +56,7 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 9
+          Left = 30
           Top = 113
           Width = 31
           Height = 21
@@ -67,7 +69,7 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 632
+          Left = 653
           Top = 113
           Width = 30
           Height = 21
@@ -80,21 +82,27 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 9
+          Left = 30
           Top = 140
           Width = 57
-          Height = 15
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          DataField = 'id'
+          DataSource = Dm_cadastros.Ds_cadastro_Cob
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 97
+          Left = 118
           Top = 160
           Width = 500
           Height = 2
@@ -104,8 +112,8 @@ object Frmcadcob: TFrmcadcob
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 9
-          Top = 161
+          Left = 30
+          Top = 160
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -115,17 +123,23 @@ object Frmcadcob: TFrmcadcob
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 98
+          Left = 119
           Top = 140
           Width = 499
-          Height = 14
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          DataField = 'descricao'
+          DataSource = Dm_cadastros.Ds_cadastro_Cob
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 3
         end
         object pnlnovo: TPanel
@@ -152,6 +166,7 @@ object Frmcadcob: TFrmcadcob
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnnovoClick
             ExplicitLeft = 9
             ExplicitTop = 22
           end
@@ -181,6 +196,7 @@ object Frmcadcob: TFrmcadcob
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtneditarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -210,6 +226,7 @@ object Frmcadcob: TFrmcadcob
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -239,11 +256,12 @@ object Frmcadcob: TFrmcadcob
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtncancelarClick
             ExplicitLeft = 144
           end
         end
         object Panel1: TPanel
-          Left = 632
+          Left = 653
           Top = 160
           Width = 160
           Height = 2
@@ -254,17 +272,23 @@ object Frmcadcob: TFrmcadcob
         end
         object DBEdit5: TDBEdit
           AlignWithMargins = True
-          Left = 632
+          Left = 653
           Top = 140
           Width = 160
-          Height = 14
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          DataField = 'dias'
+          DataSource = Dm_cadastros.Ds_cadastro_Cob
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 9
         end
       end
@@ -299,7 +323,7 @@ object Frmcadcob: TFrmcadcob
           Left = 16
           Top = 115
           Width = 400
-          Height = 20
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
@@ -310,19 +334,57 @@ object Frmcadcob: TFrmcadcob
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          Text = 'Edit1'
         end
         object DBGrid1: TDBGrid
           Left = 16
           Top = 152
           Width = 1225
           Height = 449
+          DataSource = Dm_cadastros.Ds_cons_cadastro_Cob
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'id'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'descricao'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'DESCRI'#199#195'O'
+              Width = 341
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'dias'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Caption = 'DIAS'
+              Visible = True
+            end>
         end
         object Panel12: TPanel
           Left = 16
@@ -358,8 +420,8 @@ object Frmcadcob: TFrmcadcob
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitLeft = 32
-            ExplicitHeight = 28
+            OnClick = SpeedButton1Click
+            ExplicitTop = 4
           end
         end
       end
@@ -668,7 +730,6 @@ object Frmcadcob: TFrmcadcob
     ParentBackground = False
     TabOrder = 3
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 16
     object Imlogo: TImage
       Left = -4
       Top = 3

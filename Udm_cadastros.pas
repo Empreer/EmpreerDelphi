@@ -120,6 +120,47 @@ type
     Qry_cons_cadastro_Fornecedorcep: TWideStringField;
     Qry_cons_cadastro_Fornecedorcontato: TWideStringField;
     Qry_cons_cadastro_Fornecedorcodfilial: TIntegerField;
+    Qry_cadastro_mp: TFDQuery;
+    Ds_cadastro_Mp: TDataSource;
+    Qry_cons_cadastro_Mp: TFDQuery;
+    Ds_cons_cadastro_Mp: TDataSource;
+    Qry_cadastro_mpid: TIntegerField;
+    Qry_cadastro_mpdescricao: TWideStringField;
+    Qry_cadastro_mpunidade: TWideStringField;
+    Qry_cadastro_mpcusto: TFMTBCDField;
+    Qry_cadastro_mpqtest: TFMTBCDField;
+    Qry_cadastro_mpcodfornec: TIntegerField;
+    Qry_cadastro_mpcodfilial: TIntegerField;
+    Qry_cadastro_mpcoddepto: TIntegerField;
+    Qry_cons_cadastro_Mpid: TIntegerField;
+    Qry_cons_cadastro_Mpdescricao: TWideStringField;
+    Qry_cons_cadastro_Mpunidade: TWideStringField;
+    Qry_cons_cadastro_Mpdeptoid: TIntegerField;
+    Qry_cons_cadastro_Mpdepto: TWideStringField;
+    Qry_cons_cadastro_Mpfornecid: TIntegerField;
+    Qry_cons_cadastro_Mpfornec: TWideStringField;
+    Qry_cadastro_Useradm: TFDQuery;
+    Ds_cadastro_Useradm: TDataSource;
+    Qry_cons_cadastro_Useradm: TFDQuery;
+    Ds_cons_cadastro_Useradm: TDataSource;
+    Qry_cadastro_Useradmid: TIntegerField;
+    Qry_cadastro_Useradmnome: TWideStringField;
+    Qry_cadastro_Useradmsenha: TWideStringField;
+    Qry_cadastro_Useradmcodfilial: TFMTBCDField;
+    Qry_cons_cadastro_Useradmid: TIntegerField;
+    Qry_cons_cadastro_Useradmnome: TWideStringField;
+    Qry_cons_cadastro_Useradmsenha: TWideStringField;
+    Qry_cons_cadastro_Useradmcodfilial: TFMTBCDField;
+    Qry_cadastro_Cob: TFDQuery;
+    Ds_cadastro_Cob: TDataSource;
+    Qry_cons_cadastro_Cob: TFDQuery;
+    Ds_cons_cadastro_Cob: TDataSource;
+    Qry_cadastro_Cobid: TIntegerField;
+    Qry_cadastro_Cobdescricao: TWideStringField;
+    Qry_cadastro_Cobdias: TIntegerField;
+    Qry_cons_cadastro_Cobid: TIntegerField;
+    Qry_cons_cadastro_Cobdescricao: TWideStringField;
+    Qry_cons_cadastro_Cobdias: TIntegerField;
   private
     { Private declarations }
   public

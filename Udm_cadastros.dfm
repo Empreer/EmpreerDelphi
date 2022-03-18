@@ -605,4 +605,243 @@ object Dm_cadastros: TDm_cadastros
     Left = 768
     Top = 208
   end
+  object Qry_cadastro_mp: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from produtomps')
+    Left = 48
+    Top = 288
+    object Qry_cadastro_mpid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_mpdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cadastro_mpunidade: TWideStringField
+      FieldName = 'unidade'
+      Origin = 'unidade'
+      Size = 8190
+    end
+    object Qry_cadastro_mpcusto: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'custo'
+      Origin = 'custo'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cadastro_mpqtest: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'qtest'
+      Origin = 'qtest'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cadastro_mpcodfornec: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'codfornec'
+      Origin = 'codfornec'
+    end
+    object Qry_cadastro_mpcodfilial: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+    end
+    object Qry_cadastro_mpcoddepto: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'coddepto'
+      Origin = 'coddepto'
+    end
+  end
+  object Ds_cadastro_Mp: TDataSource
+    DataSet = Qry_cadastro_mp
+    Left = 48
+    Top = 352
+  end
+  object Qry_cons_cadastro_Mp: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      
+        'select p.id, p.descricao,p.unidade,d.id as deptoid, d.nome as de' +
+        'pto, f.id as fornecid, f.nome as fornec'
+      'from produtomps p, departamentos d, fornecedors f'
+      'where p.codfornec = f.id '
+      'and p.coddepto = d.id '
+      '')
+    Left = 200
+    Top = 288
+    object Qry_cons_cadastro_Mpid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cons_cadastro_Mpdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Mpunidade: TWideStringField
+      FieldName = 'unidade'
+      Origin = 'unidade'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Mpdeptoid: TIntegerField
+      Alignment = taLeftJustify
+      AutoGenerateValue = arDefault
+      FieldName = 'deptoid'
+      Origin = 'deptoid'
+    end
+    object Qry_cons_cadastro_Mpdepto: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'depto'
+      Origin = 'depto'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Mpfornecid: TIntegerField
+      Alignment = taLeftJustify
+      AutoGenerateValue = arDefault
+      FieldName = 'fornecid'
+      Origin = 'fornecid'
+    end
+    object Qry_cons_cadastro_Mpfornec: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'fornec'
+      Origin = 'fornec'
+      Size = 8190
+    end
+  end
+  object Ds_cons_cadastro_Mp: TDataSource
+    DataSet = Qry_cons_cadastro_Mp
+    Left = 200
+    Top = 352
+  end
+  object Qry_cadastro_Useradm: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from useradm')
+    Left = 368
+    Top = 296
+    object Qry_cadastro_Useradmid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_Useradmnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 8190
+    end
+    object Qry_cadastro_Useradmsenha: TWideStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Size = 8190
+    end
+    object Qry_cadastro_Useradmcodfilial: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_cadastro_Useradm: TDataSource
+    DataSet = Qry_cadastro_Useradm
+    Left = 368
+    Top = 360
+  end
+  object Qry_cons_cadastro_Useradm: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from useradm'
+      '')
+    Left = 520
+    Top = 296
+    object Qry_cons_cadastro_Useradmid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cons_cadastro_Useradmnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Useradmsenha: TWideStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Useradmcodfilial: TFMTBCDField
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_cons_cadastro_Useradm: TDataSource
+    DataSet = Qry_cons_cadastro_Useradm
+    Left = 520
+    Top = 360
+  end
+  object Qry_cadastro_Cob: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cobrancas')
+    Left = 48
+    Top = 424
+    object Qry_cadastro_Cobid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_Cobdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cadastro_Cobdias: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'dias'
+      Origin = 'dias'
+    end
+  end
+  object Ds_cadastro_Cob: TDataSource
+    DataSet = Qry_cadastro_Cob
+    Left = 48
+    Top = 488
+  end
+  object Qry_cons_cadastro_Cob: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cobrancas'
+      '')
+    Left = 200
+    Top = 424
+    object Qry_cons_cadastro_Cobid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cons_cadastro_Cobdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Cobdias: TIntegerField
+      FieldName = 'dias'
+      Origin = 'dias'
+    end
+  end
+  object Ds_cons_cadastro_Cob: TDataSource
+    DataSet = Qry_cons_cadastro_Cob
+    Left = 200
+    Top = 488
+  end
 end

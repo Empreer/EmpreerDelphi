@@ -60,6 +60,7 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BtneditarClick(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -130,6 +131,11 @@ begin
   Dm_cadastros.Qry_cadastro_Departamento.append();
   Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger:= Proxnum;
 
+end;
+
+procedure TFrmcaddepto.FormCreate(Sender: TObject);
+begin
+Dm_cadastros.Qry_cadastro_Departamento.close();
 end;
 
 procedure TFrmcaddepto.FormShow(Sender: TObject);

@@ -56,6 +56,14 @@ type
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure FormCreate(Sender: TObject);
+    procedure BtnnovoClick(Sender: TObject);
+    procedure BtnsalvarClick(Sender: TObject);
+    procedure BtncancelarClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure BtneditarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,6 +76,30 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Udm_cadastros, Uudm_conexao;
+procedure TFrmcadcob.BtncancelarClick(Sender: TObject);
+begin
+  Dm_cadastros.Qry_cadastro_Cob.cancel;
+  Dm_cadastros.Qry_cadastro_Cob.close;
+  Dm_cadastros.Qry_cadastro_Cob.close();
+  Dm_cadastros.Qry_cadastro_Cob.close();
+
+
+  Btnnovo.Enabled := True;                                 // Habilita  o botão novo
+  BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
+  BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
+  BtnEditar.Enabled := False;
+end;
+
+procedure TFrmcadcob.BtneditarClick(Sender: TObject);
+begin
+Btneditar.Enabled:=false;
+Btnsalvar.Enabled:=true;
+
+Dm_cadastros.Qry_cadastro_Cob.Edit();
+end;
+
 procedure TFrmcadcob.BtnFecharClick(Sender: TObject);
 begin
 Close;
@@ -76,6 +108,40 @@ end;
 procedure TFrmcadcob.BtnminimizarClick(Sender: TObject);
 begin
 Frmcadcob.WindowState:=wsminimized;
+end;
+
+procedure TFrmcadcob.BtnnovoClick(Sender: TObject);
+var Proxnum : integer;
+begin
+  Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
+  BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
+  BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
+  Btncancelar.Enabled :=True;
+
+  Dbedit3.SetFocus;
+
+  Proxnum :=0;
+  Dm_cadastros.Qry_cadastro_Cob.Cancel();
+  Dm_cadastros.Qry_cadastro_Cob.Close();
+
+  with Dm_cadastros.Qry_cadastro_Cob do
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM COBRANCAS order by id');
+      Open;
+    end;
+
+  Dm_cadastros.Qry_cadastro_Cob.last();
+  Proxnum := Dm_cadastros.Qry_cadastro_CobId.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Cob.append();
+  Dm_cadastros.Qry_cadastro_Cobid.AsInteger:= Proxnum;
+  Dbedit5.Text:= '1';
+end;
+
+procedure TFrmcadcob.FormCreate(Sender: TObject);
+begin
+Dm_cadastros.Qry_cadastro_cob.close();
 end;
 
 procedure TFrmcadcob.FormShow(Sender: TObject);
@@ -108,6 +174,26 @@ begin
 end;
 
 
+procedure TFrmcadcob.SpeedButton1Click(Sender: TObject);
+begin
+with Dm_cadastros.Qry_cons_cadastro_Cob do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select *');
+      Sql.Add('from cobrancas');
+      Sql.Add('WHERE id >= 1');
+
+      if Edit1.Text <> '' then
+        Sql.Add('And descricao Like ''%'+ Edit1.Text + '%'' ');
+
+      Sql.Add('ORDER BY descricao');
+
+      Open;
+
+    end;
+end;
+
 procedure TFrmcadcob.BtnCadastroClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 0;
@@ -116,7 +202,60 @@ end;
 procedure TFrmcadcob.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
+Edit1.SetFocus;
 end;
 
+
+procedure TFrmcadcob.BtnsalvarClick(Sender: TObject);
+begin
+if Dbedit1.Text = '' then                                // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Código !')
+
+else if Dbedit3.Text = '' then                        // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Nome !')
+
+else
+  begin
+
+   Dm_cadastros.Qry_cadastro_Cob.Post();
+   Dm_cadastros.Qry_cadastro_Cob.cancel;
+   Dm_cadastros.Qry_cadastro_Cob.close;
+
+   Showmessage('Dados Salvos com Sucesso !');
+
+    Btnnovo.Enabled := True;                               // Ativa o Botão Novo
+    BtnSalvar.Enabled := False;                            // Desativa o Botão Salvar
+    BtnEditar.Enabled := False;                            // Desativa o Botão Editar
+    BtnCancelar.Enabled := False;
+
+end;
+end;
+
+procedure TFrmcadcob.DBGrid1DblClick(Sender: TObject);
+begin
+with Dm_cadastros.Qry_cadastro_Cob do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM COBRANCAS');
+      Sql.Add('WHERE ID = :ID');
+
+
+      Params.ParamByName('ID').AsInteger := Dm_cadastros.Qry_cons_cadastro_Cobid.asinteger ;
+
+      Open;
+
+    end;
+
+       Btneditar.Enabled:=true;
+       Btnnovo.Enabled:=false;
+       Btncancelar.Enabled:=true;
+       Pagecontrol1.ActivePageIndex:= 0;
+end;
+
+procedure TFrmcadcob.DBGrid1TitleClick(Column: TColumn);
+begin
+Dm_cadastros.Qry_cons_cadastro_Cob.IndexFieldNames := Column.Fieldname;
+end;
 
 end.

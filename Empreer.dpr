@@ -17,7 +17,8 @@ uses
   Udm_cadastros in 'Udm_cadastros.pas' {Dm_cadastros: TDataModule},
   Fmcadfornecbuscacidade in 'Fmcadfornecbuscacidade.pas' {Frmcadfornecbuscacidade},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  Fmgerencial in 'Fmgerencial.pas' {Frmgerencial};
 
 {$R *.res}
 
@@ -28,5 +29,6 @@ begin
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TFrmlogin, Frmlogin);
   Application.CreateForm(TFrmcadfornecbuscacidade, Frmcadfornecbuscacidade);
+  Application.CreateForm(TFrmgerencial, Frmgerencial);
   Application.Run;
 end.

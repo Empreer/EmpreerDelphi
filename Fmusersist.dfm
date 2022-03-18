@@ -12,6 +12,8 @@ object Frmusersist: TFrmusersist
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -19,7 +21,7 @@ object Frmusersist: TFrmusersist
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -40,76 +42,85 @@ object Frmusersist: TFrmusersist
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
         object Labeluser: TLabel
-          Left = 196
-          Top = 113
-          Width = 43
+          Left = 103
+          Top = 137
+          Width = 47
           Height = 21
           Caption = 'Nome'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
+          Font.Quality = fqProof
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 108
-          Top = 113
-          Width = 31
+          Left = 15
+          Top = 137
+          Width = 34
           Height = 21
           Caption = 'C'#243'd.'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
+          Font.Quality = fqProof
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 712
-          Top = 113
-          Width = 43
+          Left = 619
+          Top = 137
+          Width = 47
           Height = 21
           Caption = 'Senha'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
+          Font.Quality = fqProof
           ParentFont = False
         end
         object Label7: TLabel
           Left = 16
-          Top = 113
-          Width = 32
+          Top = 100
+          Width = 41
           Height = 21
-          Caption = 'Filial'
+          Caption = 'Filial:'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 108
-          Top = 140
+          Left = 15
+          Top = 164
           Width = 57
-          Height = 15
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'id'
+          DataSource = Dm_cadastros.Ds_cadastro_Useradm
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 196
-          Top = 160
+          Left = 103
+          Top = 184
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -118,8 +129,8 @@ object Frmusersist: TFrmusersist
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 108
-          Top = 161
+          Left = 15
+          Top = 185
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -129,22 +140,29 @@ object Frmusersist: TFrmusersist
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 197
-          Top = 140
+          Left = 104
+          Top = 164
           Width = 499
-          Height = 14
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'nome'
+          DataSource = Dm_cadastros.Ds_cadastro_Useradm
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 3
         end
         object pnlborda3: TPanel
-          Left = 712
-          Top = 160
+          Left = 619
+          Top = 184
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -154,25 +172,25 @@ object Frmusersist: TFrmusersist
         end
         object DBEdit4: TDBEdit
           AlignWithMargins = True
-          Left = 712
-          Top = 140
+          Left = 619
+          Top = 164
           Width = 160
-          Height = 14
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
-          DataField = 'codfilial'
-          DataSource = Frmlogin.DataSource1
+          CharCase = ecUpperCase
+          DataField = 'senha'
+          DataSource = Dm_cadastros.Ds_cadastro_Useradm
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 5
-        end
-        object DBLookupComboBox1: TDBLookupComboBox
-          Left = 16
-          Top = 140
-          Width = 65
-          Height = 23
-          TabOrder = 6
         end
         object pnlnovo: TPanel
           Left = 161
@@ -182,7 +200,7 @@ object Frmusersist: TFrmusersist
           BevelOuter = bvNone
           Color = 13066056
           ParentBackground = False
-          TabOrder = 7
+          TabOrder = 6
           object Btnnovo: TSpeedButton
             Left = 0
             Top = 0
@@ -198,6 +216,7 @@ object Frmusersist: TFrmusersist
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnnovoClick
             ExplicitLeft = 9
             ExplicitTop = 22
           end
@@ -210,7 +229,7 @@ object Frmusersist: TFrmusersist
           BevelOuter = bvNone
           Color = 9101567
           ParentBackground = False
-          TabOrder = 8
+          TabOrder = 7
           object Btneditar: TSpeedButton
             Left = 0
             Top = 0
@@ -227,6 +246,7 @@ object Frmusersist: TFrmusersist
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtneditarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -239,7 +259,7 @@ object Frmusersist: TFrmusersist
           BevelOuter = bvNone
           Color = 11718912
           ParentBackground = False
-          TabOrder = 9
+          TabOrder = 8
           object Btnsalvar: TSpeedButton
             Left = 0
             Top = 0
@@ -256,6 +276,7 @@ object Frmusersist: TFrmusersist
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -268,7 +289,7 @@ object Frmusersist: TFrmusersist
           BevelOuter = bvNone
           Color = 6833905
           ParentBackground = False
-          TabOrder = 10
+          TabOrder = 9
           object Btncancelar: TSpeedButton
             Left = 0
             Top = 0
@@ -285,8 +306,19 @@ object Frmusersist: TFrmusersist
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtncancelarClick
             ExplicitLeft = 144
           end
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 74
+          Top = 100
+          Width = 303
+          Height = 23
+          KeyField = 'codfilial'
+          ListField = 'nome'
+          ListSource = udm_conexao.DataSource1
+          TabOrder = 10
         end
       end
     end
@@ -320,7 +352,7 @@ object Frmusersist: TFrmusersist
           Left = 16
           Top = 115
           Width = 400
-          Height = 20
+          Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
@@ -331,19 +363,58 @@ object Frmusersist: TFrmusersist
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          Text = 'Edit1'
         end
         object DBGrid1: TDBGrid
           Left = 16
-          Top = 152
+          Top = 148
           Width = 1225
           Height = 449
+          DataSource = Dm_cadastros.Ds_cons_cadastro_Useradm
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'id'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'nome'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'NOME'
+              Width = 500
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'codfilial'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Caption = 'FILIAL'
+              Width = 100
+              Visible = True
+            end>
         end
         object Panel12: TPanel
           Left = 16
@@ -379,6 +450,7 @@ object Frmusersist: TFrmusersist
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = SpeedButton1Click
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
@@ -689,7 +761,6 @@ object Frmusersist: TFrmusersist
     ParentBackground = False
     TabOrder = 3
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 16
     object Imlogo: TImage
       Left = -4
       Top = 3

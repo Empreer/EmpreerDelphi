@@ -22,7 +22,8 @@ uses
   Fmformulabuscamp in 'Gerencial\Formula\Fmformulabuscamp.pas' {Frmformulabuscamp},
   Fmformulabuscaproduto in 'Gerencial\Formula\Fmformulabuscaproduto.pas' {Frmformulabuscaproduto},
   Udm_cadastros in 'Datamodulo\Udm_cadastros.pas' {Dm_cadastros: TDataModule},
-  Udm_gerencial in 'Datamodulo\Udm_gerencial.pas' {Dm_gerencial: TDataModule};
+  Udm_gerencial in 'Datamodulo\Udm_gerencial.pas' {Dm_gerencial: TDataModule},
+  Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos};
 
 {$R *.res}
 
@@ -33,5 +34,6 @@ begin
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
   Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TFrmcustos, Frmcustos);
   Application.Run;
 end.

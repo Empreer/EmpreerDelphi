@@ -12,7 +12,7 @@ type
     pnformula: TPanel;
     SpeedButton1: TSpeedButton;
     pnlformula: TPanel;
-    Pnlfornec: TPanel;
+    Pnlcusto: TPanel;
     SpeedButton2: TSpeedButton;
     pnllinha2: TPanel;
     Pnlprodutos: TPanel;
@@ -33,6 +33,9 @@ type
     procedure SpeedButton1MouseEnter(Sender: TObject);
     procedure SpeedButton1MouseLeave(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2MouseEnter(Sender: TObject);
+    procedure SpeedButton2MouseLeave(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmformula;
+uses Fmformula, Fmcustos;
 
 procedure TFrmgerencial.SpeedButton1Click(Sender: TObject);
 begin
@@ -62,6 +65,22 @@ end;
 procedure TFrmgerencial.SpeedButton1MouseLeave(Sender: TObject);
 begin
 pnlformula.color:=clWindow;
+end;
+
+procedure TFrmgerencial.SpeedButton2Click(Sender: TObject);
+begin
+ Frmcustos := TFrmcustos.Create(Self);                          //Botao de login chama o formulario principal
+ Frmcustos.Show;
+end;
+
+procedure TFrmgerencial.SpeedButton2MouseEnter(Sender: TObject);
+begin
+pnllinha2.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmgerencial.SpeedButton2MouseLeave(Sender: TObject);
+begin
+pnllinha2.color:=clWindow;
 end;
 
 end.

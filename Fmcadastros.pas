@@ -84,7 +84,8 @@ pnllinha.Visible:=true;
 end;
 
 procedure TFrmcadastros.SpeedButton1Click(Sender: TObject);
-begin FrmCadcli := TFrmCadcli.Create(Self);                          //Botao de login chama o formulario principal
+begin
+ FrmCadcli := TFrmCadcli.Create(Self);                          //Botao de login chama o formulario principal
  FrmCadcli.Show;
 end;
 

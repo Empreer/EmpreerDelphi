@@ -48,7 +48,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_cadastros, Fmcadfornec;
+uses Udm_cadastros, Fmcadfornec, Fmformulabuscamp, Fmformulabuscaproduto;
 
 procedure TFrmcadfornecbuscacidade.BtnFecharClick(Sender: TObject);
 begin

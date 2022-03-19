@@ -32,6 +32,7 @@ type
     pnlinha7: TPanel;
     procedure SpeedButton1MouseEnter(Sender: TObject);
     procedure SpeedButton1MouseLeave(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,6 +45,14 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Fmformula;
+
+procedure TFrmgerencial.SpeedButton1Click(Sender: TObject);
+begin
+ FrmFormula := TFrmFormula.Create(Self);                          //Botao de login chama o formulario principal
+ FrmFormula.Show;
+end;
 
 procedure TFrmgerencial.SpeedButton1MouseEnter(Sender: TObject);
 begin

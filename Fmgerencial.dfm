@@ -564,6 +564,7 @@ object Frmgerencial: TFrmgerencial
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
         Layout = blGlyphTop
         ParentFont = False
+        OnClick = SpeedButton1Click
         OnMouseEnter = SpeedButton1MouseEnter
         OnMouseLeave = SpeedButton1MouseLeave
         ExplicitHeight = 100

@@ -59,6 +59,9 @@ type
     Label8: TLabel;
     Panel2: TPanel;
     DBEdit2: TDBEdit;
+    Label9: TLabel;
+    Panel5: TPanel;
+    DBEdit6: TDBEdit;
      procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);

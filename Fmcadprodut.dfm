@@ -152,6 +152,19 @@ object Frmcadprodut: TFrmcadprodut
           Font.Style = []
           ParentFont = False
         end
+        object Label9: TLabel
+          Left = 16
+          Top = 283
+          Width = 124
+          Height = 21
+          Caption = 'Divisor- F'#243'rmulas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
         object DBEdit1: TDBEdit
           Left = 16
           Top = 158
@@ -471,6 +484,38 @@ object Frmcadprodut: TFrmcadprodut
           ParentBiDiMode = False
           ParentFont = False
           TabOrder = 16
+        end
+        object Panel5: TPanel
+          Left = 16
+          Top = 330
+          Width = 160
+          Height = 2
+          BevelOuter = bvNone
+          Color = clSilver
+          ParentBackground = False
+          TabOrder = 17
+        end
+        object DBEdit6: TDBEdit
+          AlignWithMargins = True
+          Left = 16
+          Top = 310
+          Width = 160
+          Height = 16
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          DataField = 'divreceita'
+          DataSource = Dm_cadastros.Ds_cadastro_Produto
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentFont = False
+          TabOrder = 18
         end
       end
     end

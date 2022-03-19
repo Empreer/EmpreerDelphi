@@ -18,7 +18,11 @@ uses
   Fmcadfornecbuscacidade in 'Fmcadfornecbuscacidade.pas' {Frmcadfornecbuscacidade},
   Vcl.Themes,
   Vcl.Styles,
-  Fmgerencial in 'Fmgerencial.pas' {Frmgerencial};
+  Fmgerencial in 'Fmgerencial.pas' {Frmgerencial},
+  Fmformula in 'Fmformula.pas' {Frmformula},
+  Udm_gerencial in 'Udm_gerencial.pas' {Dm_gerencial: TDataModule},
+  Fmformulabuscaproduto in 'Fmformulabuscaproduto.pas' {Frmformulabuscaproduto},
+  Fmformulabuscamp in 'Fmformulabuscamp.pas' {Frmformulabuscamp};
 
 {$R *.res}
 
@@ -27,8 +31,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tudm_conexao, udm_conexao);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
+  Application.CreateForm(TDm_gerencial, Dm_gerencial);
   Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmcadfornecbuscacidade, Frmcadfornecbuscacidade);
-  Application.CreateForm(TFrmgerencial, Frmgerencial);
   Application.Run;
 end.

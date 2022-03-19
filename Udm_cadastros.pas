@@ -161,6 +161,7 @@ type
     Qry_cons_cadastro_Cobid: TIntegerField;
     Qry_cons_cadastro_Cobdescricao: TWideStringField;
     Qry_cons_cadastro_Cobdias: TIntegerField;
+    Qry_cadastro_Produtodivreceita: TIntegerField;
   private
     { Private declarations }
   public

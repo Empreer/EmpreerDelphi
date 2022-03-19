@@ -466,6 +466,11 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'coddepto'
       Origin = 'coddepto'
     end
+    object Qry_cadastro_Produtodivreceita: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'divreceita'
+      Origin = 'divreceita'
+    end
   end
   object Ds_cadastro_Produto: TDataSource
     DataSet = Qry_cadastro_Produto

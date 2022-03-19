@@ -78,6 +78,7 @@ object Frmcaddepto: TFrmcaddepto
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Departamento
           Font.Charset = DEFAULT_CHARSET

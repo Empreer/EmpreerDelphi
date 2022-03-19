@@ -233,6 +233,7 @@ procedure TFrmcadprodut.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
 eDIT1.SetFocus;
+SpeedButton1Click(Self);
 end;
 procedure TFrmcadprodut.BtnsalvarClick(Sender: TObject);
 begin

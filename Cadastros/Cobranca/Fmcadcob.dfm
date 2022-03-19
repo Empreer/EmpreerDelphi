@@ -90,6 +90,7 @@ object Frmcadcob: TFrmcadcob
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Cob
           Font.Charset = DEFAULT_CHARSET
@@ -131,6 +132,7 @@ object Frmcadcob: TFrmcadcob
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           DataField = 'descricao'
           DataSource = Dm_cadastros.Ds_cadastro_Cob
           Font.Charset = DEFAULT_CHARSET
@@ -280,6 +282,7 @@ object Frmcadcob: TFrmcadcob
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           DataField = 'dias'
           DataSource = Dm_cadastros.Ds_cadastro_Cob
           Font.Charset = DEFAULT_CHARSET
@@ -327,6 +330,7 @@ object Frmcadcob: TFrmcadcob
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
+          CharCase = ecUpperCase
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13

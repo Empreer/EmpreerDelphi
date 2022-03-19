@@ -272,6 +272,7 @@ end;
 procedure TFrmcadfornec.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
+SpeedButton1Click(self);
 end;
 
 

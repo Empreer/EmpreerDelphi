@@ -1,15 +1,15 @@
-unit Fmcaddepto;
+unit Fmcadcob;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.DBCtrls,
   Vcl.ComCtrls;
 
 type
-  TFrmcaddepto = class(TForm)
+  TFrmcadcob = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     Panel3: TPanel;
@@ -44,7 +44,10 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
-    procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+    Label4: TLabel;
+    Panel1: TPanel;
+    DBEdit5: TDBEdit;
+     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
@@ -53,14 +56,14 @@ type
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure FormCreate(Sender: TObject);
     procedure BtnnovoClick(Sender: TObject);
     procedure BtnsalvarClick(Sender: TObject);
     procedure BtncancelarClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BtneditarClick(Sender: TObject);
-    procedure DBGrid1TitleClick(Column: TColumn);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,17 +71,20 @@ type
   end;
 
 var
-  Frmcaddepto: TFrmcaddepto;
+  Frmcadcob: TFrmcadcob;
 
 implementation
 
 {$R *.dfm}
 
-uses Uudm_conexao, Udm_cadastros;
-procedure TFrmcaddepto.BtncancelarClick(Sender: TObject);
+uses Udm_cadastros, Uudm_conexao;
+procedure TFrmcadcob.BtncancelarClick(Sender: TObject);
 begin
-  Dm_cadastros.Qry_cadastro_Departamento.cancel;
-  Dm_cadastros.Qry_cadastro_Departamento.close;
+  Dm_cadastros.Qry_cadastro_Cob.cancel;
+  Dm_cadastros.Qry_cadastro_Cob.close;
+  Dm_cadastros.Qry_cadastro_Cob.close();
+  Dm_cadastros.Qry_cadastro_Cob.close();
+
 
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
@@ -86,25 +92,25 @@ begin
   BtnEditar.Enabled := False;
 end;
 
-procedure TFrmcaddepto.BtneditarClick(Sender: TObject);
+procedure TFrmcadcob.BtneditarClick(Sender: TObject);
 begin
 Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
-Dm_cadastros.Qry_cadastro_Departamento.Edit();
+Dm_cadastros.Qry_cadastro_Cob.Edit();
 end;
 
-procedure TFrmcaddepto.BtnFecharClick(Sender: TObject);
+procedure TFrmcadcob.BtnFecharClick(Sender: TObject);
 begin
 Close;
 end;
 
-procedure TFrmcaddepto.BtnminimizarClick(Sender: TObject);
+procedure TFrmcadcob.BtnminimizarClick(Sender: TObject);
 begin
-Frmcaddepto.WindowState:=wsminimized;
+Frmcadcob.WindowState:=wsminimized;
 end;
 
-procedure TFrmcaddepto.BtnnovoClick(Sender: TObject);
+procedure TFrmcadcob.BtnnovoClick(Sender: TObject);
 var Proxnum : integer;
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
@@ -112,34 +118,35 @@ begin
   BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
   Btncancelar.Enabled :=True;
 
-  DBEDIT3.SetFocus;
+  Dbedit3.SetFocus;
 
   Proxnum :=0;
-  Dm_cadastros.Qry_cadastro_Departamento.Cancel();
-  Dm_cadastros.Qry_cadastro_Departamento.Close();
+  Dm_cadastros.Qry_cadastro_Cob.Cancel();
+  Dm_cadastros.Qry_cadastro_Cob.Close();
 
-  with Dm_cadastros.Qry_cadastro_Departamento do
+  with Dm_cadastros.Qry_cadastro_Cob do
   begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT * FROM DEPARTAMENTOS order by id');
+      Sql.Add(' SELECT * FROM COBRANCAS order by id');
       Open;
     end;
 
-  Dm_cadastros.Qry_cadastro_Departamento.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger +1;
-  Dm_cadastros.Qry_cadastro_Departamento.append();
-  Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger:= Proxnum;
-
+  Dm_cadastros.Qry_cadastro_Cob.last();
+  Proxnum := Dm_cadastros.Qry_cadastro_CobId.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Cob.append();
+  Dm_cadastros.Qry_cadastro_Cobid.AsInteger:= Proxnum;
+  Dbedit5.Text:= '1';
 end;
 
-procedure TFrmcaddepto.FormCreate(Sender: TObject);
+procedure TFrmcadcob.FormCreate(Sender: TObject);
 begin
-Dm_cadastros.Qry_cadastro_Departamento.close();
+Dm_cadastros.Qry_cadastro_cob.close();
 end;
 
-procedure TFrmcaddepto.FormShow(Sender: TObject);
-var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
+procedure TFrmcadcob.FormShow(Sender: TObject);
+var
+ pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
 begin
  for pages := 0 to Pagecontrol1.PageCount -1 do
  begin
@@ -148,7 +155,7 @@ begin
  Pagecontrol1.ActivePageIndex:= 0;
 end;
 
-procedure TFrmcaddepto.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFrmcadcob.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
   const
    sc_DragMove = $f012;
@@ -157,7 +164,7 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
-procedure TFrmcaddepto.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFrmcadcob.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
   const
    sc_DragMove = $f012;
@@ -167,50 +174,53 @@ begin
 end;
 
 
-procedure TFrmcaddepto.SpeedButton1Click(Sender: TObject);
+procedure TFrmcadcob.SpeedButton1Click(Sender: TObject);
 begin
- with Dm_cadastros.Qry_cons_cadastro_Departamento do
+with Dm_cadastros.Qry_cons_cadastro_Cob do
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('SELECT * ');
-      Sql.Add('FROM DEPARTAMENTOS');
-      Sql.Add('WHERE ID >=0');
-
+      Sql.Add('select *');
+      Sql.Add('from cobrancas');
+      Sql.Add('WHERE id >= 1');
 
       if Edit1.Text <> '' then
-        Sql.Add('And nome Like ''%'+ Edit1.Text + '%'' ');
+        Sql.Add('And descricao Like ''%'+ Edit1.Text + '%'' ');
 
-      Sql.Add('ORDER BY NOME');
+      Sql.Add('ORDER BY descricao');
 
       Open;
 
     end;
 end;
 
-procedure TFrmcaddepto.BtnCadastroClick(Sender: TObject);
+procedure TFrmcadcob.BtnCadastroClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 0;
 end;
 
-procedure TFrmcaddepto.BtnPesquisarClick(Sender: TObject);
+procedure TFrmcadcob.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
+Edit1.SetFocus;
+SpeedButton1Click(self);
 end;
 
-procedure TFrmcaddepto.BtnsalvarClick(Sender: TObject);
+
+procedure TFrmcadcob.BtnsalvarClick(Sender: TObject);
 begin
 if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o código !')
+ShowMessage('Favor Preencher o campo Código !')
 
 else if Dbedit3.Text = '' then                        // Valida informações do Campo
-ShowMessage('Favor Preencher o a Descrição do Departamento !')
+ShowMessage('Favor Preencher o campo Nome !')
 
 else
   begin
-   Dm_cadastros.Qry_cadastro_Departamento.Post();
-   Dm_cadastros.Qry_cadastro_Departamento.cancel;
-   Dm_cadastros.Qry_cadastro_Departamento.close;
+
+   Dm_cadastros.Qry_cadastro_Cob.Post();
+   Dm_cadastros.Qry_cadastro_Cob.cancel;
+   Dm_cadastros.Qry_cadastro_Cob.close;
 
    Showmessage('Dados Salvos com Sucesso !');
 
@@ -219,21 +229,20 @@ else
     BtnEditar.Enabled := False;                            // Desativa o Botão Editar
     BtnCancelar.Enabled := False;
 
-  end;
-
+end;
 end;
 
-procedure TFrmcaddepto.DBGrid1DblClick(Sender: TObject);
+procedure TFrmcadcob.DBGrid1DblClick(Sender: TObject);
 begin
-
- with Dm_cadastros.Qry_cadastro_Departamento do
+with Dm_cadastros.Qry_cadastro_Cob do
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT * FROM DEPARTAMENTOS');
+      Sql.Add(' SELECT * FROM COBRANCAS');
       Sql.Add('WHERE ID = :ID');
 
-      Params.ParamByName('ID').AsInteger := Dm_cadastros.Qry_cons_cadastro_Departamentoid.asinteger ;
+
+      Params.ParamByName('ID').AsInteger := Dm_cadastros.Qry_cons_cadastro_Cobid.asinteger ;
 
       Open;
 
@@ -243,12 +252,11 @@ begin
        Btnnovo.Enabled:=false;
        Btncancelar.Enabled:=true;
        Pagecontrol1.ActivePageIndex:= 0;
-
 end;
 
-procedure TFrmcaddepto.DBGrid1TitleClick(Column: TColumn);
+procedure TFrmcadcob.DBGrid1TitleClick(Column: TColumn);
 begin
-Dm_cadastros.Qry_cons_cadastro_Departamento.IndexFieldNames := Column.Fieldname;
+Dm_cadastros.Qry_cons_cadastro_Cob.IndexFieldNames := Column.Fieldname;
 end;
 
 end.

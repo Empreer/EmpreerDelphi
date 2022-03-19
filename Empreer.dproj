@@ -118,67 +118,68 @@
             <Form>Frmentradas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Fmcadcli.pas">
-            <Form>Frmcadcli</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcadfornec.pas">
-            <Form>Frmcadfornec</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcadprodut.pas">
-            <Form>Frmcadprodut</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcadmp.pas">
-            <Form>Frmcadmp</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmusersist.pas">
-            <Form>Frmusersist</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcaddepto.pas">
-            <Form>Frmcaddepto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcadcob.pas">
-            <Form>Frmcadcob</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Uudm_conexao.pas">
             <Form>udm_conexao</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Udm_cadastros.pas">
-            <Form>Dm_cadastros</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Fmcadfornecbuscacidade.pas">
-            <Form>Frmcadfornecbuscacidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Fmgerencial.pas">
             <Form>Frmgerencial</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Fmformula.pas">
-            <Form>Frmformula</Form>
-        </DCCReference>
-        <DCCReference Include="Udm_gerencial.pas">
-            <Form>Dm_gerencial</Form>
+        <DCCReference Include="Cadastros\Cliente\Fmcadcli.pas">
+            <Form>Frmcadcli</Form>
             <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Fmformulabuscaproduto.pas">
+        <DCCReference Include="Cadastros\Cobranca\Fmcadcob.pas">
+            <Form>Frmcadcob</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Departamento\Fmcaddepto.pas">
+            <Form>Frmcaddepto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Fornecedor\Fmcadfornec.pas">
+            <Form>Frmcadfornec</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Fornecedor\Fmcadfornecbuscacidade.pas">
+            <Form>Frmcadfornecbuscacidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Matéira Prima\Fmcadmp.pas">
+            <Form>Frmcadmp</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Produto\Fmcadprodut.pas">
+            <Form>Frmcadprodut</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cadastros\Usuário\Fmusersist.pas">
+            <Form>Frmusersist</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Gerencial\Formula\Fmformula.pas">
+            <Form>Frmformula</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Gerencial\Formula\Fmformulabuscamp.pas">
+            <Form>Frmformulabuscamp</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Gerencial\Formula\Fmformulabuscaproduto.pas">
             <Form>Frmformulabuscaproduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Fmformulabuscamp.pas">
-            <Form>Frmformulabuscamp</Form>
+        <DCCReference Include="Datamodulo\Udm_cadastros.pas">
+            <Form>Dm_cadastros</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Datamodulo\Udm_gerencial.pas">
+            <Form>Dm_gerencial</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -1030,9 +1031,9 @@
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

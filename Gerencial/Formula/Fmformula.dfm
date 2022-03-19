@@ -378,7 +378,7 @@ object Frmformula: TFrmformula
         object DBEdit1: TDBEdit
           Left = 336
           Top = 59
-          Width = 57
+          Width = 70
           Height = 16
           BevelInner = bvNone
           BevelOuter = bvNone

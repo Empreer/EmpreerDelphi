@@ -233,6 +233,7 @@ procedure TFrmcadmp.BtnPesquisarClick(Sender: TObject);
 begin
 Pagecontrol1.ActivePageIndex:= 1;
 Edit1.SetFocus;
+SpeedButton1Click(self);
 end;
 
 

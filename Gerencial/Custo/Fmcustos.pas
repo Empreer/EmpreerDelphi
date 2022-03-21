@@ -13,62 +13,14 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     Panel3: TPanel;
-    Labeluser: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label16: TLabel;
-    Label17: TLabel;
-    SpeedButton2: TSpeedButton;
-    DBEdit1: TDBEdit;
-    pnlborda2: TPanel;
-    Pnlborda1: TPanel;
-    DBEdit3: TDBEdit;
-    pnlborda3: TPanel;
-    DBEdit4: TDBEdit;
-    Panel1: TPanel;
-    DBEdit5: TDBEdit;
-    Panel2: TPanel;
-    DBEdit6: TDBEdit;
-    Panel5: TPanel;
-    DBEdit7: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    Panel6: TPanel;
-    DBEdit8: TDBEdit;
-    Panel7: TPanel;
-    DBEdit9: TDBEdit;
-    Panel8: TPanel;
-    DBEdit10: TDBEdit;
-    Panel9: TPanel;
-    Panel10: TPanel;
-    DBEdit12: TDBEdit;
-    Panel11: TPanel;
-    DBEdit13: TDBEdit;
-    pnlnovo: TPanel;
-    Btnnovo: TSpeedButton;
-    pnleditar: TPanel;
-    Btneditar: TSpeedButton;
-    pnlsalvar: TPanel;
-    Btnsalvar: TSpeedButton;
-    Pnlcancelar: TPanel;
-    Btncancelar: TSpeedButton;
-    Panel15: TPanel;
-    DBEdit2: TDBEdit;
-    Panel16: TPanel;
-    DBEdit14: TDBEdit;
-    Panel17: TPanel;
-    Edit3: TEdit;
-    Edit4: TEdit;
+    pnlpesq: TPanel;
+    Btnpesq: TSpeedButton;
+    pnlcustoind: TPanel;
+    Btncustoind: TSpeedButton;
+    pnlcustogrid: TPanel;
+    Btncustogrid: TSpeedButton;
     TabSheet2: TTabSheet;
     Panel4: TPanel;
     Label1: TLabel;
@@ -89,6 +41,24 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
+    Label2: TLabel;
+    Edit3: TEdit;
+    Panel1: TPanel;
+    DBGrid2: TDBGrid;
+    Edit4: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit5: TEdit;
+    procedure BtnpesqClick(Sender: TObject);
+    procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure BtnFecharClick(Sender: TObject);
+    procedure BtnminimizarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure DBGrid2DblClick(Sender: TObject);
+    procedure BtncustoindClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,5 +71,89 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Udm_gerencial, Uudm_conexao;
+
+procedure TFrmcustos.BtncustoindClick(Sender: TObject);
+begin
+ Edit4.Text := StringReplace(Edit4.Text, ',','.',[]);
+
+if MessageDlg('Deseja Realmente Aplicar o Custo Calculado ao Custo Atual ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
+  begin
+      Dm_gerencial.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+      Dm_gerencial.SQLaux.SQL.Clear;
+      Dm_gerencial.SQLaux.SQL.Add('update produtos set custo = '''+Edit4.Text+''' where id = '''+Edit5.text+'''');
+      Dm_gerencial.SQLaux.ExecSQL();
+
+      Showmessage('Custo calculado da Fórmula aplicado com sucesso!')
+  end;
+
+  Dm_Gerencial.Qry_custoprod.refresh;
+end;
+
+procedure TFrmcustos.BtnFecharClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFrmcustos.BtnminimizarClick(Sender: TObject);
+begin
+Frmcustos.WindowState:=wsminimized;
+end;
+
+procedure TFrmcustos.BtnpesqClick(Sender: TObject);
+begin
+ with Dm_Gerencial.Qry_custoprod do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select p.id, p.descricao, p.custo, sum(f.qtmp * m.custo) as custocalc');
+      Sql.Add('from formprod f, produtos p, produtomps m');
+      Sql.Add('where f.codprodacab = p.id ');
+      Sql.Add('AND F.CODFILIAL = :CODFILIAL');
+      Sql.Add('and f.codprodmp = m.id ');
+
+      if Edit1.Text <> '' then
+        Sql.Add('And p.descricao Like ''%'+ Edit1.Text + '%'' ');
+
+      Sql.Add('group by p.id, p.descricao, p.custo');
+
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+
+      Open;
+
+    end;
+    Btncustogrid.Enabled:=true;
+end;
+
+procedure TFrmcustos.DBGrid2DblClick(Sender: TObject);
+begin
+Edit4.Text:= Dm_gerencial.qry_custoprodcustocalc.asstring;
+Edit5.Text:= Dm_gerencial.qry_custoprodid.asstring;
+Btncustoind.Enabled:=true
+end;
+
+procedure TFrmcustos.FormCreate(Sender: TObject);
+begin
+DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
+end;
+
+procedure TFrmcustos.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+ const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
+procedure TFrmcustos.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+ const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
 
 end.

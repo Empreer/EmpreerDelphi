@@ -27,6 +27,17 @@ type
     Qry_cons_Formulacusto: TFMTBCDField;
     Qry_cons_Formulasubtotcusto: TFMTBCDField;
     Qry_cons_FormulaSUMSUB: TAggregateField;
+    Qry_custoprod: TFDQuery;
+    Ds_custoprod: TDataSource;
+    Qry_custoprodid: TIntegerField;
+    Qry_custoproddescricao: TWideStringField;
+    Qry_custoprodcusto: TFMTBCDField;
+    Qry_custoprodcustocalc: TFMTBCDField;
+    Sqlaux: TFDQuery;
+    IntegerField1: TIntegerField;
+    WideStringField1: TWideStringField;
+    FMTBCDField1: TFMTBCDField;
+    FMTBCDField2: TFMTBCDField;
   private
     { Private declarations }
   public

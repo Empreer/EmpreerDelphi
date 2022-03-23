@@ -38,6 +38,11 @@ type
     WideStringField1: TWideStringField;
     FMTBCDField1: TFMTBCDField;
     FMTBCDField2: TFMTBCDField;
+    Qry_custoprodall: TFDQuery;
+    Ds_custoprodall: TDataSource;
+    Qry_custoprodallid: TIntegerField;
+    Qry_custoprodalldescricao: TWideStringField;
+    Qry_custoprodallcusto: TFMTBCDField;
   private
     { Private declarations }
   public

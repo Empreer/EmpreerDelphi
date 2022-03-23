@@ -162,6 +162,14 @@ type
     Qry_cons_cadastro_Cobdescricao: TWideStringField;
     Qry_cons_cadastro_Cobdias: TIntegerField;
     Qry_cadastro_Produtodivreceita: TIntegerField;
+    Qry_cadastro_preco: TFDQuery;
+    Ds_cadastro_preco: TDataSource;
+    Qry_cadastro_precoid: TIntegerField;
+    Qry_cadastro_precocodprod: TIntegerField;
+    Qry_cadastro_precocodfilial: TIntegerField;
+    Qry_cadastro_precomargemlucro: TFMTBCDField;
+    Qry_cadastro_precopreco: TFMTBCDField;
+    Qry_cadastro_precopercdesc: TFMTBCDField;
   private
     { Private declarations }
   public

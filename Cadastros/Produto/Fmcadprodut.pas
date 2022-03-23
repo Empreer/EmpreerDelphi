@@ -62,6 +62,9 @@ type
     Label9: TLabel;
     Panel5: TPanel;
     DBEdit6: TDBEdit;
+    Label10: TLabel;
+    Panel6: TPanel;
+    DBEdit7: TDBEdit;
      procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -84,6 +87,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var edit:integer;
   end;
 
 var
@@ -118,6 +122,8 @@ Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Produto.Edit();
+
+edit:=1;
 end;
 
 procedure TFrmcadprodut.BtnFecharClick(Sender: TObject);
@@ -132,6 +138,7 @@ end;
 
 procedure TFrmcadprodut.BtnnovoClick(Sender: TObject);
 var Proxnum : integer;
+var Proxnumpreco :integer;
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
@@ -156,6 +163,19 @@ begin
   Proxnum := Dm_cadastros.Qry_cadastro_Produtoid.AsInteger +1;
   Dm_cadastros.Qry_cadastro_Produto.append();
   Dm_cadastros.Qry_cadastro_Produtoid.AsInteger:= Proxnum;
+
+    with Dm_cadastros.Qry_cadastro_Preco do    // Criando novo campo para os preços.
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM PRecos order by id');
+      Open;
+    end;
+
+  Dm_cadastros.Qry_cadastro_Preco.last();
+  Proxnumpreco := Dm_cadastros.Qry_cadastro_Precoid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Preco.append();
+  Dm_cadastros.Qry_cadastro_Precoid.AsInteger:= Proxnumpreco;
 
   Dm_cadastros.Qry_cadastro_Departamento.close();
   Dm_cadastros.Qry_cadastro_Departamento.Open();
@@ -258,9 +278,28 @@ else
    Dm_cadastros.Qry_cadastro_Produtocodfornec.asinteger := DBLookupComboBox2.KeyValue;
    Dm_cadastros.Qry_cadastro_Produtocoddepto.asinteger :=  DBLookupComboBox3.KeyValue;
 
+   if edit <> 1 then begin  // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
+
+   Dm_cadastros.Qry_cadastro_precocodfilial.asinteger := DBLookupComboBox1.KeyValue;
+   Dm_cadastros.Qry_cadastro_precocodprod.asinteger := StrToInt(DBedit1.text);
+   end;
+
+
    Dm_cadastros.Qry_cadastro_Produto.Post();
+
+   if edit<> 1 then begin       // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
+   Dm_cadastros.Qry_cadastro_Preco.Post();
+   end;
+
    Dm_cadastros.Qry_cadastro_Produto.cancel;
    Dm_cadastros.Qry_cadastro_Produto.close;
+
+   if edit<> 1 then begin    // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
+   Dm_cadastros.Qry_cadastro_Preco.cancel;
+   Dm_cadastros.Qry_cadastro_Preco.close;
+   end;
+
+
 
    Showmessage('Dados Salvos com Sucesso !');
 

@@ -182,7 +182,6 @@ object Frmformulabuscaproduto: TFrmformulabuscaproduto
     ParentBackground = False
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 8
     object Imlogo: TImage
       Left = -4
       Top = 3

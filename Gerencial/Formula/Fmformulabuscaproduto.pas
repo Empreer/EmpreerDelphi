@@ -60,6 +60,7 @@ procedure TFrmformulabuscaproduto.DBGrid1DblClick(Sender: TObject);
 begin
 Frmformula.dbedit1.text :=  Dm_cadastros.Qry_cadastro_Produtoid.AsString;
 Frmformula.DBEdit1Exit(self);
+Frmformula.dbedit1.Enabled:=false;
 close;
 end;
 

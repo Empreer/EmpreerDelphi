@@ -23,7 +23,10 @@ uses
   Fmformulabuscaproduto in 'Gerencial\Formula\Fmformulabuscaproduto.pas' {Frmformulabuscaproduto},
   Udm_cadastros in 'Datamodulo\Udm_cadastros.pas' {Dm_cadastros: TDataModule},
   Udm_gerencial in 'Datamodulo\Udm_gerencial.pas' {Dm_gerencial: TDataModule},
-  Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos};
+  Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos},
+  Fmprecifica in 'Fmprecifica.pas' {FrmPrecifica},
+  Fmpreco in 'Precificacao\Precificacao\Fmpreco.pas' {Frmpreco},
+  Udm_precificacao in 'Datamodulo\Udm_precificacao.pas' {Dm_precificacao: TDataModule};
 
 {$R *.res}
 
@@ -33,7 +36,7 @@ begin
   Application.CreateForm(Tudm_conexao, udm_conexao);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
+  Application.CreateForm(TDm_precificacao, Dm_precificacao);
   Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmcustos, Frmcustos);
   Application.Run;
 end.

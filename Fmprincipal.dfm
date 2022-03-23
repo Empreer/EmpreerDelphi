@@ -1648,6 +1648,7 @@ object Frmprincipal: TFrmprincipal
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
         Margin = 10
         ParentFont = False
+        OnClick = SpeedButton4Click
       end
       object SpeedButton5: TSpeedButton
         Left = -4

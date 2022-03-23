@@ -12,6 +12,7 @@ object Frmcustos: TFrmcustos
   Font.Style = []
   Position = poDesktopCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -56,9 +57,9 @@ object Frmcustos: TFrmcustos
         object Label2: TLabel
           Left = 16
           Top = 128
-          Width = 120
+          Width = 240
           Height = 21
-          Caption = 'Produto Acabado'
+          Caption = 'Produto Acabado com Formula'#231#227'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -186,6 +187,7 @@ object Frmcustos: TFrmcustos
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtncustogridClick
             ExplicitLeft = 8
             ExplicitWidth = 200
           end
@@ -231,6 +233,7 @@ object Frmcustos: TFrmcustos
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
           OnDblClick = DBGrid2DblClick
+          OnTitleClick = DBGrid2TitleClick
           Columns = <
             item
               Expanded = False
@@ -324,11 +327,11 @@ object Frmcustos: TFrmcustos
         ParentBackground = False
         TabOrder = 0
         object Label1: TLabel
-          Left = 16
-          Top = 88
-          Width = 157
+          Left = 24
+          Top = 136
+          Width = 120
           Height = 21
-          Caption = 'Raz'#227'o Social / Fantasia'
+          Caption = 'Produto Acabado'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -336,22 +339,110 @@ object Frmcustos: TFrmcustos
           Font.Style = []
           ParentFont = False
         end
-        object Label15: TLabel
-          Left = 432
-          Top = 88
-          Width = 48
+        object Label5: TLabel
+          Left = 846
+          Top = 568
+          Width = 47
           Height = 21
-          Caption = 'Cidade'
+          Caption = 'Custo:'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
           ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 681
+          Top = 568
+          Width = 34
+          Height = 21
+          Caption = 'C'#243'd:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 24
+          Top = 99
+          Width = 41
+          Height = 21
+          Caption = 'Filial:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object DBGrid1: TDBGrid
+          Left = 24
+          Top = 200
+          Width = 1241
+          Height = 349
+          DataSource = Dm_gerencial.Ds_custoprodall
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'id'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'descricao'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'DESCRI'#199#195'O'
+              Width = 600
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'custo'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Caption = 'CUSTO'
+              Width = 132
+              Visible = True
+            end>
+        end
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 71
+          Top = 97
+          Width = 273
+          Height = 23
+          KeyField = 'codfilial'
+          ListField = 'nome'
+          ListSource = udm_conexao.DataSource1
+          TabOrder = 1
         end
         object Edit1: TEdit
-          Left = 16
-          Top = 115
+          Left = 24
+          Top = 163
           Width = 400
           Height = 20
           BevelInner = bvNone
@@ -364,118 +455,88 @@ object Frmcustos: TFrmcustos
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 0
+          TabOrder = 2
         end
-        object DBGrid1: TDBGrid
-          Left = 16
-          Top = 152
-          Width = 1225
-          Height = 449
-          DataSource = Dm_cadastros.Ds_cons_cadastro_Fornecedor
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-          TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -12
-          TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'id'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = [fsBold]
-              Title.Caption = 'COD.'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'nome'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = [fsBold]
-              Title.Caption = 'RAZ'#195'O SOCIAL / FANTASIA'
-              Width = 300
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'cpfcnpj'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'CPF/CNPJ'
-              Width = 300
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'fone1'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'FONE-1'
-              Width = 129
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'cidade'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'CIDADE'
-              Width = 100
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'uf'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'UF'
-              Width = 170
-              Visible = True
-            end>
+        object Edit2: TEdit
+          Left = 903
+          Top = 568
+          Width = 98
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
         end
-        object Panel12: TPanel
-          Left = 16
-          Top = 133
+        object Edit6: TEdit
+          Left = 734
+          Top = 568
+          Width = 99
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 4
+        end
+        object Panel2: TPanel
+          Left = 24
+          Top = 181
           Width = 400
           Height = 2
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 2
+          TabOrder = 5
         end
-        object Panel13: TPanel
-          Left = 1110
-          Top = 107
-          Width = 130
-          Height = 35
+        object Panel6: TPanel
+          Left = 1032
+          Top = 555
+          Width = 230
+          Height = 41
           BevelOuter = bvNone
-          Color = 13667902
+          Color = 9101567
           ParentBackground = False
-          TabOrder = 3
-          object SpeedButton1: TSpeedButton
+          TabOrder = 6
+          object SpeedButton2: TSpeedButton
             Left = 0
             Top = 0
-            Width = 130
-            Height = 35
+            Width = 230
+            Height = 41
+            Cursor = crHandPoint
+            Align = alClient
+            Caption = 'Aplicar custo individual'
+            Enabled = False
+            Flat = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            OnClick = SpeedButton2Click
+            ExplicitLeft = 208
+          end
+        end
+        object Panel7: TPanel
+          Left = 1110
+          Top = 153
+          Width = 153
+          Height = 41
+          BevelOuter = bvNone
+          Color = 13066056
+          ParentBackground = False
+          TabOrder = 7
+          object SpeedButton3: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 153
+            Height = 41
             Cursor = crHandPoint
             Align = alClient
             Caption = 'Pesquisar'
@@ -486,36 +547,9 @@ object Frmcustos: TFrmcustos
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitLeft = 32
-            ExplicitHeight = 28
+            OnClick = SpeedButton3Click
+            ExplicitLeft = 16
           end
-        end
-        object Edit2: TEdit
-          Left = 432
-          Top = 115
-          Width = 300
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 4
-        end
-        object Panel14: TPanel
-          Left = 432
-          Top = 133
-          Width = 300
-          Height = 2
-          BevelOuter = bvNone
-          Color = clMenuHighlight
-          ParentBackground = False
-          TabOrder = 5
         end
       end
     end
@@ -661,6 +695,7 @@ object Frmcustos: TFrmcustos
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnCadastroClick
       ExplicitLeft = 9
       ExplicitTop = 22
       ExplicitHeight = 41
@@ -682,7 +717,7 @@ object Frmcustos: TFrmcustos
       Height = 34
       Cursor = crHandPoint
       Align = alClient
-      Caption = 'Revenda'
+      Caption = 'Produtos'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clInfoText
@@ -807,6 +842,7 @@ object Frmcustos: TFrmcustos
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnPesquisarClick
       ExplicitHeight = 35
     end
   end

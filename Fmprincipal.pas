@@ -43,6 +43,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -59,7 +60,8 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao, Fmgerencial, Fmprecifica;
+uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao, Fmgerencial, Fmprecifica,
+  Fmvendas;
 
 
 
@@ -137,6 +139,13 @@ begin
 Frmprecifica := TFrmprecifica.Create(self);
 Frmprecifica.Parent := Frmprincipal.pnlcentral;
 Frmprecifica.Show;
+end;
+
+procedure TFrmprincipal.SpeedButton5Click(Sender: TObject);
+begin
+Frmvendas := TFrmvendas.Create(self);
+Frmvendas.Parent := Frmprincipal.pnlcentral;
+Frmvendas.Show;
 end;
 
 procedure TFrmprincipal.SpeedButton7Click(Sender: TObject);

@@ -26,7 +26,10 @@ uses
   Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos},
   Fmprecifica in 'Fmprecifica.pas' {FrmPrecifica},
   Fmpreco in 'Precificacao\Precificacao\Fmpreco.pas' {Frmpreco},
-  Udm_precificacao in 'Datamodulo\Udm_precificacao.pas' {Dm_precificacao: TDataModule};
+  Udm_precificacao in 'Datamodulo\Udm_precificacao.pas' {Dm_precificacao: TDataModule},
+  Fmvendas in 'Fmvendas.pas' {FrmVendas},
+  Fmpedvenda in 'Vendas\PedidoVenda\Fmpedvenda.pas' {Frmpedvenda},
+  Udm_vendas in 'Datamodulo\Udm_vendas.pas' {Dm_vendas: TDataModule};
 
 {$R *.res}
 
@@ -37,6 +40,7 @@ begin
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
   Application.CreateForm(TDm_precificacao, Dm_precificacao);
+  Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TFrmlogin, Frmlogin);
   Application.Run;
 end.

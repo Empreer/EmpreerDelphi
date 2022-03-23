@@ -23,7 +23,7 @@ object Frmentradas: TFrmentradas
     Color = 15724269
     ParentBackground = False
     TabOrder = 0
-    object pncliente: TPanel
+    object Pncompra: TPanel
       Left = 32
       Top = 24
       Width = 180
@@ -564,9 +564,11 @@ object Frmentradas: TFrmentradas
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
         Layout = blGlyphTop
         ParentFont = False
-        ExplicitHeight = 100
+        OnMouseEnter = SpeedButton2MouseEnter
+        OnMouseLeave = SpeedButton2MouseLeave
+        ExplicitTop = -6
       end
-      object pnllinha: TPanel
+      object Pnlcompra: TPanel
         Left = 0
         Top = 95
         Width = 180

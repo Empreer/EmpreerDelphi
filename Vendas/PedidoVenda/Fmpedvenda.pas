@@ -18,42 +18,13 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label16: TLabel;
-    Label17: TLabel;
-    SpeedButton2: TSpeedButton;
     DBEdit1: TDBEdit;
     pnlborda2: TPanel;
     Pnlborda1: TPanel;
-    DBEdit3: TDBEdit;
     pnlborda3: TPanel;
-    DBEdit4: TDBEdit;
     Panel1: TPanel;
-    DBEdit5: TDBEdit;
-    Panel2: TPanel;
-    DBEdit6: TDBEdit;
-    Panel5: TPanel;
-    DBEdit7: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    Panel6: TPanel;
-    DBEdit8: TDBEdit;
-    Panel7: TPanel;
-    DBEdit9: TDBEdit;
-    Panel8: TPanel;
-    DBEdit10: TDBEdit;
-    Panel9: TPanel;
-    Panel10: TPanel;
-    DBEdit12: TDBEdit;
-    Panel11: TPanel;
-    DBEdit13: TDBEdit;
     pnlnovo: TPanel;
     Btnnovo: TSpeedButton;
     pnleditar: TPanel;
@@ -62,13 +33,6 @@ type
     Btnsalvar: TSpeedButton;
     Pnlcancelar: TPanel;
     Btncancelar: TSpeedButton;
-    Panel15: TPanel;
-    DBEdit2: TDBEdit;
-    Panel16: TPanel;
-    DBEdit14: TDBEdit;
-    Panel17: TPanel;
-    Edit3: TEdit;
-    Edit4: TEdit;
     TabSheet2: TTabSheet;
     Panel4: TPanel;
     Label1: TLabel;
@@ -89,10 +53,62 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
+    Edit5: TEdit;
+    SpeedButton3: TSpeedButton;
+    Label18: TLabel;
+    DBLookupComboBox3: TDBLookupComboBox;
+    Label19: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    Label20: TLabel;
+    Label21: TLabel;
+    Panel18: TPanel;
+    Panel19: TPanel;
+    Edit6: TEdit;
+    SpeedButton4: TSpeedButton;
+    DBGrid2: TDBGrid;
+    Label6: TLabel;
+    DBEdit2: TDBEdit;
+    Panel5: TPanel;
+    Pnladicionar: TPanel;
+    BtnAdicionar: TSpeedButton;
+    Pnlremover: TPanel;
+    BtnRemover: TSpeedButton;
+    Label8: TLabel;
+    Panel6: TPanel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    Label9: TLabel;
+    Edit10: TEdit;
+    Panel2: TPanel;
+    Panel7: TPanel;
+    DBEdit3: TDBEdit;
+    Label10: TLabel;
+    procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure BtnFecharClick(Sender: TObject);
+    procedure BtnminimizarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure BtnnovoClick(Sender: TObject);
+    procedure DBEdit1Exit(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure Edit9Exit(Sender: TObject);
+    procedure Edit7Exit(Sender: TObject);
+    procedure Edit4Exit(Sender: TObject);
+    procedure Edit3Exit(Sender: TObject);
+    procedure BtnAdicionarClick(Sender: TObject);
+    procedure BtncancelarClick(Sender: TObject);
+    procedure BtnRemoverClick(Sender: TObject);
   private
     { Private declarations }
   public
-    { Public declarations }
+    var numped:integer;
   end;
 
 var
@@ -101,5 +117,429 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Udm_cadastros, Udm_precificacao, Udm_vendas, Uudm_conexao,
+  Fmpedvendabuscacli, Fmpedvendabuscaprod;
+
+procedure TFrmpedvenda.BtnAdicionarClick(Sender: TObject);
+var Proxnum:integer;
+var Data:string;
+begin
+ Proxnum :=0;
+
+   if Edit8.Text = '0' then                                // Valida informações do Campo
+   ShowMessage('Favor adicionar quantidade ou preço ao item!')
+
+   else if Edit9.Text = '0' then                                // Valida informações do Campo
+   ShowMessage('Favor adicionar algum Item!')
+
+   else if DBLookupComboBox3.text = '' then
+   ShowMessage('Favor Escolher a Cobrança !')
+
+   else if DBLookupComboBox2.text = '' then
+   ShowMessage('Favor Escolher o Vendedor !')
+
+    else if DBedit1.text = '' then
+   ShowMessage('Favor Escolher o Cliente !')
+
+   else
+   begin
+
+   Edit8.SetFocus;
+
+   if numped = 0 then begin
+   Data := formatdatetime('dd/mm/yyyy',Datetimepicker1.Date);
+   Dm_vendas.Qry_pedidocodfilial.asinteger := DBLookupComboBox1.KeyValue;   // abastecendo cabeçalho
+   Dm_vendas.Qry_pedidocobid.AsInteger := DBLookupComboBox3.KeyValue;
+   Dm_vendas.Qry_pedidocodvend.AsInteger := DBLookupComboBox2.KeyValue;
+   Dm_vendas.Qry_pedidodtpedido.Asstring := Data;
+   Dm_vendas.Qry_pedido.Post();
+   numped:= strtoint(Dbedit2.Text);
+   end;
+
+
+   Dm_vendas.Qry_pedidoitem.Cancel();             //Abastecendo tabela itens do pedido
+   Dm_vendas.Qry_pedidoitem.Close();
+
+    with Dm_vendas.Qry_pedidoitem do
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM pedidoitem order by id');
+      Open;
+    end;
+
+  Dm_vendas.Qry_pedidoitem.last();
+  Proxnum := Dm_vendas.Qry_pedidoitemid.AsInteger +1;
+  Dm_vendas.Qry_pedidoitem.append();
+  Dm_vendas.Qry_pedidoitemid.AsInteger:= Proxnum;
+
+  Dm_vendas.Qry_pedidoitemcodfilial.asinteger := DBLookupComboBox1.KeyValue;
+  Dm_vendas.Qry_pedidoitempedidoid.Asstring:= Dbedit2.Text;
+  Dm_vendas.Qry_pedidoitemprodutoid.Asstring:= Edit9.Text;
+  Dm_vendas.Qry_pedidoitemqt.Asstring:= Edit7.Text;
+  Dm_vendas.Qry_pedidoitempunit.Asstring:= Edit4.Text;
+  Dm_vendas.Qry_pedidoitemsubtot.Asstring:= Edit8.Text;
+
+  Dm_vendas.Qry_pedidoitem.Post;
+
+   Dm_vendas.Qry_cons_pedidoitem.Cancel();             //Item Pedido
+   Dm_vendas.Qry_cons_pedidoitem.Close();
+
+    with Dm_vendas.Qry_cons_pedidoitem do
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial');
+      Sql.Add('from produtos p, pedidoitem i, pedidos c');
+      Sql.Add('where p.id = i.produtoid');
+      Sql.Add('and c.id = i.pedidoid');
+      Sql.Add('and c.id= :numped');
+
+      Params.ParamByName('numped').AsInteger := numped;
+      Open;
+    end;
+    Dbedit1.Enabled:=false;
+    DBLookupComboBox2.Enabled:=false;
+    DBLookupComboBox3.Enabled:=false;
+
+
+    Edit9.Text:='0';
+    Edit4.Text:='0';
+    Edit3.Text:='0';
+    Edit7.Text:='0';
+    Edit8.Text:='0';
+    Edit6.Text:='';
+    Edit9.SetFocus;
+
+ end;
+
+end;
+
+procedure TFrmpedvenda.BtncancelarClick(Sender: TObject);
+var numpeddel:string;
+begin
+
+   numpeddel:= dbedit2.Text;
+
+   Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+   Dm_vendas.SQLaux.SQL.Clear;
+   Dm_vendas.SQLaux.SQL.Add('delete from pedidos where id = '+numpeddel+'');
+   Dm_vendas.SQLaux.ExecSQL();
+
+   Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+   Dm_vendas.SQLaux.SQL.Clear;
+   Dm_vendas.SQLaux.SQL.Add('delete from pedidoitem where pedidoid = '+numpeddel+'');
+   Dm_vendas.SQLaux.ExecSQL();
+
+
+
+   Dm_vendas.Qry_pedido.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_pedido.Close();
+   Dm_vendas.Qry_pedidoitem.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_pedidoitem.Close();
+   Dm_vendas.Qry_cons_pedidoitem.Close();
+   Dm_vendas.Qry_cons_pedidoitem.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_pedidoitem.Close();
+   Dm_vendas.Qry_vendedor.close();
+
+   Dm_cadastros.Qry_cadastro_Cob.close();
+
+    Btnnovo.Enabled := True;                                 // Habilita  o botão novo
+    BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
+    BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
+    BtnEditar.Enabled := False;
+
+    Edit9.Text:='0';
+    Edit4.Text:='0';
+    Edit3.Text:='0';
+    Edit7.Text:='0';
+    Edit8.Text:='0';
+    Edit10.Text:='0';
+    Edit5.Text:='';
+    Edit6.Text:='';
+    Edit9.Enabled:=false;
+    Edit4.Enabled:=false;
+    Edit3.Enabled:=false;
+    Edit7.Enabled:=false;
+    Edit8.Enabled:=false;
+    Edit10.Enabled:=false;
+
+
+    Speedbutton3.Enabled:=true;
+    SpeedButton4.Enabled:=true;
+    Btnadicionar.Enabled:=false;
+    Btnremover.Enabled:=false;
+
+    ShowMessage('Pedido cancelado com sucesso!');
+
+
+
+end;
+
+procedure TFrmpedvenda.BtnFecharClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFrmpedvenda.BtnminimizarClick(Sender: TObject);
+begin
+Frmpedvenda.WindowState:=wsminimized;
+end;
+
+procedure TFrmpedvenda.BtnnovoClick(Sender: TObject);
+var Proxnum : integer;
+begin
+Proxnum :=0;
+
+ Dbedit1.Enabled:=true;
+ Dm_vendas.Qry_pedido.Cancel();             //Cabeçalho
+ Dm_vendas.Qry_pedido.Close();
+
+  with Dm_vendas.Qry_pedido do
+  begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM pedidos order by id');
+      Open;
+    end;
+
+  Dm_vendas.Qry_pedido.last();
+  Proxnum := Dm_vendas.Qry_pedidoid.AsInteger +1;
+  Dm_vendas.Qry_pedido.append();
+  Dm_vendas.Qry_pedidoid.AsInteger:= Proxnum;
+
+ Speedbutton3.Enabled:=true;
+ SpeedButton4.Enabled:=true;
+
+ Dm_vendas.Qry_vendedor.close();
+ Dm_vendas.Qry_vendedor.open();
+
+ Dm_cadastros.Qry_cadastro_Cob.close();
+ Dm_cadastros.Qry_cadastro_Cob.open();
+
+ Btnnovo.Enabled:=false;
+ Btncancelar.Enabled:=true;
+
+
+ Dbedit1.SetFocus;
+
+
+end;
+
+procedure TFrmpedvenda.BtnRemoverClick(Sender: TObject);
+begin
+      Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+      Dm_vendas.SQLaux.SQL.Clear;
+      Dm_vendas.SQLaux.SQL.Add('delete from pedidoitem where produtoid = '''+Dm_vendas.Qry_cons_pedidoitemcodprod.AsString+''' and id = '''+Dm_vendas.Qry_cons_pedidoitemid.AsString+'''');
+      Dm_vendas.SQLaux.ExecSQL();
+
+      Dm_vendas.Qry_cons_pedidoitem.refresh();
+
+end;
+
+procedure TFrmpedvenda.DBEdit1Exit(Sender: TObject);
+begin
+ if dbedit1.Text<> '' then begin
+
+
+ with Dm_vendas.Qry_cliente do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf');
+      Sql.Add('from users u, cidades c ');
+      Sql.Add('where c.id  = u.codcidade');
+
+
+      Sql.Add('and u.ID = :ID');
+
+      Params.ParamByName('ID').AsInteger := strtoint(Dbedit1.Text) ;
+      Open;
+
+    end;
+       Edit5.Text :=  Dm_vendas.Qry_clientenome.AsString;
+
+         Edit9.Enabled:=true;
+         Edit4.Enabled:=true;
+         Edit3.Enabled:=true;
+         Edit7.Enabled:=true;
+         Edit8.Enabled:=true;
+         Edit10.Enabled:=true;
+         Btnadicionar.Enabled:=true;
+         Btnremover.Enabled:=true;
+
+ end;
+
+end;
+
+
+procedure TFrmpedvenda.Edit3Exit(Sender: TObject);
+var preco:double;
+var perdesc: double;
+var perdescmax: double;
+var pfinal:double;
+
+begin
+    if Edit3.Text = '' then
+    edit3.Text :='0';
+
+    perdesc := strtofloat(Edit3.Text);
+    perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat;
+
+    if perdesc <= perdescmax then
+    begin
+       perdesc := strtofloat(Edit3.Text);
+       preco:=  Dm_vendas.Qry_produtopreco.asfloat;
+       pfinal:= preco-((preco*perdesc)/100);
+       Edit4.Text := floattostr(pfinal);
+       Edit4.Text := FormatFloat('0.00', StrToFloat(Edit4.Text));
+    end
+    else
+    ShowMessage('Percentual de Desconto Maior que o permitido!');
+
+end;
+
+procedure TFrmpedvenda.Edit4Exit(Sender: TObject);
+var qt : double;
+var preco:double;
+var result: double;
+var perdescmax:double;
+var pmin:double;
+var ptabela:double;
+
+begin
+  if (Edit4.Text<> '')and (Edit4.Text<> '0')  then begin
+
+  ptabela :=  Dm_vendas.Qry_produtopreco.asfloat;
+  perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat*1.001;
+  preco := strtofloat(Edit4.Text);
+  pmin :=  ptabela-((ptabela*perdescmax)/100);
+
+  if preco >= pmin then begin
+
+  qt := strtofloat(Edit7.Text);
+
+  result := qt * preco;
+
+  Edit8.Text := floattostr(result);
+  Edit8.Text := FormatFloat('0.00', StrToFloat(Edit8.Text));
+  end
+
+  else begin
+  Edit4.Text:= Dm_vendas.Qry_produtopreco.asstring;
+  Edit4.Text := FormatFloat('0.00', StrToFloat(Edit4.Text));
+  ShowMessage('Preço de Venda Abaixo do Permitido!');
+  edit3.Text:='0';
+
+  edit4.SetFocus;
+  end;
+
+  end;
+
+end;
+
+procedure TFrmpedvenda.Edit7Exit(Sender: TObject);
+var qt : double;
+var preco:double;
+var result: double;
+var perdescmax:double;
+var pmin:double;
+var ptabela:double;
+
+begin
+  if (Edit4.Text<> '')and (Edit4.Text<> '0')  then begin
+
+
+    ptabela :=  Dm_vendas.Qry_produtopreco.asfloat;
+    perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat*1.001;
+    preco := strtofloat(Edit4.Text);
+    pmin :=  ptabela-((ptabela*perdescmax)/100);
+
+    if preco >= pmin then begin
+
+      qt := strtofloat(Edit7.Text);
+
+      result := qt * preco;
+
+      Edit8.Text := floattostr(result);
+      Edit8.Text := FormatFloat('0.00', StrToFloat(Edit8.Text));
+    end
+
+    else begin
+      Edit4.Text:= Dm_vendas.Qry_produtopreco.asstring;
+      Edit4.Text := FormatFloat('0.00', StrToFloat(Edit4.Text));
+      ShowMessage('Preço de Venda Abaixo do Permitido!');
+      edit3.Text:='0';
+      Edit4.SetFocus;
+
+    end;
+
+  end;
+end;
+
+procedure TFrmpedvenda.Edit9Exit(Sender: TObject);
+begin
+  if (Edit9.Text<> '')and (Edit9.Text<> '0')  then begin
+
+ with Dm_vendas.Qry_produto do
+ begin
+
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select p.id, p.descricao, p.unidade,u.preco, u.percdesc  ');
+      Sql.Add('from produtos p, precos u');
+      Sql.Add('where p.id = u.codprod');
+
+
+      Sql.Add('and u.ID = :ID');
+
+      Params.ParamByName('ID').AsInteger := strtoint(Edit9.Text) ;
+      Open;
+
+    end;
+       Edit6.Text :=  Dm_vendas.Qry_produtodescricao.AsString;
+       Edit4.Text := Dm_vendas.Qry_produtopreco.AsString;
+       Edit4.Text := FormatFloat('0.00', StrToFloat(Edit4.Text));
+       Edit10.Text := Dm_vendas.Qry_produtopreco.AsString;
+       Edit10.Text := FormatFloat('0.00', StrToFloat(Edit10.Text));
+       Edit7.SetFocus;
+end;
+end;
+
+procedure TFrmpedvenda.FormCreate(Sender: TObject);
+begin
+DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
+end;
+
+procedure TFrmpedvenda.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
+procedure TFrmpedvenda.PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
+procedure TFrmpedvenda.SpeedButton3Click(Sender: TObject);
+begin
+Frmpedvendabuscacli := TFrmpedvendabuscacli.Create(Self);                          //Botao de login chama o formulario principal
+Frmpedvendabuscacli.Show;
+end;
+
+procedure TFrmpedvenda.SpeedButton4Click(Sender: TObject);
+begin
+Frmpedvendabuscaprod := TFrmpedvendabuscaprod.Create(Self);                          //Botao de login chama o formulario principal
+Frmpedvendabuscaprod.Show;
+end;
 
 end.

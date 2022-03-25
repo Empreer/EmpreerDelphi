@@ -754,6 +754,12 @@ object Dm_cadastros: TDm_cadastros
       Precision = 64
       Size = 0
     end
+    object Qry_cadastro_Useradmvendedor: TWideStringField
+      FieldName = 'vendedor'
+      Origin = 'vendedor'
+      FixedChar = True
+      Size = 1
+    end
   end
   object Ds_cadastro_Useradm: TDataSource
     DataSet = Qry_cadastro_Useradm
@@ -787,6 +793,12 @@ object Dm_cadastros: TDm_cadastros
       Origin = 'codfilial'
       Precision = 64
       Size = 0
+    end
+    object Qry_cons_cadastro_Useradmvendedor: TWideStringField
+      FieldName = 'vendedor'
+      Origin = 'vendedor'
+      FixedChar = True
+      Size = 1
     end
   end
   object Ds_cons_cadastro_Useradm: TDataSource

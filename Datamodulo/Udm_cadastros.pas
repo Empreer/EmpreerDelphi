@@ -170,6 +170,8 @@ type
     Qry_cadastro_precomargemlucro: TFMTBCDField;
     Qry_cadastro_precopreco: TFMTBCDField;
     Qry_cadastro_precopercdesc: TFMTBCDField;
+    Qry_cadastro_Useradmvendedor: TWideStringField;
+    Qry_cons_cadastro_Useradmvendedor: TWideStringField;
   private
     { Private declarations }
   public

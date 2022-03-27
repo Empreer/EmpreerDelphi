@@ -31,7 +31,8 @@ uses
   Fmpedvenda in 'Vendas\PedidoVenda\Fmpedvenda.pas' {Frmpedvenda},
   Udm_vendas in 'Datamodulo\Udm_vendas.pas' {Dm_vendas: TDataModule},
   Fmpedvendabuscacli in 'Vendas\PedidoVenda\Fmpedvendabuscacli.pas' {Frmpedvendabuscacli},
-  Fmpedvendabuscaprod in 'Vendas\PedidoVenda\Fmpedvendabuscaprod.pas' {Frmpedvendabuscaprod};
+  Fmpedvendabuscaprod in 'Vendas\PedidoVenda\Fmpedvendabuscaprod.pas' {Frmpedvendabuscaprod},
+  Udm_financeiro in 'Datamodulo\Udm_financeiro.pas' {Dm_Financeiro: TDataModule};
 
 {$R *.res}
 
@@ -39,6 +40,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tudm_conexao, udm_conexao);
+  Application.CreateForm(TDm_Financeiro, Dm_Financeiro);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
   Application.CreateForm(TDm_precificacao, Dm_precificacao);

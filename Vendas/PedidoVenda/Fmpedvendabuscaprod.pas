@@ -29,6 +29,7 @@ type
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +60,11 @@ begin
 Frmpedvenda.Edit9.text :=  Dm_vendas.Qry_produtoid.AsString;
 Frmpedvenda.Edit9Exit(self);
 close;
+end;
+
+procedure TFrmpedvendabuscaprod.FormActivate(Sender: TObject);
+begin
+edit1.SetFocus;
 end;
 
 procedure TFrmpedvendabuscaprod.ImlogoMouseDown(Sender: TObject;

@@ -42,11 +42,10 @@ object Frmpedvenda: TFrmpedvenda
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 16
-        ExplicitTop = -16
+        ExplicitLeft = 2
         object Labeluser: TLabel
-          Left = 113
-          Top = 62
+          Left = 112
+          Top = 65
           Width = 48
           Height = 21
           Caption = 'Cliente'
@@ -58,8 +57,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 6
-          Top = 62
+          Left = 5
+          Top = 65
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -71,8 +70,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 632
-          Top = 126
+          Left = 631
+          Top = 129
           Width = 81
           Height = 21
           Caption = 'Quantidade'
@@ -84,8 +83,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 932
-          Top = 126
+          Left = 931
+          Top = 129
           Width = 39
           Height = 21
           Caption = 'Pre'#231'o'
@@ -97,8 +96,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label5: TLabel
-          Left = 838
-          Top = 126
+          Left = 837
+          Top = 129
           Width = 72
           Height = 21
           Caption = '%Desc.Tab'
@@ -110,8 +109,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label7: TLabel
-          Left = 944
-          Top = 30
+          Left = 943
+          Top = 33
           Width = 41
           Height = 21
           Caption = 'Filial:'
@@ -123,8 +122,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object SpeedButton3: TSpeedButton
-          Left = 74
-          Top = 81
+          Left = 73
+          Top = 84
           Width = 25
           Height = 28
           Enabled = False
@@ -213,8 +212,8 @@ object Frmpedvenda: TFrmpedvenda
           OnClick = SpeedButton3Click
         end
         object Label18: TLabel
-          Left = 632
-          Top = 62
+          Left = 631
+          Top = 65
           Width = 72
           Height = 21
           Caption = 'Cobran'#231'a'
@@ -226,8 +225,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label19: TLabel
-          Left = 927
-          Top = 62
+          Left = 926
+          Top = 65
           Width = 74
           Height = 21
           Caption = 'Vendedor'
@@ -239,8 +238,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label20: TLabel
-          Left = 113
-          Top = 126
+          Left = 112
+          Top = 129
           Width = 56
           Height = 21
           Caption = 'Produto'
@@ -252,8 +251,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label21: TLabel
-          Left = 6
-          Top = 126
+          Left = 5
+          Top = 129
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -265,8 +264,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object SpeedButton4: TSpeedButton
-          Left = 77
-          Top = 145
+          Left = 76
+          Top = 148
           Width = 25
           Height = 28
           Enabled = False
@@ -355,8 +354,8 @@ object Frmpedvenda: TFrmpedvenda
           OnClick = SpeedButton4Click
         end
         object Label6: TLabel
-          Left = 342
-          Top = 22
+          Left = 341
+          Top = 25
           Width = 131
           Height = 21
           Caption = 'N'#250'mero do Pedido'
@@ -368,8 +367,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 1022
-          Top = 126
+          Left = 1021
+          Top = 129
           Width = 46
           Height = 21
           Caption = 'Subtot'
@@ -381,8 +380,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label9: TLabel
-          Left = 747
-          Top = 126
+          Left = 746
+          Top = 129
           Width = 54
           Height = 21
           Caption = 'P.tabela'
@@ -394,8 +393,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1144
-          Top = 533
+          Left = 1143
+          Top = 536
           Width = 105
           Height = 21
           Caption = 'Total do Pedido'
@@ -407,8 +406,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 6
-          Top = 88
+          Left = 5
+          Top = 91
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -418,6 +417,7 @@ object Frmpedvenda: TFrmpedvenda
           CharCase = ecUpperCase
           DataField = 'userid'
           DataSource = Dm_vendas.Ds_pedido
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -429,8 +429,8 @@ object Frmpedvenda: TFrmpedvenda
           OnExit = DBEdit1Exit
         end
         object pnlborda2: TPanel
-          Left = 113
-          Top = 109
+          Left = 112
+          Top = 112
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -439,8 +439,8 @@ object Frmpedvenda: TFrmpedvenda
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 6
-          Top = 110
+          Left = 5
+          Top = 113
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -449,8 +449,8 @@ object Frmpedvenda: TFrmpedvenda
           TabOrder = 2
         end
         object pnlborda3: TPanel
-          Left = 632
-          Top = 174
+          Left = 631
+          Top = 177
           Width = 100
           Height = 2
           BevelOuter = bvNone
@@ -459,8 +459,8 @@ object Frmpedvenda: TFrmpedvenda
           TabOrder = 3
         end
         object Panel1: TPanel
-          Left = 746
-          Top = 173
+          Left = 745
+          Top = 176
           Width = 80
           Height = 2
           BevelOuter = bvNone
@@ -469,8 +469,8 @@ object Frmpedvenda: TFrmpedvenda
           TabOrder = 4
         end
         object DBLookupComboBox1: TDBLookupComboBox
-          Left = 991
-          Top = 28
+          Left = 990
+          Top = 31
           Width = 273
           Height = 23
           Enabled = False
@@ -480,8 +480,8 @@ object Frmpedvenda: TFrmpedvenda
           TabOrder = 5
         end
         object pnlnovo: TPanel
-          Left = 6
-          Top = 547
+          Left = 5
+          Top = 550
           Width = 153
           Height = 41
           BevelOuter = bvNone
@@ -508,44 +508,15 @@ object Frmpedvenda: TFrmpedvenda
             ExplicitTop = 8
           end
         end
-        object pnleditar: TPanel
-          Left = 180
-          Top = 547
-          Width = 153
-          Height = 41
-          BevelOuter = bvNone
-          Color = 9101567
-          ParentBackground = False
-          TabOrder = 7
-          object Btneditar: TSpeedButton
-            Left = 0
-            Top = 0
-            Width = 153
-            Height = 41
-            Cursor = crHandPoint
-            Align = alClient
-            Caption = 'Editar'
-            Enabled = False
-            Flat = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clMaroon
-            Font.Height = -19
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            ExplicitLeft = 72
-            ExplicitTop = -8
-          end
-        end
         object pnlsalvar: TPanel
-          Left = 355
-          Top = 547
+          Left = 184
+          Top = 550
           Width = 153
           Height = 41
           BevelOuter = bvNone
           Color = 11718912
           ParentBackground = False
-          TabOrder = 8
+          TabOrder = 7
           object Btnsalvar: TSpeedButton
             Left = 0
             Top = 0
@@ -562,19 +533,20 @@ object Frmpedvenda: TFrmpedvenda
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
         end
         object Pnlcancelar: TPanel
-          Left = 535
-          Top = 547
+          Left = 364
+          Top = 550
           Width = 153
           Height = 41
           BevelOuter = bvNone
           Color = 6833905
           ParentBackground = False
-          TabOrder = 9
+          TabOrder = 8
           object Btncancelar: TSpeedButton
             Left = 0
             Top = 0
@@ -596,8 +568,8 @@ object Frmpedvenda: TFrmpedvenda
           end
         end
         object Edit5: TEdit
-          Left = 113
-          Top = 89
+          Left = 112
+          Top = 92
           Width = 500
           Height = 20
           BevelInner = bvNone
@@ -610,13 +582,14 @@ object Frmpedvenda: TFrmpedvenda
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 10
+          TabOrder = 9
         end
         object DBLookupComboBox3: TDBLookupComboBox
-          Left = 632
-          Top = 89
+          Left = 631
+          Top = 92
           Width = 273
           Height = 25
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -626,13 +599,14 @@ object Frmpedvenda: TFrmpedvenda
           ListField = 'descricao'
           ListSource = Dm_cadastros.Ds_cadastro_Cob
           ParentFont = False
-          TabOrder = 11
+          TabOrder = 10
         end
         object DBLookupComboBox2: TDBLookupComboBox
-          Left = 927
-          Top = 89
+          Left = 926
+          Top = 92
           Width = 322
           Height = 25
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -642,31 +616,31 @@ object Frmpedvenda: TFrmpedvenda
           ListField = 'nome'
           ListSource = Dm_vendas.Ds_vendedor
           ParentFont = False
-          TabOrder = 12
+          TabOrder = 11
         end
         object Panel18: TPanel
-          Left = 113
-          Top = 173
+          Left = 112
+          Top = 176
           Width = 500
           Height = 2
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 13
+          TabOrder = 12
         end
         object Panel19: TPanel
-          Left = 6
-          Top = 174
+          Left = 5
+          Top = 177
           Width = 70
           Height = 2
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 14
+          TabOrder = 13
         end
         object Edit6: TEdit
-          Left = 113
-          Top = 153
+          Left = 112
+          Top = 156
           Width = 500
           Height = 20
           BevelInner = bvNone
@@ -679,16 +653,18 @@ object Frmpedvenda: TFrmpedvenda
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 15
+          TabOrder = 14
         end
         object DBGrid2: TDBGrid
           Left = 6
-          Top = 208
+          Top = 194
           Width = 1243
-          Height = 321
+          Height = 336
           DataSource = Dm_vendas.Ds_cons_pedidoitem
+          Enabled = False
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-          TabOrder = 16
+          ReadOnly = True
+          TabOrder = 15
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
@@ -781,8 +757,8 @@ object Frmpedvenda: TFrmpedvenda
             end>
         end
         object DBEdit2: TDBEdit
-          Left = 342
-          Top = 48
+          Left = 341
+          Top = 51
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -800,27 +776,27 @@ object Frmpedvenda: TFrmpedvenda
           ParentBiDiMode = False
           ParentFont = False
           ReadOnly = True
-          TabOrder = 17
+          TabOrder = 16
         end
         object Panel5: TPanel
-          Left = 342
-          Top = 70
+          Left = 341
+          Top = 73
           Width = 70
           Height = 2
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 18
+          TabOrder = 17
         end
         object Pnlremover: TPanel
-          Left = 1199
-          Top = 126
+          Left = 1198
+          Top = 129
           Width = 50
           Height = 50
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
-          TabOrder = 20
+          TabOrder = 19
           object BtnRemover: TSpeedButton
             Left = 0
             Top = 0
@@ -1135,57 +1111,19 @@ object Frmpedvenda: TFrmpedvenda
           end
         end
         object Panel6: TPanel
-          Left = 1022
-          Top = 173
+          Left = 1021
+          Top = 176
           Width = 80
           Height = 2
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 21
+          TabOrder = 20
         end
         object Edit3: TEdit
-          Left = 841
-          Top = 153
+          Left = 840
+          Top = 156
           Width = 77
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 25
-          Text = '0'
-          OnExit = Edit3Exit
-        end
-        object Edit4: TEdit
-          Left = 932
-          Top = 153
-          Width = 70
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 26
-          Text = '0'
-          OnExit = Edit4Exit
-        end
-        object Edit7: TEdit
-          Left = 632
-          Top = 153
-          Width = 100
           Height = 20
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -1199,11 +1137,30 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
           TabOrder = 24
           Text = '0'
-          OnExit = Edit7Exit
+          OnExit = Edit3Exit
         end
-        object Edit8: TEdit
-          Left = 1022
-          Top = 153
+        object Edit4: TEdit
+          Left = 931
+          Top = 156
+          Width = 70
+          Height = 20
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 25
+          Text = '0'
+          OnExit = Edit4Exit
+        end
+        object Edit7: TEdit
+          Left = 631
+          Top = 156
           Width = 100
           Height = 20
           BevelInner = bvNone
@@ -1216,12 +1173,31 @@ object Frmpedvenda: TFrmpedvenda
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 27
+          TabOrder = 23
+          Text = '0'
+          OnExit = Edit7Exit
+        end
+        object Edit8: TEdit
+          Left = 1021
+          Top = 156
+          Width = 100
+          Height = 20
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 26
           Text = '0'
         end
         object Edit9: TEdit
-          Left = 7
-          Top = 153
+          Left = 6
+          Top = 156
           Width = 69
           Height = 20
           BevelInner = bvNone
@@ -1234,28 +1210,28 @@ object Frmpedvenda: TFrmpedvenda
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 22
+          TabOrder = 21
           Text = '0'
           OnExit = Edit9Exit
         end
         object DateTimePicker1: TDateTimePicker
-          Left = 843
-          Top = 28
+          Left = 842
+          Top = 31
           Width = 95
           Height = 23
           Date = 44643.000000000000000000
           Time = 0.980125231479178200
-          TabOrder = 23
+          TabOrder = 22
         end
         object Pnladicionar: TPanel
-          Left = 1141
-          Top = 126
+          Left = 1140
+          Top = 129
           Width = 50
           Height = 50
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
-          TabOrder = 19
+          TabOrder = 18
           object BtnAdicionar: TSpeedButton
             Left = 0
             Top = 0
@@ -1565,13 +1541,13 @@ object Frmpedvenda: TFrmpedvenda
             Layout = blGlyphRight
             ParentFont = False
             OnClick = BtnAdicionarClick
-            ExplicitLeft = 29
-            ExplicitTop = 8
+            ExplicitLeft = 2
+            ExplicitTop = -6
           end
         end
         object Edit10: TEdit
-          Left = 746
-          Top = 153
+          Left = 745
+          Top = 156
           Width = 80
           Height = 20
           BevelInner = bvNone
@@ -1585,13 +1561,23 @@ object Frmpedvenda: TFrmpedvenda
           Font.Style = []
           ParentFont = False
           ReadOnly = True
-          TabOrder = 28
+          TabOrder = 27
           Text = '0'
           OnExit = Edit3Exit
         end
         object Panel2: TPanel
-          Left = 838
-          Top = 173
+          Left = 837
+          Top = 176
+          Width = 80
+          Height = 2
+          BevelOuter = bvNone
+          Color = clMenuHighlight
+          ParentBackground = False
+          TabOrder = 28
+        end
+        object Panel7: TPanel
+          Left = 931
+          Top = 176
           Width = 80
           Height = 2
           BevelOuter = bvNone
@@ -1599,24 +1585,14 @@ object Frmpedvenda: TFrmpedvenda
           ParentBackground = False
           TabOrder = 29
         end
-        object Panel7: TPanel
-          Left = 932
-          Top = 173
-          Width = 80
-          Height = 2
-          BevelOuter = bvNone
-          Color = clMenuHighlight
-          ParentBackground = False
-          TabOrder = 30
-        end
         object DBEdit3: TDBEdit
-          Left = 1112
-          Top = 560
+          Left = 1111
+          Top = 563
           Width = 137
           Height = 23
           DataField = 'SUMVLTOT'
           DataSource = Dm_vendas.Ds_cons_pedidoitem
-          TabOrder = 31
+          TabOrder = 30
         end
       end
     end
@@ -1636,9 +1612,9 @@ object Frmpedvenda: TFrmpedvenda
         object Label1: TLabel
           Left = 16
           Top = 88
-          Width = 157
+          Width = 48
           Height = 21
-          Caption = 'Raz'#227'o Social / Fantasia'
+          Caption = 'Cliente'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -1646,12 +1622,38 @@ object Frmpedvenda: TFrmpedvenda
           Font.Style = []
           ParentFont = False
         end
-        object Label15: TLabel
+        object Label11: TLabel
           Left = 432
-          Top = 88
-          Width = 48
+          Top = 85
+          Width = 59
           Height = 21
-          Caption = 'Cidade'
+          Caption = 'Dt.Inicial'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 648
+          Top = 85
+          Width = 52
+          Height = 21
+          Caption = 'Dt.Final'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 1122
+          Top = 555
+          Width = 119
+          Height = 21
+          Caption = 'Total dos Pedidos'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -1678,10 +1680,10 @@ object Frmpedvenda: TFrmpedvenda
         end
         object DBGrid1: TDBGrid
           Left = 16
-          Top = 152
+          Top = 148
           Width = 1225
-          Height = 449
-          DataSource = Dm_cadastros.Ds_cons_cadastro_Fornecedor
+          Height = 405
+          DataSource = Dm_vendas.Ds_cons_pedido
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
@@ -1689,6 +1691,8 @@ object Frmpedvenda: TFrmpedvenda
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
           Columns = <
             item
               Expanded = False
@@ -1698,7 +1702,20 @@ object Frmpedvenda: TFrmpedvenda
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
-              Title.Caption = 'COD.'
+              Title.Caption = 'NUMPED'
+              Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'codcli'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.CLI.'
+              Width = 60
               Visible = True
             end
             item
@@ -1709,56 +1726,29 @@ object Frmpedvenda: TFrmpedvenda
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
-              Title.Caption = 'RAZ'#195'O SOCIAL / FANTASIA'
-              Width = 300
+              Title.Caption = 'CLIENTE'
+              Width = 505
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'cpfcnpj'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'CPF/CNPJ'
-              Width = 300
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'fone1'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'FONE-1'
-              Width = 129
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'cidade'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'CIDADE'
+              FieldName = 'dtpedido'
+              Title.Caption = 'DT.PEDIDO'
               Width = 100
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'uf'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Title.Caption = 'UF'
-              Width = 170
+              FieldName = 'vltotal'
+              Title.Caption = 'VL.TOTAL'
+              Width = 133
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'descricao'
+              Title.Caption = 'COBRAN'#199'A'
+              Width = 200
               Visible = True
             end>
         end
@@ -1796,36 +1786,67 @@ object Frmpedvenda: TFrmpedvenda
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = SpeedButton1Click
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
         end
-        object Edit2: TEdit
+        object DateTimePicker2: TDateTimePicker
           Left = 432
-          Top = 115
-          Width = 300
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
+          Top = 112
+          Width = 186
+          Height = 23
+          Date = 44645.000000000000000000
+          Time = 0.976213854170055100
+          TabOrder = 4
+        end
+        object DateTimePicker3: TDateTimePicker
+          Left = 648
+          Top = 112
+          Width = 186
+          Height = 23
+          Date = 44645.000000000000000000
+          Time = 0.976263043979997700
+          TabOrder = 5
+        end
+        object DBEdit4: TDBEdit
+          Left = 1103
+          Top = 582
+          Width = 137
+          Height = 23
+          DataField = 'Sumvltot'
+          DataSource = Dm_vendas.Ds_cons_pedido
+          TabOrder = 6
+        end
+      end
+      object Pnlcancpedido: TPanel
+        Left = 16
+        Top = 558
+        Width = 153
+        Height = 41
+        BevelOuter = bvNone
+        Color = 4535772
+        ParentBackground = False
+        TabOrder = 1
+        object Btncancpedido: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 153
+          Height = 41
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = 'Cancelar o Pedido'
+          Enabled = False
+          Flat = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
+          Font.Color = clWindow
+          Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 4
-        end
-        object Panel14: TPanel
-          Left = 432
-          Top = 133
-          Width = 300
-          Height = 2
-          BevelOuter = bvNone
-          Color = clMenuHighlight
-          ParentBackground = False
-          TabOrder = 5
+          OnClick = BtncancpedidoClick
+          ExplicitLeft = 80
+          ExplicitTop = 1
         end
       end
     end
@@ -1971,6 +1992,7 @@ object Frmpedvenda: TFrmpedvenda
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnCadastroClick
       ExplicitLeft = 9
       ExplicitTop = 22
       ExplicitHeight = 41
@@ -2117,6 +2139,7 @@ object Frmpedvenda: TFrmpedvenda
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnPesquisarClick
       ExplicitHeight = 35
     end
   end

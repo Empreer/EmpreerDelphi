@@ -66,6 +66,15 @@ type
     Qry_cons_pedidoitemcodprod: TIntegerField;
     Qry_pedidocodvend: TIntegerField;
     Qry_cons_pedidoitemSUMVLTOT: TAggregateField;
+    Qry_cons_pedido: TFDQuery;
+    Ds_cons_pedido: TDataSource;
+    Qry_cons_pedidoid: TIntegerField;
+    Qry_cons_pedidodtpedido: TDateField;
+    Qry_cons_pedidocodcli: TIntegerField;
+    Qry_cons_pedidonome: TWideStringField;
+    Qry_cons_pedidovltotal: TFMTBCDField;
+    Qry_cons_pedidodescricao: TWideStringField;
+    Qry_cons_pedidoSumvltot: TAggregateField;
   private
     { Private declarations }
   public

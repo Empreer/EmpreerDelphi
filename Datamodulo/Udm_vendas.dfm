@@ -83,8 +83,8 @@ object Dm_vendas: TDm_vendas
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from pedidoitem')
-    Left = 144
-    Top = 32
+    Left = 32
+    Top = 160
     object Qry_pedidoitemid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -130,8 +130,8 @@ object Dm_vendas: TDm_vendas
   end
   object Ds_pedidoitem: TDataSource
     DataSet = Qry_pedidoitem
-    Left = 144
-    Top = 96
+    Left = 32
+    Top = 224
   end
   object Qry_vendedor: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -272,7 +272,7 @@ object Dm_vendas: TDm_vendas
       'from produtos p, pedidoitem i, pedidos c'
       'where p.id = i.produtoid'
       'and c.id = i.pedidoid')
-    Left = 48
+    Left = 144
     Top = 160
     object Qry_cons_pedidoitemid: TIntegerField
       FieldName = 'id'
@@ -341,7 +341,65 @@ object Dm_vendas: TDm_vendas
   end
   object Ds_cons_pedidoitem: TDataSource
     DataSet = Qry_cons_pedidoitem
-    Left = 48
+    Left = 144
     Top = 224
+  end
+  object Qry_cons_pedido: TFDQuery
+    AggregatesActive = True
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      
+        'select p.id,p.dtpedido,c.id as codcli, c.nome, p.vltotal,d.descr' +
+        'icao  '
+      'from pedidos p, users c, cobrancas d'
+      'where c.id = p.userid '
+      'and d.id = p.cobid ')
+    Left = 136
+    Top = 32
+    object Qry_cons_pedidoid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cons_pedidodtpedido: TDateField
+      FieldName = 'dtpedido'
+      Origin = 'dtpedido'
+    end
+    object Qry_cons_pedidocodcli: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'codcli'
+      Origin = 'codcli'
+    end
+    object Qry_cons_pedidonome: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 8190
+    end
+    object Qry_cons_pedidovltotal: TFMTBCDField
+      FieldName = 'vltotal'
+      Origin = 'vltotal'
+      DisplayFormat = '#,##0.00'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cons_pedidodescricao: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cons_pedidoSumvltot: TAggregateField
+      FieldName = 'Sumvltot'
+      Active = True
+      DisplayName = ''
+      DisplayFormat = '#,##0.00'
+      Expression = 'Sum(vltotal)'
+    end
+  end
+  object Ds_cons_pedido: TDataSource
+    DataSet = Qry_cons_pedido
+    Left = 136
+    Top = 88
   end
 end

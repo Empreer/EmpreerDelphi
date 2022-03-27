@@ -101,6 +101,7 @@ if MessageDlg('Deseja Realmente Aplicar o custo das formulas para o custo atual 
     while not Dm_Gerencial.Qry_custoprod.eof do
         begin
           Edit4.Text:= Dm_gerencial.qry_custoprodcustocalc.asstring;
+          Edit4.Text := StringReplace(Edit4.Text, '.','',[]);
           Edit4.Text := StringReplace(Edit4.Text, ',','.',[]);
           Dm_gerencial.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
           Dm_gerencial.SQLaux.SQL.Clear;
@@ -116,6 +117,7 @@ end;
 
 procedure TFrmcustos.BtncustoindClick(Sender: TObject);
 begin
+ Edit4.Text := StringReplace(Edit4.Text, '.','',[]);
  Edit4.Text := StringReplace(Edit4.Text, ',','.',[]);
 
 if MessageDlg('Deseja Realmente Aplicar o Custo Calculado ao Custo Atual ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then

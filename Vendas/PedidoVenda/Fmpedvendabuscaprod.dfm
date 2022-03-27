@@ -12,6 +12,7 @@ object Frmpedvendabuscaprod: TFrmpedvendabuscaprod
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 15
   object Panel4: TPanel
@@ -180,7 +181,6 @@ object Frmpedvendabuscaprod: TFrmpedvendabuscaprod
     ParentBackground = False
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 8
     object Imlogo: TImage
       Left = -4
       Top = 3

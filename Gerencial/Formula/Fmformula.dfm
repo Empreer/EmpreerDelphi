@@ -12,7 +12,6 @@ object Frmformula: TFrmformula
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
-  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
@@ -387,6 +386,7 @@ object Frmformula: TFrmformula
           CharCase = ecUpperCase
           DataField = 'codprodacab'
           DataSource = Dm_gerencial.Ds_cadastro_Formula
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13

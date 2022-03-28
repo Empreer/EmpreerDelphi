@@ -77,7 +77,6 @@ type
     procedure BtnnovoClick(Sender: TObject);
     procedure BtnAdicionarClick(Sender: TObject);
     procedure Edit2Exit(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtncancelarClick(Sender: TObject);
   private
@@ -137,7 +136,7 @@ ShowMessage('Favor Escolher a Filial !')
 
    Edit7.Text:='';
    Edit6.text:='';
-   Edit2.Text:='';
+   Edit2.Text:='0';
 
    BtnnovoClick(self);
 
@@ -163,6 +162,8 @@ begin
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
 
+  Dbedit1.Text:='0';
+  Dbedit5.Text:='0';
   Edit2.Text:='';
   Edit3.Text:='';
   Edit4.Text:='';
@@ -190,10 +191,8 @@ end;
 procedure TFrmformula.BtnnovoClick(Sender: TObject);
 var Proxnum : integer;
 begin
-  Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
-                                                               // Ativa o botao Salvar
+  Btnnovo.Enabled := False;                                             //Desativa o Botao Novo                                                             // Ativa o botao Salvar
   Btncancelar.Enabled :=True;
-  Dbedit1.SetFocus;
 
   Proxnum :=0;
   Dm_gerencial.Qry_cadastro_Formula.Cancel();
@@ -223,6 +222,12 @@ begin
   BtnAdicionar.Enabled:=true;
   BtnRemover.Enabled:=true;
 
+  Edit2.Text:='0';
+  Dbedit5.Text:='0';
+  Dbedit1.Text:='0';
+
+
+
 end;
 
 procedure TFrmformula.BtnPesquisarClick(Sender: TObject);
@@ -239,6 +244,10 @@ end;
 procedure TFrmformula.DBEdit1Exit(Sender: TObject);
 var codprodacab:string;
 begin
+
+     if dbedit1.Text= '' then
+     dbedit1.Text := '0';
+
 
      with Dm_cadastros.Qry_cadastro_Produto do
  begin
@@ -280,6 +289,10 @@ end;
 
 procedure TFrmformula.DBEdit5Exit(Sender: TObject);
 begin
+
+ if dbedit5.Text = '' then
+    dbedit5.Text := '0';
+
      with Dm_cadastros.Qry_cadastro_Mp do
  begin
       CLOSE;
@@ -304,16 +317,22 @@ var vlfator:double;
 var result:double;
 
 begin
+    if Edit2.Text = '' then begin
+    Edit2.Text := '1';
+    end;
+
+    if Edit5.Text = '' then begin
+    Edit5.Text := '1';
+    end;
+
+
     vl1 := strtofloat(Edit2.Text);
     vlfator :=  strtofloat(Edit5.Text);
     result := vl1/vlfator;
     Dbedit8.Text := floattostr(result);
 end;
 
-procedure TFrmformula.FormActivate(Sender: TObject);
-begin
-DbEdit1.setfocus;
-end;
+
 
 procedure TFrmformula.FormCreate(Sender: TObject);
 begin

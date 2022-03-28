@@ -28,6 +28,8 @@ object Dm_gerencial: TDm_gerencial
       Alignment = taLeftJustify
       FieldName = 'qtmp'
       Origin = 'qtmp'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
       Precision = 64
       Size = 0
     end
@@ -76,6 +78,8 @@ object Dm_gerencial: TDm_gerencial
     object Qry_cons_Formulaqtmp: TFMTBCDField
       FieldName = 'qtmp'
       Origin = 'qtmp'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
       Precision = 64
       Size = 0
     end
@@ -83,6 +87,8 @@ object Dm_gerencial: TDm_gerencial
       AutoGenerateValue = arDefault
       FieldName = 'custo'
       Origin = 'custo'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
       Precision = 64
       Size = 0
     end
@@ -108,6 +114,115 @@ object Dm_gerencial: TDm_gerencial
   object Ds_cons_Formula: TDataSource
     DataSet = Qry_cons_Formula
     Left = 248
+    Top = 96
+  end
+  object Qry_custoprod: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      
+        'select p.id, p.descricao, p.custo, sum(f.qtmp * m.custo) as cust' +
+        'ocalc  '
+      'from formprod f, produtos p, produtomps m'
+      'where f.codprodacab = p.id '
+      'and f.codprodmp = m.id '
+      'group by '
+      'p.id, p.descricao, p.custo')
+    Left = 376
+    Top = 32
+    object Qry_custoprodid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_custoproddescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_custoprodcusto: TFMTBCDField
+      FieldName = 'custo'
+      Origin = 'custo'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_custoprodcustocalc: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'custocalc'
+      Origin = 'custocalc'
+      ReadOnly = True
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_custoprod: TDataSource
+    DataSet = Qry_custoprod
+    Left = 376
+    Top = 96
+  end
+  object Sqlaux: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    Left = 584
+    Top = 32
+    object IntegerField1: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object WideStringField1: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object FMTBCDField1: TFMTBCDField
+      FieldName = 'custo'
+      Origin = 'custo'
+      Precision = 64
+      Size = 0
+    end
+    object FMTBCDField2: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'custocalc'
+      Origin = 'custocalc'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Qry_custoprodall: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select p.id, p.descricao, p.custo'
+      'from produtos p')
+    Left = 480
+    Top = 32
+    object Qry_custoprodallid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_custoprodalldescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_custoprodallcusto: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'custo'
+      Origin = 'custo'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_custoprodall: TDataSource
+    DataSet = Qry_custoprodall
+    Left = 480
     Top = 96
   end
 end

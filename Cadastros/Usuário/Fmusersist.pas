@@ -49,6 +49,7 @@ type
     pnlistabr: TPanel;
     Label7: TLabel;
     DBLookupComboBox1: TDBLookupComboBox;
+    CheckBox1: TCheckBox;
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -225,6 +226,14 @@ else
   begin
    Dm_cadastros.Qry_cadastro_Useradmcodfilial.asinteger := DBLookupComboBox1.KeyValue;
 
+
+   if CheckBox1.Checked = true then begin    //tratamento usuário vendedor.
+   Dm_cadastros.Qry_cadastro_Useradmvendedor.asinteger := 1;
+   end
+   else
+   Dm_cadastros.Qry_cadastro_Useradmvendedor.asinteger := 0;
+
+
    Dm_cadastros.Qry_cadastro_Useradm.Post();
    Dm_cadastros.Qry_cadastro_Useradm.cancel;
    Dm_cadastros.Qry_cadastro_Useradm.close;
@@ -255,6 +264,13 @@ with Dm_cadastros.Qry_cadastro_Useradm do
       Open;
 
     end;
+
+       if Dm_cadastros.Qry_cons_cadastro_Useradmvendedor.asinteger = 1 then begin
+         CheckBox1.Checked:= true;
+       end
+       else
+          CheckBox1.Checked:= false;
+
 
        Btneditar.Enabled:=true;
        Btnnovo.Enabled:=false;

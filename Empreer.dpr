@@ -24,7 +24,15 @@ uses
   Udm_cadastros in 'Datamodulo\Udm_cadastros.pas' {Dm_cadastros: TDataModule},
   Udm_gerencial in 'Datamodulo\Udm_gerencial.pas' {Dm_gerencial: TDataModule},
   Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos},
-  UFrmcadclibuscacidade in 'Cadastros\Cliente\UFrmcadclibuscacidade.pas' {Frmcadclibuscacidade};
+  Fmprecifica in 'Fmprecifica.pas' {FrmPrecifica},
+  Fmpreco in 'Precificacao\Precificacao\Fmpreco.pas' {Frmpreco},
+  Udm_precificacao in 'Datamodulo\Udm_precificacao.pas' {Dm_precificacao: TDataModule},
+  Fmvendas in 'Fmvendas.pas' {FrmVendas},
+  Fmpedvenda in 'Vendas\PedidoVenda\Fmpedvenda.pas' {Frmpedvenda},
+  Udm_vendas in 'Datamodulo\Udm_vendas.pas' {Dm_vendas: TDataModule},
+  Fmpedvendabuscacli in 'Vendas\PedidoVenda\Fmpedvendabuscacli.pas' {Frmpedvendabuscacli},
+  Fmpedvendabuscaprod in 'Vendas\PedidoVenda\Fmpedvendabuscaprod.pas' {Frmpedvendabuscaprod},
+  Udm_financeiro in 'Datamodulo\Udm_financeiro.pas' {Dm_Financeiro: TDataModule};
 
 {$R *.res}
 
@@ -32,9 +40,11 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tudm_conexao, udm_conexao);
+  Application.CreateForm(TDm_Financeiro, Dm_Financeiro);
   Application.CreateForm(TDm_cadastros, Dm_cadastros);
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
+  Application.CreateForm(TDm_precificacao, Dm_precificacao);
+  Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmcustos, Frmcustos);
   Application.Run;
 end.

@@ -9,9 +9,11 @@ uses
 type
   TFrmentradas = class(TForm)
     pnfundo: TPanel;
-    pncliente: TPanel;
+    Pncompra: TPanel;
     SpeedButton2: TSpeedButton;
-    pnllinha: TPanel;
+    Pnlcompra: TPanel;
+    procedure SpeedButton2MouseEnter(Sender: TObject);
+    procedure SpeedButton2MouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,5 +26,15 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmentradas.SpeedButton2MouseEnter(Sender: TObject);
+begin
+pnlcompra.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmentradas.SpeedButton2MouseLeave(Sender: TObject);
+begin
+pnlcompra.color:=clWhite;
+end;
 
 end.

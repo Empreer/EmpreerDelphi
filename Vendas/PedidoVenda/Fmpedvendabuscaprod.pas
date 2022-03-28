@@ -1,4 +1,4 @@
-unit Fmformulabuscaproduto;
+unit Fmpedvendabuscaprod;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
-  TFrmformulabuscaproduto = class(TForm)
+  TFrmpedvendabuscaprod = class(TForm)
     Panel4: TPanel;
     Label1: TLabel;
     Edit1: TEdit;
@@ -22,15 +22,14 @@ type
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
     procedure SpeedButton1Click(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
-    procedure BtnminimizarClick(Sender: TObject);
-    procedure BtnFecharClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure BtnFecharClick(Sender: TObject);
+    procedure BtnminimizarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,75 +37,75 @@ type
   end;
 
 var
-  Frmformulabuscaproduto: TFrmformulabuscaproduto;
+  Frmpedvendabuscaprod: TFrmpedvendabuscaprod;
 
 implementation
 
 {$R *.dfm}
 
-uses Fmformula, Udm_cadastros, Udm_gerencial, Uudm_conexao;
+uses Udm_cadastros, Udm_vendas, Uudm_conexao, Fmpedvenda;
 
-procedure TFrmformulabuscaproduto.BtnFecharClick(Sender: TObject);
+procedure TFrmpedvendabuscaprod.BtnFecharClick(Sender: TObject);
 begin
 close;
 end;
 
-procedure TFrmformulabuscaproduto.BtnminimizarClick(Sender: TObject);
+procedure TFrmpedvendabuscaprod.BtnminimizarClick(Sender: TObject);
 begin
-Frmformulabuscaproduto.WindowState:=wsminimized;
+Frmpedvendabuscaprod.WindowState:=wsminimized;
 end;
 
-procedure TFrmformulabuscaproduto.DBGrid1DblClick(Sender: TObject);
+procedure TFrmpedvendabuscaprod.DBGrid1DblClick(Sender: TObject);
 begin
-Frmformula.dbedit1.text :=  Dm_cadastros.Qry_cadastro_Produtoid.AsString;
-Frmformula.DBEdit1Exit(self);
-Frmformula.dbedit1.Enabled:=false;
+Frmpedvenda.Edit9.text :=  Dm_vendas.Qry_produtoid.AsString;
+Frmpedvenda.Edit9Exit(self);
 close;
 end;
 
-procedure TFrmformulabuscaproduto.FormActivate(Sender: TObject);
+procedure TFrmpedvendabuscaprod.FormActivate(Sender: TObject);
 begin
-Edit1.SetFocus;
+edit1.SetFocus;
 end;
 
-procedure TFrmformulabuscaproduto.FormCreate(Sender: TObject);
-begin
-SpeedButton1Click(self);
-end;
-
-procedure TFrmformulabuscaproduto.ImlogoMouseDown(Sender: TObject;
+procedure TFrmpedvendabuscaprod.ImlogoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
- const
+begin
+  const
    sc_DragMove = $f012;
 begin
   ReleaseCapture;
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
+end;
 
-
-procedure TFrmformulabuscaproduto.PnltopoMouseDown(Sender: TObject;
+procedure TFrmpedvendabuscaprod.PnltopoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
- const
+begin
+  const
    sc_DragMove = $f012;
 begin
   ReleaseCapture;
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
+end;
 
-
-procedure TFrmformulabuscaproduto.SpeedButton1Click(Sender: TObject);
+procedure TFrmpedvendabuscaprod.SpeedButton1Click(Sender: TObject);
 begin
-with Dm_cadastros.Qry_cadastro_Produto do
+ with Dm_vendas.Qry_produto do
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT * FROM PRODUTOS');
-      Sql.Add('WHERE ID >=0');
+      Sql.Add('select p.id, p.descricao, p.unidade,u.preco, u.percdesc');
+      Sql.Add('from produtos p, precos u');
+      Sql.Add('where p.id = u.codprod ');
+      Sql.Add('and p.CODFILIAL = :CODFILIAL');
 
       if Edit1.Text <> '' then
-        Sql.Add('And DESCRICAO Like ''%'+ Edit1.Text + '%'' ');
+        Sql.Add('And p.descricao Like ''%'+ Edit1.Text + '%'' ');
 
-      Sql.Add('ORDER BY DESCRICAO');
+      Sql.Add('ORDER BY p.descricao');
+
+       Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
 
       Open;
 

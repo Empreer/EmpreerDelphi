@@ -1,8 +1,8 @@
-object Frmformulabuscaproduto: TFrmformulabuscaproduto
+object Frmpedvendabuscaprod: TFrmpedvendabuscaprod
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'Frmformulabuscaproduto'
+  Caption = 'Frmpedvendabuscaprod'
   ClientHeight = 650
   ClientWidth = 1280
   Color = clBtnFace
@@ -13,7 +13,6 @@ object Frmformulabuscaproduto: TFrmformulabuscaproduto
   Font.Style = []
   Position = poDesktopCenter
   OnActivate = FormActivate
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
   object Panel4: TPanel
@@ -61,7 +60,7 @@ object Frmformulabuscaproduto: TFrmformulabuscaproduto
       Top = 119
       Width = 1225
       Height = 449
-      DataSource = Dm_cadastros.Ds_cadastro_Produto
+      DataSource = Dm_vendas.Ds_produto
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
@@ -74,60 +73,60 @@ object Frmformulabuscaproduto: TFrmformulabuscaproduto
         item
           Expanded = False
           FieldName = 'id'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
           Title.Caption = 'C'#211'D.'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'descricao'
-          Title.Caption = 'DESCRI'#199#195'O'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 300
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Title.Caption = 'PRODUTO'
+          Width = 400
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'unidade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Title.Caption = 'UN.'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 71
+          Width = 100
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'codfilial'
-          Title.Caption = 'CODFILIAL'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 83
+          FieldName = 'preco'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = 'PRECO'
+          Width = 150
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'divreceita'
-          Title.Caption = 'DIV.RECEITA'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 98
+          FieldName = 'percdesc'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = '%DESC.'
+          Width = 150
           Visible = True
         end>
     end

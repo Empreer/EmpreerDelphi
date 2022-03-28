@@ -21,7 +21,7 @@ object Frmusersist: TFrmusersist
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -319,6 +319,20 @@ object Frmusersist: TFrmusersist
           ListField = 'nome'
           ListSource = udm_conexao.DataSource1
           TabOrder = 10
+        end
+        object CheckBox1: TCheckBox
+          Left = 832
+          Top = 158
+          Width = 161
+          Height = 33
+          Caption = 'Vendedor'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -19
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 11
         end
       end
     end

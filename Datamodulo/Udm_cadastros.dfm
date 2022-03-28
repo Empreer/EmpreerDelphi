@@ -744,6 +744,12 @@ object Dm_cadastros: TDm_cadastros
       Precision = 64
       Size = 0
     end
+    object Qry_cadastro_Useradmvendedor: TWideStringField
+      FieldName = 'vendedor'
+      Origin = 'vendedor'
+      FixedChar = True
+      Size = 1
+    end
   end
   object Ds_cadastro_Useradm: TDataSource
     DataSet = Qry_cadastro_Useradm
@@ -777,6 +783,12 @@ object Dm_cadastros: TDm_cadastros
       Origin = 'codfilial'
       Precision = 64
       Size = 0
+    end
+    object Qry_cons_cadastro_Useradmvendedor: TWideStringField
+      FieldName = 'vendedor'
+      Origin = 'vendedor'
+      FixedChar = True
+      Size = 1
     end
   end
   object Ds_cons_cadastro_Useradm: TDataSource
@@ -837,6 +849,51 @@ object Dm_cadastros: TDm_cadastros
   object Ds_cons_cadastro_Cob: TDataSource
     DataSet = Qry_cons_cadastro_Cob
     Left = 200
+    Top = 488
+  end
+  object Qry_cadastro_preco: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from precos')
+    Left = 328
+    Top = 424
+    object Qry_cadastro_precoid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_precocodprod: TIntegerField
+      FieldName = 'codprod'
+      Origin = 'codprod'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_precocodfilial: TIntegerField
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cadastro_precomargemlucro: TFMTBCDField
+      FieldName = 'margemlucro'
+      Origin = 'margemlucro'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cadastro_precopreco: TFMTBCDField
+      FieldName = 'preco'
+      Origin = 'preco'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cadastro_precopercdesc: TFMTBCDField
+      FieldName = 'percdesc'
+      Origin = 'percdesc'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_cadastro_preco: TDataSource
+    DataSet = Qry_cadastro_preco
+    Left = 328
     Top = 488
   end
 end

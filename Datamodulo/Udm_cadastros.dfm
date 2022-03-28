@@ -1,7 +1,7 @@
 object Dm_cadastros: TDm_cadastros
-  Height = 701
-  Width = 1009
-  PixelsPerInch = 96
+  Height = 606
+  Width = 979
+  PixelsPerInch = 120
   object Qry_cadastro_Cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
@@ -22,6 +22,7 @@ object Dm_cadastros: TDm_cadastros
     object Qry_cadastro_Clientefone1: TWideStringField
       FieldName = 'fone1'
       Origin = 'fone1'
+      EditMask = '!\(99\)000-0000;1;_'
       Size = 8190
     end
     object Qry_cadastro_Clientefone2: TWideStringField
@@ -59,16 +60,6 @@ object Dm_cadastros: TDm_cadastros
       Origin = 'numero'
       Size = 8190
     end
-    object Qry_cadastro_Clientecidade: TWideStringField
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 8190
-    end
-    object Qry_cadastro_Clientecoduf: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'coduf'
-      Origin = 'coduf'
-    end
     object Qry_cadastro_Clientecomplemento: TWideStringField
       FieldName = 'complemento'
       Origin = 'complemento'
@@ -77,6 +68,7 @@ object Dm_cadastros: TDm_cadastros
     object Qry_cadastro_Clientecep: TWideStringField
       FieldName = 'cep'
       Origin = 'cep'
+      EditMask = '00000\-999;1;_'
       Size = 8190
     end
     object Qry_cadastro_Clientecodfilial: TIntegerField
@@ -88,6 +80,10 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'cpfcnpj'
       Origin = 'cpfcnpj'
       Size = 8190
+    end
+    object Qry_cadastro_Clientecodcidade: TIntegerField
+      FieldName = 'codcidade'
+      Origin = 'codcidade'
     end
   end
   object Ds_cadastro_Cliente: TDataSource
@@ -152,16 +148,6 @@ object Dm_cadastros: TDm_cadastros
       Origin = 'numero'
       Size = 8190
     end
-    object WideStringField10: TWideStringField
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 8190
-    end
-    object IntegerField2: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'coduf'
-      Origin = 'coduf'
-    end
     object WideStringField11: TWideStringField
       FieldName = 'complemento'
       Origin = 'complemento'
@@ -181,6 +167,10 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'cpfcnpj'
       Origin = 'cpfcnpj'
       Size = 8190
+    end
+    object Qry_cons_cadastro_Clientecodcidade: TIntegerField
+      FieldName = 'codcidade'
+      Origin = 'codcidade'
     end
   end
   object ds_cons_cadastro_Cliente: TDataSource

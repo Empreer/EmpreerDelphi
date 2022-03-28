@@ -23,7 +23,8 @@ uses
   Fmformulabuscaproduto in 'Gerencial\Formula\Fmformulabuscaproduto.pas' {Frmformulabuscaproduto},
   Udm_cadastros in 'Datamodulo\Udm_cadastros.pas' {Dm_cadastros: TDataModule},
   Udm_gerencial in 'Datamodulo\Udm_gerencial.pas' {Dm_gerencial: TDataModule},
-  Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos};
+  Fmcustos in 'Gerencial\Custo\Fmcustos.pas' {Frmcustos},
+  UFrmcadclibuscacidade in 'Cadastros\Cliente\UFrmcadclibuscacidade.pas' {Frmcadclibuscacidade};
 
 {$R *.res}
 

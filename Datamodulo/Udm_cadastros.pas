@@ -22,8 +22,6 @@ type
     Qry_cadastro_Clienteendereco: TWideStringField;
     Qry_cadastro_Clientebairro: TWideStringField;
     Qry_cadastro_Clientenumero: TWideStringField;
-    Qry_cadastro_Clientecidade: TWideStringField;
-    Qry_cadastro_Clientecoduf: TIntegerField;
     Qry_cadastro_Clientecomplemento: TWideStringField;
     Qry_cadastro_Clientecep: TWideStringField;
     Qry_cadastro_Clientecodfilial: TIntegerField;
@@ -39,8 +37,6 @@ type
     WideStringField7: TWideStringField;
     WideStringField8: TWideStringField;
     WideStringField9: TWideStringField;
-    WideStringField10: TWideStringField;
-    IntegerField2: TIntegerField;
     WideStringField11: TWideStringField;
     WideStringField12: TWideStringField;
     IntegerField3: TIntegerField;
@@ -162,6 +158,8 @@ type
     Qry_cons_cadastro_Cobdescricao: TWideStringField;
     Qry_cons_cadastro_Cobdias: TIntegerField;
     Qry_cadastro_Produtodivreceita: TIntegerField;
+    Qry_cadastro_Clientecodcidade: TIntegerField;
+    Qry_cons_cadastro_Clientecodcidade: TIntegerField;
   private
     { Private declarations }
   public

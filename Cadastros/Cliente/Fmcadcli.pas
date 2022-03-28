@@ -53,11 +53,6 @@ type
     Label10: TLabel;
     Panel8: TPanel;
     DBEdit10: TDBEdit;
-    Label11: TLabel;
-    Panel9: TPanel;
-    DBEdit11: TDBEdit;
-    DBLookupComboBox2: TDBLookupComboBox;
-    Label12: TLabel;
     Label13: TLabel;
     Panel10: TPanel;
     DBEdit12: TDBEdit;
@@ -84,6 +79,16 @@ type
     Label16: TLabel;
     Panel15: TPanel;
     DBEdit2: TDBEdit;
+    Edit4: TEdit;
+    Label12: TLabel;
+    Edit3: TEdit;
+    Label11: TLabel;
+    DBEdit14: TDBEdit;
+    Label17: TLabel;
+    SpeedButton2: TSpeedButton;
+    Panel16: TPanel;
+    Panel17: TPanel;
+    Panel9: TPanel;
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -96,6 +101,9 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure BtnnovoClick(Sender: TObject);
     procedure BtnsalvarClick(Sender: TObject);
+    procedure BtneditarClick(Sender: TObject);
+    procedure BtncancelarClick(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
     function Valida_Campos : Boolean;
@@ -111,23 +119,53 @@ implementation
 
 {$R *.dfm}
 
-uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal;
+uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal, UFrmcadclibuscacidade;
+
+procedure TFrmcadcli.BtncancelarClick(Sender: TObject);
+begin
+  dm_cadastros.Qry_cadastro_Cliente.cancel;
+
+  Btnnovo.Enabled := True;                                 // Habilita  o botão novo
+  BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
+  BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
+  BtnEditar.Enabled := False;
+  SpeedButton2.Enabled := False;
+
+
+end;
+
+procedure TFrmcadcli.BtneditarClick(Sender: TObject);
+begin
+  Btneditar.Enabled:=false;
+  Btnsalvar.Enabled:=true;
+  SpeedButton2.Enabled := True;
+
+
+  dm_cadastros.Qry_cadastro_Cliente.edit;
+end;
 
 procedure TFrmcadcli.BtnFecharClick(Sender: TObject);
 begin
-Close;
+  Close;
 end;
 
 procedure TFrmcadcli.BtnminimizarClick(Sender: TObject);
 begin
-Frmcadcli.WindowState:=wsminimized;
+  Frmcadcli.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadcli.BtnnovoClick(Sender: TObject);
 begin
-    dm_cadastros.Qry_cadastro_Cliente.Open();
-    Dm_cadastros.Qry_cadastro_Cliente.Append;
-    Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
+  Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
+  BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
+  BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
+  Btncancelar.Enabled :=True;
+  SpeedButton2.Enabled := True;
+
+
+  dm_cadastros.Qry_cadastro_Cliente.Open();
+  Dm_cadastros.Qry_cadastro_Cliente.Append;
+  Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
 end;
 
 procedure TFrmcadcli.FormShow(Sender: TObject);
@@ -181,6 +219,12 @@ begin
     end;
 end;
 
+procedure TFrmcadcli.SpeedButton2Click(Sender: TObject);
+begin
+Frmcadclibuscacidade := TFrmcadclibuscacidade.Create(Self);                          //Botao de login chama o formulario principal
+Frmcadclibuscacidade.Show;
+end;
+
 function TFrmcadcli.Valida_Campos: Boolean;
 begin
   if Dm_cadastros.Qry_cadastro_Clientenome.AsString =  '' then
@@ -189,16 +233,33 @@ begin
     Dbedit1.SetFocus;
     exit(False);
   end;
+
+  if Dm_cadastros.Qry_cadastro_Clientecpfcnpj.AsString =  '' then
+  begin
+    MessageDlg('Cpf/Cnpj Inválido!', mtWarning, [mbok], 0);
+    Dbedit2.SetFocus;
+    exit(False);
+  end;
+
+  if DBEdit2.Text =  '' then
+  begin
+    MessageDlg('Telefone Inválido!', mtWarning, [mbok], 0);
+    DBEdit4.SetFocus;
+    exit(False);
+  end;
+
+
+
 end;
 
 procedure TFrmcadcli.BtnCadastroClick(Sender: TObject);
 begin
-Pagecontrol1.ActivePageIndex:= 0;
+  Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadcli.BtnPesquisarClick(Sender: TObject);
 begin
-Pagecontrol1.ActivePageIndex:= 1;
+   Pagecontrol1.ActivePageIndex:= 1;
 end;
 
 procedure TFrmcadcli.BtnsalvarClick(Sender: TObject);
@@ -207,6 +268,15 @@ begin
   begin
 
     Dm_cadastros.Qry_cadastro_Cliente.Post;
+
+    Btnnovo.Enabled := True;                               // Ativa o Botão Novo
+    BtnSalvar.Enabled := False;                            // Desativa o Botão Salvar
+    BtnEditar.Enabled := False;                            // Desativa o Botão Editar
+    BtnCancelar.Enabled := False;
+    SpeedButton2.Enabled := False;
+
+
+    Showmessage('Dados Salvos com Sucesso !');
   end;
 end;
 

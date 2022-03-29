@@ -98,7 +98,7 @@ begin
     Close;
     Sql.Clear;
     Sql.Add('select nextval('''+Sequence+''')as proximo');
-    showmessage(sql.Text);
+    //showmessage(sql.Text);
     Open;
 
     Result := FieldByName('proximo').AsInteger;

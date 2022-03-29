@@ -32,7 +32,8 @@ uses
   Udm_vendas in 'Datamodulo\Udm_vendas.pas' {Dm_vendas: TDataModule},
   Fmpedvendabuscacli in 'Vendas\PedidoVenda\Fmpedvendabuscacli.pas' {Frmpedvendabuscacli},
   Fmpedvendabuscaprod in 'Vendas\PedidoVenda\Fmpedvendabuscaprod.pas' {Frmpedvendabuscaprod},
-  Udm_financeiro in 'Datamodulo\Udm_financeiro.pas' {Dm_Financeiro: TDataModule};
+  Udm_financeiro in 'Datamodulo\Udm_financeiro.pas' {Dm_Financeiro: TDataModule},
+  UFrmcadclibuscacidade in 'Cadastros\Cliente\UFrmcadclibuscacidade.pas' {Frmcadclibuscacidade};
 
 {$R *.res}
 
@@ -46,5 +47,6 @@ begin
   Application.CreateForm(TDm_precificacao, Dm_precificacao);
   Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TFrmcadclibuscacidade, Frmcadclibuscacidade);
   Application.Run;
 end.

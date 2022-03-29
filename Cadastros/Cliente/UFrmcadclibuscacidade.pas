@@ -27,6 +27,12 @@ type
     SpeedButton2: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure BtnFecharClick(Sender: TObject);
+    procedure BtnminimizarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,13 +48,41 @@ implementation
 
 uses Fmcadcli, Udm_cadastros;
 
+procedure TFrmcadclibuscacidade.BtnFecharClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFrmcadclibuscacidade.BtnminimizarClick(Sender: TObject);
+begin
+Frmcadclibuscacidade.WindowState:=wsminimized;
+end;
+
 procedure TFrmcadclibuscacidade.DBGrid1DblClick(Sender: TObject);
 begin
-Frmcadcli.dbedit14.text :=  Dm_cadastros.Qry_cons_cidadeid.AsString;
-Frmcadcli.edit3.text :=  Dm_cadastros.Qry_cons_cidadecidade.AsString;
-Frmcadcli.edit4.text :=  Dm_cadastros.Qry_cons_cidadeuf.AsString;
+Frmcadcli.Dbedit14.text:= Dm_cadastros.Qry_cons_cidadeid.AsString;
+Frmcadcli.DBEdit14Exit(self);
+Frmcadcli.DBEdit12.setfocus;
 close;
 
+end;
+
+procedure TFrmcadclibuscacidade.ImlogoMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+ const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
+procedure TFrmcadclibuscacidade.PnltopoMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+ const
+   sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
 procedure TFrmcadclibuscacidade.SpeedButton1Click(Sender: TObject);

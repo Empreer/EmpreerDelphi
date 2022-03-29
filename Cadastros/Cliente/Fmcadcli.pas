@@ -93,7 +93,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -104,6 +103,9 @@ type
     procedure BtneditarClick(Sender: TObject);
     procedure BtncancelarClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure DBEdit14Exit(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
     function Valida_Campos : Boolean;
@@ -124,12 +126,17 @@ uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal, UFrmcadclibuscacidade;
 procedure TFrmcadcli.BtncancelarClick(Sender: TObject);
 begin
   dm_cadastros.Qry_cadastro_Cliente.cancel;
+  dm_cadastros.Qry_cadastro_Cliente.close;
+  Dm_cadastros.Qry_cons_uf.close;
 
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
   BtnEditar.Enabled := False;
   SpeedButton2.Enabled := False;
+
+  Edit3.Text:='';
+  Edit4.Text:='';
 
 
 end;
@@ -166,16 +173,15 @@ begin
   dm_cadastros.Qry_cadastro_Cliente.Open();
   Dm_cadastros.Qry_cadastro_Cliente.Append;
   Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
+
+  dbedit3.SetFocus;
 end;
 
-procedure TFrmcadcli.FormShow(Sender: TObject);
-var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
+procedure TFrmcadcli.FormCreate(Sender: TObject);
 begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
+DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
+Dm_cadastros.Qry_cadastro_cliente.close();
+Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadcli.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -203,14 +209,16 @@ begin
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('SELECT * FROM USERS');
-      Sql.Add('WHERE CODFILIAL = :CODFILIAL');
+      Sql.Add('SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.ENDERECO,F.BAIRRO,F.NUMERO,C.CIDADE,C.ID as UFID,C.UF,F.CEP,F.CODFILIAL');
+      Sql.Add('FROM USERS F, CIDADES C');
+      Sql.Add('WHERE F.CODFILIAL = :CODFILIAL');
+      Sql.Add('AND F.CODCIDADE = C.ID');
 
       if Edit1.Text <> '' then
-        Sql.Add('And nome LIke ''%'+ Edit1.Text + '%'' ');
+        Sql.Add('And F.nome LIke ''%'+ Edit1.Text + '%'' ');
 
       if Edit2.Text <> '' then
-        Sql.Add('And cidade LIke ''%'+ Edit2.Text + '%'' ');
+        Sql.Add('And C.cidade LIke ''%'+ Edit2.Text + '%'' ');
 
       Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
 
@@ -227,21 +235,23 @@ end;
 
 function TFrmcadcli.Valida_Campos: Boolean;
 begin
-  if Dm_cadastros.Qry_cadastro_Clientenome.AsString =  '' then
+  Valida_Campos :=true;
+
+  if DBEDIT3.Text =  '' then
   begin
     MessageDlg('Nome Inválido!', mtWarning, [mbok], 0);
-    Dbedit1.SetFocus;
+    Dbedit3.SetFocus;
     exit(False);
   end;
 
-  if Dm_cadastros.Qry_cadastro_Clientecpfcnpj.AsString =  '' then
-  begin
-    MessageDlg('Cpf/Cnpj Inválido!', mtWarning, [mbok], 0);
-    Dbedit2.SetFocus;
-    exit(False);
-  end;
+ //if Dm_cadastros.Qry_cadastro_Clientecpfcnpj.AsString =  '' then   //Por enquanto sem ser obrigatório.
+//begin
+ //   MessageDlg('Cpf/Cnpj Inválido!', mtWarning, [mbok], 0);
+ //   Dbedit2.SetFocus;
+//    exit(False);
+//  end;
 
-  if DBEdit2.Text =  '' then
+  if DBEdit4.Text =  '' then
   begin
     MessageDlg('Telefone Inválido!', mtWarning, [mbok], 0);
     DBEdit4.SetFocus;
@@ -267,6 +277,7 @@ begin
   if Valida_Campos = true then
   begin
 
+    Dm_cadastros.Qry_cadastro_Clientecodfilial.asinteger := DBLookupComboBox1.KeyValue;
     Dm_cadastros.Qry_cadastro_Cliente.Post;
 
     Btnnovo.Enabled := True;                               // Ativa o Botão Novo
@@ -275,9 +286,57 @@ begin
     BtnCancelar.Enabled := False;
     SpeedButton2.Enabled := False;
 
+    Dm_cadastros.Qry_cadastro_cliente.cancel;
+    Dm_cadastros.Qry_cadastro_cliente.close;
 
     Showmessage('Dados Salvos com Sucesso !');
   end;
+end;
+
+procedure TFrmcadcli.DBEdit14Exit(Sender: TObject);
+begin
+  with Dm_cadastros.Qry_cons_cidade do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM CIDADES');
+      Sql.Add('WHERE ID = :ID');
+
+      Params.ParamByName('ID').AsInteger := strtoint(Dbedit14.Text) ;
+      Open;
+
+    end;
+       Edit3.Text :=  Dm_cadastros.Qry_cons_cidadecidade.AsString;
+       Edit4.Text :=  Dm_cadastros.Qry_cons_cidadeuf.AsString;
+end;
+
+procedure TFrmcadcli.DBGrid1DblClick(Sender: TObject);
+begin
+
+ with Dm_cadastros.Qry_cadastro_cliente do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add(' SELECT * FROM users');
+      Sql.Add('WHERE ID = :ID');
+      Sql.Add('AND CODFILIAL = :CODFILIAL');
+
+      Params.ParamByName('ID').AsInteger := Dm_cadastros.Qry_cons_cadastro_ClienteID.Asinteger ;
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+
+      Open;
+
+    end;
+       Dm_cadastros.Qry_cons_cidade.close();
+       Dm_cadastros.Qry_cons_cidade.open();
+
+       Btneditar.Enabled:=true;
+       Btnnovo.Enabled:=false;
+       Btncancelar.Enabled:=true;
+       DBEdit14.OnExit(self);
+
+
+       Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 end.

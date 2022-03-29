@@ -1,22 +1,24 @@
 object Frmcadclibuscacidade: TFrmcadclibuscacidade
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Frmcadclibuscacidade'
-  ClientHeight = 647
-  ClientWidth = 1249
+  ClientHeight = 686
+  ClientWidth = 1265
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 15
   object SpeedButton2: TSpeedButton
     Left = 0
     Top = 59
-    Width = 1249
-    Height = 588
+    Width = 1265
+    Height = 627
     Cursor = crHandPoint
     Align = alClient
     Caption = 'Pesquisar'
@@ -35,15 +37,15 @@ object Frmcadclibuscacidade: TFrmcadclibuscacidade
   object Pnltopo: TPanel
     Left = 0
     Top = 0
-    Width = 1249
+    Width = 1265
     Height = 59
     Align = alTop
     BevelOuter = bvNone
     Color = clBackground
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -658
-    ExplicitWidth = 1280
+    OnMouseDown = PnltopoMouseDown
+    ExplicitWidth = 1249
     object Imlogo: TImage
       Left = -4
       Top = 3
@@ -1034,10 +1036,11 @@ object Frmcadclibuscacidade: TFrmcadclibuscacidade
         BDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75E
         F7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBA
         F75EF7EEBDD7BDFBAF75FFD9}
+      OnMouseDown = ImlogoMouseDown
     end
     object BtnFechar: TSpeedButton
-      Left = 1217
-      Top = 1
+      Left = 1190
+      Top = 2
       Width = 51
       Height = 48
       Cursor = crHandPoint
@@ -1050,10 +1053,11 @@ object Frmcadclibuscacidade: TFrmcadclibuscacidade
       Font.Style = [fsBold]
       Font.Quality = fqAntialiased
       ParentFont = False
+      OnClick = BtnFecharClick
     end
     object Btnminimizar: TSpeedButton
-      Left = 1164
-      Top = 1
+      Left = 1133
+      Top = 2
       Width = 51
       Height = 48
       Caption = '-'
@@ -1065,34 +1069,33 @@ object Frmcadclibuscacidade: TFrmcadclibuscacidade
       Font.Style = []
       Font.Quality = fqAntialiased
       ParentFont = False
+      OnClick = BtnminimizarClick
     end
     object pnlistabr: TPanel
       Left = 0
       Top = 56
-      Width = 1249
+      Width = 1265
       Height = 3
       Align = alBottom
       BevelOuter = bvNone
       Color = clGradientActiveCaption
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1280
+      ExplicitWidth = 1249
     end
   end
   object Panel4: TPanel
     Left = 0
     Top = 59
-    Width = 1249
-    Height = 588
+    Width = 1265
+    Height = 627
     Align = alClient
     BevelOuter = bvNone
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = -658
-    ExplicitTop = -158
-    ExplicitWidth = 1280
-    ExplicitHeight = 591
+    ExplicitWidth = 1249
+    ExplicitHeight = 588
     object Label1: TLabel
       Left = 16
       Top = 59

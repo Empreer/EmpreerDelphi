@@ -1072,7 +1072,7 @@ object Frmpreco: TFrmpreco
     TabOrder = 1
     object Label7: TLabel
       Left = 16
-      Top = 19
+      Top = 12
       Width = 41
       Height = 21
       Caption = 'Filial:'
@@ -1085,7 +1085,7 @@ object Frmpreco: TFrmpreco
     end
     object Label2: TLabel
       Left = 16
-      Top = 56
+      Top = 49
       Width = 56
       Height = 21
       Caption = 'Produto'
@@ -1098,7 +1098,7 @@ object Frmpreco: TFrmpreco
     end
     object Label3: TLabel
       Left = 23
-      Top = 563
+      Top = 556
       Width = 47
       Height = 21
       Caption = 'Custo:'
@@ -1111,7 +1111,7 @@ object Frmpreco: TFrmpreco
     end
     object Label4: TLabel
       Left = 36
-      Top = 534
+      Top = 527
       Width = 34
       Height = 21
       Caption = 'C'#243'd:'
@@ -1124,7 +1124,7 @@ object Frmpreco: TFrmpreco
     end
     object Label1: TLabel
       Left = 200
-      Top = 534
+      Top = 527
       Width = 66
       Height = 21
       Caption = 'Produto:'
@@ -1137,7 +1137,7 @@ object Frmpreco: TFrmpreco
     end
     object Label5: TLabel
       Left = 203
-      Top = 563
+      Top = 556
       Width = 61
       Height = 21
       Caption = 'M.Oper:'
@@ -1150,7 +1150,7 @@ object Frmpreco: TFrmpreco
     end
     object Label6: TLabel
       Left = 384
-      Top = 566
+      Top = 559
       Width = 65
       Height = 21
       Caption = 'M.Lucro:'
@@ -1163,7 +1163,7 @@ object Frmpreco: TFrmpreco
     end
     object Label8: TLabel
       Left = 564
-      Top = 566
+      Top = 559
       Width = 47
       Height = 21
       Caption = 'Pre'#231'o:'
@@ -1176,7 +1176,7 @@ object Frmpreco: TFrmpreco
     end
     object Label9: TLabel
       Left = 716
-      Top = 538
+      Top = 531
       Width = 54
       Height = 21
       Caption = '%Desc:'
@@ -1189,7 +1189,7 @@ object Frmpreco: TFrmpreco
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 63
-      Top = 17
+      Top = 10
       Width = 273
       Height = 23
       KeyField = 'codfilial'
@@ -1199,7 +1199,7 @@ object Frmpreco: TFrmpreco
     end
     object pnlpesq: TPanel
       Left = 1102
-      Top = 73
+      Top = 66
       Width = 153
       Height = 41
       BevelOuter = bvNone
@@ -1227,7 +1227,7 @@ object Frmpreco: TFrmpreco
     end
     object pnlprecoind: TPanel
       Left = 896
-      Top = 547
+      Top = 540
       Width = 186
       Height = 41
       BevelOuter = bvNone
@@ -1257,7 +1257,7 @@ object Frmpreco: TFrmpreco
     end
     object pnlprecogrid: TPanel
       Left = 1088
-      Top = 547
+      Top = 540
       Width = 169
       Height = 41
       BevelOuter = bvNone
@@ -1287,7 +1287,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit3: TEdit
       Left = 16
-      Top = 83
+      Top = 76
       Width = 400
       Height = 20
       BevelInner = bvNone
@@ -1304,7 +1304,7 @@ object Frmpreco: TFrmpreco
     end
     object Panel1: TPanel
       Left = 16
-      Top = 101
+      Top = 94
       Width = 400
       Height = 2
       BevelOuter = bvNone
@@ -1314,7 +1314,7 @@ object Frmpreco: TFrmpreco
     end
     object DBGrid2: TDBGrid
       Left = 16
-      Top = 120
+      Top = 113
       Width = 1241
       Height = 409
       DataSource = Dm_precificacao.Ds_preco
@@ -1420,7 +1420,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit4: TEdit
       Left = 80
-      Top = 564
+      Top = 557
       Width = 99
       Height = 25
       Font.Charset = DEFAULT_CHARSET
@@ -1434,7 +1434,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit5: TEdit
       Left = 80
-      Top = 534
+      Top = 527
       Width = 99
       Height = 25
       Font.Charset = DEFAULT_CHARSET
@@ -1448,7 +1448,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit1: TEdit
       Left = 270
-      Top = 534
+      Top = 527
       Width = 440
       Height = 25
       Font.Charset = DEFAULT_CHARSET
@@ -1462,7 +1462,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit2: TEdit
       Left = 270
-      Top = 565
+      Top = 558
       Width = 98
       Height = 25
       Font.Charset = DEFAULT_CHARSET
@@ -1476,7 +1476,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit6: TEdit
       Left = 455
-      Top = 565
+      Top = 558
       Width = 98
       Height = 25
       Enabled = False
@@ -1491,7 +1491,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit7: TEdit
       Left = 612
-      Top = 562
+      Top = 555
       Width = 98
       Height = 25
       Enabled = False
@@ -1506,7 +1506,7 @@ object Frmpreco: TFrmpreco
     end
     object Edit8: TEdit
       Left = 774
-      Top = 534
+      Top = 527
       Width = 91
       Height = 25
       Enabled = False

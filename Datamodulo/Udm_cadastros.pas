@@ -22,29 +22,11 @@ type
     Qry_cadastro_Clienteendereco: TWideStringField;
     Qry_cadastro_Clientebairro: TWideStringField;
     Qry_cadastro_Clientenumero: TWideStringField;
-    Qry_cadastro_Clientecidade: TWideStringField;
-    Qry_cadastro_Clientecoduf: TIntegerField;
     Qry_cadastro_Clientecomplemento: TWideStringField;
     Qry_cadastro_Clientecep: TWideStringField;
     Qry_cadastro_Clientecodfilial: TIntegerField;
     Qry_cadastro_Clientecpfcnpj: TWideStringField;
     Qry_cons_cadastro_Cliente: TFDQuery;
-    IntegerField1: TIntegerField;
-    WideStringField1: TWideStringField;
-    WideStringField2: TWideStringField;
-    WideStringField3: TWideStringField;
-    WideStringField4: TWideStringField;
-    WideStringField5: TWideStringField;
-    WideStringField6: TWideStringField;
-    WideStringField7: TWideStringField;
-    WideStringField8: TWideStringField;
-    WideStringField9: TWideStringField;
-    WideStringField10: TWideStringField;
-    IntegerField2: TIntegerField;
-    WideStringField11: TWideStringField;
-    WideStringField12: TWideStringField;
-    IntegerField3: TIntegerField;
-    WideStringField13: TWideStringField;
     ds_cons_cadastro_Cliente: TDataSource;
     Qry_cadastro_Fornecedor: TFDQuery;
     Qry_cadastro_Fornecedorid: TIntegerField;
@@ -172,6 +154,21 @@ type
     Qry_cadastro_precopercdesc: TFMTBCDField;
     Qry_cadastro_Useradmvendedor: TWideStringField;
     Qry_cons_cadastro_Useradmvendedor: TWideStringField;
+    Qry_cons_cadastro_Clienteid: TIntegerField;
+    Qry_cons_cadastro_Clientenome: TWideStringField;
+    Qry_cons_cadastro_Clientecpfcnpj: TWideStringField;
+    Qry_cons_cadastro_Clientefone1: TWideStringField;
+    Qry_cons_cadastro_Clientefone2: TWideStringField;
+    Qry_cons_cadastro_Clientefone3: TWideStringField;
+    Qry_cons_cadastro_Clienteemail: TWideStringField;
+    Qry_cons_cadastro_Clienteendereco: TWideStringField;
+    Qry_cons_cadastro_Clientebairro: TWideStringField;
+    Qry_cons_cadastro_Clientenumero: TWideStringField;
+    Qry_cons_cadastro_Clientecidade: TWideStringField;
+    Qry_cons_cadastro_Clienteufid: TIntegerField;
+    Qry_cons_cadastro_Clienteuf: TWideStringField;
+    Qry_cons_cadastro_Clientecep: TWideStringField;
+    Qry_cons_cadastro_Clientecodfilial: TIntegerField;
   private
     { Private declarations }
   public

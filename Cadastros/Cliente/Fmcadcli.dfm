@@ -11,7 +11,7 @@ object Frmcadcli: TFrmcadcli
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
-  OnShow = FormShow
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -19,7 +19,7 @@ object Frmcadcli: TFrmcadcli
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -40,10 +40,8 @@ object Frmcadcli: TFrmcadcli
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = -16
-        ExplicitTop = 40
         object Labeluser: TLabel
-          Left = 196
+          Left = 104
           Top = 113
           Width = 43
           Height = 21
@@ -56,7 +54,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 108
+          Left = 16
           Top = 113
           Width = 31
           Height = 21
@@ -69,7 +67,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 712
+          Left = 620
           Top = 113
           Width = 49
           Height = 21
@@ -82,7 +80,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 888
+          Left = 796
           Top = 113
           Width = 49
           Height = 21
@@ -95,7 +93,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label5: TLabel
-          Left = 1064
+          Left = 972
           Top = 113
           Width = 49
           Height = 21
@@ -122,10 +120,10 @@ object Frmcadcli: TFrmcadcli
         end
         object Label7: TLabel
           Left = 16
-          Top = 113
-          Width = 32
+          Top = 78
+          Width = 35
           Height = 21
-          Caption = 'Filial'
+          Caption = 'Filial:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -212,7 +210,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label12: TLabel
-          Left = 416
+          Left = 398
           Top = 265
           Width = 19
           Height = 21
@@ -225,7 +223,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label11: TLabel
-          Left = 164
+          Left = 147
           Top = 267
           Width = 48
           Height = 21
@@ -238,7 +236,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object Label17: TLabel
-          Left = 21
+          Left = 16
           Top = 267
           Width = 87
           Height = 21
@@ -251,7 +249,7 @@ object Frmcadcli: TFrmcadcli
           ParentFont = False
         end
         object SpeedButton2: TSpeedButton
-          Left = 114
+          Left = 102
           Top = 285
           Width = 25
           Height = 28
@@ -341,7 +339,7 @@ object Frmcadcli: TFrmcadcli
           OnClick = SpeedButton2Click
         end
         object DBEdit1: TDBEdit
-          Left = 108
+          Left = 16
           Top = 140
           Width = 57
           Height = 15
@@ -353,10 +351,11 @@ object Frmcadcli: TFrmcadcli
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
           ParentBiDiMode = False
+          ReadOnly = True
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 196
+          Left = 104
           Top = 160
           Width = 500
           Height = 2
@@ -366,7 +365,7 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 108
+          Left = 16
           Top = 161
           Width = 70
           Height = 2
@@ -377,7 +376,7 @@ object Frmcadcli: TFrmcadcli
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 197
+          Left = 105
           Top = 140
           Width = 499
           Height = 14
@@ -392,7 +391,7 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 3
         end
         object pnlborda3: TPanel
-          Left = 712
+          Left = 620
           Top = 160
           Width = 160
           Height = 2
@@ -403,7 +402,7 @@ object Frmcadcli: TFrmcadcli
         end
         object DBEdit4: TDBEdit
           AlignWithMargins = True
-          Left = 712
+          Left = 620
           Top = 140
           Width = 160
           Height = 14
@@ -418,7 +417,7 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 5
         end
         object Panel1: TPanel
-          Left = 888
+          Left = 796
           Top = 160
           Width = 160
           Height = 2
@@ -429,7 +428,7 @@ object Frmcadcli: TFrmcadcli
         end
         object DBEdit5: TDBEdit
           AlignWithMargins = True
-          Left = 888
+          Left = 796
           Top = 140
           Width = 160
           Height = 14
@@ -444,7 +443,7 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 7
         end
         object Panel2: TPanel
-          Left = 1064
+          Left = 972
           Top = 160
           Width = 160
           Height = 2
@@ -455,7 +454,7 @@ object Frmcadcli: TFrmcadcli
         end
         object DBEdit6: TDBEdit
           AlignWithMargins = True
-          Left = 1064
+          Left = 972
           Top = 140
           Width = 160
           Height = 14
@@ -496,10 +495,11 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 11
         end
         object DBLookupComboBox1: TDBLookupComboBox
-          Left = 16
-          Top = 140
-          Width = 65
+          Left = 62
+          Top = 78
+          Width = 318
           Height = 23
+          Enabled = False
           KeyField = 'codfilial'
           ListField = 'nome'
           ListSource = udm_conexao.DataSource1
@@ -780,7 +780,7 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 28
         end
         object Edit4: TEdit
-          Left = 416
+          Left = 398
           Top = 291
           Width = 70
           Height = 20
@@ -788,6 +788,7 @@ object Frmcadcli: TFrmcadcli
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -798,14 +799,15 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 29
         end
         object Edit3: TEdit
-          Left = 164
+          Left = 147
           Top = 293
-          Width = 195
+          Width = 228
           Height = 20
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -817,7 +819,7 @@ object Frmcadcli: TFrmcadcli
         end
         object DBEdit14: TDBEdit
           AlignWithMargins = True
-          Left = 21
+          Left = 16
           Top = 293
           Width = 86
           Height = 16
@@ -827,7 +829,7 @@ object Frmcadcli: TFrmcadcli
           BorderStyle = bsNone
           CharCase = ecUpperCase
           DataField = 'codcidade'
-          DataSource = Dm_cadastros.Ds_cadastro_Fornecedor
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -836,9 +838,10 @@ object Frmcadcli: TFrmcadcli
           ParentBiDiMode = False
           ParentFont = False
           TabOrder = 31
+          OnExit = DBEdit14Exit
         end
         object Panel16: TPanel
-          Left = 416
+          Left = 398
           Top = 312
           Width = 74
           Height = 2
@@ -848,22 +851,22 @@ object Frmcadcli: TFrmcadcli
           TabOrder = 32
         end
         object Panel17: TPanel
-          Left = 21
+          Left = 16
           Top = 312
           Width = 74
           Height = 2
           BevelOuter = bvNone
-          Color = clSilver
+          Color = clMenuHighlight
           ParentBackground = False
           TabOrder = 33
         end
         object Panel9: TPanel
-          Left = 163
+          Left = 146
           Top = 312
           Width = 229
           Height = 2
           BevelOuter = bvNone
-          Color = clMenuHighlight
+          Color = clSilver
           ParentBackground = False
           TabOrder = 34
         end
@@ -930,93 +933,80 @@ object Frmcadcli: TFrmcadcli
           Width = 1225
           Height = 449
           DataSource = Dm_cadastros.ds_cons_cadastro_Cliente
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
           Columns = <
             item
               Expanded = False
               FieldName = 'id'
-              Title.Caption = 'Id'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'C'#211'D.'
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clWindowText
               Title.Font.Height = -15
               Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
+              Title.Font.Style = []
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'nome'
-              Title.Caption = 'Nome'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Title.Caption = 'NOME'
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clWindowText
               Title.Font.Height = -15
               Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Width = 200
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'codfilial'
-              Title.Caption = 'Filial'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -15
-              Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'fone1'
-              Title.Caption = 'Telefone'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -15
-              Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Width = 97
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'endereco'
-              Title.Caption = 'Endere'#231'o'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -15
-              Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Width = 400
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'bairro'
-              Title.Caption = 'Bairro'
-              Title.Font.Charset = DEFAULT_CHARSET
-              Title.Font.Color = clWindowText
-              Title.Font.Height = -15
-              Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Width = 149
+              Title.Font.Style = []
+              Width = 481
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'cidade'
-              Title.Caption = 'Cidade'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Caption = 'CIDADE'
               Title.Font.Charset = DEFAULT_CHARSET
               Title.Font.Color = clWindowText
               Title.Font.Height = -15
               Title.Font.Name = 'Segoe UI'
-              Title.Font.Style = [fsBold]
-              Width = 200
+              Title.Font.Style = []
+              Width = 240
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'fone1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Title.Caption = 'TELEFONE'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -15
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = []
+              Width = 161
               Visible = True
             end>
         end

@@ -1,7 +1,7 @@
 object Dm_cadastros: TDm_cadastros
   Height = 606
   Width = 979
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   object Qry_cadastro_Cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
@@ -22,17 +22,19 @@ object Dm_cadastros: TDm_cadastros
     object Qry_cadastro_Clientefone1: TWideStringField
       FieldName = 'fone1'
       Origin = 'fone1'
-      EditMask = '!\(99\)000-0000;1;_'
+      EditMask = '!\(99\)00000-0000;1;_'
       Size = 8190
     end
     object Qry_cadastro_Clientefone2: TWideStringField
       FieldName = 'fone2'
       Origin = 'fone2'
+      EditMask = '!\(99\)00000-0000;1;_'
       Size = 8190
     end
     object Qry_cadastro_Clientefone3: TWideStringField
       FieldName = 'fone3'
       Origin = 'fone3'
+      EditMask = '!\(99\)00000-0000;1;_'
       Size = 8190
     end
     object Qry_cadastro_Clienteemail: TWideStringField
@@ -82,6 +84,7 @@ object Dm_cadastros: TDm_cadastros
       Size = 8190
     end
     object Qry_cadastro_Clientecodcidade: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codcidade'
       Origin = 'codcidade'
     end
@@ -94,83 +97,90 @@ object Dm_cadastros: TDm_cadastros
   object Qry_cons_cadastro_Cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
-      'select * from users ')
+      
+        ' SELECT F.ID,F.NOME,F.CPFCNPJ,F.FONE1,F.FONE2,F.FONE3,F.EMAIL,F.' +
+        'ENDERECO,F.BAIRRO,F.NUMERO,C.CIDADE,C.ID as UFID,C.UF,F.CEP,F.CO' +
+        'DFILIAL '
+      '      FROM USERS F, CIDADES C'
+      '     WHERE F.CODFILIAL >=1'
+      '      AND F.CODCIDADE = C.ID')
     Left = 192
     Top = 16
-    object IntegerField1: TIntegerField
-      Alignment = taLeftJustify
+    object Qry_cons_cadastro_Clienteid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object WideStringField1: TWideStringField
+    object Qry_cons_cadastro_Clientenome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
       Size = 8190
     end
-    object WideStringField2: TWideStringField
-      FieldName = 'fone1'
-      Origin = 'fone1'
-      Size = 8190
-    end
-    object WideStringField3: TWideStringField
-      FieldName = 'fone2'
-      Origin = 'fone2'
-      Size = 8190
-    end
-    object WideStringField4: TWideStringField
-      FieldName = 'fone3'
-      Origin = 'fone3'
-      Size = 8190
-    end
-    object WideStringField5: TWideStringField
-      FieldName = 'email'
-      Origin = 'email'
-      Size = 8190
-    end
-    object WideStringField6: TWideStringField
-      FieldName = 'password'
-      Origin = '"password"'
-      Size = 8190
-    end
-    object WideStringField7: TWideStringField
-      FieldName = 'endereco'
-      Origin = 'endereco'
-      Size = 8190
-    end
-    object WideStringField8: TWideStringField
-      FieldName = 'bairro'
-      Origin = 'bairro'
-      Size = 8190
-    end
-    object WideStringField9: TWideStringField
-      FieldName = 'numero'
-      Origin = 'numero'
-      Size = 8190
-    end
-    object WideStringField11: TWideStringField
-      FieldName = 'complemento'
-      Origin = 'complemento'
-      Size = 8190
-    end
-    object WideStringField12: TWideStringField
-      FieldName = 'cep'
-      Origin = 'cep'
-      Size = 8190
-    end
-    object IntegerField3: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'codfilial'
-      Origin = 'codfilial'
-    end
-    object WideStringField13: TWideStringField
+    object Qry_cons_cadastro_Clientecpfcnpj: TWideStringField
       FieldName = 'cpfcnpj'
       Origin = 'cpfcnpj'
       Size = 8190
     end
-    object Qry_cons_cadastro_Clientecodcidade: TIntegerField
-      FieldName = 'codcidade'
-      Origin = 'codcidade'
+    object Qry_cons_cadastro_Clientefone1: TWideStringField
+      FieldName = 'fone1'
+      Origin = 'fone1'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientefone2: TWideStringField
+      FieldName = 'fone2'
+      Origin = 'fone2'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientefone3: TWideStringField
+      FieldName = 'fone3'
+      Origin = 'fone3'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clienteemail: TWideStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clienteendereco: TWideStringField
+      FieldName = 'endereco'
+      Origin = 'endereco'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientebairro: TWideStringField
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientenumero: TWideStringField
+      FieldName = 'numero'
+      Origin = 'numero'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientecidade: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clienteufid: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ufid'
+      Origin = 'ufid'
+    end
+    object Qry_cons_cadastro_Clienteuf: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'uf'
+      Origin = 'uf'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientecep: TWideStringField
+      FieldName = 'cep'
+      Origin = 'cep'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Clientecodfilial: TIntegerField
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
     end
   end
   object ds_cons_cadastro_Cliente: TDataSource

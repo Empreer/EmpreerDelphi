@@ -876,7 +876,7 @@ object Frmcadfornec: TFrmcadfornec
         object DBEdit14: TDBEdit
           AlignWithMargins = True
           Left = 21
-          Top = 318
+          Top = 319
           Width = 86
           Height = 16
           BevelInner = bvNone

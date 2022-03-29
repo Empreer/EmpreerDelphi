@@ -33,7 +33,11 @@ uses
   Fmpedvendabuscacli in 'Vendas\PedidoVenda\Fmpedvendabuscacli.pas' {Frmpedvendabuscacli},
   Fmpedvendabuscaprod in 'Vendas\PedidoVenda\Fmpedvendabuscaprod.pas' {Frmpedvendabuscaprod},
   Udm_financeiro in 'Datamodulo\Udm_financeiro.pas' {Dm_Financeiro: TDataModule},
-  UFrmcadclibuscacidade in 'Cadastros\Cliente\UFrmcadclibuscacidade.pas' {Frmcadclibuscacidade};
+  UFrmcadclibuscacidade in 'Cadastros\Cliente\UFrmcadclibuscacidade.pas' {Frmcadclibuscacidade},
+  Fmrelatorios in 'Fmrelatorios.pas' {Frmrelatorios},
+  Fmconfig in 'Fmconfig.pas' {Frmconfig},
+  Fmfinanc in 'Fmfinanc.pas' {Frmfinanc},
+  Fmatualiza in 'Configuracoes\Atualizacoes\Fmatualiza.pas' {Frmatualiza};
 
 {$R *.res}
 
@@ -48,5 +52,9 @@ begin
   Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TFrmlogin, Frmlogin);
   Application.CreateForm(TFrmcadclibuscacidade, Frmcadclibuscacidade);
+  Application.CreateForm(TFrmrelatorios, Frmrelatorios);
+  Application.CreateForm(TFrmconfig, Frmconfig);
+  Application.CreateForm(TFrmfinanc, Frmfinanc);
+  Application.CreateForm(TFrmatualiza, Frmatualiza);
   Application.Run;
 end.

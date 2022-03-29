@@ -44,6 +44,9 @@ type
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -61,7 +64,7 @@ implementation
 {$R *.dfm}
 
 uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao, Fmgerencial, Fmprecifica,
-  Fmvendas;
+  Fmvendas, Fmrelatorios, Fmconfig, Fmfinanc;
 
 
 
@@ -148,11 +151,32 @@ Frmvendas.Parent := Frmprincipal.pnlcentral;
 Frmvendas.Show;
 end;
 
+procedure TFrmprincipal.SpeedButton6Click(Sender: TObject);
+begin
+Frmfinanc := TFrmfinanc.Create(self);
+Frmfinanc.Parent := Frmprincipal.pnlcentral;
+Frmfinanc.Show;
+end;
+
 procedure TFrmprincipal.SpeedButton7Click(Sender: TObject);
 begin
 Frmgerencial := TFrmgerencial .Create(self);
 Frmgerencial.Parent := Frmprincipal.pnlcentral;
 Frmgerencial.Show;
+end;
+
+procedure TFrmprincipal.SpeedButton8Click(Sender: TObject);
+begin
+Frmrelatorios := TFrmrelatorios .Create(self);
+Frmrelatorios.Parent := Frmprincipal.pnlcentral;
+Frmrelatorios.Show;
+end;
+
+procedure TFrmprincipal.SpeedButton9Click(Sender: TObject);
+begin
+Frmconfig := TFrmconfig .Create(self);
+Frmconfig.Parent := Frmprincipal.pnlcentral;
+Frmconfig.Show;
 end;
 
 end.

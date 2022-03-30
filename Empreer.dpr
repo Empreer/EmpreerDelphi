@@ -37,7 +37,9 @@ uses
   Fmrelatorios in 'Fmrelatorios.pas' {Frmrelatorios},
   Fmconfig in 'Fmconfig.pas' {Frmconfig},
   Fmfinanc in 'Fmfinanc.pas' {Frmfinanc},
-  Fmatualiza in 'Configuracoes\Atualizacoes\Fmatualiza.pas' {Frmatualiza};
+  Fmatualiza in 'Configuracoes\Atualizacoes\Fmatualiza.pas' {Frmatualiza},
+  Fmcreceber in 'Financeiro\creceber\Fmcreceber.pas' {Frmcreceber},
+  Fmcreceberbuscacli in 'Financeiro\creceber\Fmcreceberbuscacli.pas' {Frmcreceberbuscacli};
 
 {$R *.res}
 
@@ -56,5 +58,7 @@ begin
   Application.CreateForm(TFrmconfig, Frmconfig);
   Application.CreateForm(TFrmfinanc, Frmfinanc);
   Application.CreateForm(TFrmatualiza, Frmatualiza);
+  Application.CreateForm(TFrmcreceber, Frmcreceber);
+  Application.CreateForm(TFrmcreceberbuscacli, Frmcreceberbuscacli);
   Application.Run;
 end.

@@ -9,9 +9,9 @@ uses
 type
   TFrmfinanc = class(TForm)
     pnfundo: TPanel;
-    pnformula: TPanel;
+    pncreceber: TPanel;
     SpeedButton1: TSpeedButton;
-    pnlformula: TPanel;
+    pnlcreceber: TPanel;
     Pnlcusto: TPanel;
     SpeedButton2: TSpeedButton;
     pnllinha2: TPanel;
@@ -30,6 +30,9 @@ type
     Pnlcobranca: TPanel;
     SpeedButton7: TSpeedButton;
     pnlinha7: TPanel;
+    procedure SpeedButton1MouseEnter(Sender: TObject);
+    procedure SpeedButton1MouseLeave(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,5 +45,23 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Fmcreceber;
+
+procedure TFrmfinanc.SpeedButton1Click(Sender: TObject);
+begin
+ Frmcreceber := TFrmcreceber.Create(Self);                          //Botao de login chama o formulario principal
+ Frmcreceber.Show;
+end;
+
+procedure TFrmfinanc.SpeedButton1MouseEnter(Sender: TObject);
+begin
+pnlcreceber.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmfinanc.SpeedButton1MouseLeave(Sender: TObject);
+begin
+pnlcreceber.color:=clWhite;
+end;
 
 end.

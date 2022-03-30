@@ -22,6 +22,25 @@ type
     Qry_creceberdtpago: TDateField;
     Qry_crecebervpago: TFMTBCDField;
     Qry_crecebercodfilial: TIntegerField;
+    Qry_cons_creceber: TFDQuery;
+    Ds_cons_creceber: TDataSource;
+    Qry_cons_creceberpedidoid: TIntegerField;
+    Qry_cons_creceberuserid: TIntegerField;
+    Qry_cons_crecebernome: TWideStringField;
+    Qry_cons_crecebercobranca: TWideStringField;
+    Qry_cons_crecebervalor: TFMTBCDField;
+    Qry_cons_crecebervpago: TFMTBCDField;
+    Qry_cons_creceberdtemissao: TDateField;
+    Qry_cons_creceberdtvenc: TDateField;
+    Qry_cons_creceberdtpago: TDateField;
+    Qry_cons_crecebercodfilial: TIntegerField;
+    Qry_cons_creceberSumvltotal: TAggregateField;
+    Sqlaux: TFDQuery;
+    IntegerField1: TIntegerField;
+    WideStringField1: TWideStringField;
+    FMTBCDField1: TFMTBCDField;
+    FMTBCDField2: TFMTBCDField;
+    Qry_cons_creceberid: TIntegerField;
   private
     { Private declarations }
   public

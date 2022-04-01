@@ -37,7 +37,6 @@ type
     Btnentrar: TSpeedButton;
     DBLookCombofilial: TDBLookupComboBox;
     pnlistabr: TPanel;
-    Label3: TLabel;
     procedure BtnFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

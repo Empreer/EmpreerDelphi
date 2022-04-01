@@ -19,7 +19,7 @@ object Frmcadcli: TFrmcadcli
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -350,6 +350,7 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Enabled = False
           ParentBiDiMode = False
           ReadOnly = True
           TabOrder = 0

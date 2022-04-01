@@ -93,7 +93,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -112,6 +111,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var editar: integer;
   end;
 
 var
@@ -120,7 +120,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Fmlogin, Udm_cadastros, Uudm_conexao, Fmcadfornecbuscacidade;
+uses Fmlogin, Udm_cadastros, Uudm_conexao, Fmcadfornecbuscacidade, Fmprincipal;
 
 procedure TFrmcadfornec.BtncancelarClick(Sender: TObject);
 begin
@@ -140,17 +140,19 @@ begin
   Edit4.Text:='';
 
   SpeedButton2.Enabled:=false;
-
+  editar:=0;
 end;
 
 procedure TFrmcadfornec.BtneditarClick(Sender: TObject);
 begin
+editar:=1;
 Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Fornecedor.Edit();
 
 SpeedButton2.Enabled:=true;
+
 end;
 
 procedure TFrmcadfornec.BtnFecharClick(Sender: TObject);
@@ -164,7 +166,6 @@ Frmcadfornec.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadfornec.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
@@ -173,44 +174,26 @@ begin
 
   Dbedit3.SetFocus;
 
-  Proxnum :=0;
   Dm_cadastros.Qry_cadastro_Fornecedor.Cancel();
   Dm_cadastros.Qry_cadastro_Fornecedor.Close();
-
-  with Dm_cadastros.Qry_cadastro_Fornecedor do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM FORNECEDORS order by id');
-      Open;
-    end;
-
-  Dm_cadastros.Qry_cadastro_Fornecedor.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Fornecedor.open();
   Dm_cadastros.Qry_cadastro_Fornecedor.append();
-  Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger:= Proxnum;
 
   Dm_cadastros.Qry_cons_cidade.close();
   Dm_cadastros.Qry_cons_cidade.Open();
 
   SpeedButton2.Enabled:=true;
-
+  editar:=0;
 end;
 
 procedure TFrmcadfornec.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
 Dm_cadastros.Qry_cadastro_Fornecedor.close();
-end;
+Dm_cadastros.Qry_cons_cidade.close();
+Dm_cadastros.Qry_cons_cadastro_Fornecedor.close();
+Pagecontrol1.ActivePageIndex:= 0;
 
-procedure TFrmcadfornec.FormShow(Sender: TObject);
-var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
-begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadfornec.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -293,6 +276,11 @@ ShowMessage('Favor Escolher a Filial !')
 
  else
   begin
+
+   if editar = 0 then begin
+   Dm_cadastros.Qry_cadastro_Fornecedorid.AsInteger := Frmprincipal.Prox_num('seq_fornec');
+   end;
+
    Dm_cadastros.Qry_cadastro_Fornecedorcodfilial.asinteger := DBLookupComboBox1.KeyValue;
 
    Dm_cadastros.Qry_cadastro_Fornecedor.Post();
@@ -309,6 +297,7 @@ ShowMessage('Favor Escolher a Filial !')
     Edit3.Text:='';
     Edit4.Text:='';
 
+    Editar:=0;
 
 
   end;

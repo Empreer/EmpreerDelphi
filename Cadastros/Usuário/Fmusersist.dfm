@@ -21,7 +21,7 @@ object Frmusersist: TFrmusersist
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -45,9 +45,9 @@ object Frmusersist: TFrmusersist
         object Labeluser: TLabel
           Left = 103
           Top = 137
-          Width = 47
+          Width = 71
           Height = 21
-          Caption = 'Nome'
+          Caption = 'USU'#193'RIO'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMenuHighlight
           Font.Height = -16
@@ -97,6 +97,20 @@ object Frmusersist: TFrmusersist
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object Label4: TLabel
+          Left = 15
+          Top = 209
+          Width = 49
+          Height = 21
+          Caption = 'NOME'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Font.Quality = fqProof
+          ParentFont = False
+        end
         object DBEdit1: TDBEdit
           Left = 15
           Top = 164
@@ -109,6 +123,7 @@ object Frmusersist: TFrmusersist
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Useradm
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -116,6 +131,7 @@ object Frmusersist: TFrmusersist
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
         object pnlborda2: TPanel
@@ -333,6 +349,38 @@ object Frmusersist: TFrmusersist
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 11
+        end
+        object Panel1: TPanel
+          Left = 15
+          Top = 256
+          Width = 500
+          Height = 2
+          BevelOuter = bvNone
+          Color = clMenuHighlight
+          ParentBackground = False
+          TabOrder = 12
+        end
+        object DBEdit2: TDBEdit
+          AlignWithMargins = True
+          Left = 16
+          Top = 234
+          Width = 499
+          Height = 16
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          DataField = 'nomecompleto'
+          DataSource = Dm_cadastros.Ds_cadastro_Useradm
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentFont = False
+          TabOrder = 13
         end
       end
     end

@@ -63,7 +63,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -82,6 +81,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var editar: integer;
   end;
 
 var
@@ -90,7 +90,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Fmlogin, Uudm_conexao, Udm_cadastros;
+uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal;
 
 procedure TFrmcadmp.BtncancelarClick(Sender: TObject);
 begin
@@ -107,6 +107,7 @@ begin
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
   BtnEditar.Enabled := False;
+  editar:=0;
 
 end;
 
@@ -116,6 +117,7 @@ Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Mp.Edit();
+editar:=1;
 end;
 
 procedure TFrmcadmp.BtnFecharClick(Sender: TObject);
@@ -129,8 +131,8 @@ Frmcadmp.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadmp.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
 begin
+
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
   BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
@@ -138,22 +140,14 @@ begin
 
   Dbedit3.SetFocus;
 
-  Proxnum :=0;
-  Dm_cadastros.Qry_cadastro_Mp.Cancel();
+
   Dm_cadastros.Qry_cadastro_Mp.Close();
 
-  with Dm_cadastros.Qry_cadastro_Mp do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM PRODUTOMPS order by id');
-      Open;
-    end;
-
-  Dm_cadastros.Qry_cadastro_Mp.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_Mpid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Mp.open();
   Dm_cadastros.Qry_cadastro_Mp.append();
-  Dm_cadastros.Qry_cadastro_Mpid.AsInteger:= Proxnum;
+
+  Dm_cadastros.Qry_cons_cadastro_Mp.Close;
+  Dm_cadastros.Qry_cons_cadastro_Mp.open;
 
   Dm_cadastros.Qry_cadastro_Departamento.close();
   Dm_cadastros.Qry_cadastro_Departamento.Open();
@@ -161,24 +155,19 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.close();
   Dm_cadastros.Qry_cadastro_Fornecedor.Open();
 
+  editar:=0;
+
 end;
 
 procedure TFrmcadmp.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
 Dm_cadastros.Qry_cadastro_Mp.close();
+Dm_cadastros.Qry_cadastro_Departamento.close();
+Dm_cadastros.Qry_cadastro_Fornecedor.close();
+Dm_cadastros.Qry_cons_cadastro_Mp.Close;
 
-end;
-
-procedure TFrmcadmp.FormShow(Sender: TObject);
-var
- pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
-begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
+Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadmp.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -240,10 +229,7 @@ end;
 procedure TFrmcadmp.BtnsalvarClick(Sender: TObject);
 begin
 
-if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Código !')
-
-else if Dbedit3.Text = '' then                        // Valida informações do Campo
+if Dbedit3.Text = '' then                        // Valida informações do Campo
 ShowMessage('Favor Preencher o campo Descrição !')
 
 else if Dbedit4.Text = '' then                        // Valida informações do Campo
@@ -257,6 +243,11 @@ ShowMessage('Favor Escolher o Fornecedor !')
 
 else
   begin
+
+   if editar = 0 then begin
+   Dm_cadastros.Qry_cadastro_Mpid.AsInteger := Frmprincipal.Prox_num('seq_mp');
+   end;
+
    Dm_cadastros.Qry_cadastro_Mpcodfilial.asinteger := DBLookupComboBox1.KeyValue;
    Dm_cadastros.Qry_cadastro_Mpcodfornec.asinteger := DBLookupComboBox2.KeyValue;
    Dm_cadastros.Qry_cadastro_Mpcoddepto.asinteger :=  DBLookupComboBox3.KeyValue;
@@ -274,7 +265,7 @@ else
 
     DBLookupComboBox2.KeyValue := -1;
     DBLookupComboBox3.KeyValue := -1;
-
+    editar:=0;
 end;
 
 end;

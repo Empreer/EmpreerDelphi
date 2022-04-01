@@ -793,6 +793,13 @@ DateTimePicker1.Date := today;
 DateTimePicker2.Date := StartOfTheMonth(Date);
 DateTimePicker3.Date := EndOfTheMonth(Date);
 Pagecontrol1.ActivePageIndex:= 0;
+Dm_vendas.Qry_cons_pedido.Close;
+Dm_vendas.Qry_pedido.Close;
+Dm_vendas.Qry_pedidoitem.Close;
+Dm_vendas.Qry_cons_pedidoitem.Close;
+Dm_cadastros.Qry_cadastro_Cob.close;
+Dm_vendas.qry_vendedor.Close;
+
 
 
 end;

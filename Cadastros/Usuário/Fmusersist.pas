@@ -50,6 +50,9 @@ type
     Label7: TLabel;
     DBLookupComboBox1: TDBLookupComboBox;
     CheckBox1: TCheckBox;
+    Label4: TLabel;
+    Panel1: TPanel;
+    DBEdit2: TDBEdit;
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);

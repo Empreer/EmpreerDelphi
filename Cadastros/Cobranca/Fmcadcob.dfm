@@ -13,7 +13,6 @@ object Frmcadcob: TFrmcadcob
   Font.Style = []
   Position = poDesktopCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -21,7 +20,7 @@ object Frmcadcob: TFrmcadcob
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -43,8 +42,8 @@ object Frmcadcob: TFrmcadcob
         ParentBackground = False
         TabOrder = 0
         object Labeluser: TLabel
-          Left = 118
-          Top = 113
+          Left = 95
+          Top = 85
           Width = 158
           Height = 21
           Caption = 'Descri'#231#227'o da Cobran'#231'a'
@@ -56,8 +55,8 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 30
-          Top = 113
+          Left = 7
+          Top = 85
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -69,8 +68,8 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 653
-          Top = 113
+          Left = 630
+          Top = 85
           Width = 30
           Height = 21
           Caption = 'Dias'
@@ -82,8 +81,8 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 30
-          Top = 140
+          Left = 7
+          Top = 112
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -93,6 +92,7 @@ object Frmcadcob: TFrmcadcob
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Cob
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -100,11 +100,12 @@ object Frmcadcob: TFrmcadcob
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 118
-          Top = 160
+          Left = 95
+          Top = 132
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -113,8 +114,8 @@ object Frmcadcob: TFrmcadcob
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 30
-          Top = 160
+          Left = 7
+          Top = 132
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -124,8 +125,8 @@ object Frmcadcob: TFrmcadcob
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 119
-          Top = 140
+          Left = 96
+          Top = 112
           Width = 499
           Height = 16
           BevelInner = bvNone
@@ -263,8 +264,8 @@ object Frmcadcob: TFrmcadcob
           end
         end
         object Panel1: TPanel
-          Left = 653
-          Top = 160
+          Left = 630
+          Top = 132
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -274,8 +275,8 @@ object Frmcadcob: TFrmcadcob
         end
         object DBEdit5: TDBEdit
           AlignWithMargins = True
-          Left = 653
-          Top = 140
+          Left = 630
+          Top = 112
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -310,8 +311,8 @@ object Frmcadcob: TFrmcadcob
         ParentBackground = False
         TabOrder = 0
         object Label1: TLabel
-          Left = 16
-          Top = 88
+          Left = 7
+          Top = 69
           Width = 172
           Height = 21
           Caption = 'Descri'#231#227'o das Cobran'#231'as'
@@ -323,8 +324,8 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
         end
         object Edit1: TEdit
-          Left = 16
-          Top = 115
+          Left = 7
+          Top = 96
           Width = 400
           Height = 16
           BevelInner = bvNone
@@ -340,10 +341,10 @@ object Frmcadcob: TFrmcadcob
           TabOrder = 0
         end
         object DBGrid1: TDBGrid
-          Left = 16
-          Top = 152
-          Width = 1225
-          Height = 449
+          Left = 7
+          Top = 133
+          Width = 1250
+          Height = 460
           DataSource = Dm_cadastros.Ds_cons_cadastro_Cob
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
@@ -391,8 +392,8 @@ object Frmcadcob: TFrmcadcob
             end>
         end
         object Panel12: TPanel
-          Left = 16
-          Top = 133
+          Left = 7
+          Top = 114
           Width = 400
           Height = 2
           BevelOuter = bvNone
@@ -401,8 +402,8 @@ object Frmcadcob: TFrmcadcob
           TabOrder = 2
         end
         object Panel13: TPanel
-          Left = 1110
-          Top = 107
+          Left = 1122
+          Top = 88
           Width = 130
           Height = 35
           BevelOuter = bvNone

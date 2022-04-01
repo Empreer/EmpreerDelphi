@@ -760,6 +760,11 @@ object Dm_cadastros: TDm_cadastros
       FixedChar = True
       Size = 1
     end
+    object Qry_cadastro_Useradmnomecompleto: TWideStringField
+      FieldName = 'nomecompleto'
+      Origin = 'nomecompleto'
+      Size = 8190
+    end
   end
   object Ds_cadastro_Useradm: TDataSource
     DataSet = Qry_cadastro_Useradm

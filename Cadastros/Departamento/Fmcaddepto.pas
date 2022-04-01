@@ -48,7 +48,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -65,6 +64,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var editar:integer;
   end;
 
 var
@@ -74,7 +74,7 @@ implementation
 
 {$R *.dfm}
 
-uses Uudm_conexao, Udm_cadastros;
+uses Uudm_conexao, Udm_cadastros, Fmprincipal;
 procedure TFrmcaddepto.BtncancelarClick(Sender: TObject);
 begin
   Dm_cadastros.Qry_cadastro_Departamento.cancel;
@@ -84,6 +84,7 @@ begin
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
   BtnEditar.Enabled := False;
+  editar:=0;
 end;
 
 procedure TFrmcaddepto.BtneditarClick(Sender: TObject);
@@ -92,6 +93,7 @@ Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Departamento.Edit();
+editar:=1;
 end;
 
 procedure TFrmcaddepto.BtnFecharClick(Sender: TObject);
@@ -105,7 +107,7 @@ Frmcaddepto.WindowState:=wsminimized;
 end;
 
 procedure TFrmcaddepto.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
+
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
@@ -114,38 +116,20 @@ begin
 
   DBEDIT3.SetFocus;
 
-  Proxnum :=0;
+
   Dm_cadastros.Qry_cadastro_Departamento.Cancel();
   Dm_cadastros.Qry_cadastro_Departamento.Close();
-
-  with Dm_cadastros.Qry_cadastro_Departamento do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM DEPARTAMENTOS order by id');
-      Open;
-    end;
-
-  Dm_cadastros.Qry_cadastro_Departamento.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Departamento.open();
   Dm_cadastros.Qry_cadastro_Departamento.append();
-  Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger:= Proxnum;
+
+  editar:=0;
 
 end;
 
 procedure TFrmcaddepto.FormCreate(Sender: TObject);
 begin
 Dm_cadastros.Qry_cadastro_Departamento.close();
-end;
-
-procedure TFrmcaddepto.FormShow(Sender: TObject);
-var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
-begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
+Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcaddepto.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -202,14 +186,17 @@ end;
 
 procedure TFrmcaddepto.BtnsalvarClick(Sender: TObject);
 begin
-if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o código !')
-
-else if Dbedit3.Text = '' then                        // Valida informações do Campo
+if Dbedit3.Text = '' then                        // Valida informações do Campo
 ShowMessage('Favor Preencher o a Descrição do Departamento !')
 
 else
   begin
+
+   if editar = 0 then begin
+   Dm_cadastros.Qry_cadastro_Departamentoid.AsInteger := Frmprincipal.Prox_num('seq_depto');
+   end;
+
+
    Dm_cadastros.Qry_cadastro_Departamento.Post();
    Dm_cadastros.Qry_cadastro_Departamento.cancel;
    Dm_cadastros.Qry_cadastro_Departamento.close;

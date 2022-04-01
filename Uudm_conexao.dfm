@@ -49,22 +49,22 @@ object udm_conexao: Tudm_conexao
   end
   object DataSource2: TDataSource
     DataSet = FDQuery2
-    Left = 464
-    Top = 184
+    Left = 480
+    Top = 112
   end
   object FDQuery2: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from useradm')
-    Left = 376
-    Top = 176
+    Left = 368
+    Top = 112
   end
   object Qry_Sequences: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from useradm')
-    Left = 88
-    Top = 192
+    Left = 256
+    Top = 184
   end
   object FDQuery3: TFDQuery
     Connection = FDConnection1

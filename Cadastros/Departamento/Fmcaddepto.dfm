@@ -13,7 +13,6 @@ object Frmcaddepto: TFrmcaddepto
   Font.Style = []
   Position = poDesktopCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -21,7 +20,7 @@ object Frmcaddepto: TFrmcaddepto
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -43,8 +42,8 @@ object Frmcaddepto: TFrmcaddepto
         ParentBackground = False
         TabOrder = 0
         object Labeluser: TLabel
-          Left = 97
-          Top = 113
+          Left = 95
+          Top = 81
           Width = 169
           Height = 21
           Caption = 'Nome do Departamento'
@@ -56,8 +55,8 @@ object Frmcaddepto: TFrmcaddepto
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 11
-          Top = 113
+          Left = 9
+          Top = 81
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -70,8 +69,8 @@ object Frmcaddepto: TFrmcaddepto
         end
         object DBEdit1: TDBEdit
           AlignWithMargins = True
-          Left = 12
-          Top = 140
+          Left = 10
+          Top = 108
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -81,6 +80,7 @@ object Frmcaddepto: TFrmcaddepto
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Departamento
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -92,8 +92,8 @@ object Frmcaddepto: TFrmcaddepto
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 97
-          Top = 160
+          Left = 95
+          Top = 128
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -102,8 +102,8 @@ object Frmcaddepto: TFrmcaddepto
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 9
-          Top = 160
+          Left = 7
+          Top = 128
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -113,8 +113,8 @@ object Frmcaddepto: TFrmcaddepto
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 98
-          Top = 140
+          Left = 96
+          Top = 108
           Width = 499
           Height = 16
           BevelInner = bvNone
@@ -267,8 +267,8 @@ object Frmcaddepto: TFrmcaddepto
         ParentBackground = False
         TabOrder = 0
         object Label1: TLabel
-          Left = 16
-          Top = 88
+          Left = 6
+          Top = 71
           Width = 169
           Height = 21
           Caption = 'Nome do Departamento'
@@ -280,8 +280,8 @@ object Frmcaddepto: TFrmcaddepto
           ParentFont = False
         end
         object Edit1: TEdit
-          Left = 16
-          Top = 115
+          Left = 6
+          Top = 98
           Width = 400
           Height = 16
           BevelInner = bvNone
@@ -297,9 +297,9 @@ object Frmcaddepto: TFrmcaddepto
           TabOrder = 0
         end
         object DBGrid1: TDBGrid
-          Left = 16
-          Top = 152
-          Width = 1225
+          Left = 6
+          Top = 135
+          Width = 1241
           Height = 449
           DataSource = Dm_cadastros.Ds_cons_cadastro_Departamento
           Font.Charset = DEFAULT_CHARSET
@@ -338,8 +338,8 @@ object Frmcaddepto: TFrmcaddepto
             end>
         end
         object Panel12: TPanel
-          Left = 16
-          Top = 133
+          Left = 6
+          Top = 116
           Width = 400
           Height = 2
           BevelOuter = bvNone
@@ -348,8 +348,8 @@ object Frmcaddepto: TFrmcaddepto
           TabOrder = 2
         end
         object Panel13: TPanel
-          Left = 1110
-          Top = 107
+          Left = 1116
+          Top = 90
           Width = 130
           Height = 35
           BevelOuter = bvNone

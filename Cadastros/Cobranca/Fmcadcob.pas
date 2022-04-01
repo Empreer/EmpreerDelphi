@@ -51,7 +51,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -68,6 +67,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var editar:integer;
   end;
 
 var
@@ -77,7 +77,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_cadastros, Uudm_conexao;
+uses Udm_cadastros, Uudm_conexao, Fmprincipal;
 procedure TFrmcadcob.BtncancelarClick(Sender: TObject);
 begin
   Dm_cadastros.Qry_cadastro_Cob.cancel;
@@ -85,7 +85,7 @@ begin
   Dm_cadastros.Qry_cadastro_Cob.close();
   Dm_cadastros.Qry_cadastro_Cob.close();
 
-
+  Editar:=0;
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
@@ -96,6 +96,7 @@ procedure TFrmcadcob.BtneditarClick(Sender: TObject);
 begin
 Btneditar.Enabled:=false;
 Btnsalvar.Enabled:=true;
+Editar:=1;
 
 Dm_cadastros.Qry_cadastro_Cob.Edit();
 end;
@@ -111,7 +112,6 @@ Frmcadcob.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadcob.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
@@ -120,7 +120,6 @@ begin
 
   Dbedit3.SetFocus;
 
-  Proxnum :=0;
   Dm_cadastros.Qry_cadastro_Cob.Cancel();
   Dm_cadastros.Qry_cadastro_Cob.Close();
 
@@ -132,27 +131,17 @@ begin
       Open;
     end;
 
-  Dm_cadastros.Qry_cadastro_Cob.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_CobId.AsInteger +1;
-  Dm_cadastros.Qry_cadastro_Cob.append();
-  Dm_cadastros.Qry_cadastro_Cobid.AsInteger:= Proxnum;
+  Dm_cadastros.Qry_cadastro_Cob.close;
+  Dm_cadastros.Qry_cadastro_Cob.open;
+  Dm_cadastros.Qry_cadastro_Cob.append;
   Dbedit5.Text:= '1';
+  editar:=0;
 end;
 
 procedure TFrmcadcob.FormCreate(Sender: TObject);
 begin
 Dm_cadastros.Qry_cadastro_cob.close();
-end;
-
-procedure TFrmcadcob.FormShow(Sender: TObject);
-var
- pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
-begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
+Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadcob.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -209,8 +198,8 @@ end;
 
 procedure TFrmcadcob.BtnsalvarClick(Sender: TObject);
 begin
-if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Código !')
+if Dbedit5.Text = '' then                                // Valida informações do Campo
+ShowMessage('Favor Preencher o campo Dias!')
 
 else if Dbedit3.Text = '' then                        // Valida informações do Campo
 ShowMessage('Favor Preencher o campo Nome !')
@@ -218,12 +207,17 @@ ShowMessage('Favor Preencher o campo Nome !')
 else
   begin
 
+   if editar = 0 then begin
+   Dm_cadastros.Qry_cadastro_cobid.AsInteger := Frmprincipal.Prox_num('seq_cob');
+   end;
+
+
    Dm_cadastros.Qry_cadastro_Cob.Post();
    Dm_cadastros.Qry_cadastro_Cob.cancel;
    Dm_cadastros.Qry_cadastro_Cob.close;
 
    Showmessage('Dados Salvos com Sucesso !');
-
+    Editar:=0;
     Btnnovo.Enabled := True;                               // Ativa o Botão Novo
     BtnSalvar.Enabled := False;                            // Desativa o Botão Salvar
     BtnEditar.Enabled := False;                            // Desativa o Botão Editar

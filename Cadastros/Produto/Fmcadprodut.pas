@@ -69,7 +69,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure BtnCadastroClick(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -87,7 +86,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    var edit:integer;
+    var editar:integer;
   end;
 
 var
@@ -96,14 +95,16 @@ var
 implementation
 
 {$R *.dfm}
-uses Fmlogin, Udm_cadastros, Uudm_conexao;
+uses Fmlogin, Udm_cadastros, Uudm_conexao, Fmprincipal;
 
 procedure TFrmcadprodut.BtncancelarClick(Sender: TObject);
 begin
-  Dm_cadastros.Qry_cadastro_Produto.cancel;
+
   Dm_cadastros.Qry_cadastro_Produto.close;
   Dm_cadastros.Qry_cadastro_Fornecedor.close();
   Dm_cadastros.Qry_cadastro_Departamento.close();
+  Dm_cadastros.Qry_cadastro_preco.close();
+  Dm_cadastros.Qry_cons_cadastro_Produto.Close();
 
   DBLookupComboBox2.KeyValue := -1;
   DBLookupComboBox3.KeyValue := -1;
@@ -113,6 +114,7 @@ begin
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
   BtnCancelar.Enabled := False;                            // Desabilita o botão Cancelar
   BtnEditar.Enabled := False;
+  editar:=0;
 
 end;
 
@@ -123,7 +125,7 @@ Btnsalvar.Enabled:=true;
 
 Dm_cadastros.Qry_cadastro_Produto.Edit();
 
-edit:=1;
+editar:=1;
 end;
 
 procedure TFrmcadprodut.BtnFecharClick(Sender: TObject);
@@ -137,8 +139,7 @@ Frmcadprodut.WindowState:=wsminimized;
 end;
 
 procedure TFrmcadprodut.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
-var Proxnumpreco :integer;
+
 begin
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
@@ -147,35 +148,15 @@ begin
 
   Dbedit3.SetFocus;
 
-  Proxnum :=0;
-  Dm_cadastros.Qry_cadastro_Produto.Cancel();
   Dm_cadastros.Qry_cadastro_Produto.Close();
-
-  with Dm_cadastros.Qry_cadastro_Produto do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM PRODUTOS order by id');
-      Open;
-    end;
-
-  Dm_cadastros.Qry_cadastro_Produto.last();
-  Proxnum := Dm_cadastros.Qry_cadastro_Produtoid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Produto.open();
   Dm_cadastros.Qry_cadastro_Produto.append();
-  Dm_cadastros.Qry_cadastro_Produtoid.AsInteger:= Proxnum;
 
-    with Dm_cadastros.Qry_cadastro_Preco do    // Criando novo campo para os preços.
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM PRecos order by id');
-      Open;
-    end;
 
-  Dm_cadastros.Qry_cadastro_Preco.last();
-  Proxnumpreco := Dm_cadastros.Qry_cadastro_Precoid.AsInteger +1;
+  Dm_cadastros.Qry_cadastro_Preco.close();
+  Dm_cadastros.Qry_cadastro_Preco.open();
   Dm_cadastros.Qry_cadastro_Preco.append();
-  Dm_cadastros.Qry_cadastro_Precoid.AsInteger:= Proxnumpreco;
+
 
   Dm_cadastros.Qry_cadastro_Departamento.close();
   Dm_cadastros.Qry_cadastro_Departamento.Open();
@@ -183,22 +164,20 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.close();
   Dm_cadastros.Qry_cadastro_Fornecedor.Open();
 
+  editar:=0
+
 end;
 
 procedure TFrmcadprodut.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
 Dm_cadastros.Qry_cadastro_Produto.close();
-end;
+Dm_cadastros.Qry_cadastro_Departamento.close();
+Dm_cadastros.Qry_cadastro_Fornecedor.close();
+Dm_cadastros.Qry_cons_cadastro_Produto.Close();
+Dm_cadastros.Qry_cadastro_Preco.close();
 
-procedure TFrmcadprodut.FormShow(Sender: TObject);
-var pages : Integer;                                // Deixa os tabs invisiveis pra usar os speeedbutton
-begin
- for pages := 0 to Pagecontrol1.PageCount -1 do
- begin
-   Pagecontrol1.Pages[pages].Tabvisible := False;
- end;
- Pagecontrol1.ActivePageIndex:= 0;
+Pagecontrol1.ActivePageIndex:= 0;
 end;
 
 procedure TFrmcadprodut.ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -257,10 +236,8 @@ SpeedButton1Click(Self);
 end;
 procedure TFrmcadprodut.BtnsalvarClick(Sender: TObject);
 begin
-if Dbedit1.Text = '' then                                // Valida informações do Campo
-ShowMessage('Favor Preencher o campo Código !')
 
-else if Dbedit3.Text = '' then                        // Valida informações do Campo
+if Dbedit3.Text = '' then                        // Valida informações do Campo
 ShowMessage('Favor Preencher o campo Descrição !')
 
 else if Dbedit4.Text = '' then                        // Valida informações do Campo
@@ -278,28 +255,19 @@ else
    Dm_cadastros.Qry_cadastro_Produtocodfornec.asinteger := DBLookupComboBox2.KeyValue;
    Dm_cadastros.Qry_cadastro_Produtocoddepto.asinteger :=  DBLookupComboBox3.KeyValue;
 
-   if edit <> 1 then begin  // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
-
+   if editar = 0 then begin   // se estiver em edição cria id novo e alimenta tabela de preços.
+   Dm_cadastros.Qry_cadastro_Produtoid.AsInteger := Frmprincipal.Prox_num('seq_produto');
    Dm_cadastros.Qry_cadastro_precocodfilial.asinteger := DBLookupComboBox1.KeyValue;
-   Dm_cadastros.Qry_cadastro_precocodprod.asinteger := StrToInt(DBedit1.text);
+   Dm_cadastros.Qry_cadastro_precocodprod.asinteger := Dm_cadastros.Qry_cadastro_Produtoid.AsInteger;
+   Dm_cadastros.Qry_cadastro_Precoid.AsInteger := Frmprincipal.Prox_num('seq_preco');
+   Dm_cadastros.Qry_cadastro_Preco.Post();
+   Dm_cadastros.Qry_cadastro_Preco.close;
+   Dm_cadastros.Qry_cadastro_Preco.cancel;
    end;
-
 
    Dm_cadastros.Qry_cadastro_Produto.Post();
-
-   if edit<> 1 then begin       // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
-   Dm_cadastros.Qry_cadastro_Preco.Post();
-   end;
-
    Dm_cadastros.Qry_cadastro_Produto.cancel;
    Dm_cadastros.Qry_cadastro_Produto.close;
-
-   if edit<> 1 then begin    // Se está em edição não entra na tabela de preços ela só é criada no botão NOVO.
-   Dm_cadastros.Qry_cadastro_Preco.cancel;
-   Dm_cadastros.Qry_cadastro_Preco.close;
-   end;
-
-
 
    Showmessage('Dados Salvos com Sucesso !');
 
@@ -311,13 +279,9 @@ else
     DBLookupComboBox2.KeyValue := -1;
     DBLookupComboBox3.KeyValue := -1;
 
+    editar:=0;
 
   end;
-
-
-
-
-
 
 end;
 

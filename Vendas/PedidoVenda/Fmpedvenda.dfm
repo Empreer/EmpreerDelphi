@@ -42,7 +42,6 @@ object Frmpedvenda: TFrmpedvenda
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
         object Labeluser: TLabel
           Left = 112
           Top = 65

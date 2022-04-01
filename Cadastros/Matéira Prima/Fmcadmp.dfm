@@ -13,7 +13,6 @@ object Frmcadmp: TFrmcadmp
   Font.Style = []
   Position = poDesktopCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -21,7 +20,7 @@ object Frmcadmp: TFrmcadmp
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -43,8 +42,8 @@ object Frmcadmp: TFrmcadmp
         ParentBackground = False
         TabOrder = 0
         object Labeluser: TLabel
-          Left = 105
-          Top = 139
+          Left = 97
+          Top = 106
           Width = 67
           Height = 21
           Caption = 'Descri'#231#227'o'
@@ -56,8 +55,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label2: TLabel
-          Left = 17
-          Top = 139
+          Left = 9
+          Top = 106
           Width = 31
           Height = 21
           Caption = 'C'#243'd.'
@@ -69,8 +68,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 621
-          Top = 139
+          Left = 613
+          Top = 106
           Width = 58
           Height = 21
           Caption = 'Unidade'
@@ -82,8 +81,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 797
-          Top = 139
+          Left = 789
+          Top = 106
           Width = 40
           Height = 21
           Caption = 'Custo'
@@ -95,8 +94,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 16
-          Top = 219
+          Left = 8
+          Top = 186
           Width = 86
           Height = 21
           Caption = 'Fornecedor'
@@ -108,8 +107,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label5: TLabel
-          Left = 888
-          Top = 219
+          Left = 880
+          Top = 186
           Width = 55
           Height = 21
           Caption = 'Estoque'
@@ -121,8 +120,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 432
-          Top = 219
+          Left = 424
+          Top = 186
           Width = 111
           Height = 21
           Caption = 'Departamento'
@@ -134,8 +133,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Label7: TLabel
-          Left = 16
-          Top = 110
+          Left = 8
+          Top = 77
           Width = 41
           Height = 21
           Caption = 'Filial:'
@@ -147,8 +146,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object DBEdit1: TDBEdit
-          Left = 17
-          Top = 166
+          Left = 9
+          Top = 133
           Width = 57
           Height = 16
           BevelInner = bvNone
@@ -158,6 +157,7 @@ object Frmcadmp: TFrmcadmp
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Mp
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -165,11 +165,12 @@ object Frmcadmp: TFrmcadmp
           Font.Style = []
           ParentBiDiMode = False
           ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
         object pnlborda2: TPanel
-          Left = 105
-          Top = 186
+          Left = 97
+          Top = 153
           Width = 500
           Height = 2
           BevelOuter = bvNone
@@ -178,8 +179,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 1
         end
         object Pnlborda1: TPanel
-          Left = 17
-          Top = 187
+          Left = 9
+          Top = 154
           Width = 70
           Height = 2
           BevelOuter = bvNone
@@ -189,8 +190,8 @@ object Frmcadmp: TFrmcadmp
         end
         object DBEdit3: TDBEdit
           AlignWithMargins = True
-          Left = 106
-          Top = 166
+          Left = 98
+          Top = 133
           Width = 499
           Height = 16
           BevelInner = bvNone
@@ -210,8 +211,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 3
         end
         object pnlborda3: TPanel
-          Left = 621
-          Top = 186
+          Left = 613
+          Top = 153
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -221,8 +222,8 @@ object Frmcadmp: TFrmcadmp
         end
         object DBEdit4: TDBEdit
           AlignWithMargins = True
-          Left = 621
-          Top = 166
+          Left = 613
+          Top = 133
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -242,8 +243,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 5
         end
         object Panel1: TPanel
-          Left = 797
-          Top = 186
+          Left = 789
+          Top = 153
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -253,8 +254,8 @@ object Frmcadmp: TFrmcadmp
         end
         object DBEdit5: TDBEdit
           AlignWithMargins = True
-          Left = 797
-          Top = 166
+          Left = 789
+          Top = 133
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -274,8 +275,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 7
         end
         object DBLookupComboBox2: TDBLookupComboBox
-          Left = 16
-          Top = 246
+          Left = 8
+          Top = 213
           Width = 385
           Height = 25
           Font.Charset = DEFAULT_CHARSET
@@ -408,8 +409,8 @@ object Frmcadmp: TFrmcadmp
           end
         end
         object Panel2: TPanel
-          Left = 888
-          Top = 266
+          Left = 880
+          Top = 233
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -419,8 +420,8 @@ object Frmcadmp: TFrmcadmp
         end
         object DBEdit2: TDBEdit
           AlignWithMargins = True
-          Left = 888
-          Top = 246
+          Left = 880
+          Top = 213
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -440,8 +441,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 14
         end
         object DBLookupComboBox3: TDBLookupComboBox
-          Left = 432
-          Top = 246
+          Left = 424
+          Top = 213
           Width = 385
           Height = 25
           Font.Charset = DEFAULT_CHARSET
@@ -456,8 +457,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 15
         end
         object DBLookupComboBox1: TDBLookupComboBox
-          Left = 74
-          Top = 110
+          Left = 66
+          Top = 77
           Width = 303
           Height = 23
           Enabled = False
@@ -482,8 +483,8 @@ object Frmcadmp: TFrmcadmp
         ParentBackground = False
         TabOrder = 0
         object Label1: TLabel
-          Left = 16
-          Top = 88
+          Left = 8
+          Top = 66
           Width = 67
           Height = 21
           Caption = 'Descri'#231#226'o'
@@ -495,8 +496,8 @@ object Frmcadmp: TFrmcadmp
           ParentFont = False
         end
         object Edit1: TEdit
-          Left = 16
-          Top = 115
+          Left = 8
+          Top = 93
           Width = 400
           Height = 16
           BevelInner = bvNone
@@ -512,10 +513,10 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 0
         end
         object DBGrid1: TDBGrid
-          Left = 16
-          Top = 152
-          Width = 1225
-          Height = 449
+          Left = 8
+          Top = 130
+          Width = 1249
+          Height = 463
           DataSource = Dm_cadastros.Ds_cons_cadastro_Mp
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
@@ -588,8 +589,8 @@ object Frmcadmp: TFrmcadmp
             end>
         end
         object Panel12: TPanel
-          Left = 16
-          Top = 133
+          Left = 8
+          Top = 111
           Width = 400
           Height = 2
           BevelOuter = bvNone
@@ -598,8 +599,8 @@ object Frmcadmp: TFrmcadmp
           TabOrder = 2
         end
         object Panel13: TPanel
-          Left = 1110
-          Top = 107
+          Left = 1122
+          Top = 85
           Width = 130
           Height = 35
           BevelOuter = bvNone

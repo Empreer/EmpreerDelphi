@@ -33,13 +33,6 @@ object Frmlogin: TFrmlogin
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    object Label3: TLabel
-      Left = 56
-      Top = 104
-      Width = 34
-      Height = 15
-      Caption = 'Label3'
-    end
     object Pnlogin: TPanel
       Left = 143
       Top = 40

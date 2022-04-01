@@ -112,6 +112,7 @@ type
 
   public
     { Public declarations }
+    var editar: integer;
   end;
 
 var
@@ -125,9 +126,11 @@ uses Fmlogin, Uudm_conexao, Udm_cadastros, Fmprincipal, UFrmcadclibuscacidade;
 
 procedure TFrmcadcli.BtncancelarClick(Sender: TObject);
 begin
+  editar:=0;
   dm_cadastros.Qry_cadastro_Cliente.cancel;
   dm_cadastros.Qry_cadastro_Cliente.close;
   Dm_cadastros.Qry_cons_uf.close;
+
 
   Btnnovo.Enabled := True;                                 // Habilita  o botão novo
   BtnSalvar.Enabled := False;                              // Desabilita o Botão Salvar
@@ -143,6 +146,7 @@ end;
 
 procedure TFrmcadcli.BtneditarClick(Sender: TObject);
 begin
+  editar:=1;
   Btneditar.Enabled:=false;
   Btnsalvar.Enabled:=true;
   SpeedButton2.Enabled := True;
@@ -163,6 +167,7 @@ end;
 
 procedure TFrmcadcli.BtnnovoClick(Sender: TObject);
 begin
+  editar := 0;
   Btnnovo.Enabled := False;                                             //Desativa o Botao Novo
   BtnEditar.Enabled := False;                                           // Desativa o Botão Editar
   BtnSalvar.Enabled :=True;                                             // Ativa o botao Salvar
@@ -172,8 +177,9 @@ begin
 
   dm_cadastros.Qry_cadastro_Cliente.Open();
   Dm_cadastros.Qry_cadastro_Cliente.Append;
-  Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
+ // Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
 
+  Dm_cadastros.Qry_cons_cadastro_Cliente.close();
   dbedit3.SetFocus;
 end;
 
@@ -181,6 +187,9 @@ procedure TFrmcadcli.FormCreate(Sender: TObject);
 begin
 DBLookupComboBox1.KeyValue:= udm_conexao.Codfilial;
 Dm_cadastros.Qry_cadastro_cliente.close();
+Dm_cadastros.Qry_cons_cadastro_Cliente.close();
+Dm_cadastros.Qry_cons_cidade.close;
+
 Pagecontrol1.ActivePageIndex:= 0;
 end;
 
@@ -277,6 +286,11 @@ begin
   if Valida_Campos = true then
   begin
 
+   if editar = 0 then begin
+   Dm_cadastros.Qry_cadastro_Clienteid.AsInteger := Frmprincipal.Prox_num('seq_users');
+   end;
+
+
     Dm_cadastros.Qry_cadastro_Clientecodfilial.asinteger := DBLookupComboBox1.KeyValue;
     Dm_cadastros.Qry_cadastro_Cliente.Post;
 
@@ -288,6 +302,8 @@ begin
 
     Dm_cadastros.Qry_cadastro_cliente.cancel;
     Dm_cadastros.Qry_cadastro_cliente.close;
+
+    editar:=0;
 
     Showmessage('Dados Salvos com Sucesso !');
   end;

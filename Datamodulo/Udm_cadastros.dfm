@@ -6,8 +6,7 @@ object Dm_cadastros: TDm_cadastros
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from users ')
-    Left = 48
-    Top = 16
+    Left = 40
     object Qry_cadastro_Clienteid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -98,8 +97,8 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Cliente: TDataSource
     DataSet = Qry_cadastro_Cliente
-    Left = 48
-    Top = 80
+    Left = 40
+    Top = 32
   end
   object Qry_cons_cadastro_Cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -111,8 +110,7 @@ object Dm_cadastros: TDm_cadastros
       '      FROM USERS F, CIDADES C'
       '     WHERE F.CODFILIAL >=1'
       '      AND F.CODCIDADE = C.ID')
-    Left = 192
-    Top = 16
+    Left = 184
     object Qry_cons_cadastro_Clienteid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -192,15 +190,14 @@ object Dm_cadastros: TDm_cadastros
   end
   object ds_cons_cadastro_Cliente: TDataSource
     DataSet = Qry_cons_cadastro_Cliente
-    Left = 192
-    Top = 72
+    Left = 184
+    Top = 32
   end
   object Qry_cadastro_Fornecedor: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from fornecedors order by nome')
-    Left = 360
-    Top = 16
+    Left = 336
     object Qry_cadastro_Fornecedorid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -274,8 +271,8 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Fornecedor: TDataSource
     DataSet = Qry_cadastro_Fornecedor
-    Left = 360
-    Top = 72
+    Left = 336
+    Top = 32
   end
   object Qry_cons_cadastro_Fornecedor: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -287,8 +284,7 @@ object Dm_cadastros: TDm_cadastros
       '      FROM FORNECEDORS F, CIDADES C'
       '     WHERE F.CODFILIAL >=1'
       '      AND F.CODCIDADE = C.ID')
-    Left = 544
-    Top = 16
+    Left = 488
     object Qry_cons_cadastro_Fornecedorid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -376,15 +372,14 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Fornecedor: TDataSource
     DataSet = Qry_cons_cadastro_Fornecedor
-    Left = 544
-    Top = 72
+    Left = 488
+    Top = 32
   end
   object Qry_cons_uf: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from ufs')
-    Left = 768
-    Top = 24
+    Left = 608
     object Qry_cons_ufid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -398,15 +393,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_uf: TDataSource
     DataSet = Qry_cons_uf
-    Left = 768
-    Top = 88
+    Left = 608
+    Top = 32
   end
   object Qry_cadastro_Produto: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from produtos')
     Left = 48
-    Top = 152
+    Top = 88
     object Qry_cadastro_Produtoid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -482,7 +477,7 @@ object Dm_cadastros: TDm_cadastros
   object Ds_cadastro_Produto: TDataSource
     DataSet = Qry_cadastro_Produto
     Left = 48
-    Top = 216
+    Top = 120
   end
   object Qry_cons_cadastro_Produto: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -494,8 +489,8 @@ object Dm_cadastros: TDm_cadastros
       'where p.codfornec = f.id '
       'and p.coddepto = d.id '
       '')
-    Left = 200
-    Top = 152
+    Left = 184
+    Top = 88
     object Qry_cons_cadastro_Produtoid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -536,15 +531,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Produto: TDataSource
     DataSet = Qry_cons_cadastro_Produto
-    Left = 200
-    Top = 216
+    Left = 184
+    Top = 120
   end
   object Qry_cadastro_Departamento: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from departamentos order by nome')
-    Left = 392
-    Top = 152
+    Left = 336
+    Top = 88
     object Qry_cadastro_Departamentoid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -559,15 +554,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Departamento: TDataSource
     DataSet = Qry_cadastro_Departamento
-    Left = 392
-    Top = 216
+    Left = 336
+    Top = 120
   end
   object Qry_cons_cadastro_Departamento: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from departamentos')
-    Left = 584
-    Top = 152
+    Left = 504
+    Top = 88
     object Qry_cons_cadastro_Departamentoid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -582,15 +577,14 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Departamento: TDataSource
     DataSet = Qry_cons_cadastro_Departamento
-    Left = 592
-    Top = 216
+    Left = 504
+    Top = 120
   end
   object Qry_cons_cidade: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from cidades')
-    Left = 768
-    Top = 144
+    Left = 688
     object Qry_cons_cidadeid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -614,15 +608,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cidade: TDataSource
     DataSet = Qry_cons_cidade
-    Left = 768
-    Top = 208
+    Left = 688
+    Top = 32
   end
   object Qry_cadastro_mp: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from produtomps')
-    Left = 48
-    Top = 288
+    Left = 648
+    Top = 88
     object Qry_cadastro_mpid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -671,8 +665,8 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Mp: TDataSource
     DataSet = Qry_cadastro_mp
-    Left = 48
-    Top = 352
+    Left = 648
+    Top = 120
   end
   object Qry_cons_cadastro_Mp: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -684,8 +678,8 @@ object Dm_cadastros: TDm_cadastros
       'where p.codfornec = f.id '
       'and p.coddepto = d.id '
       '')
-    Left = 200
-    Top = 288
+    Left = 760
+    Top = 88
     object Qry_cons_cadastro_Mpid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -729,15 +723,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Mp: TDataSource
     DataSet = Qry_cons_cadastro_Mp
-    Left = 200
-    Top = 352
+    Left = 760
+    Top = 120
   end
   object Qry_cadastro_Useradm: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from useradm')
-    Left = 368
-    Top = 296
+    Left = 48
+    Top = 176
     object Qry_cadastro_Useradmid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -775,16 +769,16 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Useradm: TDataSource
     DataSet = Qry_cadastro_Useradm
-    Left = 368
-    Top = 360
+    Left = 48
+    Top = 208
   end
   object Qry_cons_cadastro_Useradm: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from useradm'
       '')
-    Left = 520
-    Top = 296
+    Left = 192
+    Top = 176
     object Qry_cons_cadastro_Useradmid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -815,15 +809,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Useradm: TDataSource
     DataSet = Qry_cons_cadastro_Useradm
-    Left = 520
-    Top = 360
+    Left = 192
+    Top = 208
   end
   object Qry_cadastro_Cob: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from cobrancas')
-    Left = 48
-    Top = 424
+    Left = 320
+    Top = 176
     object Qry_cadastro_Cobid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -843,16 +837,16 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_Cob: TDataSource
     DataSet = Qry_cadastro_Cob
-    Left = 48
-    Top = 488
+    Left = 320
+    Top = 208
   end
   object Qry_cons_cadastro_Cob: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from cobrancas'
       '')
-    Left = 200
-    Top = 424
+    Left = 440
+    Top = 176
     object Qry_cons_cadastro_Cobid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -870,15 +864,15 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cons_cadastro_Cob: TDataSource
     DataSet = Qry_cons_cadastro_Cob
-    Left = 200
-    Top = 488
+    Left = 440
+    Top = 208
   end
   object Qry_cadastro_preco: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from precos')
-    Left = 328
-    Top = 424
+    Left = 568
+    Top = 176
     object Qry_cadastro_precoid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -915,7 +909,61 @@ object Dm_cadastros: TDm_cadastros
   end
   object Ds_cadastro_preco: TDataSource
     DataSet = Qry_cadastro_preco
-    Left = 328
-    Top = 488
+    Left = 568
+    Top = 208
+  end
+  object Qry_cadastro_contas: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from contas')
+    Left = 683
+    Top = 176
+    object Qry_cadastro_contasid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+    end
+    object Qry_cadastro_contasdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cadastro_contastipo: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Ds_cadastro_contas: TDataSource
+    DataSet = Qry_cadastro_contas
+    Left = 683
+    Top = 208
+  end
+  object Qry_cons_cadastro_contas: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from contas ')
+    Left = 819
+    Top = 176
+    object Qry_cons_cadastro_contasid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+    end
+    object Qry_cons_cadastro_contasdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_contastipo: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Ds_cons_cadastro_contas: TDataSource
+    DataSet = Qry_cons_cadastro_contas
+    Left = 819
+    Top = 200
   end
 end

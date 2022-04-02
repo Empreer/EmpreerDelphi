@@ -120,17 +120,6 @@ begin
 
   Dbedit3.SetFocus;
 
-  Dm_cadastros.Qry_cadastro_Cob.Cancel();
-  Dm_cadastros.Qry_cadastro_Cob.Close();
-
-  with Dm_cadastros.Qry_cadastro_Cob do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM COBRANCAS order by id');
-      Open;
-    end;
-
   Dm_cadastros.Qry_cadastro_Cob.close;
   Dm_cadastros.Qry_cadastro_Cob.open;
   Dm_cadastros.Qry_cadastro_Cob.append;

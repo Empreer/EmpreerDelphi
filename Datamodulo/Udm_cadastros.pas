@@ -171,6 +171,16 @@ type
     Qry_cons_cadastro_Clientecodfilial: TIntegerField;
     Qry_cadastro_Useradmnomecompleto: TWideStringField;
     Qry_cadastro_Clienteperdesccli: TFMTBCDField;
+    Qry_cadastro_contas: TFDQuery;
+    Ds_cadastro_contas: TDataSource;
+    Qry_cadastro_contasid: TIntegerField;
+    Qry_cadastro_contasdescricao: TWideStringField;
+    Qry_cadastro_contastipo: TWideStringField;
+    Qry_cons_cadastro_contas: TFDQuery;
+    Ds_cons_cadastro_contas: TDataSource;
+    Qry_cons_cadastro_contasid: TIntegerField;
+    Qry_cons_cadastro_contasdescricao: TWideStringField;
+    Qry_cons_cadastro_contastipo: TWideStringField;
   private
     { Private declarations }
   public

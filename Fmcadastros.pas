@@ -30,6 +30,9 @@ type
     Pnlcobranca: TPanel;
     SpeedButton7: TSpeedButton;
     pnlinha7: TPanel;
+    Pncontas: TPanel;
+    SpeedButton8: TSpeedButton;
+    pnlcontas: TPanel;
     procedure pnclienteMouseEnter(Sender: TObject);
     procedure pnclienteMouseActivate(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y, HitTest: Integer;
@@ -55,6 +58,9 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton8MouseEnter(Sender: TObject);
+    procedure SpeedButton8MouseLeave(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,7 +75,7 @@ implementation
 {$R *.dfm}
 
 uses Fmprincipal, Fmcadcli, Fmcadfornec, Fmcadprodut, Fmcadmp, Fmusersist,
-  Fmcaddepto, Fmcadcob;
+  Fmcaddepto, Fmcadcob, Fmconta;
 
 procedure TFrmcadastros.pnclienteMouseActivate(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y, HitTest: Integer;
@@ -193,6 +199,22 @@ end;
 procedure TFrmcadastros.SpeedButton7MouseLeave(Sender: TObject);
 begin
 pnlinha7.color:=clWindow;
+end;
+
+procedure TFrmcadastros.SpeedButton8Click(Sender: TObject);
+begin
+  Frmconta := TFrmconta.Create(Self);                          //Botao de login chama o formulario principal
+  Frmconta.Show;
+end;
+
+procedure TFrmcadastros.SpeedButton8MouseEnter(Sender: TObject);
+begin
+pnlcontas.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmcadastros.SpeedButton8MouseLeave(Sender: TObject);
+begin
+pnlcontas.color:=clWhite;
 end;
 
 end.

@@ -64,7 +64,7 @@ implementation
 {$R *.dfm}
 
 uses Fmlogin, Fmcadastros, Fmentradas, Uudm_conexao, Fmgerencial, Fmprecifica,
-  Fmvendas, Fmrelatorios, Fmconfig, Fmfinanc;
+  Fmvendas, Fmrelatorios, Fmconfig, Fmfinanc, Fmconta;
 
 
 

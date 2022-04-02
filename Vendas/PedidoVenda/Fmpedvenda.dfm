@@ -767,6 +767,7 @@ object Frmpedvenda: TFrmpedvenda
           CharCase = ecUpperCase
           DataField = 'id'
           DataSource = Dm_vendas.Ds_pedido
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1128,6 +1129,7 @@ object Frmpedvenda: TFrmpedvenda
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1147,6 +1149,7 @@ object Frmpedvenda: TFrmpedvenda
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1166,6 +1169,7 @@ object Frmpedvenda: TFrmpedvenda
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1191,6 +1195,7 @@ object Frmpedvenda: TFrmpedvenda
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ReadOnly = True
           TabOrder = 26
           Text = '0'
         end
@@ -1203,6 +1208,7 @@ object Frmpedvenda: TFrmpedvenda
           BevelOuter = bvNone
           BorderStyle = bsNone
           CharCase = ecUpperCase
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13

@@ -118,7 +118,7 @@ type
   private
     { Private declarations }
   public
-    var numped:integer;
+    var cabecalho:integer;
   end;
 
 var
@@ -129,13 +129,12 @@ implementation
 {$R *.dfm}
 
 uses Udm_cadastros, Udm_precificacao, Udm_vendas, Uudm_conexao,
-  Fmpedvendabuscacli, Fmpedvendabuscaprod, Udm_financeiro;
+  Fmpedvendabuscacli, Fmpedvendabuscaprod, Udm_financeiro, Fmprincipal;
 
 procedure TFrmpedvenda.BtnAdicionarClick(Sender: TObject);
-var Proxnum:integer;
 var Data:string;
 begin
- Proxnum :=0;
+
 
    if Edit8.Text = '0' then                                // Valida informações do Campo
    ShowMessage('Favor adicionar quantidade ou preço ao item!')
@@ -157,41 +156,34 @@ begin
 
    Edit8.SetFocus;
 
-   if numped = 0 then begin
+   if cabecalho = 0 then begin         //gravação do cabeçalho, só passa na primeira vez que adiciona o item.
+
+   Dm_vendas.Qry_pedidoid.AsInteger := Frmprincipal.Prox_num('seq_pedvenda');
    Data := formatdatetime('dd/mm/yyyy',Datetimepicker1.Date);
-   Dm_vendas.Qry_pedidocodfilial.asinteger := DBLookupComboBox1.KeyValue;   // abastecendo cabeçalho
+   Dm_vendas.Qry_pedidocodfilial.asinteger := DBLookupComboBox1.KeyValue;
    Dm_vendas.Qry_pedidocobid.AsInteger := DBLookupComboBox3.KeyValue;
    Dm_vendas.Qry_pedidocodvend.AsInteger := DBLookupComboBox2.KeyValue;
    Dm_vendas.Qry_pedidodtpedido.Asstring := Data;
    Dm_vendas.Qry_pedido.Post();
-   numped:= strtoint(Dbedit2.Text);
+   cabecalho := 1;
+
    end;
 
 
-   Dm_vendas.Qry_pedidoitem.Cancel();             //Abastecendo tabela itens do pedido
+
+   //Abastecendo tabela itens do pedido
    Dm_vendas.Qry_pedidoitem.Close();
+   Dm_vendas.Qry_pedidoitem.open();
+   Dm_vendas.Qry_pedidoitem.append();
+   Dm_vendas.Qry_pedidoitemid.AsInteger := Frmprincipal.Prox_num('seq_peditem');
 
-    with Dm_vendas.Qry_pedidoitem do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM pedidoitem order by id');
-      Open;
-    end;
-
-  Dm_vendas.Qry_pedidoitem.last();
-  Proxnum := Dm_vendas.Qry_pedidoitemid.AsInteger +1;
-  Dm_vendas.Qry_pedidoitem.append();
-  Dm_vendas.Qry_pedidoitemid.AsInteger:= Proxnum;
-
-  Dm_vendas.Qry_pedidoitemcodfilial.asinteger := DBLookupComboBox1.KeyValue;
-  Dm_vendas.Qry_pedidoitempedidoid.Asstring:= Dbedit2.Text;
-  Dm_vendas.Qry_pedidoitemprodutoid.Asstring:= Edit9.Text;
-  Dm_vendas.Qry_pedidoitemqt.Asstring:= Edit7.Text;
-  Dm_vendas.Qry_pedidoitempunit.Asstring:= Edit4.Text;
-  Dm_vendas.Qry_pedidoitemsubtot.Asstring:= Edit8.Text;
-
-  Dm_vendas.Qry_pedidoitem.Post;
+   Dm_vendas.Qry_pedidoitemcodfilial.asinteger := DBLookupComboBox1.KeyValue;
+   Dm_vendas.Qry_pedidoitempedidoid.Asinteger:= Dm_vendas.Qry_pedidoid.AsInteger;
+   Dm_vendas.Qry_pedidoitemprodutoid.Asstring:= Edit9.Text;
+   Dm_vendas.Qry_pedidoitemqt.Asstring:= Edit7.Text;
+   Dm_vendas.Qry_pedidoitempunit.Asstring:= Edit4.Text;
+   Dm_vendas.Qry_pedidoitemsubtot.Asstring:= Edit8.Text;
+   Dm_vendas.Qry_pedidoitem.Post;
 
    Dm_vendas.Qry_cons_pedidoitem.Cancel();             //Item Pedido
    Dm_vendas.Qry_cons_pedidoitem.Close();
@@ -206,13 +198,14 @@ begin
       Sql.Add('and c.id = i.pedidoid');
       Sql.Add('and c.id= :numped');
 
-      Params.ParamByName('numped').AsInteger := numped;
+      Params.ParamByName('numped').AsInteger := Dm_vendas.Qry_pedidoid.AsInteger;
       Open;
     end;
     Dbedit1.Enabled:=false;
     DBLookupComboBox2.Enabled:=false;
     DBLookupComboBox3.Enabled:=false;
 
+    Edit10.Text:='0';
     Edit9.Text:='0';
     Edit4.Text:='0';
     Edit3.Text:='0';
@@ -240,7 +233,7 @@ begin
  if MessageDlg('Deseja Realmente cancelar a digitação do pedido ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
  begin
 
-   numpeddel:= dbedit2.Text;
+   numpeddel:= Dm_vendas.Qry_pedidoid.Asstring;
 
 
    Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
@@ -294,7 +287,7 @@ begin
 
     ShowMessage('Pedido cancelado com sucesso!');
 
-    numped := 0;
+    cabecalho :=0;
  end;
 
 end;
@@ -373,36 +366,24 @@ Frmpedvenda.WindowState:=wsminimized;
 end;
 
 procedure TFrmpedvenda.BtnnovoClick(Sender: TObject);
-var Proxnum : integer;
 begin
-Proxnum :=0;
-
-
 
  Dbedit1.Enabled:=true;
  DBLookupComboBox2.Enabled:=true;
  DBLookupComboBox3.Enabled:=true;
  Edit5.Text:='';
+ Edit4.Enabled:=true;
+ edit3.Enabled:=true;
+ edit7.Enabled:=true;
  DBLookupComboBox3.KeyValue:=-1;
  DBLookupComboBox2.KeyValue:=-1;
  DateTimePicker1.Date := today;
 
 
- Dm_vendas.Qry_pedido.Cancel();             //Cabeçalho
  Dm_vendas.Qry_pedido.Close();
+ Dm_vendas.Qry_pedido.open();
+ Dm_vendas.Qry_pedido.append();
 
-  with Dm_vendas.Qry_pedido do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM pedidos order by id');
-      Open;
-    end;
-
-  Dm_vendas.Qry_pedido.last();
-  Proxnum := Dm_vendas.Qry_pedidoid.AsInteger +1;
-  Dm_vendas.Qry_pedido.append();
-  Dm_vendas.Qry_pedidoid.AsInteger:= Proxnum;
 
  Speedbutton3.Enabled:=true;
  SpeedButton4.Enabled:=true;
@@ -422,7 +403,7 @@ Proxnum :=0;
  DBLookupComboBox2.Enabled:=true;
 
  Dbedit1.SetFocus;
-
+ cabecalho :=0;
 
 end;
 
@@ -465,27 +446,17 @@ begin
 
     Dm_vendas.SQLaux.Close;
     Dm_vendas.SQLaux.SQL.Clear;
-    Dm_vendas.SQLaux.SQL.Add('update pedidos set vltotal=  + '''+Dbedit3.Text+''' where id= '''+Dbedit2.Text+'''');
+    Dm_vendas.SQLaux.SQL.Add('update pedidos set vltotal=  + '''+Dbedit3.Text+''' where id= '''+Dm_vendas.Qry_pedidoid.Asstring+'''');
     Dm_vendas.SQLaux.ExecSQL();
 
   // Alimenta Contas a Receber
 
-  Dm_financeiro.Qry_creceber.Cancel();
+
   Dm_financeiro.Qry_creceber.Close();
-
-  with Dm_financeiro.Qry_creceber do
-  begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add(' SELECT * FROM creceber order by id');
-      Open;
-    end;
-
-  Dm_financeiro.Qry_creceber.last();
-  idcreceber := Dm_financeiro.Qry_creceberid.AsInteger +1;
+  Dm_financeiro.Qry_creceber.open();
   Dm_financeiro.Qry_creceber.append();
-  Dm_financeiro.Qry_creceberid.AsInteger:= idcreceber;
-  Dm_financeiro.Qry_creceberpedidoid.AsString := Dbedit2.Text;
+  Dm_financeiro.Qry_creceberid.AsInteger := Frmprincipal.Prox_num('seq_creceber');
+  Dm_financeiro.Qry_creceberpedidoid.AsString := Dm_vendas.Qry_pedidoid.Asstring;
   Dm_financeiro.Qry_creceberuserid.AsString :=  Dbedit1.Text;
   Dm_financeiro.Qry_crecebercobid.AsInteger :=  DBLookupComboBox3.Keyvalue;
   Dm_financeiro.Qry_crecebercodfilial.AsInteger :=  DBLookupComboBox1.Keyvalue;
@@ -542,13 +513,13 @@ begin
     Edit10.Text:='0';
     Edit5.Text:='';
     Edit6.Text:='';
-    Edit9.Enabled:=false;
     Edit4.Enabled:=false;
     Edit3.Enabled:=false;
     Edit7.Enabled:=false;
     Edit8.Enabled:=false;
     Edit10.Enabled:=false;
     Edit9.Enabled:=false;
+    dbgrid2.Enabled:=false;
 
     dbedit1.enabled:=false;
     DBLookupComboBox2.Enabled:=false;
@@ -557,7 +528,7 @@ begin
     SpeedButton4.Enabled:=true;
     Btnadicionar.Enabled:=false;
     Btnremover.Enabled:=false;
-    numped := 0;
+    cabecalho :=0;
 
 
 
@@ -640,7 +611,10 @@ begin
     end;
 
  Pagecontrol1.ActivePageIndex:= 0;
-
+ edit9.Enabled:=false;
+ Edit4.Enabled:=false;
+ edit3.Enabled:=false;
+ edit7.Enabled:=false;
 
 
 end;
@@ -799,8 +773,7 @@ Dm_vendas.Qry_pedidoitem.Close;
 Dm_vendas.Qry_cons_pedidoitem.Close;
 Dm_cadastros.Qry_cadastro_Cob.close;
 Dm_vendas.qry_vendedor.Close;
-
-
+Dm_financeiro.Qry_creceber.Close;
 
 end;
 

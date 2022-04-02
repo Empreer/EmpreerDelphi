@@ -245,6 +245,8 @@ object Dm_vendas: TDm_vendas
       AutoGenerateValue = arDefault
       FieldName = 'preco'
       Origin = 'preco'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Precision = 64
       Size = 0
     end
@@ -253,6 +255,8 @@ object Dm_vendas: TDm_vendas
       AutoGenerateValue = arDefault
       FieldName = 'percdesc'
       Origin = 'percdesc'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Precision = 64
       Size = 0
     end

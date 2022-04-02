@@ -183,6 +183,7 @@ begin
    Dm_vendas.Qry_pedidoitemqt.Asstring:= Edit7.Text;
    Dm_vendas.Qry_pedidoitempunit.Asstring:= Edit4.Text;
    Dm_vendas.Qry_pedidoitemsubtot.Asstring:= Edit8.Text;
+   Dm_vendas.Qry_pedidoitemptabela.Asstring:= Edit10.Text;
    Dm_vendas.Qry_pedidoitem.Post;
 
    Dm_vendas.Qry_cons_pedidoitem.Cancel();             //Item Pedido
@@ -192,7 +193,7 @@ begin
   begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial');
+      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial,i.ptabela');
       Sql.Add('from produtos p, pedidoitem i, pedidos c');
       Sql.Add('where p.id = i.produtoid');
       Sql.Add('and c.id = i.pedidoid');
@@ -233,27 +234,29 @@ begin
  if MessageDlg('Deseja Realmente cancelar a digitação do pedido ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
  begin
 
+   if Dm_vendas.Qry_pedidoid.AsString <>'' then begin   //Só deleta se já inseriu o primeiro produto do pedido.
+
    numpeddel:= Dm_vendas.Qry_pedidoid.Asstring;
 
 
-   Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+   Dm_vendas.SQLaux.Close;
    Dm_vendas.SQLaux.SQL.Clear;
    Dm_vendas.SQLaux.SQL.Add('delete from pedidos where id = '+numpeddel+'');
    Dm_vendas.SQLaux.ExecSQL();
 
-   Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
+   Dm_vendas.SQLaux.Close;
    Dm_vendas.SQLaux.SQL.Clear;
    Dm_vendas.SQLaux.SQL.Add('delete from pedidoitem where pedidoid = '+numpeddel+'');
    Dm_vendas.SQLaux.ExecSQL();
+   end;
 
 
-
-   Dm_vendas.Qry_pedido.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_pedido.Cancel();
    Dm_vendas.Qry_pedido.Close();
-   Dm_vendas.Qry_pedidoitem.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_pedidoitem.Cancel();
    Dm_vendas.Qry_pedidoitem.Close();
    Dm_vendas.Qry_cons_pedidoitem.Close();
-   Dm_vendas.Qry_cons_pedidoitem.Cancel();             //Cabeçalho
+   Dm_vendas.Qry_cons_pedidoitem.Cancel();
    Dm_vendas.Qry_pedidoitem.Close();
    Dm_vendas.Qry_vendedor.close();
 
@@ -310,7 +313,7 @@ begin
   begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial');
+      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial,i.ptabela');
       Sql.Add('from produtos p, pedidoitem i, pedidos c');
       Sql.Add('where p.id = i.produtoid');
       Sql.Add('and c.id = i.pedidoid');
@@ -543,7 +546,7 @@ begin
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf');
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli');
       Sql.Add('from users u, cidades c ');
       Sql.Add('where c.id  = u.codcidade');
 
@@ -600,7 +603,7 @@ begin
   begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial');
+      Sql.Add('select i.id,p.id as codprod, p.descricao, p.unidade, c.id as numped, i.qt, i.punit,i.subtot,c.codfilial,i.ptabela');
       Sql.Add('from produtos p, pedidoitem i, pedidos c');
       Sql.Add('where p.id = i.produtoid');
       Sql.Add('and c.id = i.pedidoid');
@@ -635,7 +638,12 @@ begin
     edit3.Text :='0';
 
     perdesc := strtofloat(Edit3.Text);
+
     perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat;
+       // Pega o Percentual de desconto do cliente especial e compara com o do produto.
+    if Dm_vendas.Qry_clienteperdesccli.asfloat > Dm_vendas.Qry_produtopercdesc.asfloat*1.001 then begin
+    perdescmax := Dm_vendas.Qry_clienteperdesccli.asfloat*1.001;
+    end;
 
     if perdesc <= perdescmax then
     begin
@@ -663,6 +671,15 @@ begin
 
   ptabela :=  Dm_vendas.Qry_produtopreco.asfloat;
   perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat*1.001;
+      // Pega o Percentual de desconto do cliente especial e compara com o do produto.
+    if Dm_vendas.Qry_clienteperdesccli.asfloat > Dm_vendas.Qry_produtopercdesc.asfloat*1.001 then begin
+    perdescmax := Dm_vendas.Qry_clienteperdesccli.asfloat*1.001;
+    end;
+
+
+
+
+
   preco := strtofloat(Edit4.Text);
   pmin :=  ptabela-((ptabela*perdescmax)/100);
 
@@ -703,6 +720,12 @@ begin
 
     ptabela :=  Dm_vendas.Qry_produtopreco.asfloat;
     perdescmax := Dm_vendas.Qry_produtopercdesc.asfloat*1.001;
+      // Pega o Percentual de desconto do cliente especial e compara com o do produto.
+    if Dm_vendas.Qry_clienteperdesccli.asfloat > Dm_vendas.Qry_produtopercdesc.asfloat*1.001 then begin
+    perdescmax := Dm_vendas.Qry_clienteperdesccli.asfloat*1.001;
+    end;
+
+
     preco := strtofloat(Edit4.Text);
     pmin :=  ptabela-((ptabela*perdescmax)/100);
 
@@ -833,6 +856,7 @@ procedure TFrmpedvenda.SpeedButton3Click(Sender: TObject);
 begin
 Frmpedvendabuscacli := TFrmpedvendabuscacli.Create(Self);                          //Botao de login chama o formulario principal
 Frmpedvendabuscacli.Show;
+Frmpedvendabuscacli.SpeedButton1Click(self);
 end;
 
 procedure TFrmpedvenda.SpeedButton4Click(Sender: TObject);

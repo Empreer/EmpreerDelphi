@@ -127,6 +127,12 @@ object Dm_vendas: TDm_vendas
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
+    object Qry_pedidoitemptabela: TFMTBCDField
+      FieldName = 'ptabela'
+      Origin = 'ptabela'
+      Precision = 64
+      Size = 0
+    end
   end
   object Ds_pedidoitem: TDataSource
     DataSet = Qry_pedidoitem
@@ -177,7 +183,7 @@ object Dm_vendas: TDm_vendas
   object Qry_cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
-      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf '
+      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli '
       'from users u, cidades c '
       'where c.id  = u.codcidade ')
     Left = 352
@@ -209,6 +215,12 @@ object Dm_vendas: TDm_vendas
       FieldName = 'uf'
       Origin = 'uf'
       Size = 8190
+    end
+    object Qry_clienteperdesccli: TFMTBCDField
+      FieldName = 'perdesccli'
+      Origin = 'perdesccli'
+      Precision = 64
+      Size = 0
     end
   end
   object Ds_Cliente: TDataSource
@@ -272,7 +284,7 @@ object Dm_vendas: TDm_vendas
     SQL.Strings = (
       
         'select i.id,p.id as codprod, p.descricao, p.unidade, c.id as num' +
-        'ped, i.qt, i.punit,i.subtot,c.codfilial  '
+        'ped, i.qt, i.punit,i.subtot,c.codfilial,i.ptabela  '
       'from produtos p, pedidoitem i, pedidos c'
       'where p.id = i.produtoid'
       'and c.id = i.pedidoid')
@@ -334,6 +346,14 @@ object Dm_vendas: TDm_vendas
       AutoGenerateValue = arDefault
       FieldName = 'codprod'
       Origin = 'codprod'
+    end
+    object Qry_cons_pedidoitemptabela: TFMTBCDField
+      FieldName = 'ptabela'
+      Origin = 'ptabela'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 64
+      Size = 0
     end
     object Qry_cons_pedidoitemSUMVLTOT: TAggregateField
       FieldName = 'SUMVLTOT'

@@ -338,6 +338,19 @@ object Frmcadcli: TFrmcadcli
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
           OnClick = SpeedButton2Click
         end
+        object Label18: TLabel
+          Left = 391
+          Top = 337
+          Width = 104
+          Height = 21
+          Caption = '%Desc.Especial'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
         object DBEdit1: TDBEdit
           Left = 16
           Top = 140
@@ -351,7 +364,13 @@ object Frmcadcli: TFrmcadcli
           DataField = 'id'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
           Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           ReadOnly = True
           TabOrder = 0
         end
@@ -388,7 +407,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'nome'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 3
         end
         object pnlborda3: TPanel
@@ -414,7 +439,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'fone1'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 5
         end
         object Panel1: TPanel
@@ -440,7 +471,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'fone2'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 7
         end
         object Panel2: TPanel
@@ -466,7 +503,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'fone3'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 9
         end
         object Panel5: TPanel
@@ -492,7 +535,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'email'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 11
         end
         object DBLookupComboBox1: TDBLookupComboBox
@@ -529,7 +578,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'endereco'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 14
         end
         object Panel7: TPanel
@@ -555,7 +610,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'numero'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 16
         end
         object Panel8: TPanel
@@ -581,7 +642,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'bairro'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 18
         end
         object Panel10: TPanel
@@ -607,7 +674,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'complemento'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 20
         end
         object Panel11: TPanel
@@ -633,7 +706,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'cep'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 22
         end
         object pnlnovo: TPanel
@@ -777,7 +856,13 @@ object Frmcadcli: TFrmcadcli
           CharCase = ecUpperCase
           DataField = 'cpfcnpj'
           DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           ParentBiDiMode = False
+          ParentFont = False
           TabOrder = 28
         end
         object Edit4: TEdit
@@ -870,6 +955,38 @@ object Frmcadcli: TFrmcadcli
           Color = clSilver
           ParentBackground = False
           TabOrder = 34
+        end
+        object Panel18: TPanel
+          Left = 391
+          Top = 384
+          Width = 120
+          Height = 2
+          BevelOuter = bvNone
+          Color = clSilver
+          ParentBackground = False
+          TabOrder = 35
+        end
+        object DBEdit11: TDBEdit
+          AlignWithMargins = True
+          Left = 391
+          Top = 364
+          Width = 104
+          Height = 14
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          DataField = 'perdesccli'
+          DataSource = Dm_cadastros.Ds_cadastro_Cliente
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentFont = False
+          TabOrder = 36
         end
       end
     end

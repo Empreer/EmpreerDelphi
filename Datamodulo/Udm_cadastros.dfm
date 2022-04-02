@@ -88,6 +88,13 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'codcidade'
       Origin = 'codcidade'
     end
+    object Qry_cadastro_Clienteperdesccli: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'perdesccli'
+      Origin = 'perdesccli'
+      Precision = 64
+      Size = 0
+    end
   end
   object Ds_cadastro_Cliente: TDataSource
     DataSet = Qry_cadastro_Cliente

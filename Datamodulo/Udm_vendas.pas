@@ -75,6 +75,9 @@ type
     Qry_cons_pedidovltotal: TFMTBCDField;
     Qry_cons_pedidodescricao: TWideStringField;
     Qry_cons_pedidoSumvltot: TAggregateField;
+    Qry_clienteperdesccli: TFMTBCDField;
+    Qry_pedidoitemptabela: TFMTBCDField;
+    Qry_cons_pedidoitemptabela: TFMTBCDField;
   private
     { Private declarations }
   public

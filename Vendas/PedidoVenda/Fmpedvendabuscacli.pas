@@ -95,7 +95,7 @@ begin
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf ');
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli');
       Sql.Add('from users u, cidades c');
       Sql.Add('where c.id  = u.codcidade');
       Sql.Add('and u.CODFILIAL = :CODFILIAL');

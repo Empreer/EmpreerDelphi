@@ -170,6 +170,7 @@ type
     Qry_cons_cadastro_Clientecep: TWideStringField;
     Qry_cons_cadastro_Clientecodfilial: TIntegerField;
     Qry_cadastro_Useradmnomecompleto: TWideStringField;
+    Qry_cadastro_Clienteperdesccli: TFMTBCDField;
   private
     { Private declarations }
   public

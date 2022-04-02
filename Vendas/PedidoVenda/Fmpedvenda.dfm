@@ -121,8 +121,8 @@ object Frmpedvenda: TFrmpedvenda
           ParentFont = False
         end
         object SpeedButton3: TSpeedButton
-          Left = 73
-          Top = 84
+          Left = 68
+          Top = 79
           Width = 25
           Height = 28
           Enabled = False
@@ -716,6 +716,13 @@ object Frmpedvenda: TFrmpedvenda
               Font.Style = []
               Title.Caption = 'UN'
               Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ptabela'
+              Title.Caption = 'P.TABELA'
+              Width = 92
               Visible = True
             end
             item

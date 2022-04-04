@@ -47,6 +47,11 @@ type
     Label4: TLabel;
     Panel1: TPanel;
     DBEdit5: TDBEdit;
+    ComboBox1: TComboBox;
+    Label3: TLabel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    Label5: TLabel;
      procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -63,6 +68,8 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BtneditarClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure CheckBox2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -165,6 +172,12 @@ with Dm_cadastros.Qry_cons_cadastro_Cob do
       if Edit1.Text <> '' then
         Sql.Add('And descricao Like ''%'+ Edit1.Text + '%'' ');
 
+      if CheckBox1.Checked=true then
+        Sql.Add('And tipo = ''C''');
+
+      if CheckBox2.Checked=true then
+        Sql.Add('And tipo = ''V''');
+
       Sql.Add('ORDER BY descricao');
 
       Open;
@@ -201,6 +214,13 @@ else
    end;
 
 
+   if ComboBox1.ItemIndex = 0 then
+   Dm_cadastros.Qry_cadastro_cobtipo.AsString := 'C';
+
+   if ComboBox1.ItemIndex = 1 then
+   Dm_cadastros.Qry_cadastro_cobtipo.AsString := 'V';
+
+
    Dm_cadastros.Qry_cadastro_Cob.Post();
    Dm_cadastros.Qry_cadastro_Cob.cancel;
    Dm_cadastros.Qry_cadastro_Cob.close;
@@ -213,6 +233,20 @@ else
     BtnCancelar.Enabled := False;
 
 end;
+end;
+
+procedure TFrmcadcob.CheckBox1Click(Sender: TObject);
+begin
+if CheckBox1.Checked=TRUE then BEGIN
+   CHECKBOX2.Checked:=FALSE;
+END;
+end;
+
+procedure TFrmcadcob.CheckBox2Click(Sender: TObject);
+begin
+if CheckBox2.Checked=TRUE then BEGIN
+   CHECKBOX1.Checked:=FALSE;
+END;
 end;
 
 procedure TFrmcadcob.DBGrid1DblClick(Sender: TObject);
@@ -230,6 +264,12 @@ with Dm_cadastros.Qry_cadastro_Cob do
       Open;
 
     end;
+
+      if Dm_cadastros.Qry_cadastro_cobtipo.AsString = 'C' then
+      ComboBox1.ItemIndex := 0;
+
+      if Dm_cadastros.Qry_cadastro_cobtipo.AsString = 'V' then
+      ComboBox1.ItemIndex := 1;
 
        Btneditar.Enabled:=true;
        Btnnovo.Enabled:=false;

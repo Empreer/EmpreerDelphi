@@ -40,7 +40,8 @@ uses
   Fmatualiza in 'Configuracoes\Atualizacoes\Fmatualiza.pas' {Frmatualiza},
   Fmcreceber in 'Financeiro\creceber\Fmcreceber.pas' {Frmcreceber},
   Fmcreceberbuscacli in 'Financeiro\creceber\Fmcreceberbuscacli.pas' {Frmcreceberbuscacli},
-  Fmconta in 'Cadastros\Contas Contabeis\Fmconta.pas' {Frmconta};
+  Fmconta in 'Cadastros\Contas Contabeis\Fmconta.pas' {Frmconta},
+  Fmpedidocompra in 'Entradas\Pedidocompra\Fmpedidocompra.pas' {Frmpedidocompra};
 
 {$R *.res}
 
@@ -62,5 +63,6 @@ begin
   Application.CreateForm(TFrmcreceber, Frmcreceber);
   Application.CreateForm(TFrmcreceberbuscacli, Frmcreceberbuscacli);
   Application.CreateForm(TFrmconta, Frmconta);
+  Application.CreateForm(TFrmpedidocompra, Frmpedidocompra);
   Application.Run;
 end.

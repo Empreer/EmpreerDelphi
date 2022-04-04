@@ -181,6 +181,8 @@ type
     Qry_cons_cadastro_contasid: TIntegerField;
     Qry_cons_cadastro_contasdescricao: TWideStringField;
     Qry_cons_cadastro_contastipo: TWideStringField;
+    Qry_cadastro_Cobtipo: TWideStringField;
+    Qry_cons_cadastro_Cobtipo: TWideStringField;
   private
     { Private declarations }
   public

@@ -834,6 +834,12 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'dias'
       Origin = 'dias'
     end
+    object Qry_cadastro_Cobtipo: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
+    end
   end
   object Ds_cadastro_Cob: TDataSource
     DataSet = Qry_cadastro_Cob
@@ -860,6 +866,12 @@ object Dm_cadastros: TDm_cadastros
     object Qry_cons_cadastro_Cobdias: TIntegerField
       FieldName = 'dias'
       Origin = 'dias'
+    end
+    object Qry_cons_cadastro_Cobtipo: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
     end
   end
   object Ds_cons_cadastro_Cob: TDataSource

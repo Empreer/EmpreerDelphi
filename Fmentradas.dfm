@@ -564,6 +564,7 @@ object Frmentradas: TFrmentradas
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
         Layout = blGlyphTop
         ParentFont = False
+        OnClick = SpeedButton2Click
         OnMouseEnter = SpeedButton2MouseEnter
         OnMouseLeave = SpeedButton2MouseLeave
         ExplicitTop = -6

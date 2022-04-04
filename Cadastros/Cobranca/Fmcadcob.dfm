@@ -20,7 +20,7 @@ object Frmcadcob: TFrmcadcob
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -44,14 +44,14 @@ object Frmcadcob: TFrmcadcob
         object Labeluser: TLabel
           Left = 95
           Top = 85
-          Width = 158
+          Width = 173
           Height = 21
           Caption = 'Descri'#231#227'o da Cobran'#231'a'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
           ParentFont = False
         end
         object Label2: TLabel
@@ -70,14 +70,27 @@ object Frmcadcob: TFrmcadcob
         object Label4: TLabel
           Left = 630
           Top = 85
-          Width = 30
+          Width = 33
           Height = 21
           Caption = 'Dias'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
+          Font.Color = clMenuHighlight
           Font.Height = -16
           Font.Name = 'Segoe UI'
-          Font.Style = []
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 816
+          Top = 85
+          Width = 34
+          Height = 21
+          Caption = 'Tipo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
           ParentFont = False
         end
         object DBEdit1: TDBEdit
@@ -295,6 +308,24 @@ object Frmcadcob: TFrmcadcob
           ParentFont = False
           TabOrder = 9
         end
+        object ComboBox1: TComboBox
+          Left = 816
+          Top = 109
+          Width = 193
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ItemIndex = 0
+          ParentFont = False
+          TabOrder = 10
+          Text = 'Compras'
+          Items.Strings = (
+            'Compras'
+            'Vendas')
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -323,6 +354,19 @@ object Frmcadcob: TFrmcadcob
           Font.Style = []
           ParentFont = False
         end
+        object Label5: TLabel
+          Left = 456
+          Top = 45
+          Width = 43
+          Height = 21
+          Caption = 'Filtros'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
         object Edit1: TEdit
           Left = 7
           Top = 96
@@ -342,7 +386,7 @@ object Frmcadcob: TFrmcadcob
         end
         object DBGrid1: TDBGrid
           Left = 7
-          Top = 133
+          Top = 129
           Width = 1250
           Height = 460
           DataSource = Dm_cadastros.Ds_cons_cadastro_Cob
@@ -389,6 +433,13 @@ object Frmcadcob: TFrmcadcob
               Font.Style = []
               Title.Caption = 'DIAS'
               Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'tipo'
+              Title.Caption = 'TIPO'
+              Width = 81
+              Visible = True
             end>
         end
         object Panel12: TPanel
@@ -428,6 +479,24 @@ object Frmcadcob: TFrmcadcob
             OnClick = SpeedButton1Click
             ExplicitTop = 4
           end
+        end
+        object CheckBox1: TCheckBox
+          Left = 456
+          Top = 72
+          Width = 97
+          Height = 17
+          Caption = 'Compras'
+          TabOrder = 4
+          OnClick = CheckBox1Click
+        end
+        object CheckBox2: TCheckBox
+          Left = 456
+          Top = 95
+          Width = 97
+          Height = 17
+          Caption = 'Vendas'
+          TabOrder = 5
+          OnClick = CheckBox2Click
         end
       end
     end

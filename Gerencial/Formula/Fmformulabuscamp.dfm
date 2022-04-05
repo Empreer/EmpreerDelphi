@@ -60,7 +60,7 @@ object Frmformulabuscamp: TFrmformulabuscamp
       Top = 119
       Width = 1225
       Height = 449
-      DataSource = Dm_cadastros.Ds_cadastro_Mp
+      DataSource = Dm_cadastros.Ds_cadastro_Produto
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
@@ -73,47 +73,36 @@ object Frmformulabuscamp: TFrmformulabuscamp
         item
           Expanded = False
           FieldName = 'id'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
           Title.Caption = 'C'#211'D.'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'descricao'
-          Title.Caption = 'DESCRI'#199#195'O'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 450
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Title.Caption = 'DESCRICAO'
+          Width = 462
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'unidade'
-          Title.Caption = 'UN.'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'codfilial'
-          Title.Caption = 'FILIAL'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = 'UNIDADE'
+          Width = 98
           Visible = True
         end>
     end
@@ -185,7 +174,6 @@ object Frmformulabuscamp: TFrmformulabuscamp
     ParentBackground = False
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
-    ExplicitTop = 8
     object Imlogo: TImage
       Left = -4
       Top = 3

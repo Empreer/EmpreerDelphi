@@ -65,6 +65,11 @@ type
     Label10: TLabel;
     Panel6: TPanel;
     DBEdit7: TDBEdit;
+    Label11: TLabel;
+    DBLookupComboBox4: TDBLookupComboBox;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    Label12: TLabel;
      procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure BtnFecharClick(Sender: TObject);
@@ -81,6 +86,9 @@ type
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BtneditarClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure CheckBox2Click(Sender: TObject);
+    procedure DBLookupComboBox4Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -164,6 +172,9 @@ begin
   Dm_cadastros.Qry_cadastro_Fornecedor.close();
   Dm_cadastros.Qry_cadastro_Fornecedor.Open();
 
+  Dm_cadastros.Qry_tipoproduto.close;
+  Dm_cadastros.Qry_tipoproduto.open;
+
   editar:=0
 
 end;
@@ -205,14 +216,22 @@ begin
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select p.id, p.descricao,p.unidade,d.id as deptoid, d.nome as depto, f.id as fornecid, f.nome as fornec');
-      Sql.Add('from produtos p, departamentos d, fornecedors f');
+      Sql.Add('select p.id, p.descricao,p.unidade,d.id as deptoid, d.nome as depto, f.id as fornecid, f.nome as fornec,t.descricao as tipo');
+      Sql.Add('from produtos p, departamentos d, fornecedors f,tipoproduto t');
       Sql.Add('WHERE p.CODFILIAL = :CODFILIAL');
       Sql.Add('and p.codfornec = f.id');
+      Sql.Add('and p.tipo = t.id');
       Sql.Add('and p.coddepto = d.id');
 
       if Edit1.Text <> '' then
         Sql.Add('And p.descricao Like ''%'+ Edit1.Text + '%'' ');
+
+      if checkbox1.Checked then
+      Sql.Add('and t.id=1');
+
+      if checkbox2.Checked then
+      Sql.Add('and t.id=2');
+
 
       Sql.Add('ORDER BY p.descricao');
 
@@ -249,11 +268,15 @@ ShowMessage('Favor Escolher o Departamento !')
 else if DBLookupComboBox3.text = '' then
 ShowMessage('Favor Escolher o Fornecedor !')
 
+else if DBLookupComboBox4.text = '' then
+ShowMessage('Favor Escolher o Tipo do Produto !')
+
 else
   begin
    Dm_cadastros.Qry_cadastro_Produtocodfilial.asinteger := DBLookupComboBox1.KeyValue;
    Dm_cadastros.Qry_cadastro_Produtocodfornec.asinteger := DBLookupComboBox2.KeyValue;
    Dm_cadastros.Qry_cadastro_Produtocoddepto.asinteger :=  DBLookupComboBox3.KeyValue;
+   Dm_cadastros.Qry_cadastro_Produtotipo.asinteger :=  DBLookupComboBox4.KeyValue;
 
    if editar = 0 then begin   // se estiver em edição cria id novo e alimenta tabela de preços.
    Dm_cadastros.Qry_cadastro_Produtoid.AsInteger := Frmprincipal.Prox_num('seq_produto');
@@ -278,10 +301,26 @@ else
 
     DBLookupComboBox2.KeyValue := -1;
     DBLookupComboBox3.KeyValue := -1;
-
+    DBLookupComboBox4.KeyValue := -1;
     editar:=0;
 
   end;
+
+end;
+
+procedure TFrmcadprodut.CheckBox1Click(Sender: TObject);
+begin
+if CheckBox1.Checked=TRUE then BEGIN
+   CHECKBOX2.Checked:=FALSE;
+  END;
+
+end;
+
+procedure TFrmcadprodut.CheckBox2Click(Sender: TObject);
+begin
+if CheckBox2.Checked=TRUE then BEGIN
+   CHECKBOX1.Checked:=FALSE;
+  END;
 
 end;
 
@@ -308,9 +347,12 @@ begin
         Dm_cadastros.Qry_cadastro_Fornecedor.close();
         Dm_cadastros.Qry_cadastro_Fornecedor.Open();
 
+        Dm_cadastros.Qry_tipoproduto.close;
+        Dm_cadastros.Qry_tipoproduto.open;
+
        DBLookupComboBox2.KeyValue:= Dm_cadastros.Qry_cons_cadastro_Produtofornecid.asinteger;
        DBLookupComboBox3.KeyValue:= Dm_cadastros.Qry_cons_cadastro_Produtodeptoid.asinteger;
-
+       DBLookupComboBox4.KeyValue:= Dm_cadastros.Qry_cadastro_Produtotipo.asinteger;
        Btneditar.Enabled:=true;
        Btnnovo.Enabled:=false;
        Btncancelar.Enabled:=true;
@@ -320,6 +362,29 @@ end;
 procedure TFrmcadprodut.DBGrid1TitleClick(Column: TColumn);
 begin
 Dm_cadastros.Qry_cons_cadastro_Produto.IndexFieldNames := Column.Fieldname;
+end;
+
+procedure TFrmcadprodut.DBLookupComboBox4Click(Sender: TObject);
+begin
+if DBLookupComboBox4.KeyValue=2 then begin
+  label9.Visible:=false;
+  dbedit6.Visible:=false;
+  Panel5.Visible:=false;
+  label10.Visible:=false;
+  dbedit7.Visible:=false;
+  panel6.Visible:=false;
+end;
+
+if DBLookupComboBox4.KeyValue=1 then begin
+  label9.Visible:=true;
+  dbedit6.Visible:=true;
+  Panel5.Visible:=true;
+  label10.Visible:=true;
+  dbedit7.Visible:=true;
+  panel6.Visible:=true;
+end;
+
+
 end;
 
 end.

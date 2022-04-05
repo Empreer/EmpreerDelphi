@@ -473,6 +473,16 @@ object Dm_cadastros: TDm_cadastros
       FieldName = 'divreceita'
       Origin = 'divreceita'
     end
+    object Qry_cadastro_Produtoqtreserv: TFMTBCDField
+      FieldName = 'qtreserv'
+      Origin = 'qtreserv'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cadastro_Produtotipo: TIntegerField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+    end
   end
   object Ds_cadastro_Produto: TDataSource
     DataSet = Qry_cadastro_Produto
@@ -484,10 +494,11 @@ object Dm_cadastros: TDm_cadastros
     SQL.Strings = (
       
         'select p.id, p.descricao,p.unidade,d.id as deptoid, d.nome as de' +
-        'pto, f.id as fornecid, f.nome as fornec'
-      'from produtos p, departamentos d, fornecedors f'
+        'pto, f.id as fornecid, f.nome as fornec,t.descricao as tipo'
+      'from produtos p, departamentos d, fornecedors f, tipoproduto t'
       'where p.codfornec = f.id '
       'and p.coddepto = d.id '
+      'and p.tipo = t.id'
       '')
     Left = 184
     Top = 88
@@ -526,6 +537,12 @@ object Dm_cadastros: TDm_cadastros
       AutoGenerateValue = arDefault
       FieldName = 'fornec'
       Origin = 'fornec'
+      Size = 8190
+    end
+    object Qry_cons_cadastro_Produtotipo: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tipo'
+      Origin = 'tipo'
       Size = 8190
     end
   end
@@ -977,5 +994,27 @@ object Dm_cadastros: TDm_cadastros
     DataSet = Qry_cons_cadastro_contas
     Left = 819
     Top = 200
+  end
+  object Qry_tipoproduto: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from tipoproduto')
+    Left = 48
+    Top = 272
+    object Qry_tipoprodutoid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_tipoprodutodescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+  end
+  object Ds_tipoproduto: TDataSource
+    DataSet = Qry_tipoproduto
+    Left = 48
+    Top = 304
   end
 end

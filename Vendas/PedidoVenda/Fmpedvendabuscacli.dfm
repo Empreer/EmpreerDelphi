@@ -300,7 +300,7 @@ object Frmpedvendabuscacli: TFrmpedvendabuscacli
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
     object Imlogo: TImage
-      Left = -4
+      Left = 0
       Top = 3
       Width = 704
       Height = 50

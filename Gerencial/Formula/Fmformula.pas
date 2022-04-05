@@ -122,9 +122,9 @@ ShowMessage('Favor Escolher a Filial !')
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select f.id,f.codprodacab,f.codprodmp,m.descricao,f.qtmp,m.custo,f.qtmp * m.custo as subtotcusto ');
-      Sql.Add('from formprod f, produtomps m');
-      Sql.Add('where f.codprodmp  = m.id ');
+      Sql.Add('select f.id,f.codprodacab,f.codprodmp,P.descricao,f.qtmp,P.custo,f.qtmp * P.custo as subtotcusto ');
+      Sql.Add('from formprod f, produtos P');
+      Sql.Add('where f.codprodmp  = P.id ');
       Sql.Add('and f.CODPRODACAB = :CODPRODACAB');
       Sql.Add('AND f.CODFILIAL = :CODFILIAL');
 
@@ -180,6 +180,7 @@ end;
 
 procedure TFrmformula.BtnFecharClick(Sender: TObject);
 begin
+Dm_gerencial.Qry_cons_Formula.close;
 Close;
 end;
 
@@ -255,7 +256,7 @@ begin
       Sql.Clear;
       Sql.Add(' SELECT * FROM PRODUTOS');
       Sql.Add('WHERE ID = :ID');
-
+      Sql.Add('and tipo=1');
       Params.ParamByName('ID').AsInteger := strtoint(Dbedit1.Text) ;
       Open;
 
@@ -271,9 +272,9 @@ begin
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select f.id,f.codprodacab,f.codprodmp,m.descricao,f.qtmp,m.custo,f.qtmp * m.custo as subtotcusto ');
-      Sql.Add('from formprod f, produtomps m');
-      Sql.Add('where f.codprodmp  = m.id ');
+      Sql.Add('select f.id,f.codprodacab,f.codprodmp,p.descricao,f.qtmp,p.custo,f.qtmp * p.custo as subtotcusto ');
+      Sql.Add('from formprod f, produtos p');
+      Sql.Add('where f.codprodmp  = p.id ');
       Sql.Add('and f.CODPRODACAB = :CODPRODACAB');
       Sql.Add('AND f.CODFILIAL = :CODFILIAL');
 
@@ -293,19 +294,19 @@ begin
  if dbedit5.Text = '' then
     dbedit5.Text := '0';
 
-     with Dm_cadastros.Qry_cadastro_Mp do
+     with Dm_cadastros.Qry_cadastro_Produto do
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT * FROM PRODUTOMPS');
+      Sql.Add(' SELECT * FROM PRODUTOS');
       Sql.Add('WHERE ID = :ID');
-
+      Sql.Add('AND TIPO=2');
       Params.ParamByName('ID').AsInteger := strtoint(Dbedit5.Text) ;
       Open;
 
     end;
-       Edit7.Text :=  Dm_cadastros.Qry_cadastro_Mpdescricao.AsString;
-       Edit6.Text :=  Dm_cadastros.Qry_cadastro_Mpunidade.AsString;
+       Edit7.Text :=  Dm_cadastros.Qry_cadastro_produtodescricao.AsString;
+       Edit6.Text :=  Dm_cadastros.Qry_cadastro_produtounidade.AsString;
        Edit2.SetFocus;
 
 

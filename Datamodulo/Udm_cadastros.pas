@@ -183,6 +183,13 @@ type
     Qry_cons_cadastro_contastipo: TWideStringField;
     Qry_cadastro_Cobtipo: TWideStringField;
     Qry_cons_cadastro_Cobtipo: TWideStringField;
+    Qry_tipoproduto: TFDQuery;
+    Ds_tipoproduto: TDataSource;
+    Qry_tipoprodutoid: TIntegerField;
+    Qry_tipoprodutodescricao: TWideStringField;
+    Qry_cadastro_Produtoqtreserv: TFMTBCDField;
+    Qry_cadastro_Produtotipo: TIntegerField;
+    Qry_cons_cadastro_Produtotipo: TWideStringField;
   private
     { Private declarations }
   public

@@ -150,10 +150,10 @@ begin
       CLOSE;
       Sql.Clear;
       Sql.Add('select p.id, p.descricao, p.custo, sum(f.qtmp * m.custo) as custocalc');
-      Sql.Add('from formprod f, produtos p, produtomps m');
+      Sql.Add('from formprod f, produtos p, produtos m');
       Sql.Add('where f.codprodacab = p.id ');
       Sql.Add('AND F.CODFILIAL = :CODFILIAL');
-      Sql.Add('and f.codprodmp = m.id ');
+      Sql.Add('and f.codprodmp = m.id');
 
       if Edit1.Text <> '' then
         Sql.Add('And p.descricao Like ''%'+ Edit1.Text + '%'' ');

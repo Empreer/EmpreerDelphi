@@ -41,7 +41,10 @@ uses
   Fmcreceber in 'Financeiro\creceber\Fmcreceber.pas' {Frmcreceber},
   Fmcreceberbuscacli in 'Financeiro\creceber\Fmcreceberbuscacli.pas' {Frmcreceberbuscacli},
   Fmconta in 'Cadastros\Contas Contabeis\Fmconta.pas' {Frmconta},
-  Fmpedidocompra in 'Entradas\Pedidocompra\Fmpedidocompra.pas' {Frmpedidocompra};
+  Fmpedidocompra in 'Entradas\Pedidocompra\Fmpedidocompra.pas' {Frmpedidocompra},
+  Udm_entradas in 'Datamodulo\Udm_entradas.pas' {Dm_Entradas: TDataModule},
+  Fmpedcomprabuscafornec in 'Entradas\Pedidocompra\Fmpedcomprabuscafornec.pas' {Frmpedcomprabuscafornec},
+  Fmpedcomprabuscaprod in 'Entradas\Pedidocompra\Fmpedcomprabuscaprod.pas' {Frmcomprabuscaprod};
 
 {$R *.res}
 
@@ -64,5 +67,8 @@ begin
   Application.CreateForm(TFrmcreceberbuscacli, Frmcreceberbuscacli);
   Application.CreateForm(TFrmconta, Frmconta);
   Application.CreateForm(TFrmpedidocompra, Frmpedidocompra);
+  Application.CreateForm(TDm_Entradas, Dm_Entradas);
+  Application.CreateForm(TFrmpedcomprabuscafornec, Frmpedcomprabuscafornec);
+  Application.CreateForm(TFrmcomprabuscaprod, Frmcomprabuscaprod);
   Application.Run;
 end.

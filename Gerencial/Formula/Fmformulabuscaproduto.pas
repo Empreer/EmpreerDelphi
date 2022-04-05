@@ -102,6 +102,7 @@ with Dm_cadastros.Qry_cadastro_Produto do
       Sql.Clear;
       Sql.Add(' SELECT * FROM PRODUTOS');
       Sql.Add('WHERE ID >=0');
+      Sql.Add('and tipo=1');
 
       if Edit1.Text <> '' then
         Sql.Add('And DESCRICAO Like ''%'+ Edit1.Text + '%'' ');

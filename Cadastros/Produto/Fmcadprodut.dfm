@@ -87,8 +87,8 @@ object Frmcadprodut: TFrmcadprodut
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 888
-          Top = 131
+          Left = 464
+          Top = 283
           Width = 40
           Height = 21
           Caption = 'Custo'
@@ -175,6 +175,19 @@ object Frmcadprodut: TFrmcadprodut
           Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Style = []
+          ParentFont = False
+        end
+        object Label11: TLabel
+          Left = 800
+          Top = 131
+          Width = 124
+          Height = 21
+          Caption = 'Tipo do Produto'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMenuHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
           ParentFont = False
         end
         object DBEdit1: TDBEdit
@@ -273,8 +286,8 @@ object Frmcadprodut: TFrmcadprodut
           TabOrder = 5
         end
         object Panel1: TPanel
-          Left = 888
-          Top = 178
+          Left = 464
+          Top = 330
           Width = 160
           Height = 2
           BevelOuter = bvNone
@@ -284,8 +297,8 @@ object Frmcadprodut: TFrmcadprodut
         end
         object DBEdit5: TDBEdit
           AlignWithMargins = True
-          Left = 888
-          Top = 158
+          Left = 464
+          Top = 310
           Width = 160
           Height = 16
           BevelInner = bvNone
@@ -561,6 +574,24 @@ object Frmcadprodut: TFrmcadprodut
           ParentFont = False
           TabOrder = 20
         end
+        object DBLookupComboBox4: TDBLookupComboBox
+          Left = 800
+          Top = 158
+          Width = 305
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          KeyField = 'id'
+          ListField = 'descricao'
+          ListFieldIndex = 1
+          ListSource = Dm_cadastros.Ds_tipoproduto
+          ParentFont = False
+          TabOrder = 21
+          OnClick = DBLookupComboBox4Click
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -582,6 +613,19 @@ object Frmcadprodut: TFrmcadprodut
           Width = 67
           Height = 21
           Caption = 'Descri'#231#226'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 472
+          Top = 61
+          Width = 30
+          Height = 21
+          Caption = 'Tipo'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -663,14 +707,21 @@ object Frmcadprodut: TFrmcadprodut
               Expanded = False
               FieldName = 'depto'
               Title.Caption = 'DEPARTAMENTO'
-              Width = 300
+              Width = 215
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'fornec'
               Title.Caption = 'FORNECEDOR'
-              Width = 300
+              Width = 228
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'tipo'
+              Title.Caption = 'TIPO'
+              Width = 160
               Visible = True
             end>
         end
@@ -712,6 +763,24 @@ object Frmcadprodut: TFrmcadprodut
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
+        end
+        object CheckBox1: TCheckBox
+          Left = 472
+          Top = 88
+          Width = 121
+          Height = 17
+          Caption = 'Produto Acabado'
+          TabOrder = 4
+          OnClick = CheckBox1Click
+        end
+        object CheckBox2: TCheckBox
+          Left = 472
+          Top = 111
+          Width = 121
+          Height = 17
+          Caption = 'Mat'#233'ria Prima'
+          TabOrder = 5
+          OnClick = CheckBox2Click
         end
       end
     end

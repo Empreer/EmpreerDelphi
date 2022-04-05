@@ -81,24 +81,11 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 931
+          Left = 755
           Top = 129
           Width = 39
           Height = 21
           Caption = 'Pre'#231'o'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label5: TLabel
-          Left = 837
-          Top = 129
-          Width = 72
-          Height = 21
-          Caption = '%Desc.Tab'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -207,6 +194,7 @@ object Frmpedidocompra: TFrmpedidocompra
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+          OnClick = SpeedButton3Click
         end
         object Label18: TLabel
           Left = 631
@@ -335,6 +323,7 @@ object Frmpedidocompra: TFrmpedidocompra
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+          OnClick = SpeedButton4Click
         end
         object Label6: TLabel
           Left = 341
@@ -350,24 +339,11 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 1021
+          Left = 858
           Top = 129
           Width = 46
           Height = 21
           Caption = 'Subtot'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label9: TLabel
-          Left = 746
-          Top = 129
-          Width = 54
-          Height = 21
-          Caption = 'P.tabela'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -398,8 +374,8 @@ object Frmpedidocompra: TFrmpedidocompra
           BiDiMode = bdLeftToRight
           BorderStyle = bsNone
           CharCase = ecUpperCase
-          DataField = 'userid'
-          DataSource = Dm_vendas.Ds_pedido
+          DataField = 'codfornec'
+          DataSource = Dm_Entradas.Ds_pedido
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -409,6 +385,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentBiDiMode = False
           ParentFont = False
           TabOrder = 0
+          OnExit = DBEdit1Exit
         end
         object pnlborda2: TPanel
           Left = 112
@@ -440,16 +417,6 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentBackground = False
           TabOrder = 3
         end
-        object Panel1: TPanel
-          Left = 745
-          Top = 176
-          Width = 80
-          Height = 2
-          BevelOuter = bvNone
-          Color = clSilver
-          ParentBackground = False
-          TabOrder = 4
-        end
         object DBLookupComboBox1: TDBLookupComboBox
           Left = 990
           Top = 31
@@ -459,7 +426,7 @@ object Frmpedidocompra: TFrmpedidocompra
           KeyField = 'codfilial'
           ListField = 'nome'
           ListSource = udm_conexao.DataSource1
-          TabOrder = 5
+          TabOrder = 4
         end
         object pnlnovo: TPanel
           Left = 5
@@ -469,7 +436,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = 13066056
           ParentBackground = False
-          TabOrder = 6
+          TabOrder = 5
           object Btnnovo: TSpeedButton
             Left = 0
             Top = 0
@@ -485,6 +452,7 @@ object Frmpedidocompra: TFrmpedidocompra
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnnovoClick
             ExplicitLeft = -32
             ExplicitTop = 8
           end
@@ -497,7 +465,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = 11718912
           ParentBackground = False
-          TabOrder = 7
+          TabOrder = 6
           object Btnsalvar: TSpeedButton
             Left = 0
             Top = 0
@@ -526,7 +494,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = 6833905
           ParentBackground = False
-          TabOrder = 8
+          TabOrder = 7
           object Btncancelar: TSpeedButton
             Left = 0
             Top = 0
@@ -561,7 +529,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 9
+          TabOrder = 8
         end
         object DBLookupComboBox3: TDBLookupComboBox
           Left = 631
@@ -578,7 +546,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ListField = 'descricao'
           ListSource = Dm_cadastros.Ds_cadastro_Cob
           ParentFont = False
-          TabOrder = 10
+          TabOrder = 9
         end
         object Panel18: TPanel
           Left = 112
@@ -588,7 +556,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 11
+          TabOrder = 10
         end
         object Panel19: TPanel
           Left = 5
@@ -598,7 +566,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 12
+          TabOrder = 11
         end
         object Edit6: TEdit
           Left = 112
@@ -615,7 +583,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 13
+          TabOrder = 12
         end
         object DBGrid2: TDBGrid
           Left = 6
@@ -626,7 +594,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Enabled = False
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           ReadOnly = True
-          TabOrder = 14
+          TabOrder = 13
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -12
@@ -736,7 +704,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BorderStyle = bsNone
           CharCase = ecUpperCase
           DataField = 'id'
-          DataSource = Dm_vendas.Ds_pedido
+          DataSource = Dm_Entradas.Ds_pedido
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -746,7 +714,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentBiDiMode = False
           ParentFont = False
           ReadOnly = True
-          TabOrder = 15
+          TabOrder = 14
         end
         object Panel5: TPanel
           Left = 341
@@ -756,7 +724,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 16
+          TabOrder = 15
         end
         object Pnlremover: TPanel
           Left = 1198
@@ -766,7 +734,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
-          TabOrder = 18
+          TabOrder = 17
           object BtnRemover: TSpeedButton
             Left = 0
             Top = 0
@@ -1080,36 +1048,17 @@ object Frmpedidocompra: TFrmpedidocompra
           end
         end
         object Panel6: TPanel
-          Left = 1021
+          Left = 858
           Top = 176
           Width = 80
           Height = 2
           BevelOuter = bvNone
           Color = clSilver
           ParentBackground = False
-          TabOrder = 19
-        end
-        object Edit3: TEdit
-          Left = 840
-          Top = 156
-          Width = 77
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 23
-          Text = '0'
+          TabOrder = 18
         end
         object Edit4: TEdit
-          Left = 931
+          Left = 755
           Top = 156
           Width = 70
           Height = 20
@@ -1124,7 +1073,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 24
+          TabOrder = 22
           Text = '0'
         end
         object Edit7: TEdit
@@ -1143,11 +1092,11 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 22
+          TabOrder = 21
           Text = '0'
         end
         object Edit8: TEdit
-          Left = 1021
+          Left = 858
           Top = 156
           Width = 100
           Height = 20
@@ -1162,7 +1111,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Style = []
           ParentFont = False
           ReadOnly = True
-          TabOrder = 25
+          TabOrder = 23
           Text = '0'
         end
         object Edit9: TEdit
@@ -1181,8 +1130,9 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          TabOrder = 20
+          TabOrder = 19
           Text = '0'
+          OnExit = Edit9Exit
         end
         object DateTimePicker1: TDateTimePicker
           Left = 842
@@ -1191,7 +1141,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Height = 23
           Date = 44643.000000000000000000
           Time = 0.980125231479178200
-          TabOrder = 21
+          TabOrder = 20
         end
         object Pnladicionar: TPanel
           Left = 1140
@@ -1201,7 +1151,7 @@ object Frmpedidocompra: TFrmpedidocompra
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
-          TabOrder = 17
+          TabOrder = 16
           object BtnAdicionar: TSpeedButton
             Left = 0
             Top = 0
@@ -1514,44 +1464,15 @@ object Frmpedidocompra: TFrmpedidocompra
             ExplicitTop = -6
           end
         end
-        object Edit10: TEdit
-          Left = 745
-          Top = 156
-          Width = 80
-          Height = 20
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 26
-          Text = '0'
-        end
-        object Panel2: TPanel
-          Left = 837
-          Top = 176
-          Width = 80
-          Height = 2
-          BevelOuter = bvNone
-          Color = clMenuHighlight
-          ParentBackground = False
-          TabOrder = 27
-        end
         object Panel7: TPanel
-          Left = 931
+          Left = 755
           Top = 176
           Width = 80
           Height = 2
           BevelOuter = bvNone
           Color = clMenuHighlight
           ParentBackground = False
-          TabOrder = 28
+          TabOrder = 24
         end
         object DBEdit3: TDBEdit
           Left = 1111
@@ -1560,7 +1481,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Height = 23
           DataField = 'SUMVLTOT'
           DataSource = Dm_vendas.Ds_cons_pedidoitem
-          TabOrder = 29
+          TabOrder = 25
         end
       end
     end
@@ -2115,6 +2036,7 @@ object Frmpedidocompra: TFrmpedidocompra
     Color = clBackground
     ParentBackground = False
     TabOrder = 3
+    OnMouseDown = PnltopoMouseDown
     object Imlogo: TImage
       Left = -4
       Top = 3
@@ -3111,6 +3033,7 @@ object Frmpedidocompra: TFrmpedidocompra
         BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EE
         BDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75E
         F7EEBDD7BDFBAF75FFD9}
+      OnMouseDown = ImlogoMouseDown
     end
     object BtnFechar: TSpeedButton
       Left = 1217
@@ -3127,6 +3050,7 @@ object Frmpedidocompra: TFrmpedidocompra
       Font.Style = [fsBold]
       Font.Quality = fqAntialiased
       ParentFont = False
+      OnClick = BtnFecharClick
     end
     object Btnminimizar: TSpeedButton
       Left = 1164
@@ -3142,6 +3066,7 @@ object Frmpedidocompra: TFrmpedidocompra
       Font.Style = []
       Font.Quality = fqAntialiased
       ParentFont = False
+      OnClick = BtnminimizarClick
     end
     object pnlistabr: TPanel
       Left = 0

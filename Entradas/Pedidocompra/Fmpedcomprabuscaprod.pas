@@ -1,4 +1,4 @@
-unit Fmpedvendabuscaprod;
+unit Fmpedcomprabuscaprod;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
-  TFrmpedvendabuscaprod = class(TForm)
+  TFrmcomprabuscaprod = class(TForm)
     Panel4: TPanel;
     Label1: TLabel;
     Edit1: TEdit;
@@ -21,15 +21,19 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
-    procedure SpeedButton1Click(Sender: TObject);
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    Label2: TLabel;
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
+    procedure BtnFecharClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure CheckBox2Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,37 +41,46 @@ type
   end;
 
 var
-  Frmpedvendabuscaprod: TFrmpedvendabuscaprod;
+  Frmcomprabuscaprod: TFrmcomprabuscaprod;
 
 implementation
 
 {$R *.dfm}
 
-uses Udm_cadastros, Udm_vendas, Uudm_conexao, Fmpedvenda;
+uses Fmpedidocompra, Udm_entradas, Uudm_conexao;
 
-procedure TFrmpedvendabuscaprod.BtnFecharClick(Sender: TObject);
+procedure TFrmcomprabuscaprod.BtnFecharClick(Sender: TObject);
 begin
 close;
 end;
 
-procedure TFrmpedvendabuscaprod.BtnminimizarClick(Sender: TObject);
+procedure TFrmcomprabuscaprod.BtnminimizarClick(Sender: TObject);
 begin
-Frmpedvendabuscaprod.WindowState:=wsminimized;
+Frmcomprabuscaprod.WindowState:=wsminimized;
 end;
 
-procedure TFrmpedvendabuscaprod.DBGrid1DblClick(Sender: TObject);
+procedure TFrmcomprabuscaprod.CheckBox1Click(Sender: TObject);
 begin
-Frmpedvenda.Edit9.text :=  Dm_vendas.Qry_produtoid.AsString;
-Frmpedvenda.Edit9Exit(self);
+if CheckBox1.Checked = true then begin
+  checkbox2.Checked:=false;
+end;
+end;
+
+procedure TFrmcomprabuscaprod.CheckBox2Click(Sender: TObject);
+begin
+if CheckBox2.Checked = true then begin
+  checkbox1.Checked:=false;
+end;
+end;
+
+procedure TFrmcomprabuscaprod.DBGrid1DblClick(Sender: TObject);
+begin
+Frmpedidocompra.Edit9.text :=  Dm_entradas.Qry_produtoid.AsString;
+Frmpedidocompra.Edit9Exit(self);
 close;
 end;
 
-procedure TFrmpedvendabuscaprod.FormActivate(Sender: TObject);
-begin
-edit1.SetFocus;
-end;
-
-procedure TFrmpedvendabuscaprod.ImlogoMouseDown(Sender: TObject;
+procedure TFrmcomprabuscaprod.ImlogoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   const
    sc_DragMove = $f012;
@@ -76,8 +89,7 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
-
-procedure TFrmpedvendabuscaprod.PnltopoMouseDown(Sender: TObject;
+procedure TFrmcomprabuscaprod.PnltopoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   const
@@ -88,19 +100,25 @@ begin
 end;
 end;
 
-procedure TFrmpedvendabuscaprod.SpeedButton1Click(Sender: TObject);
+procedure TFrmcomprabuscaprod.SpeedButton1Click(Sender: TObject);
 begin
- with Dm_vendas.Qry_produto do
+     with Dm_entradas.Qry_produto do
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select p.id, p.descricao, p.unidade,u.preco, u.percdesc');
-      Sql.Add('from produtos p, precos u');
-      Sql.Add('where p.id = u.codprod ');
+      Sql.Add('select p.id,p.descricao,p.unidade,u.descricao as tipo');
+      Sql.Add('from produtos p, tipoproduto u');
+      Sql.Add('where p.tipo = u.id');
       Sql.Add('and p.CODFILIAL = :CODFILIAL');
 
       if Edit1.Text <> '' then
         Sql.Add('And p.descricao Like ''%'+ Edit1.Text + '%'' ');
+
+      if checkbox1.Checked = true then
+      Sql.Add('And p.tipo = 2');
+
+      if checkbox2.Checked = true then
+      Sql.Add('And p.tipo = 1');
 
       Sql.Add('ORDER BY p.descricao');
 

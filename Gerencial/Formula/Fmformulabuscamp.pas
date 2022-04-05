@@ -59,7 +59,7 @@ end;
 
 procedure TFrmformulabuscamp.DBGrid1DblClick(Sender: TObject);
 begin
-Frmformula.dbedit5.text :=  Dm_cadastros.Qry_cadastro_mpid.AsString;
+Frmformula.dbedit5.text :=  Dm_cadastros.Qry_cadastro_produtoid.AsString;
 Frmformula.DBEdit5Exit(self);
 close;
 end;
@@ -94,12 +94,13 @@ end;
 
 procedure TFrmformulabuscamp.SpeedButton1Click(Sender: TObject);
 begin
-with Dm_cadastros.Qry_cadastro_Mp do
+with Dm_cadastros.Qry_cadastro_produto do
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add(' SELECT * FROM PRODUTOMPS');
+      Sql.Add(' SELECT * FROM PRODUTOS');
       Sql.Add('WHERE ID >=0');
+      Sql.Add('AND tipo=2');
 
       if Edit1.Text <> '' then
         Sql.Add('And DESCRICAO Like ''%'+ Edit1.Text + '%'' ');

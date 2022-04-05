@@ -13,13 +13,10 @@ type
     pncliente: TPanel;
     Pnlfornec: TPanel;
     SpeedButton2: TSpeedButton;
-    Pnlprodutos: TPanel;
-    SpeedButton3: TSpeedButton;
     Pnlprodacab: TPanel;
     SpeedButton4: TSpeedButton;
     pnllinha: TPanel;
     pnllinha2: TPanel;
-    pnllinha3: TPanel;
     pnllinha4: TPanel;
     Pnlusuario: TPanel;
     SpeedButton5: TSpeedButton;
@@ -43,8 +40,6 @@ type
     procedure SpeedButton2MouseLeave(Sender: TObject);
     procedure SpeedButton4MouseEnter(Sender: TObject);
     procedure SpeedButton4MouseLeave(Sender: TObject);
-    procedure SpeedButton3MouseLeave(Sender: TObject);
-    procedure SpeedButton3MouseEnter(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -125,16 +120,6 @@ procedure TFrmcadastros.SpeedButton3Click(Sender: TObject);
 begin
  FrmCadmp := TFrmCadmp.Create(Self);                          //Botao de login chama o formulario principal
  FrmCadmp.Show;
-end;
-
-procedure TFrmcadastros.SpeedButton3MouseEnter(Sender: TObject);
-begin
-pnllinha3.Color:=clGradientActiveCaption;
-end;
-
-procedure TFrmcadastros.SpeedButton3MouseLeave(Sender: TObject);
-begin
-pnllinha3.color:=clWindow;
 end;
 
 procedure TFrmcadastros.SpeedButton4Click(Sender: TObject);

@@ -41,6 +41,34 @@ type
     FMTBCDField1: TFMTBCDField;
     FMTBCDField2: TFMTBCDField;
     Qry_cons_creceberid: TIntegerField;
+    Qry_cpagar: TFDQuery;
+    Ds_cpagar: TDataSource;
+    Qry_cpagarid: TIntegerField;
+    Qry_cpagarpedidoid: TIntegerField;
+    Qry_cpagaruseradmid: TIntegerField;
+    Qry_cpagarcobid: TIntegerField;
+    Qry_cpagarvalor: TFMTBCDField;
+    Qry_cpagardtvenc: TDateField;
+    Qry_cpagardtemissao: TDateField;
+    Qry_cpagardtpagto: TDateField;
+    Qry_cpagarvapgo: TFMTBCDField;
+    Qry_cpagarcodfilial: TIntegerField;
+    Qry_cpagarcodconta: TIntegerField;
+    Qry_cons_cpagar: TFDQuery;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    WideStringField2: TWideStringField;
+    WideStringField3: TWideStringField;
+    FMTBCDField3: TFMTBCDField;
+    FMTBCDField4: TFMTBCDField;
+    DateField1: TDateField;
+    DateField2: TDateField;
+    DateField3: TDateField;
+    IntegerField4: TIntegerField;
+    IntegerField5: TIntegerField;
+    AggregateField1: TAggregateField;
+    Ds_cons_cpagar: TDataSource;
+    Qry_cpagarcodfornec: TIntegerField;
   private
     { Private declarations }
   public

@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{F9294FF4-529C-4417-BC84-FC17D2F95D6D}</ProjectGuid>
+        <ProjectGuid>{687AF475-63A4-4476-8457-5942391A1983}</ProjectGuid>
         <ProjectVersion>19.3</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
@@ -8,7 +8,7 @@
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
-        <MainSource>Empreer.dpr</MainSource>
+        <MainSource>GeracaoArquivo.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -57,10 +57,10 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <SanitizedProjectName>Empreer</SanitizedProjectName>
+        <SanitizedProjectName>GeracaoArquivo</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>vclwinx;DataSnapServer;fmx;emshosting;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;IndyIPClient;dbxcds;vcledge;bindcompvclwinx;FmxTeeUI;emsedge;bindcompfmx;DBXFirebirdDriver;inetdb;FireDACSqliteDriver;DbxClientDriver;FireDACASADriver;Tee;soapmidas;vclactnband;TeeUI;fmxFireDAC;dbexpress;FireDACInfxDriver;DBXMySQLDriver;VclSmp;inet;DataSnapCommon;vcltouch;fmxase;DBXOdbcDriver;dbrtl;FireDACDBXDriver;FireDACOracleDriver;fmxdae;TeeDB;FireDACMSAccDriver;CustomIPTransport;FireDACMSSQLDriver;DataSnapIndy10ServerTransport;DataSnapConnectors;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;IndySystem;FireDACTDataDriver;vcldb;vclFireDAC;bindcomp;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;RESTComponents;DBXSqliteDriver;vcl;IndyIPServer;dsnapxml;dsnapcon;DataSnapClient;DataSnapProviderClient;adortl;DBXSybaseASEDriver;DBXDb2Driver;vclimg;DataSnapFireDAC;emsclientfiredac;FireDACPgDriver;FireDAC;FireDACDSDriver;inetdbxpress;xmlrtl;tethering;bindcompvcl;dsnap;CloudService;DBXSybaseASADriver;DBXOracleDriver;FireDACDb2Driver;DBXInformixDriver;fmxobj;bindcompvclsmp;DataSnapNativeClient;FMXTee;DatasnapConnectorsFreePascal;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>JvNet;vclwinx;DataSnapServer;fmx;emshosting;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;IndyIPClient;dbxcds;vcledge;bindcompvclwinx;FmxTeeUI;emsedge;bindcompfmx;DBXFirebirdDriver;JvBands;inetdb;JvAppFrm;FireDACSqliteDriver;DbxClientDriver;FireDACASADriver;Tee;soapmidas;JclVcl;vclactnband;TeeUI;fmxFireDAC;dbexpress;Jcl;JvManagedThreads;FireDACInfxDriver;DBXMySQLDriver;VclSmp;inet;DataSnapCommon;JvPascalInterpreter;vcltouch;fmxase;JvPluginSystem;DBXOdbcDriver;JvDB;dbrtl;JvTimeFramework;FireDACDBXDriver;FireDACOracleDriver;fmxdae;TeeDB;FireDACMSAccDriver;JvCustom;CustomIPTransport;FireDACMSSQLDriver;JvSystem;DataSnapIndy10ServerTransport;JclDeveloperTools;JvControls;DataSnapConnectors;vcldsnap;DBXInterBaseDriver;JvCrypt;FireDACMongoDBDriver;JvJans;JvMM;IndySystem;JvWizards;FireDACTDataDriver;JvGlobus;vcldb;JclContainers;JvPageComps;vclFireDAC;JvCore;bindcomp;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;RESTComponents;DBXSqliteDriver;vcl;IndyIPServer;dsnapxml;dsnapcon;DataSnapClient;DataSnapProviderClient;adortl;JvDotNetCtrls;JvHMI;DBXSybaseASEDriver;JvRuntimeDesign;DBXDb2Driver;JvXPCtrls;vclimg;DataSnapFireDAC;emsclientfiredac;FireDACPgDriver;FireDAC;FireDACDSDriver;inetdbxpress;xmlrtl;tethering;JvStdCtrls;JvDlgs;JvDocking;JvPrintPreview;bindcompvcl;dsnap;JvCmp;CloudService;DBXSybaseASADriver;DBXOracleDriver;FireDACDb2Driver;DBXInformixDriver;fmxobj;bindcompvclsmp;DataSnapNativeClient;FMXTee;DatasnapConnectorsFreePascal;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -85,8 +85,6 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -102,187 +100,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Fmlogin.pas">
-            <Form>Frmlogin</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmprincipal.pas">
-            <Form>Frmprincipal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmcadastros.pas">
-            <Form>Frmcadastros</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmentradas.pas">
-            <Form>Frmentradas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Uudm_conexao.pas">
-            <Form>udm_conexao</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Fmgerencial.pas">
-            <Form>Frmgerencial</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Cliente\Fmcadcli.pas">
-            <Form>Frmcadcli</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Cobranca\Fmcadcob.pas">
-            <Form>Frmcadcob</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Departamento\Fmcaddepto.pas">
-            <Form>Frmcaddepto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Fornecedor\Fmcadfornec.pas">
-            <Form>Frmcadfornec</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Fornecedor\Fmcadfornecbuscacidade.pas">
-            <Form>Frmcadfornecbuscacidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Matéira Prima\Fmcadmp.pas">
-            <Form>Frmcadmp</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Produto\Fmcadprodut.pas">
-            <Form>Frmcadprodut</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Usuário\Fmusersist.pas">
-            <Form>Frmusersist</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Gerencial\Formula\Fmformula.pas">
-            <Form>Frmformula</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Gerencial\Formula\Fmformulabuscamp.pas">
-            <Form>Frmformulabuscamp</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Gerencial\Formula\Fmformulabuscaproduto.pas">
-            <Form>Frmformulabuscaproduto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_cadastros.pas">
-            <Form>Dm_cadastros</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_gerencial.pas">
-            <Form>Dm_gerencial</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Gerencial\Custo\Fmcustos.pas">
-            <Form>Frmcustos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmprecifica.pas">
-            <Form>FrmPrecifica</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Precificacao\Precificacao\Fmpreco.pas">
-            <Form>Frmpreco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_precificacao.pas">
-            <Form>Dm_precificacao</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Fmvendas.pas">
-            <Form>FrmVendas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Vendas\PedidoVenda\Fmpedvenda.pas">
-            <Form>Frmpedvenda</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_vendas.pas">
-            <Form>Dm_vendas</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Vendas\PedidoVenda\Fmpedvendabuscacli.pas">
-            <Form>Frmpedvendabuscacli</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Vendas\PedidoVenda\Fmpedvendabuscaprod.pas">
-            <Form>Frmpedvendabuscaprod</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_financeiro.pas">
-            <Form>Dm_Financeiro</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Cliente\UFrmcadclibuscacidade.pas">
-            <Form>Frmcadclibuscacidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmrelatorios.pas">
-            <Form>Frmrelatorios</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmconfig.pas">
-            <Form>Frmconfig</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Fmfinanc.pas">
-            <Form>Frmfinanc</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Configuracoes\Atualizacoes\Fmatualiza.pas">
-            <Form>Frmatualiza</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Financeiro\creceber\Fmcreceber.pas">
-            <Form>Frmcreceber</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Financeiro\creceber\Fmcreceberbuscacli.pas">
-            <Form>Frmcreceberbuscacli</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Cadastros\Contas Contabeis\Fmconta.pas">
-            <Form>Frmconta</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Entradas\Pedidocompra\Fmpedidocompra.pas">
-            <Form>Frmpedidocompra</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Datamodulo\Udm_entradas.pas">
-            <Form>Dm_Entradas</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Entradas\Pedidocompra\Fmpedcomprabuscafornec.pas">
-            <Form>Frmpedcomprabuscafornec</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Entradas\Pedidocompra\Fmpedcomprabuscaprod.pas">
-            <Form>Frmcomprabuscaprod</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Entradas\Entradaproducao\Fmentprod.pas">
-            <Form>Frmentprod</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Entradas\Entradaproducao\Fmentprodbuscaprod.pas">
-            <Form>Frmentprodbuscaprod</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Financeiro\cpagar\Fmcpagar.pas">
-            <Form>Frmcpagar</Form>
+        <DCCReference Include="UntPrincipal.pas">
+            <Form>FrmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
@@ -303,33 +122,13 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">Empreer.dpr</Source>
+                    <Source Name="MainSource">GeracaoArquivo.dpr</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\Empreer.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\GeracaoArquivo.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Empreer.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png" Configuration="Debug" Class="UWP_DelphiLogo44">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo44x44.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png" Configuration="Debug" Class="UWP_DelphiLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo150x150.png</RemoteName>
+                        <RemoteName>GeracaoArquivo.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

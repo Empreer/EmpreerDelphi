@@ -20,7 +20,7 @@ object Frmpedvenda: TFrmpedvenda
     Top = 8
     Width = 1280
     Height = 642
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Style = tsFlatButtons
     TabOrder = 0
     object TabSheet1: TTabSheet

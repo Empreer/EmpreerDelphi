@@ -12,6 +12,7 @@ object Frmpedidocompra: TFrmpedidocompra
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -68,7 +69,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 631
+          Left = 782
           Top = 129
           Width = 81
           Height = 21
@@ -81,7 +82,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 755
+          Left = 906
           Top = 129
           Width = 39
           Height = 21
@@ -339,7 +340,7 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 858
+          Left = 1009
           Top = 129
           Width = 46
           Height = 21
@@ -357,6 +358,19 @@ object Frmpedidocompra: TFrmpedidocompra
           Width = 105
           Height = 21
           Caption = 'Total do Pedido'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 631
+          Top = 129
+          Width = 58
+          Height = 21
+          Caption = 'Unidade'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -408,7 +422,7 @@ object Frmpedidocompra: TFrmpedidocompra
           TabOrder = 2
         end
         object pnlborda3: TPanel
-          Left = 631
+          Left = 782
           Top = 177
           Width = 100
           Height = 2
@@ -482,6 +496,7 @@ object Frmpedidocompra: TFrmpedidocompra
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtnsalvarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end
@@ -511,6 +526,7 @@ object Frmpedidocompra: TFrmpedidocompra
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtncancelarClick
             ExplicitLeft = 144
           end
         end
@@ -544,7 +560,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Style = []
           KeyField = 'id'
           ListField = 'descricao'
-          ListSource = Dm_cadastros.Ds_cadastro_Cob
+          ListSource = Dm_Entradas.Ds_cob
           ParentFont = False
           TabOrder = 9
         end
@@ -590,7 +606,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Top = 194
           Width = 1243
           Height = 336
-          DataSource = Dm_vendas.Ds_cons_pedidoitem
+          DataSource = Dm_Entradas.Ds_cons_pedidoitem
           Enabled = False
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           ReadOnly = True
@@ -651,13 +667,6 @@ object Frmpedidocompra: TFrmpedidocompra
             end
             item
               Expanded = False
-              FieldName = 'ptabela'
-              Title.Caption = 'P.TABELA'
-              Width = 92
-              Visible = True
-            end
-            item
-              Expanded = False
               FieldName = 'qt'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -665,7 +674,7 @@ object Frmpedidocompra: TFrmpedidocompra
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Caption = 'QT.'
-              Width = 82
+              Width = 172
               Visible = True
             end
             item
@@ -677,7 +686,7 @@ object Frmpedidocompra: TFrmpedidocompra
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Caption = 'P.UNIT'
-              Width = 77
+              Width = 133
               Visible = True
             end
             item
@@ -689,7 +698,7 @@ object Frmpedidocompra: TFrmpedidocompra
               Font.Name = 'Segoe UI'
               Font.Style = []
               Title.Caption = 'SUB.TOT.'
-              Width = 79
+              Width = 160
               Visible = True
             end>
         end
@@ -1043,12 +1052,13 @@ object Frmpedidocompra: TFrmpedidocompra
               FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
             Layout = blGlyphRight
             ParentFont = False
+            OnClick = BtnRemoverClick
             ExplicitTop = 8
             ExplicitHeight = 37
           end
         end
         object Panel6: TPanel
-          Left = 858
+          Left = 1009
           Top = 176
           Width = 80
           Height = 2
@@ -1058,7 +1068,7 @@ object Frmpedidocompra: TFrmpedidocompra
           TabOrder = 18
         end
         object Edit4: TEdit
-          Left = 755
+          Left = 906
           Top = 156
           Width = 70
           Height = 20
@@ -1075,9 +1085,10 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
           TabOrder = 22
           Text = '0'
+          OnExit = Edit4Exit
         end
         object Edit7: TEdit
-          Left = 631
+          Left = 782
           Top = 156
           Width = 100
           Height = 20
@@ -1094,9 +1105,10 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
           TabOrder = 21
           Text = '0'
+          OnExit = Edit7Exit
         end
         object Edit8: TEdit
-          Left = 858
+          Left = 1009
           Top = 156
           Width = 100
           Height = 20
@@ -1460,12 +1472,13 @@ object Frmpedidocompra: TFrmpedidocompra
               FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
             Layout = blGlyphRight
             ParentFont = False
+            OnClick = BtnAdicionarClick
             ExplicitLeft = 2
             ExplicitTop = -6
           end
         end
         object Panel7: TPanel
-          Left = 755
+          Left = 906
           Top = 176
           Width = 80
           Height = 2
@@ -1480,8 +1493,36 @@ object Frmpedidocompra: TFrmpedidocompra
           Width = 137
           Height = 23
           DataField = 'SUMVLTOT'
-          DataSource = Dm_vendas.Ds_cons_pedidoitem
+          DataSource = Dm_Entradas.Ds_cons_pedidoitem
           TabOrder = 25
+        end
+        object Panel1: TPanel
+          Left = 631
+          Top = 176
+          Width = 130
+          Height = 2
+          BevelOuter = bvNone
+          Color = clSilver
+          ParentBackground = False
+          TabOrder = 26
+        end
+        object Edit2: TEdit
+          Left = 631
+          Top = 156
+          Width = 130
+          Height = 20
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 27
         end
       end
     end
@@ -1568,11 +1609,11 @@ object Frmpedidocompra: TFrmpedidocompra
           TabOrder = 0
         end
         object DBGrid1: TDBGrid
-          Left = 16
+          Left = 15
           Top = 148
           Width = 1225
           Height = 405
-          DataSource = Dm_vendas.Ds_cons_pedido
+          DataSource = Dm_Entradas.Ds_cons_pedido
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
@@ -1580,6 +1621,7 @@ object Frmpedidocompra: TFrmpedidocompra
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnDblClick = DBGrid1DblClick
           Columns = <
             item
               Expanded = False
@@ -1595,13 +1637,13 @@ object Frmpedidocompra: TFrmpedidocompra
             end
             item
               Expanded = False
-              FieldName = 'codcli'
+              FieldName = 'codfornec'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
-              Title.Caption = 'C'#211'D.CLI.'
+              Title.Caption = 'C'#211'D.F.'
               Width = 60
               Visible = True
             end
@@ -1613,7 +1655,7 @@ object Frmpedidocompra: TFrmpedidocompra
               Font.Height = -13
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
-              Title.Caption = 'CLIENTE'
+              Title.Caption = 'FORNECEDOR'
               Width = 505
               Visible = True
             end
@@ -1673,6 +1715,7 @@ object Frmpedidocompra: TFrmpedidocompra
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = SpeedButton1Click
             ExplicitLeft = 32
             ExplicitHeight = 28
           end
@@ -1701,7 +1744,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Width = 137
           Height = 23
           DataField = 'Sumvltot'
-          DataSource = Dm_vendas.Ds_cons_pedido
+          DataSource = Dm_Entradas.Ds_cons_pedido
           TabOrder = 6
         end
       end
@@ -1730,6 +1773,7 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          OnClick = BtncancpedidoClick
           ExplicitLeft = 80
           ExplicitTop = 1
         end
@@ -1877,6 +1921,7 @@ object Frmpedidocompra: TFrmpedidocompra
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnCadastroClick
       ExplicitLeft = 9
       ExplicitTop = 22
       ExplicitHeight = 41
@@ -2023,6 +2068,7 @@ object Frmpedidocompra: TFrmpedidocompra
         FF00FFFFFF00FFFFFF00}
       Layout = blGlyphRight
       ParentFont = False
+      OnClick = BtnPesquisarClick
       ExplicitHeight = 35
     end
   end

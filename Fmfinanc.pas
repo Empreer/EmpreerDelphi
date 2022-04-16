@@ -12,9 +12,9 @@ type
     pncreceber: TPanel;
     SpeedButton1: TSpeedButton;
     pnlcreceber: TPanel;
-    Pnlcusto: TPanel;
+    pncpagar: TPanel;
     SpeedButton2: TSpeedButton;
-    pnllinha2: TPanel;
+    pnlcpagar: TPanel;
     Pnlprodutos: TPanel;
     SpeedButton3: TSpeedButton;
     pnllinha3: TPanel;
@@ -33,6 +33,9 @@ type
     procedure SpeedButton1MouseEnter(Sender: TObject);
     procedure SpeedButton1MouseLeave(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton2MouseEnter(Sender: TObject);
+    procedure SpeedButton2MouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses Fmcreceber;
+uses Fmcreceber, Fmcpagar;
 
 procedure TFrmfinanc.SpeedButton1Click(Sender: TObject);
 begin
@@ -62,6 +65,22 @@ end;
 procedure TFrmfinanc.SpeedButton1MouseLeave(Sender: TObject);
 begin
 pnlcreceber.color:=clWhite;
+end;
+
+procedure TFrmfinanc.SpeedButton2Click(Sender: TObject);
+begin
+ Frmcpagar := TFrmcpagar.Create(Self);                          //Botao de login chama o formulario principal
+ Frmcpagar.Show;
+end;
+
+procedure TFrmfinanc.SpeedButton2MouseEnter(Sender: TObject);
+begin
+pnlcpagar.color:=clGradientActiveCaption;
+end;
+
+procedure TFrmfinanc.SpeedButton2MouseLeave(Sender: TObject);
+begin
+pnlcpagar.color:=clWhite;
 end;
 
 end.

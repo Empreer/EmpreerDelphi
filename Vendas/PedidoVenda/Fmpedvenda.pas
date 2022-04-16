@@ -297,6 +297,7 @@ end;
 
 procedure TFrmpedvenda.BtncancpedidoClick(Sender: TObject);
 var numpeddel:string;
+var pedidoitemqt:string;
 begin
   if MessageDlg('Deseja Realmente cancelar o pedido ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
  begin
@@ -327,9 +328,12 @@ begin
     while not Dm_vendas.Qry_cons_pedidoitem.eof do
         begin
 
+          pedidoitemqt:= Dm_vendas.Qry_cons_pedidoitemqt.asstring;
+          pedidoitemqt:=StringReplace(pedidoitemqt, ',','.',[]);
+
           Dm_vendas.SQLaux.Close;
           Dm_vendas.SQLaux.SQL.Clear;
-          Dm_vendas.SQLaux.SQL.Add('update produtos set qtest = qtest + '''+Dm_vendas.Qry_cons_pedidoitemqt.asstring+'''  where id = '''+Dm_vendas.Qry_cons_pedidoitemcodprod.asstring+''' and codfilial = '''+Dm_vendas.Qry_cons_pedidoitemcodfilial.asstring+'''');
+          Dm_vendas.SQLaux.SQL.Add('update produtos set qtest = qtest + '''+pedidoitemqt+'''  where id = '''+Dm_vendas.Qry_cons_pedidoitemcodprod.asstring+''' and codfilial = '''+Dm_vendas.Qry_cons_pedidoitemcodfilial.asstring+'''');
           Dm_vendas.SQLaux.ExecSQL();
 
           Dm_vendas.Qry_cons_pedidoitem.Next;
@@ -434,6 +438,7 @@ var dtini : Tdatetime;
 var dias : integer;
 var dtvenc : Tdatetime;
 var dtvencs : string;
+var pedidoitemqt:string;
 begin
 
     dtemissao := formatdatetime('dd/mm/yyyy',Datetimepicker1.Date);
@@ -481,9 +486,12 @@ begin
     while not Dm_vendas.Qry_cons_pedidoitem.eof do
         begin
 
+          pedidoitemqt:= Dm_vendas.Qry_cons_pedidoitemqt.asstring;
+          pedidoitemqt:= StringReplace(pedidoitemqt, ',','.',[]);
+
           Dm_vendas.SQLaux.Close;                                                     // Alimenta margens da tabela normal.
           Dm_vendas.SQLaux.SQL.Clear;
-          Dm_vendas.SQLaux.SQL.Add('update produtos set qtest = qtest - '''+Dm_vendas.Qry_cons_pedidoitemqt.asstring+'''  where id = '''+Dm_vendas.Qry_cons_pedidoitemcodprod.asstring+''' and codfilial = '''+Dm_vendas.Qry_cons_pedidoitemcodfilial.asstring+'''');
+          Dm_vendas.SQLaux.SQL.Add('update produtos set qtest = qtest - '''+pedidoitemqt+'''  where id = '''+Dm_vendas.Qry_cons_pedidoitemcodprod.asstring+''' and codfilial = '''+Dm_vendas.Qry_cons_pedidoitemcodfilial.asstring+'''');
           Dm_vendas.SQLaux.ExecSQL();
 
 

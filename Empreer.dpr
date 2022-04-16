@@ -44,7 +44,10 @@ uses
   Fmpedidocompra in 'Entradas\Pedidocompra\Fmpedidocompra.pas' {Frmpedidocompra},
   Udm_entradas in 'Datamodulo\Udm_entradas.pas' {Dm_Entradas: TDataModule},
   Fmpedcomprabuscafornec in 'Entradas\Pedidocompra\Fmpedcomprabuscafornec.pas' {Frmpedcomprabuscafornec},
-  Fmpedcomprabuscaprod in 'Entradas\Pedidocompra\Fmpedcomprabuscaprod.pas' {Frmcomprabuscaprod};
+  Fmpedcomprabuscaprod in 'Entradas\Pedidocompra\Fmpedcomprabuscaprod.pas' {Frmcomprabuscaprod},
+  Fmentprod in 'Entradas\Entradaproducao\Fmentprod.pas' {Frmentprod},
+  Fmentprodbuscaprod in 'Entradas\Entradaproducao\Fmentprodbuscaprod.pas' {Frmentprodbuscaprod},
+  Fmcpagar in 'Financeiro\cpagar\Fmcpagar.pas' {Frmcpagar};
 
 {$R *.res}
 
@@ -57,18 +60,10 @@ begin
   Application.CreateForm(TDm_gerencial, Dm_gerencial);
   Application.CreateForm(TDm_precificacao, Dm_precificacao);
   Application.CreateForm(TDm_vendas, Dm_vendas);
-  Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmcadclibuscacidade, Frmcadclibuscacidade);
-  Application.CreateForm(TFrmrelatorios, Frmrelatorios);
-  Application.CreateForm(TFrmconfig, Frmconfig);
-  Application.CreateForm(TFrmfinanc, Frmfinanc);
-  Application.CreateForm(TFrmatualiza, Frmatualiza);
-  Application.CreateForm(TFrmcreceber, Frmcreceber);
-  Application.CreateForm(TFrmcreceberbuscacli, Frmcreceberbuscacli);
-  Application.CreateForm(TFrmconta, Frmconta);
-  Application.CreateForm(TFrmpedidocompra, Frmpedidocompra);
   Application.CreateForm(TDm_Entradas, Dm_Entradas);
-  Application.CreateForm(TFrmpedcomprabuscafornec, Frmpedcomprabuscafornec);
-  Application.CreateForm(TFrmcomprabuscaprod, Frmcomprabuscaprod);
+  Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TFrmentprod, Frmentprod);
+  Application.CreateForm(TFrmentprodbuscaprod, Frmentprodbuscaprod);
+  Application.CreateForm(TFrmcpagar, Frmcpagar);
   Application.Run;
 end.

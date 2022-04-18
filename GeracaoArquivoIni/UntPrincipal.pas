@@ -81,13 +81,23 @@ begin
  if validaCampos = true  then
  begin
    FDConnection1.Connected := False;
-//   FDConnection1.Params.Clear;
+  // FDConnection1.Params.Clear;
    FDConnection1.Params.Values['DriverName'] := 'PG';
    FDConnection1.Params.Values['DriverID'] := 'PG';
    FDConnection1.Params.Values['Database'] := EdtDatabase.text;
    FDConnection1.Params.Values['Server'] := EdtServidor.text;
    FDConnection1.Params.Values['UserName'] := EdtUser.text;
    FDConnection1.Params.Values['Password'] := EdtSenha.text;
+   FDConnection1.Params.Values['Port'] := '5432';
+
+   FDConnection1.Params.DriverID := 'PG';
+   FDConnection1.Params.UserName := EdtUser.text;
+   FDConnection1.Params.Password := EdtSenha.text;
+
+   FDPhysPgDriverLink1.DriverID := 'PG';
+   showmessage(  FDConnection1.Params.Values['Database']);
+
+   FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
    FDConnection1.Connected := True;
 
    if FDConnection1.Connected = True  then
@@ -147,7 +157,7 @@ begin
            Memo1.Lines.Add('Servidor Banco de dados: ' + EdtServidor.text);
            Memo1.Lines.Add('Usuário: ' + EdtUser.text);
            Memo1.Lines.Add('--------------------------------------');
-           Memo1.Lines.Add('Conexão Realizada com Sucesso');
+           Memo1.Lines.Add('Arquivo salvo com Sucesso');
          end;
 
 

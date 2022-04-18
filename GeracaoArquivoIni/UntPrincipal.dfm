@@ -205,38 +205,37 @@ object FrmPrincipal: TFrmPrincipal
       'Server=db-empreerhmg.postgres.uhserver.com'
       'DriverID=PG'
       'POOL_ExpireTimeout=9000000')
+    Connected = True
     LoginPrompt = False
     Left = 624
     Top = 32
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    DriverID = 'PG'
     VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
-    Left = 632
+    Left = 624
     Top = 104
   end
   object ClientDataSet1: TClientDataSet
-    PersistDataPacket.Data = {
-      870000009619E0BD010000001800000004000000000003000000870008536572
-      7669646F72010049000000010005574944544802000200140008446174616261
-      7365010049000000010005574944544802000200140004557365720100490000
-      0001000557494454480200020014000553656E68610100490000000100055749
-      4454480200020014000000}
-    Active = True
     Aggregates = <>
     Params = <>
     Left = 445
     Top = 43
     object ClientDataSet1Servidor: TStringField
       FieldName = 'Servidor'
+      Size = 255
     end
     object ClientDataSet1Database: TStringField
       FieldName = 'Database'
+      Size = 50
     end
     object ClientDataSet1User: TStringField
       FieldName = 'User'
+      Size = 50
     end
     object ClientDataSet1Senha: TStringField
       FieldName = 'Senha'
+      Size = 50
     end
   end
 end

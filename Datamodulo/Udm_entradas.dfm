@@ -43,6 +43,11 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
+    object Qry_pedidonumnota: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'numnota'
+      Origin = 'numnota'
+    end
   end
   object Ds_pedido: TDataSource
     DataSet = Qry_pedido

@@ -62,5 +62,8 @@ begin
   Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TDm_Entradas, Dm_Entradas);
   Application.CreateForm(TFrmlogin, Frmlogin);
+  Application.CreateForm(TFrmentprod, Frmentprod);
+  Application.CreateForm(TFrmentprodbuscaprod, Frmentprodbuscaprod);
+  Application.CreateForm(TFrmcpagar, Frmcpagar);
   Application.Run;
 end.

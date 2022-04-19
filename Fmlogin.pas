@@ -10,7 +10,7 @@ uses
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
   FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+  FireDAC.Comp.Client, Vcl.DBCtrls;
 
 type
   TFrmlogin = class(TForm)
@@ -37,7 +37,6 @@ type
     Btnentrar: TSpeedButton;
     DBLookCombofilial: TDBLookupComboBox;
     pnlistabr: TPanel;
-    DBGrid1: TDBGrid;
     procedure BtnFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -64,51 +63,10 @@ end;
 
 procedure TFrmlogin.FormCreate(Sender: TObject);
 var test : integer;
-  caminho : String;
 begin
-
-try
-    caminho :=  ExtractFilePath(Application.ExeName);
-    caminho := caminho+'basedados.cds';
-
-    udm_conexao.FDConnection1.Connected := False;
-
-    udm_conexao.ClientDataSet1.LoadFromFile(caminho);
-    udm_conexao.ClientDataSet1.open;
-{    udm_conexao.ClientDataSet1.FieldByName('Servidor').AsString
-    udm_conexao.ClientDataSet1.FieldByName('Database').AsString
-    udm_conexao.ClientDataSet1.FieldByName('User').AsString
-    udm_conexao.ClientDataSet1.FieldByName('Senha').AsString     }
-
-    udm_conexao.FDConnection1.Params.Values['DriverName'] := 'PG';
-    udm_conexao.FDConnection1.Params.Values['DriverID'] := 'PG';
-    udm_conexao.FDConnection1.Params.Values['Database'] := udm_conexao.ClientDataSet1.FieldByName('Database').AsString;
-    udm_conexao.FDConnection1.Params.Values['Server'] := udm_conexao.ClientDataSet1.FieldByName('Servidor').AsString;
-    udm_conexao.FDConnection1.Params.Values['UserName'] := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
-    udm_conexao.FDConnection1.Params.Values['Password'] := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
-    udm_conexao.FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
-
-    udm_conexao.FDConnection1.Params.Database := udm_conexao.ClientDataSet1.FieldByName('Database').AsString;
-    udm_conexao.FDConnection1.Params.UserName := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
-    udm_conexao.FDConnection1.Params.Password := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
-
-
-
-    udm_conexao.FDConnection1.Connected := True;
-
-    udm_conexao.Fdquery1.Open();
-    test := udm_conexao.FDQuery1.RecordCount;
-    DBLookCombofilial.KeyValue:=1;
-
-except
-  on E: Exception do
-  begin
-     MessageBox(HWND(e.Message),PWideChar('Alerta de erro de conexão'), 'Erro de conexão', mb_ok);
-//     (´Mensagem´, ´Título´, MB_OK);
-  end;
-end;
-
-
+udm_conexao.Fdquery1.Open();
+test := udm_conexao.FDQuery1.RecordCount;
+DBLookCombofilial.KeyValue:=1;
 
 end;
 

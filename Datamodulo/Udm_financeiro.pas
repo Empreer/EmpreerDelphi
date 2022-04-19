@@ -51,24 +51,26 @@ type
     Qry_cpagardtvenc: TDateField;
     Qry_cpagardtemissao: TDateField;
     Qry_cpagardtpagto: TDateField;
-    Qry_cpagarvapgo: TFMTBCDField;
     Qry_cpagarcodfilial: TIntegerField;
     Qry_cpagarcodconta: TIntegerField;
     Qry_cons_cpagar: TFDQuery;
-    IntegerField2: TIntegerField;
-    IntegerField3: TIntegerField;
-    WideStringField2: TWideStringField;
-    WideStringField3: TWideStringField;
-    FMTBCDField3: TFMTBCDField;
-    FMTBCDField4: TFMTBCDField;
-    DateField1: TDateField;
-    DateField2: TDateField;
-    DateField3: TDateField;
-    IntegerField4: TIntegerField;
-    IntegerField5: TIntegerField;
     AggregateField1: TAggregateField;
     Ds_cons_cpagar: TDataSource;
     Qry_cpagarcodfornec: TIntegerField;
+    Qry_cons_cpagarid: TIntegerField;
+    Qry_cons_cpagarpedidoid: TIntegerField;
+    Qry_cons_cpagarcodfornec: TIntegerField;
+    Qry_cons_cpagarnome: TWideStringField;
+    Qry_cons_cpagarcobranca: TWideStringField;
+    Qry_cons_cpagarvalor: TFMTBCDField;
+    Qry_cons_cpagarvpago: TFMTBCDField;
+    Qry_cons_cpagardtemissao: TDateField;
+    Qry_cons_cpagardtvenc: TDateField;
+    Qry_cons_cpagardtpagto: TDateField;
+    Qry_cons_cpagarcodfilial: TIntegerField;
+    Qry_cons_cpagarnumnota: TIntegerField;
+    Qry_cpagarvpago: TFMTBCDField;
+    Qry_cpagarnumnota: TIntegerField;
   private
     { Private declarations }
   public

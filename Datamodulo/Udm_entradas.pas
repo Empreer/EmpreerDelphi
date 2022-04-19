@@ -128,6 +128,7 @@ type
     Qry_cons_ordemproddescricao: TWideStringField;
     Qry_cons_ordemproddtordem: TDateField;
     Qry_cons_ordemprodqtprod: TFMTBCDField;
+    Qry_pedidonumnota: TIntegerField;
   private
     { Private declarations }
   public

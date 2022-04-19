@@ -85,6 +85,9 @@ type
     Label5: TLabel;
     Panel1: TPanel;
     Edit2: TEdit;
+    Label9: TLabel;
+    DBEdit5: TDBEdit;
+    Panel2: TPanel;
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -260,7 +263,7 @@ if MessageDlg('Deseja Realmente cancelar a digitação do pedido ?', mtConfirmatio
     Edit8.Enabled:=false;
     dbgrid2.Enabled:=false;
 
-
+    dbedit5.enabled:=false;
     Speedbutton3.Enabled:=true;
     SpeedButton4.Enabled:=true;
     Btnadicionar.Enabled:=false;
@@ -350,6 +353,7 @@ end;
 procedure TFrmpedidocompra.BtnnovoClick(Sender: TObject);
 begin
  Dbedit1.Enabled:=true;
+ Dbedit5.Enabled:=true;
  DBLookupComboBox3.Enabled:=true;
  Edit5.Text:='';
  Edit4.Enabled:=true;
@@ -435,6 +439,7 @@ begin
   Dm_financeiro.Qry_cpagarcobid.AsInteger :=  DBLookupComboBox3.Keyvalue;
   Dm_financeiro.Qry_cpagarcodconta.AsInteger := 3;
   Dm_financeiro.Qry_cpagarcodfornec.Asstring:= dbedit1.Text;
+  Dm_financeiro.Qry_cpagarnumnota.Asstring:= dbedit5.Text;
   Dm_financeiro.Qry_cpagarcodfilial.AsInteger :=  DBLookupComboBox1.Keyvalue;
   Dm_financeiro.Qry_cpagardtemissao.Asstring :=  dtemissao;
   Dm_financeiro.Qry_cpagarvalor.Asstring := valor;
@@ -500,6 +505,7 @@ begin
     dbgrid2.Enabled:=false;
 
     dbedit1.enabled:=false;
+    dbedit5.enabled:=false;
     DBLookupComboBox3.Enabled:=false;
     Speedbutton3.Enabled:=true;
     SpeedButton4.Enabled:=true;

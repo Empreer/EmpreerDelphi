@@ -49,6 +49,8 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
+    pnldesdobrar: TPanel;
+    Btndesdobrar: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -61,6 +63,10 @@ type
     procedure CheckBox3Click(Sender: TObject);
     procedure CheckBox4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure btnbaixarClick(Sender: TObject);
+    procedure BtnestornarClick(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure Edit2Exit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,7 +80,44 @@ implementation
 
 {$R *.dfm}
 
-uses Uudm_conexao, Udm_financeiro;
+uses Uudm_conexao, Udm_financeiro, Fmcpagarbuscafornec, Udm_entradas;
+
+procedure TFrmcpagar.btnbaixarClick(Sender: TObject);
+var data:string;
+var valor:string;
+begin
+    data := formatdatetime('yyyy-mm-dd',today);
+    valor := Dm_financeiro.Qry_cons_cpagarvalor.asstring;
+    valor := StringReplace(valor, '.','',[]);
+    valor := StringReplace(valor, ',','.',[]);
+
+  if MessageDlg('Deseja Realmente baixar o título ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
+ begin
+          Dm_financeiro.SQLaux.Close;
+          Dm_financeiro.SQLaux.SQL.Clear;
+          Dm_financeiro.SQLaux.SQL.Add('update cpagar set vpago = '''+valor+''', dtpagto= '''+data+'''   where id = '''+Dm_financeiro.Qry_cons_cpagarid.asstring+'''');
+          Dm_financeiro.SQLaux.ExecSQL();
+
+          ShowMessage('Título baixado com sucesso!');
+
+          Dm_Financeiro.qry_cons_cpagar.Refresh;
+ end;
+end;
+
+procedure TFrmcpagar.BtnestornarClick(Sender: TObject);
+begin
+if MessageDlg('Deseja Realmente estornar o título ?', mtConfirmation, [mbyes,MbNo],0)=mrYes then
+ begin
+          Dm_financeiro.SQLaux.Close;
+          Dm_financeiro.SQLaux.SQL.Clear;
+          Dm_financeiro.SQLaux.SQL.Add('update cpagar set vpago = null, dtpagto= NULL where id = '''+Dm_financeiro.Qry_cons_cpagarid.asstring+'''');
+          Dm_financeiro.SQLaux.ExecSQL();
+
+          ShowMessage('Título estornado com sucesso!');
+
+          Dm_Financeiro.qry_cons_cpagar.Refresh;
+ end;
+end;
 
 procedure TFrmcpagar.BtnFecharClick(Sender: TObject);
 begin
@@ -108,6 +151,30 @@ procedure TFrmcpagar.CheckBox4Click(Sender: TObject);
 begin
 if CheckBox4.Checked = true then
   checkbox3.Checked :=false;
+end;
+
+procedure TFrmcpagar.Edit2Exit(Sender: TObject);
+begin
+if edit2.Text<> '' then begin
+
+
+ with Dm_financeiro.Qry_Fornec do
+ begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf');
+      Sql.Add('from fornecedors u, cidades c ');
+      Sql.Add('where c.id  = u.codcidade ');
+
+
+      Sql.Add('and u.ID = :ID');
+
+      Params.ParamByName('ID').AsInteger := strtoint(edit2.Text);
+      Open;
+
+    end;
+      Edit5.Text :=  Dm_financeiro.Qry_fornecnome.AsString;
+end;
 end;
 
 procedure TFrmcpagar.FormCreate(Sender: TObject);
@@ -146,10 +213,11 @@ begin
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select f.id,f.pedidoid, f.codfornec,u.nome,c.descricao as cobranca, f.valor, f.vpago, f.dtemissao, f.dtvenc, f.dtpagto, f.codfilial,f.numnota');
-      Sql.Add('from cpagar f, fornecedors u, cobrancas c');
+      Sql.Add('select f.id,f.pedidoid, f.codfornec,u.nome,c.descricao as cobranca, f.valor, f.vpago, f.dtemissao, f.dtvenc, f.dtpagto, f.codfilial,f.numnota,i.id as codconta,i.descricao');
+      Sql.Add('from cpagar f, fornecedors u, cobrancas c, contas i');
       Sql.Add('where f.codfornec = u.id');
       Sql.Add('and f.cobid = c.id');
+      Sql.Add('and i.id = f.codconta');
       Sql.Add('and f.CODFILIAL = :CODFILIAL');
 
 
@@ -199,6 +267,13 @@ begin
     end;
     dbgrid2.Enabled:=true;
 
+end;
+
+procedure TFrmcpagar.SpeedButton3Click(Sender: TObject);
+begin
+Frmcpagarbuscafornec := TFrmcpagarbuscafornec.Create(Self);                          //Botao de login chama o formulario principal
+Frmcpagarbuscafornec.Show;
+Frmcpagarbuscafornec.SpeedButton1Click(self);
 end;
 
 end.

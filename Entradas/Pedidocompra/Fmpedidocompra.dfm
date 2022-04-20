@@ -563,7 +563,7 @@ object Frmpedidocompra: TFrmpedidocompra
         object DBLookupComboBox3: TDBLookupComboBox
           Left = 631
           Top = 92
-          Width = 273
+          Width = 251
           Height = 25
           Enabled = False
           Font.Charset = DEFAULT_CHARSET

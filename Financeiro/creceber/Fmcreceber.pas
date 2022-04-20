@@ -156,11 +156,11 @@ begin
  if edit2.Text<> '' then begin
 
 
- with Dm_vendas.Qry_cliente do
+ with Dm_financeiro.Qry_cliente do
  begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf');
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli');
       Sql.Add('from users u, cidades c ');
       Sql.Add('where c.id  = u.codcidade');
 
@@ -171,7 +171,7 @@ begin
       Open;
 
     end;
-       Edit5.Text :=  Dm_vendas.Qry_clientenome.AsString;
+       Edit5.Text :=  Dm_financeiro.Qry_clientenome.AsString;
 
  end;
 end;
@@ -268,6 +268,7 @@ procedure TFrmcreceber.SpeedButton3Click(Sender: TObject);
 begin
 Frmcreceberbuscacli := TFrmcreceberbuscacli.Create(Self);                          //Botao de login chama o formulario principal
 Frmcreceberbuscacli.Show;
+Frmcreceberbuscacli.SpeedButton1Click(self);
 end;
 
 end.

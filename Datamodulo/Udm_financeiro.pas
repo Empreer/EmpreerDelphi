@@ -71,6 +71,23 @@ type
     Qry_cons_cpagarnumnota: TIntegerField;
     Qry_cpagarvpago: TFMTBCDField;
     Qry_cpagarnumnota: TIntegerField;
+    Qry_cons_cpagarcodconta: TIntegerField;
+    Qry_cons_cpagardescricao: TWideStringField;
+    Qry_Fornec: TFDQuery;
+    Qry_Fornecid: TIntegerField;
+    Qry_Fornecnome: TWideStringField;
+    Qry_Forneccpfcnpj: TWideStringField;
+    Qry_Forneccidade: TWideStringField;
+    Qry_Fornecuf: TWideStringField;
+    Ds_Fornec: TDataSource;
+    Qry_cliente: TFDQuery;
+    Qry_clienteid: TIntegerField;
+    Qry_clientenome: TWideStringField;
+    Qry_clientecpfcnpj: TWideStringField;
+    Qry_clientecidade: TWideStringField;
+    Qry_clienteuf: TWideStringField;
+    Qry_clienteperdesccli: TFMTBCDField;
+    Ds_Cliente: TDataSource;
   private
     { Private declarations }
   public

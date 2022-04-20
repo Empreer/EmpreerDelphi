@@ -261,10 +261,11 @@ object Dm_Financeiro: TDm_Financeiro
       
         'select f.id,f.pedidoid, f.codfornec,u.nome,c.descricao as cobran' +
         'ca, f.valor, f.vpago, f.dtemissao, f.dtvenc, f.dtpagto, f.codfil' +
-        'ial,f.numnota'
-      'from cpagar f, fornecedors u, cobrancas c '
+        'ial,f.numnota,i.id as codconta,i.descricao'
+      'from cpagar f, fornecedors u, cobrancas c, contas i '
       'where f.codfornec = u.id '
-      'and f.cobid = c.id ')
+      'and f.cobid = c.id '
+      'and i.id = f.codconta')
     Left = 520
     Top = 32
     object Qry_cons_cpagarid: TIntegerField
@@ -295,12 +296,16 @@ object Dm_Financeiro: TDm_Financeiro
     object Qry_cons_cpagarvalor: TFMTBCDField
       FieldName = 'valor'
       Origin = 'valor'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Precision = 64
       Size = 0
     end
     object Qry_cons_cpagarvpago: TFMTBCDField
       FieldName = 'vpago'
       Origin = 'vpago'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Precision = 64
       Size = 0
     end
@@ -324,6 +329,17 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'numnota'
       Origin = 'numnota'
     end
+    object Qry_cons_cpagarcodconta: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'codconta'
+      Origin = 'codconta'
+    end
+    object Qry_cons_cpagardescricao: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
     object AggregateField1: TAggregateField
       FieldName = 'Sumvltotal'
       Active = True
@@ -336,5 +352,95 @@ object Dm_Financeiro: TDm_Financeiro
     DataSet = Qry_cons_cpagar
     Left = 520
     Top = 96
+  end
+  object Qry_Fornec: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf '
+      'from fornecedors u, cidades c '
+      'where c.id  = u.codcidade ')
+    Left = 640
+    Top = 40
+    object Qry_Fornecid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_Fornecnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 8190
+    end
+    object Qry_Forneccpfcnpj: TWideStringField
+      FieldName = 'cpfcnpj'
+      Origin = 'cpfcnpj'
+      Size = 8190
+    end
+    object Qry_Forneccidade: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Size = 8190
+    end
+    object Qry_Fornecuf: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'uf'
+      Origin = 'uf'
+      Size = 8190
+    end
+  end
+  object Ds_Fornec: TDataSource
+    DataSet = Qry_Fornec
+    Left = 640
+    Top = 104
+  end
+  object Qry_cliente: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli '
+      'from users u, cidades c '
+      'where c.id  = u.codcidade ')
+    Left = 728
+    Top = 40
+    object Qry_clienteid: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_clientenome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 8190
+    end
+    object Qry_clientecpfcnpj: TWideStringField
+      FieldName = 'cpfcnpj'
+      Origin = 'cpfcnpj'
+      Size = 8190
+    end
+    object Qry_clientecidade: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Size = 8190
+    end
+    object Qry_clienteuf: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'uf'
+      Origin = 'uf'
+      Size = 8190
+    end
+    object Qry_clienteperdesccli: TFMTBCDField
+      FieldName = 'perdesccli'
+      Origin = 'perdesccli'
+      Precision = 64
+      Size = 0
+    end
+  end
+  object Ds_Cliente: TDataSource
+    DataSet = Qry_cliente
+    Left = 728
+    Top = 104
   end
 end

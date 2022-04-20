@@ -168,6 +168,7 @@ object Frmcpagar: TFrmcpagar
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+          OnClick = SpeedButton3Click
         end
         object Label6: TLabel
           Left = 640
@@ -183,11 +184,11 @@ object Frmcpagar: TFrmcpagar
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1143
+          Left = 1157
           Top = 536
-          Width = 104
+          Width = 87
           Height = 21
-          Caption = 'Total a Receber'
+          Caption = 'Total a Pagar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -299,10 +300,11 @@ object Frmcpagar: TFrmcpagar
             Flat = True
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindow
-            Font.Height = -19
+            Font.Height = -16
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = btnbaixarClick
             ExplicitLeft = -32
             ExplicitTop = 8
           end
@@ -356,40 +358,42 @@ object Frmcpagar: TFrmcpagar
               Expanded = False
               FieldName = 'codfornec'
               Title.Caption = 'C.FOR.'
+              Width = 55
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'nome'
               Title.Caption = 'FORNECEDOR'
-              Width = 400
+              Width = 274
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'cobranca'
               Title.Caption = 'COBRANCA'
-              Width = 172
+              Width = 103
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'valor'
               Title.Caption = 'VALOR'
-              Width = 100
+              Width = 72
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'vpago'
               Title.Caption = 'V.PAGO'
-              Width = 100
+              Width = 73
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'dtemissao'
               Title.Caption = 'DT.EMISSAO'
+              Width = 83
               Visible = True
             end
             item
@@ -402,6 +406,19 @@ object Frmcpagar: TFrmcpagar
               Expanded = False
               FieldName = 'dtpagto'
               Title.Caption = 'DT.PAGTO'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'codconta'
+              Title.Caption = 'COD.CONTA'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'descricao'
+              Title.Caption = 'CONTA'
+              Width = 164
               Visible = True
             end>
         end
@@ -421,7 +438,7 @@ object Frmcpagar: TFrmcpagar
           Width = 137
           Height = 23
           DataField = 'Sumvltotal'
-          DataSource = Dm_Financeiro.Ds_cons_creceber
+          DataSource = Dm_Financeiro.Ds_cons_cpagar
           TabOrder = 7
         end
         object DateTimePicker1: TDateTimePicker
@@ -483,6 +500,7 @@ object Frmcpagar: TFrmcpagar
           Font.Style = []
           ParentFont = False
           TabOrder = 10
+          OnExit = Edit2Exit
         end
         object Edit3: TEdit
           Left = 643
@@ -561,8 +579,8 @@ object Frmcpagar: TFrmcpagar
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitLeft = 80
-            ExplicitTop = 1
+            OnClick = BtnestornarClick
+            ExplicitLeft = -1
           end
         end
         object CheckBox3: TCheckBox
@@ -584,6 +602,35 @@ object Frmcpagar: TFrmcpagar
           Caption = 'Contas Pagas'
           TabOrder = 17
           OnClick = CheckBox4Click
+        end
+        object pnldesdobrar: TPanel
+          Left = 365
+          Top = 550
+          Width = 153
+          Height = 41
+          BevelOuter = bvNone
+          Color = 9101567
+          ParentBackground = False
+          TabOrder = 18
+          object Btndesdobrar: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 153
+            Height = 41
+            Cursor = crHandPoint
+            Align = alClient
+            Caption = 'Desdobrar T'#237'tulo'
+            Enabled = False
+            Flat = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 72
+            ExplicitTop = -8
+          end
         end
       end
     end

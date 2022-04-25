@@ -88,6 +88,22 @@ type
     Qry_clienteuf: TWideStringField;
     Qry_clienteperdesccli: TFMTBCDField;
     Ds_Cliente: TDataSource;
+    Qry_cpagardesd: TFDQuery;
+    Ds_cpagardesd: TDataSource;
+    Qry_cpagardesdvalor: TFMTBCDField;
+    Qry_cpagardesddtvenc: TDateField;
+    Qry_cpagardesdcodcob: TIntegerField;
+    Qry_cpagardesdsumvalor: TAggregateField;
+    Qry_cob: TFDQuery;
+    Qry_cobid: TIntegerField;
+    Qry_cobdescricao: TWideStringField;
+    Qry_cobdias: TIntegerField;
+    Qry_cobtipo: TWideStringField;
+    Ds_cob: TDataSource;
+    Qry_cpagardesdnumped: TIntegerField;
+    Qry_cpagardesdcodfilial: TIntegerField;
+    Qry_cpagardesdid: TIntegerField;
+    Qry_cpagardesdsalvo: TIntegerField;
   private
     { Private declarations }
   public

@@ -67,6 +67,7 @@ type
     procedure BtnestornarClick(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure Edit2Exit(Sender: TObject);
+    procedure BtndesdobrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,7 +81,8 @@ implementation
 
 {$R *.dfm}
 
-uses Uudm_conexao, Udm_financeiro, Fmcpagarbuscafornec, Udm_entradas;
+uses Uudm_conexao, Udm_financeiro, Fmcpagarbuscafornec, Udm_entradas,
+  Fmcpagardesd;
 
 procedure TFrmcpagar.btnbaixarClick(Sender: TObject);
 var data:string;
@@ -102,6 +104,32 @@ begin
 
           Dm_Financeiro.qry_cons_cpagar.Refresh;
  end;
+end;
+
+procedure TFrmcpagar.BtndesdobrarClick(Sender: TObject);
+var codfilial:string;
+begin
+Frmcpagardesd := TFrmcpagardesd.Create(Self);                          //Botao de login chama o formulario principal
+Frmcpagardesd.Show;
+Frmcpagardesd.editnumnota.text := Dm_Financeiro.Qry_cons_cpagarnumnota.AsString;
+Frmcpagardesd.editnumped.text := Dm_Financeiro.Qry_cons_cpagarpedidoid.AsString;
+Frmcpagardesd.editcodfornec.text := Dm_Financeiro.Qry_cons_cpagarcodfornec.AsString;
+Frmcpagardesd.editfornecedor.text := Dm_Financeiro.Qry_cons_cpagarnome.AsString;
+Frmcpagardesd.editvlpedido.text := Dm_Financeiro.Qry_cons_cpagarvalor.AsString;
+Frmcpagardesd.editcodconta.text := Dm_Financeiro.Qry_cons_cpagarcodconta.AsString;
+Frmcpagardesd.DateTimePicker6.Date := Dm_Financeiro.Qry_cons_cpagardtemissao.AsDateTime;
+
+codfilial := inttostr(udm_conexao.Codfilial);
+
+Dm_financeiro.SQLaux.Close;
+Dm_financeiro.SQLaux.SQL.Clear;
+Dm_financeiro.SQLaux.SQL.Add('delete from cpagardesd where salvo = 0 and numped = '''+Frmcpagardesd.Editnumped.Text+''' and codfilial ='''+codfilial+'''');
+Dm_financeiro.SQLaux.ExecSQL();
+
+Dm_financeiro.Qry_cpagardesd.close;
+Dm_financeiro.Qry_cpagardesd.open;
+Dm_financeiro.Qry_cpagardesd.refresh;
+
 end;
 
 procedure TFrmcpagar.BtnestornarClick(Sender: TObject);
@@ -225,13 +253,14 @@ begin
       Sql.Add('and f.vpago is null');
       btnbaixar.Enabled:=true;
       btnestornar.Enabled:=false;
-
+      Btndesdobrar.Enabled:=true;
       end;
 
       if checkbox4.Checked = true then begin
       Sql.Add('and f.vpago is not null');
       btnestornar.Enabled:=true;
       btnbaixar.Enabled:=false;
+      Btndesdobrar.Enabled:=false;
       end;
 
 
@@ -266,6 +295,7 @@ begin
 
     end;
     dbgrid2.Enabled:=true;
+
 
 end;
 

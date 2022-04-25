@@ -628,6 +628,7 @@ object Frmcpagar: TFrmcpagar
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            OnClick = BtndesdobrarClick
             ExplicitLeft = 72
             ExplicitTop = -8
           end

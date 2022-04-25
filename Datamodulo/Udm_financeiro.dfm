@@ -360,7 +360,7 @@ object Dm_Financeiro: TDm_Financeiro
       'from fornecedors u, cidades c '
       'where c.id  = u.codcidade ')
     Left = 640
-    Top = 40
+    Top = 24
     object Qry_Fornecid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -393,7 +393,7 @@ object Dm_Financeiro: TDm_Financeiro
   object Ds_Fornec: TDataSource
     DataSet = Qry_Fornec
     Left = 640
-    Top = 104
+    Top = 88
   end
   object Qry_cliente: TFDQuery
     Connection = udm_conexao.FDConnection1
@@ -402,7 +402,7 @@ object Dm_Financeiro: TDm_Financeiro
       'from users u, cidades c '
       'where c.id  = u.codcidade ')
     Left = 728
-    Top = 40
+    Top = 24
     object Qry_clienteid: TIntegerField
       Alignment = taLeftJustify
       FieldName = 'id'
@@ -441,6 +441,91 @@ object Dm_Financeiro: TDm_Financeiro
   object Ds_Cliente: TDataSource
     DataSet = Qry_cliente
     Left = 728
-    Top = 104
+    Top = 88
+  end
+  object Qry_cpagardesd: TFDQuery
+    AggregatesActive = True
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cpagardesd where salvo = 0')
+    Left = 408
+    Top = 152
+    object Qry_cpagardesdvalor: TFMTBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      DisplayFormat = '0.00'
+      EditFormat = '0.00'
+      Precision = 64
+      Size = 0
+    end
+    object Qry_cpagardesddtvenc: TDateField
+      FieldName = 'dtvenc'
+      Origin = 'dtvenc'
+    end
+    object Qry_cpagardesdcodcob: TIntegerField
+      FieldName = 'codcob'
+      Origin = 'codcob'
+    end
+    object Qry_cpagardesdnumped: TIntegerField
+      FieldName = 'numped'
+      Origin = 'numped'
+    end
+    object Qry_cpagardesdcodfilial: TIntegerField
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+    end
+    object Qry_cpagardesdid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cpagardesdsalvo: TIntegerField
+      FieldName = 'salvo'
+      Origin = 'salvo'
+    end
+    object Qry_cpagardesdsumvalor: TAggregateField
+      FieldName = 'sumvalor'
+      Active = True
+      DisplayName = ''
+      DisplayFormat = '0.00'
+      Expression = 'Sum(valor)'
+    end
+  end
+  object Ds_cpagardesd: TDataSource
+    DataSet = Qry_cpagardesd
+    Left = 408
+    Top = 216
+  end
+  object Qry_cob: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cobrancas where tipo = '#39'C'#39)
+    Left = 728
+    Top = 168
+    object Qry_cobid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_cobdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object Qry_cobdias: TIntegerField
+      FieldName = 'dias'
+      Origin = 'dias'
+    end
+    object Qry_cobtipo: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Ds_cob: TDataSource
+    DataSet = Qry_cob
+    Left = 728
+    Top = 232
   end
 end

@@ -48,7 +48,8 @@ uses
   Fmentprod in 'Entradas\Entradaproducao\Fmentprod.pas' {Frmentprod},
   Fmentprodbuscaprod in 'Entradas\Entradaproducao\Fmentprodbuscaprod.pas' {Frmentprodbuscaprod},
   Fmcpagar in 'Financeiro\cpagar\Fmcpagar.pas' {Frmcpagar},
-  Fmcpagarbuscafornec in 'Financeiro\cpagar\Fmcpagarbuscafornec.pas' {Frmcpagarbuscafornec};
+  Fmcpagarbuscafornec in 'Financeiro\cpagar\Fmcpagarbuscafornec.pas' {Frmcpagarbuscafornec},
+  Fmcpagardesd in 'Financeiro\cpagar\Fmcpagardesd.pas' {Frmcpagardesd};
 
 {$R *.res}
 
@@ -63,9 +64,5 @@ begin
   Application.CreateForm(TDm_vendas, Dm_vendas);
   Application.CreateForm(TDm_Entradas, Dm_Entradas);
   Application.CreateForm(TFrmlogin, Frmlogin);
-  Application.CreateForm(TFrmentprod, Frmentprod);
-  Application.CreateForm(TFrmentprodbuscaprod, Frmentprodbuscaprod);
-  Application.CreateForm(TFrmcpagar, Frmcpagar);
-  Application.CreateForm(TFrmcpagarbuscafornec, Frmcpagarbuscafornec);
   Application.Run;
 end.

@@ -49,6 +49,8 @@ type
     Label1: TLabel;
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
+    pnldesdobrar: TPanel;
+    Btndesdobrar: TSpeedButton;
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -65,6 +67,7 @@ type
     procedure CheckBox3Click(Sender: TObject);
     procedure CheckBox4Click(Sender: TObject);
     procedure BtnestornarClick(Sender: TObject);
+    procedure BtndesdobrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +81,8 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_financeiro, Udm_vendas, Fmcreceberbuscacli, Uudm_conexao;
+uses Udm_financeiro, Udm_vendas, Fmcreceberbuscacli, Uudm_conexao,
+  Fmcreceberdesd;
 
 procedure TFrmcreceber.btnbaixarClick(Sender: TObject);
 var data:string;
@@ -100,6 +104,46 @@ begin
 
           Dm_Financeiro.qry_cons_creceber.Refresh;
  end;
+end;
+
+procedure TFrmcreceber.BtndesdobrarClick(Sender: TObject);
+var codfilial:string;
+begin
+Frmcreceberdesd := TFrmcreceberdesd.Create(Self);                          //Botao de login chama o formulario principal
+Frmcreceberdesd.Show;
+Frmcreceberdesd.editnumped.text := Dm_Financeiro.Qry_cons_creceberpedidoid.AsString;
+Frmcreceberdesd.editcodcli.text := Dm_Financeiro.Qry_cons_creceberuserid.AsString;
+Frmcreceberdesd.editcliente.text := Dm_Financeiro.Qry_cons_crecebernome.AsString;
+Frmcreceberdesd.editvlpedido.text := Dm_Financeiro.Qry_cons_crecebervalor.AsString;
+Frmcreceberdesd.DateTimePicker6.Date := Dm_Financeiro.Qry_cons_creceberdtemissao.AsDateTime;
+
+codfilial := inttostr(udm_conexao.Codfilial);
+
+Dm_financeiro.SQLaux.Close;
+Dm_financeiro.SQLaux.SQL.Clear;
+Dm_financeiro.SQLaux.SQL.Add('delete from creceberdesd where salvo = 0 and numped = '''+Frmcreceberdesd.Editnumped.Text+''' and codfilial ='''+codfilial+'''');
+Dm_financeiro.SQLaux.ExecSQL();
+
+Dm_financeiro.Qry_creceberdesd.close;
+Dm_financeiro.Qry_creceberdesd.open;
+Dm_financeiro.Qry_creceberdesd.refresh;
+
+ with Dm_Financeiro.qry_creceberdesd do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select * from creceberdesd');
+      Sql.Add('where CODFILIAL = :CODFILIAL');
+      Sql.Add('and numped = :numped');
+      Sql.Add('and salvo = 0');
+
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+      Params.ParamByName('numped').AsInteger := Dm_Financeiro.Qry_cons_creceberpedidoid.Asinteger;
+      Open;
+
+   end;
+
+
 end;
 
 procedure TFrmcreceber.BtnestornarClick(Sender: TObject);
@@ -147,7 +191,7 @@ end;
 
 procedure TFrmcreceber.CheckBox4Click(Sender: TObject);
 begin
- if CheckBox1.Checked = true then
+ if CheckBox4.Checked = true then
   checkbox3.Checked :=false;
 end;
 
@@ -221,13 +265,15 @@ begin
       Sql.Add('and f.vpago is null');
       btnbaixar.Enabled:=true;
       btnestornar.Enabled:=false;
+      Btndesdobrar.Enabled:=true;
 
       end;
 
       if checkbox4.Checked = true then begin
       Sql.Add('and f.vpago is not null');
       btnestornar.Enabled:=true;
-       btnbaixar.Enabled:=false;
+      btnbaixar.Enabled:=false;
+      Btndesdobrar.Enabled:=false;
       end;
 
 

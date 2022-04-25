@@ -104,6 +104,22 @@ type
     Qry_cpagardesdcodfilial: TIntegerField;
     Qry_cpagardesdid: TIntegerField;
     Qry_cpagardesdsalvo: TIntegerField;
+    Qry_creceberdesd: TFDQuery;
+    AggregateField2: TAggregateField;
+    Ds_creceberdesd: TDataSource;
+    Qry_creceberdesdid: TIntegerField;
+    Qry_creceberdesdvalor: TFMTBCDField;
+    Qry_creceberdesddtvenc: TDateField;
+    Qry_creceberdesdcodcob: TIntegerField;
+    Qry_creceberdesdnumped: TIntegerField;
+    Qry_creceberdesdcodfilial: TIntegerField;
+    Qry_creceberdesdsalvo: TIntegerField;
+    Qry_cobvenda: TFDQuery;
+    IntegerField2: TIntegerField;
+    WideStringField2: TWideStringField;
+    IntegerField3: TIntegerField;
+    WideStringField3: TWideStringField;
+    Ds_cobvenda: TDataSource;
   private
     { Private declarations }
   public

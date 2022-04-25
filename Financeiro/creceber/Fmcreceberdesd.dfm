@@ -1,4 +1,4 @@
-object Frmcpagardesd: TFrmcpagardesd
+object Frmcreceberdesd: TFrmcreceberdesd
   Left = 0
   Top = 0
   BorderStyle = bsDialog
@@ -27,23 +27,8 @@ object Frmcpagardesd: TFrmcpagardesd
     Color = clWindow
     ParentBackground = False
     TabOrder = 0
-    object Label6: TLabel
-      Left = 24
-      Top = 18
-      Width = 117
-      Height = 21
-      Caption = 'N'#250'mero da Nota'
-      Color = clGray
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGray
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
     object Label1: TLabel
-      Left = 183
+      Left = 24
       Top = 18
       Width = 132
       Height = 21
@@ -58,11 +43,11 @@ object Frmcpagardesd: TFrmcpagardesd
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 339
+      Left = 180
       Top = 18
-      Width = 78
+      Width = 49
       Height = 21
-      Caption = 'C'#243'd.Fornec'
+      Caption = 'C'#243'd.Cli'
       Color = clGray
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGray
@@ -73,11 +58,11 @@ object Frmcpagardesd: TFrmcpagardesd
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 445
+      Left = 286
       Top = 18
-      Width = 79
+      Width = 48
       Height = 21
-      Caption = 'Fornecedor'
+      Caption = 'Cliente'
       Color = clGray
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGray
@@ -114,7 +99,7 @@ object Frmcpagardesd: TFrmcpagardesd
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 685
+      Left = 518
       Top = 15
       Width = 84
       Height = 21
@@ -124,19 +109,6 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label33: TLabel
-      Left = 232
-      Top = 79
-      Width = 72
-      Height = 21
-      Caption = 'Cod.Conta'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGray
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
       ParentFont = False
     end
     object Label10: TLabel
@@ -178,20 +150,20 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Panel5: TPanel
+    object Panel1: TPanel
       Left = 24
       Top = 65
-      Width = 125
+      Width = 130
       Height = 2
       BevelOuter = bvNone
       Color = clGray
       ParentBackground = False
       TabOrder = 0
     end
-    object Editnumnota: TEdit
+    object Editnumped: TEdit
       Left = 24
       Top = 45
-      Width = 125
+      Width = 130
       Height = 20
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -206,74 +178,46 @@ object Frmcpagardesd: TFrmcpagardesd
       ReadOnly = True
       TabOrder = 1
     end
-    object Panel1: TPanel
-      Left = 183
-      Top = 65
-      Width = 130
-      Height = 2
+    object EditCliente: TEdit
+      Left = 286
+      Top = 45
+      Width = 217
+      Height = 20
+      BevelInner = bvNone
       BevelOuter = bvNone
-      Color = clGray
-      ParentBackground = False
+      BorderStyle = bsNone
+      CharCase = ecUpperCase
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      ReadOnly = True
       TabOrder = 2
     end
-    object Editnumped: TEdit
-      Left = 185
-      Top = 45
-      Width = 130
-      Height = 20
-      BevelInner = bvNone
+    object Panel2: TPanel
+      Left = 180
+      Top = 65
+      Width = 90
+      Height = 2
       BevelOuter = bvNone
-      BorderStyle = bsNone
-      CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
+      Color = clGray
+      ParentBackground = False
       TabOrder = 3
     end
-    object EditFornecedor: TEdit
-      Left = 445
-      Top = 45
+    object Panel4: TPanel
+      Left = 286
+      Top = 65
       Width = 217
-      Height = 20
-      BevelInner = bvNone
+      Height = 2
       BevelOuter = bvNone
-      BorderStyle = bsNone
-      CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
+      Color = clGray
+      ParentBackground = False
       TabOrder = 4
     end
-    object Panel2: TPanel
-      Left = 339
-      Top = 65
-      Width = 90
-      Height = 2
-      BevelOuter = bvNone
-      Color = clGray
-      ParentBackground = False
-      TabOrder = 5
-    end
-    object Panel4: TPanel
-      Left = 445
-      Top = 65
-      Width = 217
-      Height = 2
-      BevelOuter = bvNone
-      Color = clGray
-      ParentBackground = False
-      TabOrder = 6
-    end
-    object Editcodfornec: TEdit
-      Left = 339
+    object Editcodcli: TEdit
+      Left = 180
       Top = 45
       Width = 90
       Height = 20
@@ -288,7 +232,7 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Style = []
       ParentFont = False
       ReadOnly = True
-      TabOrder = 7
+      TabOrder = 5
     end
     object DBLookupComboBox3: TDBLookupComboBox
       Left = 10
@@ -302,24 +246,24 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Style = []
       KeyField = 'id'
       ListField = 'descricao'
-      ListSource = Dm_Financeiro.Ds_cob
+      ListSource = Dm_Financeiro.Ds_cobvenda
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 6
     end
     object Panel6: TPanel
       Left = 24
       Top = 129
-      Width = 190
+      Width = 160
       Height = 2
       BevelOuter = bvNone
       Color = clGray
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 7
     end
     object Editvlpedido: TEdit
       Left = 24
       Top = 109
-      Width = 190
+      Width = 160
       Height = 20
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -332,10 +276,10 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Style = []
       ParentFont = False
       ReadOnly = True
-      TabOrder = 10
+      TabOrder = 8
     end
     object DateTimePicker6: TDateTimePicker
-      Left = 685
+      Left = 518
       Top = 42
       Width = 120
       Height = 25
@@ -348,7 +292,7 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 9
     end
     object pnlsalvar: TPanel
       Left = 580
@@ -358,7 +302,7 @@ object Frmcpagardesd: TFrmcpagardesd
       BevelOuter = bvNone
       Color = 11718912
       ParentBackground = False
-      TabOrder = 12
+      TabOrder = 10
       object Btnsalvar: TSpeedButton
         Left = 0
         Top = 0
@@ -381,42 +325,14 @@ object Frmcpagardesd: TFrmcpagardesd
         ExplicitWidth = 193
       end
     end
-    object Panel8: TPanel
-      Left = 232
-      Top = 129
-      Width = 105
-      Height = 2
-      BevelOuter = bvNone
-      Color = clGray
-      ParentBackground = False
-      TabOrder = 13
-    end
-    object Editcodconta: TEdit
-      Left = 232
-      Top = 109
-      Width = 105
-      Height = 20
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      BorderStyle = bsNone
-      CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 14
-    end
     object DBGrid1: TDBGrid
       Left = 8
       Top = 224
       Width = 772
       Height = 261
-      DataSource = Dm_Financeiro.Ds_cpagardesd
+      DataSource = Dm_Financeiro.Ds_creceberdesd
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-      TabOrder = 15
+      TabOrder = 11
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
@@ -458,8 +374,8 @@ object Frmcpagardesd: TFrmcpagardesd
       Width = 137
       Height = 23
       DataField = 'sumvalor'
-      DataSource = Dm_Financeiro.Ds_cpagardesd
-      TabOrder = 16
+      DataSource = Dm_Financeiro.Ds_creceberdesd
+      TabOrder = 12
     end
     object Pnladicionar: TPanel
       Left = 673
@@ -469,7 +385,7 @@ object Frmcpagardesd: TFrmcpagardesd
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 17
+      TabOrder = 13
       object BtnAdicionar: TSpeedButton
         Left = 0
         Top = 0
@@ -790,7 +706,7 @@ object Frmcpagardesd: TFrmcpagardesd
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 18
+      TabOrder = 14
       object BtnRemover: TSpeedButton
         Left = 0
         Top = 0
@@ -1111,7 +1027,7 @@ object Frmcpagardesd: TFrmcpagardesd
       BevelOuter = bvNone
       Color = clMenuHighlight
       ParentBackground = False
-      TabOrder = 19
+      TabOrder = 15
     end
     object Editvlparcela: TEdit
       Left = 267
@@ -1128,7 +1044,7 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 20
+      TabOrder = 16
     end
     object DateTimePicker1: TDateTimePicker
       Left = 478
@@ -1143,7 +1059,7 @@ object Frmcpagardesd: TFrmcpagardesd
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 21
+      TabOrder = 17
     end
   end
 end

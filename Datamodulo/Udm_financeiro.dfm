@@ -29,7 +29,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'valor'
       Origin = 'valor'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_creceberdtvenc: TDateField
       FieldName = 'dtvenc'
@@ -47,7 +47,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'vpago'
       Origin = 'vpago'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_crecebercodfilial: TIntegerField
       FieldName = 'codfilial'
@@ -100,7 +100,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_crecebervpago: TFMTBCDField
       Alignment = taLeftJustify
@@ -109,7 +109,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_creceberdtemissao: TDateField
       FieldName = 'dtemissao'
@@ -207,7 +207,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'valor'
       Origin = 'valor'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cpagardtvenc: TDateField
       FieldName = 'dtvenc'
@@ -241,7 +241,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'vpago'
       Origin = 'vpago'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cpagarnumnota: TIntegerField
       Alignment = taLeftJustify
@@ -299,7 +299,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_cpagarvpago: TFMTBCDField
       FieldName = 'vpago'
@@ -307,7 +307,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_cpagardtemissao: TDateField
       FieldName = 'dtemissao'
@@ -456,7 +456,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cpagardesddtvenc: TDateField
       FieldName = 'dtvenc'
@@ -500,8 +500,8 @@ object Dm_Financeiro: TDm_Financeiro
     Connection = udm_conexao.FDConnection1
     SQL.Strings = (
       'select * from cobrancas where tipo = '#39'C'#39)
-    Left = 728
-    Top = 168
+    Left = 640
+    Top = 152
     object Qry_cobid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -525,7 +525,92 @@ object Dm_Financeiro: TDm_Financeiro
   end
   object Ds_cob: TDataSource
     DataSet = Qry_cob
-    Left = 728
-    Top = 232
+    Left = 640
+    Top = 216
+  end
+  object Qry_creceberdesd: TFDQuery
+    AggregatesActive = True
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from creceberdesd where salvo = 0')
+    Left = 520
+    Top = 160
+    object Qry_creceberdesdid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Qry_creceberdesdvalor: TFMTBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      DisplayFormat = '0.00'
+      EditFormat = '0.00'
+      Precision = 64
+      Size = 2
+    end
+    object Qry_creceberdesddtvenc: TDateField
+      FieldName = 'dtvenc'
+      Origin = 'dtvenc'
+    end
+    object Qry_creceberdesdcodcob: TIntegerField
+      FieldName = 'codcob'
+      Origin = 'codcob'
+    end
+    object Qry_creceberdesdnumped: TIntegerField
+      FieldName = 'numped'
+      Origin = 'numped'
+    end
+    object Qry_creceberdesdcodfilial: TIntegerField
+      FieldName = 'codfilial'
+      Origin = 'codfilial'
+    end
+    object Qry_creceberdesdsalvo: TIntegerField
+      FieldName = 'salvo'
+      Origin = 'salvo'
+    end
+    object AggregateField2: TAggregateField
+      FieldName = 'sumvalor'
+      Active = True
+      DisplayName = ''
+      DisplayFormat = '0.00'
+      Expression = 'Sum(valor)'
+    end
+  end
+  object Ds_creceberdesd: TDataSource
+    DataSet = Qry_creceberdesd
+    Left = 520
+    Top = 216
+  end
+  object Qry_cobvenda: TFDQuery
+    Connection = udm_conexao.FDConnection1
+    SQL.Strings = (
+      'select * from cobrancas where tipo = '#39'V'#39)
+    Left = 712
+    Top = 152
+    object IntegerField2: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object WideStringField2: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 8190
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'dias'
+      Origin = 'dias'
+    end
+    object WideStringField3: TWideStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Ds_cobvenda: TDataSource
+    DataSet = Qry_cobvenda
+    Left = 712
+    Top = 216
   end
 end

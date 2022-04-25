@@ -130,6 +130,20 @@ Dm_financeiro.Qry_cpagardesd.close;
 Dm_financeiro.Qry_cpagardesd.open;
 Dm_financeiro.Qry_cpagardesd.refresh;
 
+with Dm_Financeiro.qry_cpagardesd do
+    begin
+      CLOSE;
+      Sql.Clear;
+      Sql.Add('select * from cpagardesd');
+      Sql.Add('where CODFILIAL = :CODFILIAL');
+      Sql.Add('and numped = :numped');
+      Sql.Add('and salvo = 0');
+
+      Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+      Params.ParamByName('numped').AsInteger := Dm_Financeiro.Qry_cons_cpagarpedidoid.Asinteger;
+      Open;
+    end;
+
 end;
 
 procedure TFrmcpagar.BtnestornarClick(Sender: TObject);

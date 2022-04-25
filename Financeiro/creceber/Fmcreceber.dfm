@@ -184,11 +184,11 @@ object Frmcreceber: TFrmcreceber
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1143
+          Left = 1169
           Top = 536
-          Width = 104
+          Width = 75
           Height = 21
-          Caption = 'Total a Receber'
+          Caption = 'Totalizador'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -586,6 +586,36 @@ object Frmcreceber: TFrmcreceber
           Caption = 'Contas Recebidas'
           TabOrder = 17
           OnClick = CheckBox4Click
+        end
+        object pnldesdobrar: TPanel
+          Left = 365
+          Top = 550
+          Width = 153
+          Height = 41
+          BevelOuter = bvNone
+          Color = 9101567
+          ParentBackground = False
+          TabOrder = 18
+          object Btndesdobrar: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 153
+            Height = 41
+            Cursor = crHandPoint
+            Align = alClient
+            Caption = 'Desdobrar T'#237'tulo'
+            Enabled = False
+            Flat = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            OnClick = BtndesdobrarClick
+            ExplicitLeft = 72
+            ExplicitTop = -8
+          end
         end
       end
     end

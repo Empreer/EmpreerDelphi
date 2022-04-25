@@ -184,11 +184,11 @@ object Frmcpagar: TFrmcpagar
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1157
+          Left = 1170
           Top = 536
-          Width = 87
+          Width = 75
           Height = 21
-          Caption = 'Total a Pagar'
+          Caption = 'Totalizador'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -585,7 +585,7 @@ object Frmcpagar: TFrmcpagar
         end
         object CheckBox3: TCheckBox
           Left = 1066
-          Top = 51
+          Top = 52
           Width = 119
           Height = 17
           Caption = 'Contas a Pagar'

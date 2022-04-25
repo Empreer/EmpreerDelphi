@@ -24,7 +24,7 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'vltotal'
       Origin = 'vltotal'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_pedidocoduseradm: TIntegerField
       Alignment = taLeftJustify
@@ -93,7 +93,7 @@ object Dm_Entradas: TDm_Entradas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_pedidodescricao: TWideStringField
       AutoGenerateValue = arDefault
@@ -243,19 +243,19 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'qt'
       Origin = 'qt'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_pedidoitempunit: TFMTBCDField
       FieldName = 'punit'
       Origin = 'punit'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_pedidoitemsubtot: TFMTBCDField
       FieldName = 'subtot'
       Origin = 'subtot'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_pedidoitemcodprodmp: TIntegerField
       FieldName = 'codprodmp'
@@ -316,7 +316,7 @@ object Dm_Entradas: TDm_Entradas
       DisplayFormat = '#,##0.000000'
       EditFormat = '#,##0.000000'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_pedidoitempunit: TFMTBCDField
       FieldName = 'punit'
@@ -324,7 +324,7 @@ object Dm_Entradas: TDm_Entradas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_pedidoitemsubtot: TFMTBCDField
       FieldName = 'subtot'
@@ -332,7 +332,7 @@ object Dm_Entradas: TDm_Entradas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 0
+      Size = 2
     end
     object Qry_cons_pedidoitemcodfilial: TIntegerField
       AutoGenerateValue = arDefault
@@ -508,7 +508,7 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'qtprod'
       Origin = 'qtprod'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_ordemprodcodprod: TIntegerField
       FieldName = 'codprod'
@@ -565,7 +565,7 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'qtacabreq'
       Origin = 'qtacabreq'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_ordemproditemqtunitform: TFMTBCDField
       FieldName = 'qtunitform'
@@ -573,25 +573,25 @@ object Dm_Entradas: TDm_Entradas
       DisplayFormat = '#,##0.000000'
       EditFormat = '#,##0.000000'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_ordemproditemsubtotqt: TFMTBCDField
       FieldName = 'subtotqt'
       Origin = 'subtotqt'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_ordemproditemsubtot: TFMTBCDField
       FieldName = 'subtot'
       Origin = 'subtot'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_ordemproditemcustounit: TFMTBCDField
       FieldName = 'custounit'
       Origin = 'custounit'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_cons_ordemproditemcodfilial: TIntegerField
       AutoGenerateValue = arDefault
@@ -642,7 +642,7 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'qtprod'
       Origin = 'qtprod'
       Precision = 64
-      Size = 0
+      Size = 6
     end
   end
   object Ds_cons_ordemprod: TDataSource
@@ -684,14 +684,14 @@ object Dm_Entradas: TDm_Entradas
       FieldName = 'qtmp'
       Origin = 'qtmp'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_formprodcusto: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'custo'
       Origin = 'custo'
       Precision = 64
-      Size = 0
+      Size = 6
     end
     object Qry_formprodsubtotcusto: TFMTBCDField
       AutoGenerateValue = arDefault
@@ -699,7 +699,7 @@ object Dm_Entradas: TDm_Entradas
       Origin = 'subtotcusto'
       ReadOnly = True
       Precision = 64
-      Size = 0
+      Size = 6
     end
   end
   object Ds_formprod: TDataSource

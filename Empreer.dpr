@@ -47,7 +47,10 @@ uses
   Fmpedcomprabuscaprod in 'Entradas\Pedidocompra\Fmpedcomprabuscaprod.pas' {Frmcomprabuscaprod},
   Fmentprod in 'Entradas\Entradaproducao\Fmentprod.pas' {Frmentprod},
   Fmentprodbuscaprod in 'Entradas\Entradaproducao\Fmentprodbuscaprod.pas' {Frmentprodbuscaprod},
-  Fmcpagar in 'Financeiro\cpagar\Fmcpagar.pas' {Frmcpagar};
+  Fmcpagar in 'Financeiro\cpagar\Fmcpagar.pas' {Frmcpagar},
+  Fmcpagarbuscafornec in 'Financeiro\cpagar\Fmcpagarbuscafornec.pas' {Frmcpagarbuscafornec},
+  Fmcpagardesd in 'Financeiro\cpagar\Fmcpagardesd.pas' {Frmcpagardesd},
+  Fmcreceberdesd in 'Financeiro\creceber\Fmcreceberdesd.pas' {Frmcreceberdesd};
 
 {$R *.res}
 

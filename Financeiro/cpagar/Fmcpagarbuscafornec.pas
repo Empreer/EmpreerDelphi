@@ -1,4 +1,4 @@
-unit Fmcreceberbuscacli;
+unit Fmcpagarbuscafornec;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
-  TFrmcreceberbuscacli = class(TForm)
+  TFrmcpagarbuscafornec = class(TForm)
     Panel4: TPanel;
     Label1: TLabel;
     Label15: TLabel;
@@ -30,13 +30,13 @@ type
     BtnFechar: TSpeedButton;
     Btnminimizar: TSpeedButton;
     pnlistabr: TPanel;
+    procedure SpeedButton1Click(Sender: TObject);
     procedure BtnFecharClick(Sender: TObject);
     procedure BtnminimizarClick(Sender: TObject);
     procedure ImlogoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure PnltopoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
@@ -45,32 +45,32 @@ type
   end;
 
 var
-  Frmcreceberbuscacli: TFrmcreceberbuscacli;
+  Frmcpagarbuscafornec: TFrmcpagarbuscafornec;
 
 implementation
 
 {$R *.dfm}
 
-uses Fmcreceber, Udm_financeiro, Udm_vendas, Uudm_conexao;
+uses Udm_entradas, Uudm_conexao, Fmcpagar, Udm_financeiro;
 
-procedure TFrmcreceberbuscacli.BtnFecharClick(Sender: TObject);
+procedure TFrmcpagarbuscafornec.BtnFecharClick(Sender: TObject);
 begin
 close;
 end;
 
-procedure TFrmcreceberbuscacli.BtnminimizarClick(Sender: TObject);
+procedure TFrmcpagarbuscafornec.BtnminimizarClick(Sender: TObject);
 begin
-Frmcreceberbuscacli.WindowState:=wsminimized;
+ Frmcpagarbuscafornec.WindowState:=wsminimized;
 end;
 
-procedure TFrmcreceberbuscacli.DBGrid1DblClick(Sender: TObject);
+procedure TFrmcpagarbuscafornec.DBGrid1DblClick(Sender: TObject);
 begin
-Frmcreceber.edit2.text :=  Dm_financeiro.Qry_clienteid.AsString;
-Frmcreceber.edit2Exit(self);
+Frmcpagar.edit2.text :=  Dm_financeiro.Qry_fornecid.AsString;
+Frmcpagar.edit2Exit(self);
 close;
 end;
 
-procedure TFrmcreceberbuscacli.ImlogoMouseDown(Sender: TObject;
+procedure TFrmcpagarbuscafornec.ImlogoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   const
    sc_DragMove = $f012;
@@ -79,7 +79,7 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
-procedure TFrmcreceberbuscacli.PnltopoMouseDown(Sender: TObject;
+procedure TFrmcpagarbuscafornec.PnltopoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   const
    sc_DragMove = $f012;
@@ -88,37 +88,37 @@ begin
   Perform(wm_SysCommand, sc_DragMove, 0);
 end;
 
-procedure TFrmcreceberbuscacli.SpeedButton1Click(Sender: TObject);
+procedure TFrmcpagarbuscafornec.SpeedButton1Click(Sender: TObject);
 begin
-with Dm_financeiro.Qry_cliente do
-    begin
-      CLOSE;
-      Sql.Clear;
-      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli');
-      Sql.Add('from users u, cidades c');
-      Sql.Add('where c.id  = u.codcidade');
-      Sql.Add('and u.CODFILIAL = :CODFILIAL');
+ with Dm_financeiro.Qry_fornec do
+      begin
+        CLOSE;
+        Sql.Clear;
+        Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf');
+        Sql.Add('from fornecedors u, cidades c ');
+        Sql.Add('where c.id  = u.codcidade');
+        Sql.Add('and u.CODFILIAL = :CODFILIAL');
 
-      if Edit1.Text <> '' then
-        Sql.Add('And u.nome Like ''%'+ Edit1.Text + '%'' ');
+        if Edit1.Text <> '' then
+          Sql.Add('And u.nome Like ''%'+ Edit1.Text + '%'' ');
 
-      if Edit2.Text <> '' then
-        Sql.Add('And c.cidade Like ''%'+ Edit2.Text + '%'' ');
+        if Edit2.Text <> '' then
+          Sql.Add('And c.cidade Like ''%'+ Edit2.Text + '%'' ');
 
-      if Edit3.Text <> '' then
-      Sql.Add('And c.uf Like ''%'+ Edit3.Text + '%'' ');
+        if Edit3.Text <> '' then
+        Sql.Add('And c.uf Like ''%'+ Edit3.Text + '%'' ');
 
-      if Edit4.Text <> '' then
-      Sql.Add('And u.cpfcnpj Like ''%'+ Edit4.Text + '%'' ');
+        if Edit4.Text <> '' then
+        Sql.Add('And u.cpfcnpj Like ''%'+ Edit4.Text + '%'' ');
 
 
-      Sql.Add('ORDER BY u.nome');
+        Sql.Add('ORDER BY u.nome');
 
-       Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
+         Params.ParamByName('CODFILIAL').AsInteger := udm_conexao.Codfilial;
 
-      Open;
+        Open;
 
-    end;
+      end;
 end;
 
 end.

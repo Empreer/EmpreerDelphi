@@ -1,8 +1,8 @@
-object Frmpedcomprabuscafornec: TFrmpedcomprabuscafornec
+object Frmcpagarbuscafornec: TFrmcpagarbuscafornec
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'Frmpedcomprabuscafornec'
+  Caption = 'Frmcpagarbuscafornec'
   ClientHeight = 650
   ClientWidth = 1280
   Color = clBtnFace
@@ -98,7 +98,7 @@ object Frmpedcomprabuscafornec: TFrmpedcomprabuscafornec
       Top = 119
       Width = 1225
       Height = 449
-      DataSource = Dm_Entradas.Ds_Fornec
+      DataSource = Dm_Financeiro.Ds_Fornec
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET

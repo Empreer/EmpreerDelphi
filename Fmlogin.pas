@@ -37,7 +37,6 @@ type
     Btnentrar: TSpeedButton;
     DBLookCombofilial: TDBLookupComboBox;
     pnlistabr: TPanel;
-    DBGrid1: TDBGrid;
     procedure BtnFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -80,21 +79,39 @@ try
     udm_conexao.ClientDataSet1.FieldByName('User').AsString
     udm_conexao.ClientDataSet1.FieldByName('Senha').AsString     }
 
-    udm_conexao.FDConnection1.Params.Values['DriverName'] := 'PG';
+  {  udm_conexao.FDConnection1.Params.Values['DriverName'] := 'PG';
     udm_conexao.FDConnection1.Params.Values['DriverID'] := 'PG';
     udm_conexao.FDConnection1.Params.Values['Database'] := udm_conexao.ClientDataSet1.FieldByName('Database').AsString;
     udm_conexao.FDConnection1.Params.Values['Server'] := udm_conexao.ClientDataSet1.FieldByName('Servidor').AsString;
     udm_conexao.FDConnection1.Params.Values['UserName'] := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
     udm_conexao.FDConnection1.Params.Values['Password'] := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
-    udm_conexao.FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
+   // udm_conexao.FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
 
     udm_conexao.FDConnection1.Params.Database := udm_conexao.ClientDataSet1.FieldByName('Database').AsString;
     udm_conexao.FDConnection1.Params.UserName := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
     udm_conexao.FDConnection1.Params.Password := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
+                                                                                                            }
 
 
+   udm_conexao.FDConnection1.Connected := False;
+  // FDConnection1.Params.Clear;
+   udm_conexao.FDConnection1.Params.Values['DriverName'] := 'PG';
+   udm_conexao.FDConnection1.Params.Values['DriverID'] := 'PG';
+   udm_conexao.FDConnection1.Params.Values['Database'] := udm_conexao.ClientDataSet1.FieldByName('Database').AsString;
+   udm_conexao.FDConnection1.Params.Values['Server'] := udm_conexao.ClientDataSet1.FieldByName('Servidor').AsString;
+   udm_conexao.FDConnection1.Params.Values['UserName'] := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
+   udm_conexao.FDConnection1.Params.Values['Password'] := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
+   udm_conexao.FDConnection1.Params.Values['Port'] := '5432';
 
-    udm_conexao.FDConnection1.Connected := True;
+   udm_conexao.FDConnection1.Params.DriverID := 'PG';
+   udm_conexao.FDConnection1.Params.UserName := udm_conexao.ClientDataSet1.FieldByName('User').AsString;
+   udm_conexao.FDConnection1.Params.Password := udm_conexao.ClientDataSet1.FieldByName('Senha').AsString;
+
+   udm_conexao.FDPhysPgDriverLink1.DriverID := 'PG';
+
+ //  udm_conexao.FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
+   udm_conexao.FDConnection1.Connected := True;
+
 
     udm_conexao.Fdquery1.Open();
     test := udm_conexao.FDQuery1.RecordCount;

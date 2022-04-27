@@ -314,19 +314,6 @@ object Frmlogin: TFrmlogin
         ExplicitTop = -1
       end
     end
-    object DBGrid1: TDBGrid
-      Left = 48
-      Top = 425
-      Width = 452
-      Height = 175
-      DataSource = udm_conexao.DataSource3
-      TabOrder = 5
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Segoe UI'
-      TitleFont.Style = []
-    end
   end
   object Pntopo: TPanel
     Left = 0

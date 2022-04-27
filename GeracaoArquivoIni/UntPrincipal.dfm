@@ -10,6 +10,7 @@ object FrmPrincipal: TFrmPrincipal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 15
   object Panel1: TPanel
@@ -24,7 +25,7 @@ object FrmPrincipal: TFrmPrincipal
       Top = 1
       Width = 688
       Height = 463
-      ActivePage = TabSheet1
+      ActivePage = TabSheet2
       Align = alClient
       TabOrder = 0
       object TabSheet1: TTabSheet
@@ -62,14 +63,14 @@ object FrmPrincipal: TFrmPrincipal
           Top = 84
           Width = 409
           Height = 23
-          TabOrder = 0
+          TabOrder = 1
         end
         object EdtServidor: TEdit
           Left = 3
           Top = 34
           Width = 409
           Height = 23
-          TabOrder = 1
+          TabOrder = 0
         end
         object EdtUser: TEdit
           Left = 3
@@ -194,6 +195,73 @@ object FrmPrincipal: TFrmPrincipal
       object TabSheet2: TTabSheet
         Caption = 'Criando Banco de Dados'
         ImageIndex = 1
+        object Panel4: TPanel
+          Left = 122
+          Top = 236
+          Width = 135
+          Height = 39
+          BevelOuter = bvNone
+          Color = 11718912
+          ParentBackground = False
+          TabOrder = 0
+          object SpeedButton2: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 135
+            Height = 39
+            Cursor = crHandPoint
+            Align = alClient
+            Caption = 'Criar'
+            Flat = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            OnClick = SpeedButton2Click
+            ExplicitLeft = 72
+            ExplicitTop = -8
+            ExplicitWidth = 153
+            ExplicitHeight = 41
+          end
+        end
+        object Panel5: TPanel
+          Left = 389
+          Top = 236
+          Width = 135
+          Height = 41
+          BevelOuter = bvNone
+          Color = 6833905
+          ParentBackground = False
+          TabOrder = 1
+          object SpeedButton3: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 135
+            Height = 41
+            Cursor = crHandPoint
+            Align = alClient
+            Caption = 'Sair'
+            Flat = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            OnClick = SpeedButton3Click
+            ExplicitLeft = 144
+            ExplicitWidth = 153
+          end
+        end
+        object ProgressBar1: TProgressBar
+          Left = 122
+          Top = 104
+          Width = 402
+          Height = 25
+          TabOrder = 2
+        end
       end
     end
   end
@@ -219,8 +287,8 @@ object FrmPrincipal: TFrmPrincipal
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 445
-    Top = 43
+    Left = 501
+    Top = 51
     object ClientDataSet1Servidor: TStringField
       FieldName = 'Servidor'
       Size = 255

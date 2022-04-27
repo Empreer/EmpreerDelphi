@@ -39,9 +39,16 @@ type
     ClientDataSet1Database: TStringField;
     ClientDataSet1User: TStringField;
     ClientDataSet1Senha: TStringField;
+    Panel4: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton3: TSpeedButton;
+    ProgressBar1: TProgressBar;
     procedure BtnsalvarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure BtncancelarClick(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -176,6 +183,27 @@ begin
    end;
  end;
 
+end;
+
+procedure TFrmPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+  try
+
+      Except
+        on E: Exception do
+        begin
+          Memo1.Font.Color :=  clRed;
+          Memo1.Lines.Add('Não foi possível a conexão com o banco de dados');
+          Memo1.Lines.Add('************************************************');
+          Memo1.Lines.Add(E.Message);
+        end;
+
+
+  end;
+
+procedure TFrmPrincipal.SpeedButton3Click(Sender: TObject);
+begin
+   Close;
 end;
 
 function TFrmPrincipal.ValidaCampos: Boolean;

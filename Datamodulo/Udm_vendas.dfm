@@ -28,7 +28,7 @@ object Dm_vendas: TDm_vendas
       FieldName = 'vltotal'
       Origin = 'vltotal'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_pedidocobid: TIntegerField
       Alignment = taLeftJustify
@@ -103,14 +103,14 @@ object Dm_vendas: TDm_vendas
       FieldName = 'punit'
       Origin = 'punit'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_pedidoitemsubtot: TFMTBCDField
       Alignment = taLeftJustify
       FieldName = 'subtot'
       Origin = 'subtot'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_pedidoitempedidoid: TIntegerField
       Alignment = taLeftJustify
@@ -260,7 +260,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_produtopercdesc: TFMTBCDField
       Alignment = taLeftJustify
@@ -270,7 +270,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
   end
   object Ds_produto: TDataSource
@@ -317,7 +317,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_pedidoitempunit: TFMTBCDField
       AutoGenerateValue = arDefault
@@ -326,7 +326,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_pedidoitemsubtot: TFMTBCDField
       AutoGenerateValue = arDefault
@@ -335,7 +335,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_pedidoitemcodfilial: TIntegerField
       AutoGenerateValue = arDefault
@@ -353,7 +353,7 @@ object Dm_vendas: TDm_vendas
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_pedidoitemSUMVLTOT: TAggregateField
       FieldName = 'SUMVLTOT'

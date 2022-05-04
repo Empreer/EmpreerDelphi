@@ -12,7 +12,6 @@ object Frmcpagar: TFrmcpagar
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesktopCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
   object PageControl1: TPageControl
@@ -168,7 +167,6 @@ object Frmcpagar: TFrmcpagar
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
-          OnClick = SpeedButton3Click
         end
         object Label6: TLabel
           Left = 640
@@ -184,11 +182,11 @@ object Frmcpagar: TFrmcpagar
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1170
+          Left = 1143
           Top = 536
-          Width = 75
+          Width = 104
           Height = 21
-          Caption = 'Totalizador'
+          Caption = 'Total a Receber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -300,11 +298,10 @@ object Frmcpagar: TFrmcpagar
             Flat = True
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindow
-            Font.Height = -16
+            Font.Height = -19
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            OnClick = btnbaixarClick
             ExplicitLeft = -32
             ExplicitTop = 8
           end
@@ -331,7 +328,7 @@ object Frmcpagar: TFrmcpagar
           Top = 144
           Width = 1241
           Height = 386
-          DataSource = Dm_Financeiro.Ds_cons_cpagar
+          DataSource = Dm_Financeiro.Ds_cons_creceber
           Enabled = False
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           ReadOnly = True
@@ -346,79 +343,62 @@ object Frmcpagar: TFrmcpagar
               Expanded = False
               FieldName = 'pedidoid'
               Title.Caption = 'PEDIDO'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'numnota'
-              Title.Caption = 'NUM.NOTA'
+              FieldName = 'userid'
+              Title.Caption = 'COD.CLI'
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'codfornec'
-              Title.Caption = 'C.FOR.'
-              Width = 55
+              FieldName = 'dtemissao'
+              Title.Caption = 'DT.EMISS'#195'O'
+              Width = 86
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'nome'
-              Title.Caption = 'FORNECEDOR'
-              Width = 274
+              Title.Caption = 'CLIENTE'
+              Width = 328
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'cobranca'
               Title.Caption = 'COBRANCA'
-              Width = 103
+              Width = 167
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'valor'
               Title.Caption = 'VALOR'
-              Width = 72
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'vpago'
-              Title.Caption = 'V.PAGO'
-              Width = 73
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'dtemissao'
-              Title.Caption = 'DT.EMISSAO'
-              Width = 83
+              Width = 124
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'dtvenc'
-              Title.Caption = 'DT.VENC'
+              Title.Caption = 'DT.VENCIMENTO'
+              Width = 120
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'dtpagto'
+              FieldName = 'vpago'
+              Title.Caption = 'VALOR.PAGO'
+              Width = 110
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'dtpago'
               Title.Caption = 'DT.PAGTO'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'codconta'
-              Title.Caption = 'COD.CONTA'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'descricao'
-              Title.Caption = 'CONTA'
-              Width = 164
+              Width = 128
               Visible = True
             end>
         end
@@ -438,7 +418,7 @@ object Frmcpagar: TFrmcpagar
           Width = 137
           Height = 23
           DataField = 'Sumvltotal'
-          DataSource = Dm_Financeiro.Ds_cons_cpagar
+          DataSource = Dm_Financeiro.Ds_cons_creceber
           TabOrder = 7
         end
         object DateTimePicker1: TDateTimePicker
@@ -480,7 +460,6 @@ object Frmcpagar: TFrmcpagar
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            OnClick = SpeedButton2Click
             ExplicitTop = -20
           end
         end
@@ -500,7 +479,6 @@ object Frmcpagar: TFrmcpagar
           Font.Style = []
           ParentFont = False
           TabOrder = 10
-          OnExit = Edit2Exit
         end
         object Edit3: TEdit
           Left = 643
@@ -543,7 +521,6 @@ object Frmcpagar: TFrmcpagar
           Checked = True
           State = cbChecked
           TabOrder = 13
-          OnClick = CheckBox1Click
         end
         object CheckBox2: TCheckBox
           Left = 963
@@ -552,7 +529,6 @@ object Frmcpagar: TFrmcpagar
           Height = 17
           Caption = 'Vencimento'
           TabOrder = 14
-          OnClick = CheckBox2Click
         end
         object Pnlestornar: TPanel
           Left = 184
@@ -579,20 +555,19 @@ object Frmcpagar: TFrmcpagar
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            OnClick = BtnestornarClick
-            ExplicitLeft = -1
+            ExplicitLeft = 80
+            ExplicitTop = 1
           end
         end
         object CheckBox3: TCheckBox
           Left = 1066
-          Top = 52
+          Top = 51
           Width = 119
           Height = 17
           Caption = 'Contas a Pagar'
           Checked = True
           State = cbChecked
           TabOrder = 16
-          OnClick = CheckBox3Click
         end
         object CheckBox4: TCheckBox
           Left = 1066
@@ -601,37 +576,6 @@ object Frmcpagar: TFrmcpagar
           Height = 17
           Caption = 'Contas Pagas'
           TabOrder = 17
-          OnClick = CheckBox4Click
-        end
-        object pnldesdobrar: TPanel
-          Left = 365
-          Top = 550
-          Width = 153
-          Height = 41
-          BevelOuter = bvNone
-          Color = 9101567
-          ParentBackground = False
-          TabOrder = 18
-          object Btndesdobrar: TSpeedButton
-            Left = 0
-            Top = 0
-            Width = 153
-            Height = 41
-            Cursor = crHandPoint
-            Align = alClient
-            Caption = 'Desdobrar T'#237'tulo'
-            Enabled = False
-            Flat = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clMaroon
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            OnClick = BtndesdobrarClick
-            ExplicitLeft = 72
-            ExplicitTop = -8
-          end
         end
       end
     end
@@ -646,7 +590,6 @@ object Frmcpagar: TFrmcpagar
     Color = clBackground
     ParentBackground = False
     TabOrder = 1
-    OnMouseDown = PnltopoMouseDown
     object Imlogo: TImage
       Left = -4
       Top = 3
@@ -1600,11 +1543,10 @@ object Frmcpagar: TFrmcpagar
         75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BD
         FBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBD
         D7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75FFD9}
-      OnMouseDown = ImlogoMouseDown
     end
     object BtnFechar: TSpeedButton
-      Left = 1216
-      Top = 2
+      Left = 1217
+      Top = 1
       Width = 51
       Height = 48
       Cursor = crHandPoint
@@ -1617,7 +1559,6 @@ object Frmcpagar: TFrmcpagar
       Font.Style = [fsBold]
       Font.Quality = fqAntialiased
       ParentFont = False
-      OnClick = BtnFecharClick
     end
     object Btnminimizar: TSpeedButton
       Left = 1164
@@ -1633,7 +1574,6 @@ object Frmcpagar: TFrmcpagar
       Font.Style = []
       Font.Quality = fqAntialiased
       ParentFont = False
-      OnClick = BtnminimizarClick
     end
     object pnlistabr: TPanel
       Left = 0

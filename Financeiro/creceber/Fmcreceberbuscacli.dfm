@@ -98,7 +98,7 @@ object Frmcreceberbuscacli: TFrmcreceberbuscacli
       Top = 119
       Width = 1225
       Height = 449
-      DataSource = Dm_Financeiro.Ds_Cliente
+      DataSource = Dm_vendas.Ds_Cliente
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
@@ -299,6 +299,7 @@ object Frmcreceberbuscacli: TFrmcreceberbuscacli
     ParentBackground = False
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
+    ExplicitTop = 8
     object Imlogo: TImage
       Left = -4
       Top = 3

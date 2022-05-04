@@ -29,7 +29,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'valor'
       Origin = 'valor'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_creceberdtvenc: TDateField
       FieldName = 'dtvenc'
@@ -47,7 +47,7 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'vpago'
       Origin = 'vpago'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_crecebercodfilial: TIntegerField
       FieldName = 'codfilial'
@@ -100,7 +100,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_crecebervpago: TFMTBCDField
       Alignment = taLeftJustify
@@ -109,7 +109,7 @@ object Dm_Financeiro: TDm_Financeiro
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cons_creceberdtemissao: TDateField
       FieldName = 'dtemissao'
@@ -183,31 +183,26 @@ object Dm_Financeiro: TDm_Financeiro
     Left = 408
     Top = 32
     object Qry_cpagarid: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'id'
       Origin = 'id'
     end
     object Qry_cpagarpedidoid: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'pedidoid'
       Origin = 'pedidoid'
     end
     object Qry_cpagaruseradmid: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'useradmid'
       Origin = 'useradmid'
     end
     object Qry_cpagarcobid: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'cobid'
       Origin = 'cobid'
     end
     object Qry_cpagarvalor: TFMTBCDField
-      Alignment = taLeftJustify
       FieldName = 'valor'
       Origin = 'valor'
       Precision = 64
-      Size = 2
+      Size = 0
     end
     object Qry_cpagardtvenc: TDateField
       FieldName = 'dtvenc'
@@ -221,32 +216,23 @@ object Dm_Financeiro: TDm_Financeiro
       FieldName = 'dtpagto'
       Origin = 'dtpagto'
     end
+    object Qry_cpagarvapgo: TFMTBCDField
+      FieldName = 'vapgo'
+      Origin = 'vapgo'
+      Precision = 64
+      Size = 0
+    end
     object Qry_cpagarcodfilial: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
     object Qry_cpagarcodconta: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'codconta'
       Origin = 'codconta'
     end
     object Qry_cpagarcodfornec: TIntegerField
-      Alignment = taLeftJustify
       FieldName = 'codfornec'
       Origin = 'codfornec'
-    end
-    object Qry_cpagarvpago: TFMTBCDField
-      Alignment = taLeftJustify
-      FieldName = 'vpago'
-      Origin = 'vpago'
-      Precision = 64
-      Size = 2
-    end
-    object Qry_cpagarnumnota: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'numnota'
-      Origin = 'numnota'
     end
   end
   object Ds_cpagar: TDataSource
@@ -260,85 +246,75 @@ object Dm_Financeiro: TDm_Financeiro
     SQL.Strings = (
       
         'select f.id,f.pedidoid, f.codfornec,u.nome,c.descricao as cobran' +
-        'ca, f.valor, f.vpago, f.dtemissao, f.dtvenc, f.dtpagto, f.codfil' +
-        'ial,f.numnota,i.id as codconta,i.descricao'
-      'from cpagar f, fornecedors u, cobrancas c, contas i '
+        'ca, f.valor, f.vpago, f.dtemissao, f.dtvenc, f.dtpago, f.codfili' +
+        'al'
+      'from cpagar f, fornecedors u, cobrancas c '
       'where f.codfornec = u.id '
-      'and f.cobid = c.id '
-      'and i.id = f.codconta')
+      'and f.cobid = c.id ')
     Left = 520
     Top = 32
-    object Qry_cons_cpagarid: TIntegerField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_cons_cpagarpedidoid: TIntegerField
+    object IntegerField2: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'pedidoid'
       Origin = 'pedidoid'
     end
-    object Qry_cons_cpagarcodfornec: TIntegerField
-      FieldName = 'codfornec'
-      Origin = 'codfornec'
+    object IntegerField3: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'userid'
+      Origin = 'userid'
     end
-    object Qry_cons_cpagarnome: TWideStringField
+    object WideStringField2: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome'
       Origin = 'nome'
       Size = 8190
     end
-    object Qry_cons_cpagarcobranca: TWideStringField
+    object WideStringField3: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'cobranca'
       Origin = 'cobranca'
       Size = 8190
     end
-    object Qry_cons_cpagarvalor: TFMTBCDField
+    object FMTBCDField3: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'valor'
       Origin = 'valor'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
-    object Qry_cons_cpagarvpago: TFMTBCDField
+    object FMTBCDField4: TFMTBCDField
+      Alignment = taLeftJustify
       FieldName = 'vpago'
       Origin = 'vpago'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 64
-      Size = 2
+      Size = 0
     end
-    object Qry_cons_cpagardtemissao: TDateField
+    object DateField1: TDateField
       FieldName = 'dtemissao'
       Origin = 'dtemissao'
     end
-    object Qry_cons_cpagardtvenc: TDateField
+    object DateField2: TDateField
       FieldName = 'dtvenc'
       Origin = 'dtvenc'
     end
-    object Qry_cons_cpagardtpagto: TDateField
-      FieldName = 'dtpagto'
-      Origin = 'dtpagto'
+    object DateField3: TDateField
+      FieldName = 'dtpago'
+      Origin = 'dtpago'
     end
-    object Qry_cons_cpagarcodfilial: TIntegerField
+    object IntegerField4: TIntegerField
+      Alignment = taLeftJustify
       FieldName = 'codfilial'
       Origin = 'codfilial'
     end
-    object Qry_cons_cpagarnumnota: TIntegerField
-      FieldName = 'numnota'
-      Origin = 'numnota'
-    end
-    object Qry_cons_cpagarcodconta: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'codconta'
-      Origin = 'codconta'
-    end
-    object Qry_cons_cpagardescricao: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Size = 8190
+    object IntegerField5: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object AggregateField1: TAggregateField
       FieldName = 'Sumvltotal'
@@ -352,265 +328,5 @@ object Dm_Financeiro: TDm_Financeiro
     DataSet = Qry_cons_cpagar
     Left = 520
     Top = 96
-  end
-  object Qry_Fornec: TFDQuery
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf '
-      'from fornecedors u, cidades c '
-      'where c.id  = u.codcidade ')
-    Left = 640
-    Top = 24
-    object Qry_Fornecid: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_Fornecnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 8190
-    end
-    object Qry_Forneccpfcnpj: TWideStringField
-      FieldName = 'cpfcnpj'
-      Origin = 'cpfcnpj'
-      Size = 8190
-    end
-    object Qry_Forneccidade: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 8190
-    end
-    object Qry_Fornecuf: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'uf'
-      Origin = 'uf'
-      Size = 8190
-    end
-  end
-  object Ds_Fornec: TDataSource
-    DataSet = Qry_Fornec
-    Left = 640
-    Top = 88
-  end
-  object Qry_cliente: TFDQuery
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli '
-      'from users u, cidades c '
-      'where c.id  = u.codcidade ')
-    Left = 728
-    Top = 24
-    object Qry_clienteid: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_clientenome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 8190
-    end
-    object Qry_clientecpfcnpj: TWideStringField
-      FieldName = 'cpfcnpj'
-      Origin = 'cpfcnpj'
-      Size = 8190
-    end
-    object Qry_clientecidade: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 8190
-    end
-    object Qry_clienteuf: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'uf'
-      Origin = 'uf'
-      Size = 8190
-    end
-    object Qry_clienteperdesccli: TFMTBCDField
-      FieldName = 'perdesccli'
-      Origin = 'perdesccli'
-      Precision = 64
-      Size = 0
-    end
-  end
-  object Ds_Cliente: TDataSource
-    DataSet = Qry_cliente
-    Left = 728
-    Top = 88
-  end
-  object Qry_cpagardesd: TFDQuery
-    AggregatesActive = True
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select * from cpagardesd where salvo = 0')
-    Left = 408
-    Top = 152
-    object Qry_cpagardesdvalor: TFMTBCDField
-      FieldName = 'valor'
-      Origin = 'valor'
-      DisplayFormat = '0.00'
-      EditFormat = '0.00'
-      Precision = 64
-      Size = 2
-    end
-    object Qry_cpagardesddtvenc: TDateField
-      FieldName = 'dtvenc'
-      Origin = 'dtvenc'
-    end
-    object Qry_cpagardesdcodcob: TIntegerField
-      FieldName = 'codcob'
-      Origin = 'codcob'
-    end
-    object Qry_cpagardesdnumped: TIntegerField
-      FieldName = 'numped'
-      Origin = 'numped'
-    end
-    object Qry_cpagardesdcodfilial: TIntegerField
-      FieldName = 'codfilial'
-      Origin = 'codfilial'
-    end
-    object Qry_cpagardesdid: TIntegerField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_cpagardesdsalvo: TIntegerField
-      FieldName = 'salvo'
-      Origin = 'salvo'
-    end
-    object Qry_cpagardesdsumvalor: TAggregateField
-      FieldName = 'sumvalor'
-      Active = True
-      DisplayName = ''
-      DisplayFormat = '0.00'
-      Expression = 'Sum(valor)'
-    end
-  end
-  object Ds_cpagardesd: TDataSource
-    DataSet = Qry_cpagardesd
-    Left = 408
-    Top = 216
-  end
-  object Qry_cob: TFDQuery
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select * from cobrancas where tipo = '#39'C'#39)
-    Left = 640
-    Top = 152
-    object Qry_cobid: TIntegerField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_cobdescricao: TWideStringField
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Size = 8190
-    end
-    object Qry_cobdias: TIntegerField
-      FieldName = 'dias'
-      Origin = 'dias'
-    end
-    object Qry_cobtipo: TWideStringField
-      FieldName = 'tipo'
-      Origin = 'tipo'
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object Ds_cob: TDataSource
-    DataSet = Qry_cob
-    Left = 640
-    Top = 216
-  end
-  object Qry_creceberdesd: TFDQuery
-    AggregatesActive = True
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select * from creceberdesd where salvo = 0')
-    Left = 520
-    Top = 160
-    object Qry_creceberdesdid: TIntegerField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Qry_creceberdesdvalor: TFMTBCDField
-      FieldName = 'valor'
-      Origin = 'valor'
-      DisplayFormat = '0.00'
-      EditFormat = '0.00'
-      Precision = 64
-      Size = 2
-    end
-    object Qry_creceberdesddtvenc: TDateField
-      FieldName = 'dtvenc'
-      Origin = 'dtvenc'
-    end
-    object Qry_creceberdesdcodcob: TIntegerField
-      FieldName = 'codcob'
-      Origin = 'codcob'
-    end
-    object Qry_creceberdesdnumped: TIntegerField
-      FieldName = 'numped'
-      Origin = 'numped'
-    end
-    object Qry_creceberdesdcodfilial: TIntegerField
-      FieldName = 'codfilial'
-      Origin = 'codfilial'
-    end
-    object Qry_creceberdesdsalvo: TIntegerField
-      FieldName = 'salvo'
-      Origin = 'salvo'
-    end
-    object AggregateField2: TAggregateField
-      FieldName = 'sumvalor'
-      Active = True
-      DisplayName = ''
-      DisplayFormat = '0.00'
-      Expression = 'Sum(valor)'
-    end
-  end
-  object Ds_creceberdesd: TDataSource
-    DataSet = Qry_creceberdesd
-    Left = 520
-    Top = 216
-  end
-  object Qry_cobvenda: TFDQuery
-    Connection = udm_conexao.FDConnection1
-    SQL.Strings = (
-      'select * from cobrancas where tipo = '#39'V'#39)
-    Left = 712
-    Top = 152
-    object IntegerField2: TIntegerField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object WideStringField2: TWideStringField
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Size = 8190
-    end
-    object IntegerField3: TIntegerField
-      FieldName = 'dias'
-      Origin = 'dias'
-    end
-    object WideStringField3: TWideStringField
-      FieldName = 'tipo'
-      Origin = 'tipo'
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object Ds_cobvenda: TDataSource
-    DataSet = Qry_cobvenda
-    Left = 712
-    Top = 216
   end
 end

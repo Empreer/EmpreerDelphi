@@ -42,6 +42,7 @@ object Frmcreceber: TFrmcreceber
         Color = clWindow
         ParentBackground = False
         TabOrder = 0
+        ExplicitTop = -3
         object Labeluser: TLabel
           Left = 112
           Top = 82
@@ -72,7 +73,7 @@ object Frmcreceber: TFrmcreceber
           Left = 6
           Top = 30
           Width = 41
-          Height = 21
+          Height = 22
           Caption = 'Filial:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMenuHighlight
@@ -184,11 +185,11 @@ object Frmcreceber: TFrmcreceber
           ParentFont = False
         end
         object Label10: TLabel
-          Left = 1169
+          Left = 1143
           Top = 536
-          Width = 75
+          Width = 104
           Height = 21
-          Caption = 'Totalizador'
+          Caption = 'Total a Receber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGray
           Font.Height = -16
@@ -429,7 +430,6 @@ object Frmcreceber: TFrmcreceber
           Top = 51
           Width = 120
           Height = 25
-          Date = 44670.000000000000000000
           Time = 0.914966134259884700
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -587,36 +587,6 @@ object Frmcreceber: TFrmcreceber
           TabOrder = 17
           OnClick = CheckBox4Click
         end
-        object pnldesdobrar: TPanel
-          Left = 365
-          Top = 550
-          Width = 153
-          Height = 41
-          BevelOuter = bvNone
-          Color = 9101567
-          ParentBackground = False
-          TabOrder = 18
-          object Btndesdobrar: TSpeedButton
-            Left = 0
-            Top = 0
-            Width = 153
-            Height = 41
-            Cursor = crHandPoint
-            Align = alClient
-            Caption = 'Desdobrar T'#237'tulo'
-            Enabled = False
-            Flat = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clMaroon
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            OnClick = BtndesdobrarClick
-            ExplicitLeft = 72
-            ExplicitTop = -8
-          end
-        end
       end
     end
   end
@@ -631,6 +601,7 @@ object Frmcreceber: TFrmcreceber
     ParentBackground = False
     TabOrder = 1
     OnMouseDown = PnltopoMouseDown
+    ExplicitTop = 16
     object Imlogo: TImage
       Left = -4
       Top = 3

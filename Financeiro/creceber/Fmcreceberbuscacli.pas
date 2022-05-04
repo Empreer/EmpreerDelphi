@@ -65,7 +65,7 @@ end;
 
 procedure TFrmcreceberbuscacli.DBGrid1DblClick(Sender: TObject);
 begin
-Frmcreceber.edit2.text :=  Dm_financeiro.Qry_clienteid.AsString;
+Frmcreceber.edit2.text :=  Dm_vendas.Qry_clienteid.AsString;
 Frmcreceber.edit2Exit(self);
 close;
 end;
@@ -90,11 +90,11 @@ end;
 
 procedure TFrmcreceberbuscacli.SpeedButton1Click(Sender: TObject);
 begin
-with Dm_financeiro.Qry_cliente do
+with Dm_vendas.Qry_cliente do
     begin
       CLOSE;
       Sql.Clear;
-      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf,u.perdesccli');
+      Sql.Add('select u.id, u.nome,u.cpfcnpj, c.cidade, c.uf ');
       Sql.Add('from users u, cidades c');
       Sql.Add('where c.id  = u.codcidade');
       Sql.Add('and u.CODFILIAL = :CODFILIAL');

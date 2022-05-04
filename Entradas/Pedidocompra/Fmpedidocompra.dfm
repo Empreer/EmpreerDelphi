@@ -378,19 +378,6 @@ object Frmpedidocompra: TFrmpedidocompra
           Font.Style = []
           ParentFont = False
         end
-        object Label9: TLabel
-          Left = 488
-          Top = 25
-          Width = 117
-          Height = 21
-          Caption = 'N'#250'mero da Nota'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGray
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-        end
         object DBEdit1: TDBEdit
           Left = 5
           Top = 91
@@ -563,7 +550,7 @@ object Frmpedidocompra: TFrmpedidocompra
         object DBLookupComboBox3: TDBLookupComboBox
           Left = 631
           Top = 92
-          Width = 251
+          Width = 273
           Height = 25
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1536,37 +1523,6 @@ object Frmpedidocompra: TFrmpedidocompra
           ParentFont = False
           ReadOnly = True
           TabOrder = 27
-        end
-        object DBEdit5: TDBEdit
-          Left = 488
-          Top = 52
-          Width = 57
-          Height = 16
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          BiDiMode = bdLeftToRight
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          DataField = 'numnota'
-          DataSource = Dm_Entradas.Ds_pedido
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentBiDiMode = False
-          ParentFont = False
-          TabOrder = 28
-        end
-        object Panel2: TPanel
-          Left = 488
-          Top = 74
-          Width = 130
-          Height = 2
-          BevelOuter = bvNone
-          Color = clSilver
-          ParentBackground = False
-          TabOrder = 29
         end
       end
     end

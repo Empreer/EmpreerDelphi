@@ -267,13 +267,11 @@ object FrmPrincipal: TFrmPrincipal
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=db_empreerhmg'
-      'User_Name=empreer'
-      'Password=Empreer12@'
-      'Server=db-empreerhmg.postgres.uhserver.com'
-      'DriverID=PG'
-      'POOL_ExpireTimeout=9000000')
-    Connected = True
+      'Database=db_mnfoods'
+      'User_Name=db_mnfoods'
+      'Password=@Empreer1'
+      'Server=db-mnfoods.postgres.uhserver.com'
+      'DriverID=PG')
     LoginPrompt = False
     Left = 624
     Top = 32
@@ -305,5 +303,10 @@ object FrmPrincipal: TFrmPrincipal
       FieldName = 'Senha'
       Size = 50
     end
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 501
+    Top = 195
   end
 end

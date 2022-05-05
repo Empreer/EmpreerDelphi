@@ -8,7 +8,9 @@ uses
   Vcl.ExtCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
   FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
-  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, Datasnap.DBClient;
+  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, Datasnap.DBClient,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
 
 type
   TFrmPrincipal = class(TForm)
@@ -44,6 +46,7 @@ type
     Panel5: TPanel;
     SpeedButton3: TSpeedButton;
     ProgressBar1: TProgressBar;
+    FDQuery1: TFDQuery;
     procedure BtnsalvarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure BtncancelarClick(Sender: TObject);
@@ -88,7 +91,7 @@ begin
  if validaCampos = true  then
  begin
    FDConnection1.Connected := False;
-  // FDConnection1.Params.Clear;
+   FDConnection1.Params.Clear;
    FDConnection1.Params.Values['DriverName'] := 'PG';
    FDConnection1.Params.Values['DriverID'] := 'PG';
    FDConnection1.Params.Values['Database'] := EdtDatabase.text;
@@ -101,10 +104,10 @@ begin
    FDConnection1.Params.UserName := EdtUser.text;
    FDConnection1.Params.Password := EdtSenha.text;
 
-   FDPhysPgDriverLink1.DriverID := 'PG';
-   showmessage(  FDConnection1.Params.Values['Database']);
+ //  FDPhysPgDriverLink1.DriverID := 'PG';
+  // showmessage(  FDConnection1.Params.Values['Server']);
 
-   FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
+  // FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
    FDConnection1.Connected := True;
 
    if FDConnection1.Connected = True  then
@@ -186,8 +189,105 @@ begin
 end;
 
 procedure TFrmPrincipal.SpeedButton2Click(Sender: TObject);
+var CountProgresso : integer;
 begin
   try
+
+   FDConnection1.Connected := False;
+   FDConnection1.Params.Clear;
+   FDConnection1.Params.Values['DriverName'] := 'PG';
+   FDConnection1.Params.Values['DriverID'] := 'PG';
+   FDConnection1.Params.Values['Database'] := EdtDatabase.text;
+   FDConnection1.Params.Values['Server'] := EdtServidor.text;
+   FDConnection1.Params.Values['UserName'] := EdtUser.text;
+   FDConnection1.Params.Values['Password'] := EdtSenha.text;
+   FDConnection1.Params.Values['Port'] := '5432';
+
+   FDConnection1.Params.DriverID := 'PG';
+   FDConnection1.Params.UserName := EdtUser.text;
+   FDConnection1.Params.Password := EdtSenha.text;
+
+ //  FDPhysPgDriverLink1.DriverID := 'PG';
+  // showmessage(  FDConnection1.Params.Values['Server']);
+
+  // FDPhysPgDriverLink1.VendorLib := 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll';
+   FDConnection1.Connected := True;
+   // Sempre que criar um novo script atualizar essa variavel para deixar a barra de progresso atualizada
+    CountProgresso := 1;
+
+     try
+       with FDQuery1 do
+       begin
+         close;
+         Sql.Clear;
+         sql.Add('');
+         sql.Add('CREATE TABLE cidades (');
+         sql.Add('	id int4 NOT NULL,');
+         sql.Add('	codibge int4 NOT NULL,');
+         sql.Add('	uf varchar NOT NULL,');
+         sql.Add('	cidade varchar NOT NULL,');
+         sql.Add('	CONSTRAINT cidades_pk PRIMARY KEY (id))');
+     
+         ExecSQL;
+       end;
+     Except
+
+     end;
+
+     try
+       with FDQuery1 do
+       begin
+         close;
+         Sql.Clear;
+         sql.Add('');
+         sql.Add('CREATE TABLE cobrancas (');
+         sql.Add('	id int4 NOT NULL,');
+         sql.Add('	descricao varchar NOT NULL,');
+         sql.Add('	dias int4 NULL,');
+         sql.Add('	tipo bpchar(1) NULL,');
+         sql.Add('	CONSTRAINT cobrancas_pk PRIMARY KEY (id)');
+         sql.Add(');');
+
+
+         ExecSQL;
+       end;
+     Except
+
+     end;
+
+
+     try
+       with FDQuery1 do
+       begin
+         close;
+         Sql.Clear;
+         sql.Add('');
+         sql.Add('CREATE TABLE cpagar (');
+         sql.Add('	id int4 NOT NULL,');
+         sql.Add('	pedidoid int4 NULL,');
+         sql.Add('	useradmid int4 NULL,');
+         sql.Add('	cobid int4 NOT NULL,');
+         sql.Add('	valor numeric NULL,');
+         sql.Add('	dtvenc date NULL,');
+         sql.Add('	dtemissao date NULL,');
+         sql.Add('	dtpagto date NULL,');
+         sql.Add('	vpago numeric NULL,');
+         sql.Add('	codfilial int4 NOT NULL,');
+         sql.Add('	codconta int4 NOT NULL,');
+         sql.Add('	codfornec int4 NOT NULL DEFAULT 0,');
+         sql.Add('	numnota int4 NULL,');
+         sql.Add('	dtcompetencia date NULL,');
+         sql.Add('	historico varchar NULL,');
+         sql.Add('	tipo int4 NULL,');
+         sql.Add('	CONSTRAINT cpagar_pk PRIMARY KEY (id)');
+         sql.Add(');');
+
+
+         ExecSQL;
+       end;
+     Except
+
+     end;
 
       Except
         on E: Exception do
@@ -200,6 +300,7 @@ begin
 
 
   end;
+end;
 
 procedure TFrmPrincipal.SpeedButton3Click(Sender: TObject);
 begin
